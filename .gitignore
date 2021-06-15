@@ -1,2 +1,4 @@
 env/
 /datasets
+__pycache__/
+pages/__pycache__/

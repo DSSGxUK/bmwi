@@ -1,8 +1,17 @@
 # Import necessary libraries 
+from typing import Optional
 import pandas as pd 
 import streamlit as st 
 import base64
+import geopandas as gpd
+import json
+import matplotlib.pyplot as plt
 
+# Custom modules 
+from .utils import *
+
+# Suppress warnings in streamlit
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Create the app that would be run 
 def app():
@@ -48,7 +57,7 @@ def app():
     if display_doc == "Yes":
 
         # Read a pdf of the data dictionary
-        pdf_file_path = 'documents\pdf\Economic Forecasting Chap01.pdf'
+        pdf_file_path = 'documents\pdf\coronadata_description.pdf'
         with open(pdf_file_path,"rb") as f:
             base64_pdf = base64.b64encode(f.read()).decode('utf-8')
         # HTML for the file to be displayed 
@@ -56,5 +65,39 @@ def app():
         st.markdown(pdf_display, unsafe_allow_html=True)
 
     ''' Display the Kreis Map '''
+    st.header(f"The Map visualisation for **{col_to_display}** at the Kreiss level.")
+   
+    # Fix the ag5 column using function defined in utils
+    data['ags5_fix'] = data['ags5'].apply(fix_ags5)
 
-    st.write("This is where we will show the map of the kreises for the column:", col_to_display)
+    # Read the map coordinates data 
+    gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
+
+    # Merge the coords with the data 
+    merged = pd.merge(data, gdf, left_on='ags5_fix', right_on='krs_code')
+    
+    # Get the geospatial data 
+    merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
+    merged['coords'] = [coords[0] for coords in merged['coords']]
+    merged['longitude'] = merged['coords'].str[0]
+    merged['latitude'] = merged['coords'].str[1]
+
+    # Convert to geodata
+    merged = gpd.GeoDataFrame(merged)
+
+    # Check if the labels need to be added 
+    labels = st.radio("Show labels?", options=["Yes", "No"], index=1)
+
+    merged.plot(column=col_to_display, scheme="quantiles", figsize=(50, 30), cmap='coolwarm')
+    plt.title(f'{col_to_display} in Germany by County', fontsize=15)
+    # add text
+    
+    if labels == "Yes": 
+        for i in range(len(merged)):
+            plt.text(merged.longitude[i], merged.latitude[i],
+                    f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', size=10)
+
+    st.pyplot()
+
+    # plt.title(f'{col_to_display} in Germany by County', fontsize=15)
+    # plt.show()
