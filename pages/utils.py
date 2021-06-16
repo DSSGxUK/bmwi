@@ -20,7 +20,7 @@ def get_english_term(german_phrase):
     
         
     # This is loading the data each time so there has to be a smarter way to do this. Might help reducing time. 
-    translate = pd.read_csv('../data/metadata/col_translate.csv')
+    translate = pd.read_csv('data/metadata/col_translate.csv')
 
     german_phrase = german_phrase.upper()
 #     print(german_phrase)
