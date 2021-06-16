@@ -48,7 +48,10 @@ def app():
 
     # Collect the columns
     data_cols = data.columns
-    col_to_display = st.selectbox("Select which column to visualise on the map", options=data_cols)
+    col_to_display = st.selectbox("Select which column to visualise on the map",
+                                 options=data_cols, 
+                                 index=4 
+                                 )
 
     ''' Display the document containing the various column descriptions '''
     
