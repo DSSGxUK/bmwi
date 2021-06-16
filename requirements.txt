@@ -20,7 +20,7 @@ decorator==4.4.2
 defusedxml==0.7.1
 entrypoints==0.3
 fiona==1.8.19
-gdal==3.2.3
+# gdal==3.2.3
 # Fiona @ file:///C:/Users/91981/Desktop/github_repos/Map-Tool/Fiona-1.8.19-cp38-cp38-win_amd64.whl
 # GDAL @ file:///C:/Users/91981/Desktop/github_repos/Map-Tool/GDAL-3.2.3-cp38-cp38-win_amd64.whl
 geopandas==0.9.0
