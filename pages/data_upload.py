@@ -93,16 +93,18 @@ def app():
     # Check if the labels need to be added 
     labels = st.radio("Show labels?", options=["Yes", "No"], index=1)
 
-    merged.plot(column=col_to_display, scheme="quantiles", figsize=(50, 30), cmap='coolwarm', legend=True)
-    plt.title(f'{col_to_display} in Germany by County', fontsize=15)
-    # add text
+    # plot
+    fig, ax = plt.subplots(figsize=(50,30))
+    merged.plot(column=col_to_display, scheme="quantiles",
+                ax=ax,
+                cmap='coolwarm', legend=True)
+
+    ax.set_title(f'{col_to_display} in Germany by County', fontsize=15)
     
+    # add text
     if labels == "Yes": 
         for i in range(len(merged)):
-            plt.text(merged.longitude[i], merged.latitude[i],
+            ax.text(merged.longitude[i], merged.latitude[i],
                     f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', size=10)
-
-    st.pyplot()
-
-    # plt.title(f'{col_to_display} in Germany by County', fontsize=15)
-    # plt.show()
+    
+    st.pyplot(fig)
