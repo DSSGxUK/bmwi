@@ -62,7 +62,7 @@ def app():
             skewness = skew(data[feature])
             excess_kurtosis = kurtosis(data[feature])
 
-            st.w
+            st.write("The skewness is {skewness} and kurtosis is {excess_kurtosis}.")
 
 
         elif chart == "Histogram":
