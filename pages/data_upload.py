@@ -88,7 +88,7 @@ def app():
     # Check if the labels need to be added 
     labels = st.radio("Show labels?", options=["Yes", "No"], index=1)
 
-    merged.plot(column=col_to_display, scheme="quantiles", figsize=(50, 30), cmap='coolwarm')
+    merged.plot(column=col_to_display, scheme="quantiles", figsize=(50, 30), cmap='coolwarm', legend=True)
     plt.title(f'{col_to_display} in Germany by County', fontsize=15)
     # add text
     
