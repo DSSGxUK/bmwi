@@ -34,6 +34,6 @@ def app():
         # Select the feature 
         feature = col1.selctbox("Select the feature you want to visualize.", options=list(data.columns), index=4)
 
-        # Select the type of chart
+        # Select the type of chart you want 
 
         

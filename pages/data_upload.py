@@ -50,7 +50,8 @@ def app():
     data_cols = data.columns
     col_to_display = st.selectbox("Select which column to visualise on the map",
                                  options=data_cols, 
-                                 index=4 
+                                 index=4, 
+                                 format_func = lambda x: get_english_term(x)
                                  )
 
     ''' Display the document containing the various column descriptions '''
@@ -63,6 +64,7 @@ def app():
         pdf_file_path = 'documents\pdf\coronadata_description.pdf'
         with open(pdf_file_path,"rb") as f:
             base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        
         # HTML for the file to be displayed 
         pdf_display = f'<embed src="data:application/pdf;base64, {base64_pdf}" width="700" height="1000" type="application/pdf">'
         st.markdown(pdf_display, unsafe_allow_html=True)

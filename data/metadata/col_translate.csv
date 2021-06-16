@@ -1,0 +1,712 @@
+German_Variable,Variable name,Translation,Beschreibung,description
+_ID,_ID,ID,ID,ID
+AGS2,AGS2,Code of the federal state,Amtlicher Gemeindeschlüssel 2-stellig,Ofﬁcial community key with 2 digits
+BUNDESLAND,FEDERAL STATE,State name,Name des Bundeslands,State name
+AGS5,AGS5,Code number of the district,Amtlicher Gemeindeschlüssel 5-stellig,Ofﬁcial community key with 5 digits
+KREIS,CIRCLE,Name of the district,Name des Landkreises,Name of the district
+KR_KA_AU_JJJJMM,KR_KA_AU_YYYYMM,Displayed short- time work companies,Eingegangene Anzeigen über Kurzarbeit von Unternehmen je Monat (konjunkturelle Kurzarbeit),Advertisements received about short-time work from companies per month (short- time work in the economy)
+KR_KA_AP_JJJJMM,KR_KA_AP_YYYYMM,Displayed short- time work - people,Anzahl gemeldete Personen in den eingegangenen anzeigen über Kurzarbeit von unternehmen je Monat (konjunkturelle Kurzarbeit),Number of persons registered in the advertisements received about short-time working by companies per month (short-time working in the economy)
+KR_KA_RU_JJJJMM,KR_KA_RU_YYYYMM,Realized short- time work companies,Anzahl kurzarbeitende Unternehmen je Monat (konjunkturelle Kurzarbeit),Number of short- time working companies per month (cyclical short-time working)
+KR_KA_RP_JJJJMM,KR_KA_RP_YYYYMM,Realized short- time work - people,Anzahl Kurzarbeiter je Monat (konjunkturelle Kurzarbeit),Number of short- time workers per month (cyclical short-time work)
+KR_AL_JJJJMM,KR_AL_YYYYMM,Unemployed,Anzahl Arbeitslose je Monat,Number of unemployed per month
+KR_ALQ_JJJJMM,KR_ALQ_YYYYMM,Unemployment rate,Arbeitslosenquote je Monat,Unemployment rate per month
+KR_SVB_AO_JJJJMM,KR_SVB_AO_YYYYMM,Employees subject to social security contributions at the place of work,Anzahl Sozialversicherungspflichtig Beschäftigte am Arbeitsort je Quartal,Number of employees subject to social security contributions at the place of work per quarter
+KR_SVB_WO_JJJJMM,KR_SVB_WO_YYYYMM,Employees subject to social security contributions at place of residence,Anzahl Sozialversicherungspflichtig Beschäftigte am Wohnort je Quartal,Number of employees subject to social security contributions at the place of residence per quarter
+KR_UB_JJJJMM,KR_UB_YYYYMM,Underemployment (without short- time work),Anzahl Arbeitslose zuzüglich Teilnehmer an Arbeitsmarktmaßnahmen und Personen mit arbeitsmarktbedingtem Sonderstatus (z.b. kurzfristige Arbeitsunfähigkeit) je Monat,Number of unemployed plus participants in labor market measures and persons with a labor market- related special status (e.g. short- term inability to work) per month
+KR_ALGA_JJJJMM,KR_ALGA_YYYYMM,Unemployment beneﬁt recipients,Bestand an Leistungsbeziehenden von Arbeitslosengeld bei Arbeitslosigkeit je Monat,Number of recipients of unemployment beneﬁt in the event of unemployment per month
+KR_GA_JJJJMM,KR_GA_YYYYMM,Registered jobs,"Anzahl sozialversicherungspflichtige, geringfügige (Mini-Jobs) und sonstige (z.B. Praktika- oder Traineestellen) Beschäftigungen je Monat",Number of marginal (mini jobs) and other (e.g. internship or trainee positions) jobs subject to social insurance contributions per month
+KR_RLB_JJJJMM,KR_RLB_YYYYMM,Beneﬁciaries,Bestand an Personen mit Anspruch auf Arbeitslosengeld II oder Sozialgeld je Monat (Hochrechnung für die letzten 3 Monate),Number of people entitled to unemployment beneﬁt II or social beneﬁts per month (extrapolation for the last 3 months)
+KR_DL_QU,KR_DL_QU,Service rate,Sozialversicherungspflichtig Beschäftigte am Arbeitsort im Dienstleistungssektor (WZ 2008) je 100 Einwohner im erwerbsfähigen Alter,"Employees subject to social insurance contributions at work in the service sector (WZ 2008)
+per 100 inhabitants
+of working age"
+KR_ID_QU,KR_ID_QU,Industry quota,Sozialversicherungspflichtig Beschäftigte am Arbeitsort in der Industrie (WZ 2008) je 100 Einwohner im erwerbsfähigen Alter,"Employees subject to social insurance contributions at the place of work in industry (WZ 2008) per 100
+inhabitants of
+working age"
+KR_ABH_ALT,KR_ABH_ALT,Old age dependency rate,Einwohner 65 Jahre und älter je 100 Einwohner im erwerbsfähigen Alter,Residents 65 years and older per 100 working-age residents
+KR_ABH_JU,KR_ABH_JU,Dependency rate for young people,Einwohner unter 15 Jahren je 100 Einwohner im erwerbsfähigen Alter,Residents under 15 years of age per 100 working-age residents
+KR_ALO_Q,KR_ALO_Q,Unemployment rate,Arbeitslosenquote (an den abhängig zivilen Erwerbspersonen),Unemployment rate (among the dependent civilian labor force)
+KR_ERWT_AO,KR_ERWT_AO,Employed people,Anzahl der Erwerbstätigen Personen am Arbeitsort,Number of employed persons at the place of work
+KR_ERWT_AO_B1,KR_ERWT_AO_B1,"Employed in sectors - agriculture, forestry and ﬁshing","Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Landwirtschaft, Forstwirtschaft und Fischerei"" ","Number of employed persons at the place of work in the sector ""Agriculture, forestry and ﬁshing"""
+KR_ERWT_AO_B2,KR_ERWT_AO_B2,Employed in the branch - raw material acquisition,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Rohstoffgewimnung"" ","Number of gainfully employed persons at the place of work in the industry ""raw material acquisition"""
+KR_ERWT_AO_B3,KR_ERWT_AO_B3,Employed in branch - construction,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Baugewerbe"" ","Number of employed persons at the place of work in the ""construction"" industry"
+KR_ERWT_AO_B4,KR_ERWT_AO_B4,Employed in branch - manufacturing industry,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Verarbeitendes Gewerbe"" ","Number of employed persons at the place of work in the branch ""manufacturing industry"""
+KR_ERWT_AO_B5,KR_ERWT_AO_B5,Employed in the sector - transport and energy,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Verkehr und Energie"" ","Number of employed persons at the place of work in the ""transport and energy"" sector"
+KR_ERWT_AO_B6,KR_ERWT_AO_B6,Employed in branch - trade,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Handel"" ","Number of gainfully employed persons at the place of work in the branch ""trade"""
+KR_ERWT_AO_B7,KR_ERWT_AO_B7,Employed in the branch - ﬁnancial and insurance services,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Fimanz- und Versicherungsdienstleistungen"" ","Number of employed persons at the place of work in the ""Financial and insurance services"" branch"
+KR_ERWT_AO_B8,KR_ERWT_AO_B8,Employed in branch - service,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Dienstleistung"" ","Number of employed persons at the place of work in the ""service"" branch"
+KR_ERWT_AO_B9,KR_ERWT_AO_B9,Employed in the sector - public administration,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""Öffentliche Verwaltung"" ",Number of employed persons at the place of
+KR_ERWT_AO_B99,,,"Anzahl der erwerbstätigen Personen am Arbeitsort in der Branche ""unbekannt"" ","work in the ""public administration""
+sector"
+KR_ERWPERS,KR_ERWT_AO_B99,Employed in the branch - unknown,Anzahl abhängig zivile Erwerbspersonen am Wohnort,"Number of employed persons at the place of work in the branch ""unknown"""
+KR_BE_AO,KR_ERWPERS,Labor force,Anzahl Sozialversicherungspflichtig Beschäftigte am Arbeitsort,Number of dependent civilian labor force at place of residence
+KR_BE_AO_VZ,KR_BE_AO,"Employees subject to social security contributions at the place of work
+- total",Anzahl Sozialversicherungspflichtig Beschäftigte in Vollzeit am Arbeitsort,Number of employees subject to social security contributions at the place of work
+KR_BE_AO_TZ,KR_BE_AO_VZ,Employees subject to social security contributions at work - full time,Anzahl Sozialversicherungspflichtig Beschäftigte in Teilzeit am Arbeitsort,Number of full- time employees subject to social security contributions at the place of work
+KR_BE_WO,KR_BE_AO_TZ,Employees subject to social security contributions at work - part-time,Anzahl Sozialversicherungspflichtig Beschäftigte am Wohnort,Number of part- time employees subject to social security contributions at the place of work
+KR_BE_WO_VZ,KR_BE_WO,"Employees subject to social security contributions at place of residence
+- total",Anzahl Sozialversicherungspflichtig Beschäftigte in Vollzeit am Wohnort,Number of employees subject to social security contributions at place of residence
+KR_BE_WO_TZ,KR_BE_WO_VZ,"Employees subject to social security contributions at place of residence
+- full-time",Anzahl Sozialversicherungspflichtig Beschäftigte in Teilzeit am Wohnort,Number of full- time employees subject to social security contributions at the place of residence
+KR_SELBST,KR_BE_WO_TZ,Local employees subject to social security contributions - part-time,Anzahl Selbständige/Freiberufler am Arbeitsort,Number of part- time employees subject to social security contributions at place of residence
+KR_MITHFAM,KR_SELBST,Self-employed,Anzahl mithelfende Familienangehörige am Arbeitsort,Number of self- employed / freelancers at the place of work
+KR_BEAMTE,KR_MITHFAM,Family workers,Anzahl Beamte (inkl. Richter und Zeitsoldaten) am Wohnort,Number of helping family members at the place of work
+KR_RENTNER,KR_BEAMTE,Ofﬁcer,Anzahl Rentner,Number of civil servants (including judges and temporary soldiers) at the place of residence
+KR_WR12_ANT,KR_RENTNER,pensioner,Anteil der Wohnungen mit 1 und 2 Räumen an den Wohnungen (in %),Number of retirees
+KR_WR5_ANT,KR_WR12_ANT,Share of 1- and 2- room apartments,Anteil der Wohnungen mit 5 und mehr Räumen an den Wohnungen (in %),Share of apartments with 1 and 2 rooms in the apartments (in%)
+KR_ADR,KR_WR5_ANT,Share of 5 and more room apartments,Anzahl Adressen,Share of apartments with 5 or more rooms in the apartments (in%)
+KR_ADR_GEBTYP1,KR_ADR,Addresses,"Anzahl Adressen des Gebäudetyps ""freistehendes Ein- bis Zweiparteienhaus""",Number of addresses
+KR_ADR_GEBTYP2,KR_ADR_GEBTYP1,"Addresses of the building type ""detached one to two-party house""","Anzahl Adressen des Gebäudetyps ""freistehende Villa""","Number of addresses of the building type ""detached one to two-party house"""
+KR_ADR_GEBTYP3,KR_ADR_GEBTYP2,"Addresses of the building type ""detached villa""","Anzahl Adressen des Gebäudetyps ""Ein- bis Zweiparteienhaus mit Anrainer""","Number of addresses of the building type ""detached villa"""
+KR_ADR_GEBTYP4,,,"Anzahl Adressen des Gebäudetyps ""klassische Doppelhaushälfte""",
+KR_ADR_GEBTYP5,KR_ADR_GEBTYP3,"Addresses of the building type ""one to two-party house with neighbors""","Anzahl Adressen des Gebäudetyps ""Reihenhaus""","Number of addresses of the building type ""one to two-party house
+with neighbors"""
+KR_ADR_GEBTYP6,KR_ADR_GEBTYP4,"Addresses of the building type ""classic semi- detached house""","Anzahl Adressen des Gebäudetyps ""freistehendes Mehrparteienhaus""","Number of addresses of the building type ""classic semi- detached house"""
+KR_ADR_GEBTYP7,KR_ADR_GEBTYP5,"Addresses of the building type ""terraced house""","Anzahl Adressen des Gebäudetyps ""Mehrparteiendoppelhaus""","Number of addresses of the building type ""terraced house"""
+KR_ADR_GEBTYP8,KR_ADR_GEBTYP6,"Addresses of the building type ""detached apartment building""","Anzahl Adressen des Gebäudetyps ""Mehrparteienhaus mit Anrainer""","Number of addresses of the building type ""detached apartment building"""
+KR_ADR_GEBTYP9,KR_ADR_GEBTYP7,"Addresses of the building type ""multi-party semi- detached""","Anzahl Adressen des Gebäudetyps ""Mehrparteienhaus en Block""","Number of addresses of the building type ""multi-party semi- detached house"""
+KR_ADR_GEBTYP10,KR_ADR_GEBTYP8,"Addresses of the building type ""block of apartments with neighbors""","Anzahl Adressen des Gebäudetyps ""Zeilenbau""","Number of addresses of the building type ""block of apartments with neighbors"""
+KR_ADR_GEBTYP11,KR_ADR_GEBTYP9,"Addresses of the building type ""apartment building en block""","Anzahl Adressen des Gebäudetyps ""Mehrfamilienkomplex""","Number of addresses of the building type ""apartment building en block"""
+KR_ADR_GEBTYP12,KR_ADR_GEBTYP10,"Addresses of the building type ""row structure""","Anzahl Adressen des Gebäudetyps ""Hochhaus""","Number of addresses of the building type ""row structure"""
+KR_ADR_GEBTYP97,KR_ADR_GEBTYP11,"Addresses of the building type ""multi-family complex""","Anzahl Adressen des Gebäudetyps ""Sonderform""","Number of addresses of the building type ""multi-family complex"""
+KR_ADR_GEBTYP98,KR_ADR_GEBTYP12,"Addresses of the building type ""high-rise""","Anzahl Adressen des Gebäudetyps ""Gewerbe""","Number of addresses of the ""high-rise"" building type"
+KR_ADR_GEBTYP99,KR_ADR_GEBTYP97,"Addresses of the building type ""special form""","Anzahl Adressen des Gebäudetyps ""nicht klassifiziert""","Number of addresses of the building type ""special form"""
+KR_N1,KR_ADR_GEBTYP98,"Addresses of the building type ""commercial""",Anzahl privat genutzter Gebäude,"Number of addresses of the building type ""commercial"""
+KR_N2,KR_ADR_GEBTYP99,"Addresses of the building type ""not classiﬁed""",Anzahl gemischt genutzter Gebäude,"Number of addresses of the building type ""not classiﬁed"""
+KR_N3,KR_N1,Privately used buildings,Anzahl gewerblich genutzter Gebäude,Number of privately used buildings
+KR_N99,KR_N2,Mixed-use buildings,Anzahl Gebäude mit unbekannter Nutzung,Number of mixed- use buildings
+KR_FH,KR_N3,Commercial buildings,Anzahl Ferienhäuser,Number of commercially used buildings
+KR_BDICHTE_KL,KR_N99,Building with unknown use,Anteil der bebauten Fläche an der Gesamtfläche (in Klassen),Number of buildings with unknown use
+KR_WFL,KR_FH,Vacation homes,Durchschnittliche Wohnfläche pro Haushalt,Number of holiday homes
+KR_WFL_KL1,KR_BDICHTE_KL,Building density,"Haushalte mit Wohnfläche der Klasse ""bis 70 qm""",Share of the built- up area in the total area (in classes)
+KR_WFL_KL2,KR_WFL,Living space,"Haushalte mit Wohnfläche der Klasse ""über 70 bis 85 qm""",Average living space per household
+KR_WFL_KL3,KR_WFL_KL1,Households by living space - up to 70 square meters,"Haushalte mit Wohnfläche der Klasse ""über 85 bis 115 qm""","Households with living space in the class ""up to 70 sqm"""
+KR_WFL_KL4,KR_WFL_KL2,Households by living space - over 70 to 85 square meters,"Haushalte mit Wohnfläche der Klasse ""über 115 bis 140 qm""","Households with living space in the class ""over 70 to 85 sqm"""
+KR_WFL_KL5,KR_WFL_KL3,Households by living space - over 85 to 115 square meters,"Haushalte mit Wohnfläche der Klasse ""über 140 qm""","Households with living space in the class ""over 85 to 115 sqm"""
+KR_HH_GEBTYP1,KR_WFL_KL4,Households by living space - over 115 to 140 square meters,"Anzahl Haushalte des Gebäudetyps ""freistehendes Ein- bis Zweiparteienhaus""","Households with living space in the class ""over 115 to 140 sqm"""
+KR_HH_GEBTYP2,KR_WFL_KL5,Households by living space - over 140 square meters,"Anzahl Haushalte des Gebäudetyps ""freistehende Villa""","Households with living space in the class ""over 140 sqm"""
+KR_HH_GEBTYP3,KR_HH_GEBTYP1,"Households of the building type ""detached one to two-party house""","Anzahl Haushalte des Gebäudetyps ""Ein- bis Zweiparteienhaus mit Anrainer""","Number of households of the building type ""detached one to two-party house"""
+KR_HH_GEBTYP4,KR_HH_GEBTYP2,"Households of the ""detached villa"" building type","Anzahl Haushalte des Gebäudetyps ""klassische Doppelhaushälfte""","Number of households of the building type ""detached villa"""
+KR_HH_GEBTYP5,KR_HH_GEBTYP3,"Households of the building type ""one to two-party house with neighbors""","Anzahl Haushalte des Gebäudetyps ""Reihenhaus""","Number of households of the building type ""one to two-party house with neighbors"""
+KR_HH_GEBTYP6,KR_HH_GEBTYP4,"Households of the ""classic semi- detached house"" building type","Anzahl Haushalte des Gebäudetyps ""freistehendes Mehrparteienhaus""","Number of households of the building type ""classic semi- detached house"""
+KR_HH_GEBTYP7,KR_HH_GEBTYP5,"Households of the ""terraced house"" building type","Anzahl Haushalte des Gebäudetyps ""Mehrarteiendoppelhaus""","Number of households of the ""terraced house"" building type"
+KR_HH_GEBTYP8,KR_HH_GEBTYP6,"Households of the building type ""detached apartment building""","Anzahl Haushalte des Gebäudetyps ""Mehrparteienhaus mit Anrainer""","Number of households of the building type ""detached apartment building"""
+KR_HH_GEBTYP9,KR_HH_GEBTYP7,"Households of the ""multi-party semi- detached house"" building type","Anzahl Haushalte des Gebäudetyps ""Mehrparteienhaus en Block""","Number of households of the building type ""multi-party semi- detached house"""
+KR_HH_GEBTYP10,KR_HH_GEBTYP8,"Households of the building type ""block of apartments with neighbors""","Anzahl Haushalte des Gebäudetyps ""Zeilenbau""","Number of households of the building type ""block of apartments with neighbors"""
+KR_HH_GEBTYP11,KR_HH_GEBTYP9,"Households of the building type ""block of apartments""","Anzahl Haushalte des Gebäudetyps ""Mehrfamilienkomplex""","Number of households of the building type ""apartment building en block"""
+KR_HH_GEBTYP12,KR_HH_GEBTYP10,"Households of the building type ""row construction""","Anzahl Haushalte des Gebäudetyps ""Hochhaus""","Number of households of the building type ""row construction"""
+KR_HH_GEBTYP97,KR_HH_GEBTYP11,"Households of the ""multi-family complex"" building type","Anzahl Haushalte des Gebäudetyps ""Sonderform""","Number of households of the building type ""multi-family complex"""
+KR_HH_GEBTYP98,KR_HH_GEBTYP12,"Households of the ""high-rise"" building type","Anzahl Haushalte des Gebäudetyps ""Gewerbe""","Number of households of the ""high-rise"" building type"
+KR_HH_GEBTYP99,KR_HH_GEBTYP97,"Households of the ""special form"" building type","Anzahl Haushalte des Gebäudetyps ""nicht klassifiziert""","Number of households of the ""special form"" building type"
+KR_EW_GEBTYP1,KR_HH_GEBTYP98,"Households of the ""commercial"" building type","Anzahl Einwohner des Gebäudetyps ""freistehendes Ein- bis Zweiparteienhaus""","Number of households of the ""commercial"" building type"
+KR_EW_GEBTYP2,KR_HH_GEBTYP99,"Households of the building type ""not classiﬁed""","Anzahl Einwohner des Gebäudetyps ""freistehende Villa""","Number of households of the building type ""not classiﬁed"""
+KR_EW_GEBTYP3,KR_EW_GEBTYP1,Residents of the,"Anzahl Einwohner des Gebäudetyps ""Ein- bis Zweiparteienhaus mit Anrainer""",Number of
+KR_EW_GEBTYP4,,"building type ""detached one to two-party house""","Anzahl Einwohner des Gebäudetyps ""klassische Doppelhaushälfte""","inhabitants of the building type ""detached one to
+two-party house"""
+KR_EW_GEBTYP5,KR_EW_GEBTYP2,"Residents of the building type ""detached villa""","Anzahl Einwohner des Gebäudetyps ""Reihenhaus""","Number of inhabitants of the building type ""detached villa"""
+KR_EW_GEBTYP6,KR_EW_GEBTYP3,"Residents of the building type ""one to two-party house with neighbors""","Anzahl Einwohner des Gebäudetyps ""freistehendes Mehrparteienhaus""","Number of residents of the building type ""one to two-party house with neighbors"""
+KR_EW_GEBTYP7,KR_EW_GEBTYP4,"Residents of the building type ""classic semi- detached house""","Anzahl Einwohner des Gebäudetyps ""Mehrarteiendoppelhaus""","Number of inhabitants of the building type ""classic semi- detached house"""
+KR_EW_GEBTYP8,KR_EW_GEBTYP5,"Residents of the building type ""terraced house""","Anzahl Einwohner des Gebäudetyps ""Mehrparteienhaus mit Anrainer""","Number of inhabitants of the building type ""terraced house"""
+KR_EW_GEBTYP9,KR_EW_GEBTYP6,"Residents of the building type ""detached apartment building""","Anzahl Einwohner des Gebäudetyps ""Mehrparteienhaus en Block""","Number of residents of the building type ""detached apartment building"""
+KR_EW_GEBTYP10,KR_EW_GEBTYP7,"Residents of the building type ""multi-party semi- detached house""","Anzahl Einwohner des Gebäudetyps ""Zeilenbau""","Number of inhabitants of the building type ""multi-party semi- detached house"""
+KR_EW_GEBTYP11,KR_EW_GEBTYP8,"Residents of the building type ""apartment building with neighbors""","Anzahl Einwohner des Gebäudetyps ""Mehrfamilienkomplex""","Number of residents of the building type ""block of apartments with neighbors"""
+KR_EW_GEBTYP12,KR_EW_GEBTYP9,"Residents of the building type ""apartment building en block""","Anzahl Einwohner des Gebäudetyps ""Hochhaus""","Number of inhabitants of the building type ""apartment building en block"""
+KR_EW_GEBTYP97,KR_EW_GEBTYP10,"Residents of the building type ""row building""","Anzahl Einwohner des Gebäudetyps ""Sonderform""","Number of inhabitants of the building type ""row construction"""
+KR_EW_GEBTYP98,KR_EW_GEBTYP11,"Residents of the building type ""multi-family complex""","Anzahl Einwohner des Gebäudetyps ""Gewerbe""","Number of inhabitants of the building type ""multi-family complex"""
+KR_EW_GEBTYP99,KR_EW_GEBTYP12,"Residents of the building type ""high-rise""","Anzahl Einwohner des Gebäudetyps ""nicht klassifiziert""","Number of inhabitants of the ""high-rise"" building type"
+KR_STR_TYP1,KR_EW_GEBTYP97,"Residents of the building type ""special form""","Anzahl Haushalte, die am Straßentyp ""Bundesstraße"" liegen","Number of inhabitants of the building type ""special form"""
+KR_STR_TYP2,KR_EW_GEBTYP98,"Residents of the ""commercial"" building type","Anzahl Haushalte, die am Straßentyp ""Landstraße"" liegen","Number of residents of the ""commercial"" building type"
+KR_STR_TYP3,KR_EW_GEBTYP99,"Residents of the building type ""not classiﬁed""","Anzahl Haushalte, die am Straßentyp ""Kreisstraße"" liegen","Number of inhabitants of the building type ""not classiﬁed"""
+KR_STR_TYP4,KR_STR_TYP1,Road type - federal road,"Anzahl Haushalte, die am Straßentyp ""Hauptverkehrsstraße"" liegen","Number of households that are on the road type ""Bundesstraße"""
+KR_STR_TYP5,KR_STR_TYP2,Road type - country road,"Anzahl Haushalte, die am Straßentyp ""Sammelstraße"" liegen","Number of households that are on the road type ""country road"""
+KR_STR_TYP6,KR_STR_TYP3,Road type - county road,"Anzahl Haushalte, die am Straßentyp ""Anliegerstraße / Nebenstraße / Wohnstraße"" liegen","Number of households that are located on the street type ""Kreisstraße"""
+KR_STR_TYP7,KR_STR_TYP4,Road type - main thoroughfare,"Anzahl Haushalte, die am Straßentyp ""Verkehrsberuhigter Bereich"" liegen","Number of households that are on the street type ""main thoroughfare"""
+KR_STR_TYP8,KR_STR_TYP5,Road type - collection road,"Anzahl Haushalte, die am Straßentyp ""Fußgängerzone"" liegen","Number of households that are located on the street type
+""collecting street"""
+KR_STR_TYP9,KR_STR_TYP6,Street type - service street / side street / residential street,"Anzahl Haushalte, die am Straßentyp ""Fußweg"" liegen","Number of households that are located on the street type ""Anliegerstrasse / side street / residential street"""
+KR_STR_TYP99,KR_STR_TYP7,Road type - restricted trafﬁc area,"Anzahl Haushalte, die am Straßentyp ""keine Angabe"" liegen","Number of households that are located on the street type ""trafﬁc- calmed area"""
+KR_SCHUEL,KR_STR_TYP8,Street type - pedestrian zone,Anzahl Schüler an allgemeinbildenden Schulen,"Number of households that are located on the ""pedestrian zone"" street type"
+KR_SCHUEL_VOR,KR_STR_TYP9,Street type - footpath,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Vorschulbereich,"Number of households that are located on the street type ""footpath"""
+KR_SCHUEL_GRUND,KR_STR_TYP99,Street type - not speciﬁed,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Grundschulen,"Number of households that are located on the street type ""not speciﬁed"""
+KR_SCHUEL_HAUPT,KR_SCHOOL,Students in general education schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Hauptschulen,Number of pupils in general education schools
+KR_SCHUEL_REAL,KR_SCHUEL_VOR,Students by type of school - pre- school area,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Realschulen,Number of pupils at general education schools by type of school - pre-school area
+KR_SCHUEL_GYM,KR_SCHUEL_GRUND,Pupils by type of school - elementary schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Gymnasien,Number of pupils in general education schools by type of school - primary schools
+KR_SCHUEL_WALDORF,KR_SCHUEL_HAUPT,Students by type of school - secondary schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Freie Waldorfschulen,Number of pupils at general education schools by type of school - Hauptschulen
+KR_SCHUEL_GESCHUL,KR_SCHUEL_REAL,Students by type of school - Realschulen,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Integrierte Gesamtschulen,Number of pupils at general education schools by type of school - Realschulen
+KR_SCHUEL_ABEND,KR_SCHUEL_GYM,Students by type of school - grammar schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Abendschulen und Kollegs,Number of pupils at general education schools by type of school - grammar schools
+KR_SCHUEL_SONDER,KR_SCHUEL_WALDORF,Students by type of school - Free Waldorf Schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Sonderschulen / Förderschulen,Number of pupils at general education schools by type of school - free Waldorf schools
+KR_SCHUEL_ORIENT,KR_SCHUEL_GESCHUL,Schoolchildren by type of school - Integrated comprehensive schools,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Schulartunabhängige Orientierungsstufe,Number of pupils at general education schools by type of school - integrated comprehensive schools
+KR_SCHUEL_MULT,KR_SCHUEL_ABEND,School-type students - evening schools and colleges,Anzahl Schüler an allgemeinbildenden Schulen nach Schulart - Schularten mit mehreren Bildungsgängen,Number of pupils at general education schools by type of school - evening schools and colleges
+KR_SCHUELER,KR_SCHUEL_SONDER,Schoolchildren by type of school - special schools / special needs schools,Anzahl Schüler am Wohnort,Number of pupils at general education schools by type of school - special schools / special schools
+KR_STUDENT,KR_SCHUEL_ORIENT,Schoolchildren by type of school - Orientation level,Anzahl Studenten am Wohnort,Number of pupils at general education schools
+KR_AZUBI,,independent of school type,Anzahl Auszubildende am Wohnort,"by type of school - orientation level independent of
+school type"
+KR_SCHUL_KEIN,KR_SCHUEL_MULT,Pupils by type of school - types of schools with several courses of study,Anzahl Personen ab 15 Jahren nach höchstem schulischen Abschluss - ohne oder noch kein Schulabschluss,Number of pupils at general education schools by type of school - types of schools with several courses of education
+KR_SCHUL_HAUPT,KR_SCHUELER,student,Anzahl Personen ab 15 Jahren nach höchstem schulischen Abschluss - Haupt-/ Volksschulabschluss,Number of students at the place of residence
+KR_SCHUL_MITTL,KR_STUDENT,students,"Anzahl Personen ab 15 Jahren nach höchstem schulischen Abschluss - Gymnasiale Oberstufe, Realschulabschluss",Number of students at the place of residence
+KR_SCHUL_HOCH,KR_AZUBI,trainee,"Anzahl Personen ab 15 Jahren nach höchstem schulischen Abschluss - Fachhochschulreife, allgemeine Hochschulreife (Abitur)",Number of trainees at the place of residence
+KR_BERUF_KEIN,KR_SCHUL_KEIN,People after leaving school - with no or no school leaving certiﬁcate,Anzahl Personen ab 15 Jahren nach höchstem beruflichen Abschluss - ohne oder noch kein beruflicher Abschluss,Number of people aged 15 and over after the highest school leaving certiﬁcate - with no or no school leaving certiﬁcate
+KR_BERUF_LEHRE,KR_SCHUL_MAIN,Persons after school leaving certiﬁcate - secondary school / elementary school certiﬁcate,"Anzahl Personen ab 15 Jahren nach höchstem beruflichen Abschluss - Lehre, Berufsausbildung im dualen System",Number of people aged 15 and over after the highest school leaving certiﬁcate - secondary school / elementary school certiﬁcate
+KR_BERUF_FACHSCHUL,KR_SCHUL_MITTL,"Persons after school leaving certiﬁcate - upper secondary school, secondary school leaving certiﬁcate","Anzahl Personen ab 15 Jahren nach höchstem beruflichen Abschluss - Fachschule, Fachakademie, Berufsakademie","Number of people aged 15 and over after the highest school qualiﬁcation
+- upper secondary school, secondary
+school qualiﬁcation"
+KR_BERUF_HOCHSCHUL,KR_SCHUL_HOCH,"Persons after school leaving certiﬁcate - advanced technical college entrance qualiﬁcation, general university entrance qualiﬁcation (Abitur)","Anzahl Personen ab 15 Jahren nach höchstem beruflichen Abschluss - Fachhochschulabschluss, Hochschulabschluss","Number of people aged 15 and over after the highest school qualiﬁcation
+- technical college entrance qualiﬁcation, general university entrance qualiﬁcation
+(Abitur)"
+KR_BERUF_PROM,KR_BERUF_KEIN,People with a professional qualiﬁcation - with no or no professional qualiﬁcation,Anzahl Personen ab 15 Jahren nach höchstem beruflichen Abschluss - Promotion,Number of people aged 15 and over with the highest professional qualiﬁcation - with no or no professional qualiﬁcation
+KR_TG_PERS,KR_BERUF_LEHRE,"Persons after professional qualiﬁcation - apprenticeship, vocational training in the dual system",Personal in Kindertageseinrichtungen,"Number of people aged 15 and over after the highest professional qualiﬁcation - apprenticeship, professional training in the dual system"
+KR_TG_PPERS,KR_BERUF_FACHSCHUL,"Persons by vocational qualiﬁcation - technical school, technical academy, professional academy",Pädagogisches Personal in Kindertageseinrichtungen,"Number of people aged 15 and over after the highest professional qualiﬁcation - technical school, technical academy, professional academy"
+KR_TG_KIND,KR_BERUF_HOCHSCHUL,"Persons by professional qualiﬁcation - technical college degree, university degree",Anzahl betreute Kinder in Tageseinrichtungen,"Number of people aged 15 and over after the highest professional qualiﬁcation - technical college degree, university degree"
+KR_TG_QU_KK,KR_BERUF_PROM,People after a,Anteil der Kinder unter 3 Jahren in Kindertageseinrichtungen an den Kinder der entsprechenden Altersgruppe,Number of people
+KR_TG_QU_VK,,professional qualiﬁcation - doctorate,Anteil der Kinder von 3 bis unter 6 Jahren in Kindertageseinrichtungen an den Kinder der entsprechenden Altersgruppe,"aged 15 and over after the highest professional qualiﬁcation -
+doctorate"
+KR_TG_QU_GKK,KR_TG_PERS,Personnel in day- care centers,Anteil der Kinder unter 3 Jahren in Kindertageseinrichtungen mit einer Betreuungszeit von 7 und mehr Stunden pro Tag an den Kinder der entsprechenden,Personnel in day- care centers
+KR_TG_QU_GVK,KR_TG_PPERS,Pedagogical staff in day-care centers,Anteil der Kinder von 3 bis unter 6 Jahren in Kindertageseinrichtungen mit einer Betreuungszeit von 7 und mehr Stunden pro Tag an den Kinder der,Pedagogical staff in day-care centers
+KR_GEN_MD,KR_TG_KIND,Children in day care centers,Schätzung der Corona-Genesenen (nach Meldedatum),Number of children cared for in day care facilities
+KR_GEN_MD_KUM,KR_TG_QU_KK,Childcare rate for toddlers,Corona-Genesene kumuliert (nach Meldedatum),Proportion of children under 3 years in day-care facilities in relation to the children in the corresponding age group
+BL_IMPF,KR_TG_QU_VK,Childcare rate for preschoolers,Gesamtzahl verabreichter Impfstoffdosen kumuliert,Proportion of children from 3 to under 6 years in day-care facilities in relation to the children in the corresponding age group
+BL_ERSTIMPF,KR_TG_QU_GKK,All-day care rate for small children,Anzahl Corona-Erstimpfungen kumuliert,Proportion of children under 3 years in day-care centers with a care time of 7 or more hours per day to the children of the corresponding
+BL_ERSTIMPF_HS_BT,KR_TG_QU_GVK,All-day care quota for preschool children,Anzahl Corona-Erstimpfungen kumuliert des Herstellers BioNTech,Proportion of children from 3 to under 6 years in day-care facilities with a care time of 7 or more hours per day for the children of
+BL_ERSTIMPF_HS_MN,KR_GEN_MD,Corona recovered,Anzahl Corona-Erstimpfungen kumuliert des Herstellers Moderna,Estimate of those who have recovered from the corona (according to reporting date)
+BL_ERSTIMPF_HS_AZ,KR_GEN_MD_KUM,Corona recoveries accumulated,Anzahl Corona-Erstimpfungen kumuliert des Herstellers AstraZeneca,Corona recovered cumulative (according to reporting date)
+BL_ERSTIMPF_IND_ALTER,BL_IMPF,Corona vaccination doses administered,Corona-Erstimpfungen kumuliert nach Indikation Alter,Cumulative total number of vaccine doses administered
+BL_ERSTIMPF_IND_BRFL,BL_ERSTIMPF,Corona ﬁrst vaccinations,Corona-Erstimpfungen kumuliert nach beruflicher indikation,Cumulative number of corona ﬁrst vaccinations
+BL_ERSTIMPF_IND_MDZN,BL_ERSTIMPF_HS_BT,Corona ﬁrst vaccinations BioNTech,Corona-Erstimpfungen kumuliert nach medizinischer Indikation,Cumulative number of corona ﬁrst vaccinations from the manufacturer BioNTech
+BL_ERSTIMPF_IND_PHBW,BL_ERSTIMPF_HS_MN,Corona ﬁrst vaccinations Moderna,Corona-Erstimpfungen kumuliert nach Indikation Plegeheimbewohner,Cumulative number of corona ﬁrst vaccinations from the manufacturer Moderna
+BL_ERSTIMPF_VT,BL_ERSTIMPF_HS_AZ,Corona ﬁrst vaccinations AstraZeneca,Differenz der Corona-Erstimpfungen zum Vortag,Cumulative number of corona ﬁrst vaccinations from the manufacturer AstraZeneca
+BL_ERSTIMPF_QUOTE,BL_ERSTIMPF_IND_ALTER,Corona initial vaccinations according to age indication,Anteil Corona-Geimpfte (Erstimpfungen) an Gesamtbevölkerung (Einwohner Stand 31.12.2019),Corona initial vaccinations accumulated according to age indication
+BL_ERSTIMPF_U60_QUOTE,BL_ERSTIMPF_IND_BRFL,Corona ﬁrst vaccinations according to,Anteil Corona-Geimpfte (Erstimpfungen) unter 60 Jahre an Bevölkerung der entsprechenden Altersklasse (Einwohner Stand 31.12.2019),Corona ﬁrst vaccinations accumulated
+BL_ERSTIMPF_AB60_QUOTE,,occupational indication,Anteil Corona-Geimpfte (Erstimpfungen) 60 Jahre oder älter an Bevölkerung der entsprechenden Altersklasse (Einwohner Stand 31.12.2019),"according to occupational
+indication"
+BL_ZWEITIMPF,BL_ERSTIMPF_IND_MDZN,Corona ﬁrst vaccinations according to medical indication,Anzahl Corona-Zweitimpfungen kumuliert,Corona initial vaccinations accumulated according to medical indication
+BL_ZWEITIMPF_HS_BT,BL_ERSTIMPF_IND_PHBW,Corona initial vaccinations as indicated by nursing home residents,Anzahl Corona-Zweitimpfungen kumuliert des Herstellers BioNTech,Corona initial vaccinations accumulated according to the indication for care home residents
+BL_ZWEITIMPF_HS_MN,BL_ERSTIMPF_VT,Corona ﬁrst vaccinations on the previous day,Anzahl Corona-Zweitimpfungen kumuliert des Herstellers Moderna,Difference between the corona initial vaccinations and the previous day
+BL_ZWEITIMPF_HS_AZ,BL_ERSTIMPF_QUOTE,Corona vaccination rate for ﬁrst-time vaccinations,Anzahl Corona-Zweitimpfungen kumuliert des Herstellers AstraZeneca,"Proportion of corona vaccinated persons (ﬁrst vaccinations) in the total population (residents as of December 31,
+2019)"
+BL_ZWEITIMPF_HS_JJ,BL_ERSTIMPF_U60_QUOTE,Corona vaccination rate - under 60 year olds,Anzahl Corona-Impfungen kumuliert des Herstellers Johnson und Johnson (wird als Zweitimpfung betrachtet),"Proportion of people vaccinated with corona (ﬁrst vaccinations) under 60 years of age in the population of the corresponding age group (residents as of December 31,
+2019)"
+BL_ZWEITIMPF_IND_ALTER,BL_ERSTIMPF_AB60_QUOTE,Vaccination rate Corona ﬁrst vaccinations - over 60 year olds,Corona-Zweitimpfungen kumuliert nach Indikation Alter,"Proportion of corona vaccinated persons (ﬁrst vaccinations) 60 years or older in the population of the corresponding age group (residents as of December 31,
+2019)"
+BL_ZWEITIMPF_IND_BRFL,BL_ZWEITIMPF,Corona second vaccinations,Corona-Zweitimpfungen kumuliert nach beruflicher indikation,Cumulative number of corona second vaccinations
+BL_ZWEITIMPF_IND_MDZN,BL_ZWEITIMPF_HS_BT,Corona second vaccinations BioNTech,Corona-Zweitimpfungen kumuliert nach medizinischer Indikation,Cumulative number of second corona vaccinations from the manufacturer BioNTech
+BL_ZWEITIMPF_IND_PHBW,BL_ZWEITIMPF_HS_MN,Corona second vaccinations Moderna,Corona-Zweitimpfungen kumuliert nach Indikation Plegeheimbewohner,Cumulative number of corona second vaccinations from the manufacturer Moderna
+BL_ZWEITIMPF_VT,BL_ZWEITIMPF_HS_AZ,Corona second vaccinations AstraZeneca,Differenz der Corona-Zweitimpfungen zum Vortag,Cumulative number of corona second vaccinations from the manufacturer AstraZeneca
+BL_ZWEITIMPF_QUOTE,BL_ZWEITIMPF_HS_JJ,Corona vaccinations Johnson & Johnson,Anteil vollständig Corona-Geimpfte (Zweitimpfungen) an Gesamtbevölkerung (Einwohner Stand 31.12.2019),Cumulative number of corona vaccinations of the manufacturer Johnson and Johnson (considered as a second vaccination)
+BL_ZWEITIMPF_U60_QUOTE,BL_ZWEITIMPF_IND_ALTER,Corona second vaccinations according to age indication,Anteil vollständig Corona-Geimpfte (Zweitimpfungen) unter 60 Jahre an Bevölkerung der entsprechenden Altersklasse (Einwohner Stand 31.12.2019),Corona second vaccinations accumulated according to age indication
+BL_ZWEITIMPF_AB60_QUOTE,BL_ZWEITIMPF_IND_BRFL,Corona second vaccinations according to occupational indication,Anteil vollständig Corona-Geimpfte (Zweitimpfungen) 60 Jahre oder älter an Bevölkerung der entsprechenden Altersklasse (Einwohner Stand 31.12.2019),Corona second vaccinations accumulated according to
+KR_INF_MD,,,Bestätigte Corona-Fälle nach Meldedatum,"occupational
+indication"
+KR_INF_RD,BL_ZWEITIMPF_IND_MDZN,Corona second vaccinations according to medical indication,Bestätigte Corona-Fälle nach Referenzdatum,Corona second vaccinations accumulated according to medical indication
+KR_INF_A0004,BL_ZWEITIMPF_IND_PHBW,Corona second vaccinations as indicated by nursing home residents,Bestätigte Corona-Fälle mit Alter bis 4 Jahre (nach Meldedatum),Corona second vaccinations accumulated according to the indication for care home residents
+KR_INF_A0514,BL_ZWEITIMPF_VT,Corona second vaccinations on the previous day,Bestätigte Corona-Fälle mit Alter 5 bis 14 Jahre (nach Meldedatum),Difference in the corona second vaccinations to the previous day
+KR_INF_A1534,BL_ZWEITIMPF_QUOTE,Vaccination rate Corona second vaccinations,Bestätigte Corona-Fälle mit Alter 15 bis 34 Jahre (nach Meldedatum),"Proportion of fully corona vaccinated persons (second vaccinations) in the total population (residents as of December 31,
+2019)"
+KR_INF_A3559,BL_ZWEITIMPF_U60_QUOTE,Vaccination rate Corona second vaccinations - under 60 year olds,Bestätigte Corona-Fälle mit Alter 35 bis 59 Jahre (nach Meldedatum),"Proportion of fully corona vaccinated (second vaccinations) under 60 years of the population of the corresponding age group (residents as of December 31,
+2019)"
+KR_INF_A6079,BL_ZWEITIMPF_AB60_QUOTE,Vaccination rate Corona second vaccinations - over 60 year olds,Bestätigte Corona-Fälle mit Alter 60 bis 79 Jahre (nach Meldedatum),"Proportion of completely corona vaccinated (second vaccinations) 60 years or older in the population of the corresponding age group (residents as of December 31,
+2019)"
+KR_INF_A80,KR_INF_MD,Conﬁrmed corona cases by reporting date,Bestätigte Corona-Fälle mit Alter 80 Jahre oder älter (nach Meldedatum),Conﬁrmed corona cases by reporting date
+KR_INF_A99,KR_INF_RD,Conﬁrmed corona cases by reference date,Bestätigte Corona-Fälle mit Alter unbekannt (nach Meldedatum),Conﬁrmed corona cases by reference date
+KR_INF_M,KR_INF_A0004,Conﬁrmed corona cases - up to 4 years,Bestätigte männliche Corona-Fälle (nach Meldedatum),Conﬁrmed corona cases with age up to 4 years (according to reporting date)
+KR_INF_W,KR_INF_A0514,Conﬁrmed Corona Cases - 5 to 14 Years,Bestätigte weibliche Corona-Fälle (nach Meldedatum),Conﬁrmed corona cases aged 5 to 14 years (according to reporting date)
+KR_INF_U,KR_INF_A1534,Conﬁrmed Corona Cases - 15 to 34 years old,Bestätigte Corona-Fälle mit Geschlecht unbekannt (nach Meldedatum),Conﬁrmed corona cases aged 15 to 34 years (according to reporting date)
+KR_INF_M_A0004,KR_INF_A3559,Conﬁrmed Corona Cases - 35 to 59 years old,Bestätigte männliche Corona-Fälle mit Alter bis 4 Jahre (nach Meldedatum),Conﬁrmed corona cases aged 35 to 59 years (according to reporting date)
+KR_INF_M_A0514,KR_INF_A6079,Conﬁrmed Corona Cases - 60 to 79 Years,Bestätigte männliche Corona-Fälle mit Alter 5 bis 14 Jahre (nach Meldedatum),Conﬁrmed corona cases aged 60 to 79 years (according to reporting date)
+KR_INF_M_A1534,KR_INF_A80,Conﬁrmed Corona Cases - 80 years of age or older,Bestätigte männliche Corona-Fälle mit Alter 15 bis 34 Jahre (nach Meldedatum),Conﬁrmed corona cases with the age of 80 years or older (according to reporting date)
+KR_INF_M_A3559,KR_INF_A99,Conﬁrmed corona cases - age unknown,Bestätigte männliche Corona-Fälle mit Alter 35 bis 59 Jahre (nach Meldedatum),Conﬁrmed corona cases with age unknown (according to reporting date)
+KR_INF_M_A6079,KR_INF_M,Conﬁrmed male corona cases,Bestätigte männliche Corona-Fälle mit Alter 60 bis 79 Jahre (nach Meldedatum),Conﬁrmed male corona cases (by reporting date)
+KR_INF_M_A80,KR_INF_W,Conﬁrmed female corona cases,Bestätigte männliche Corona-Fälle mit Alter 80 Jahre oder älter (nach Meldedatum),Conﬁrmed female corona cases
+KR_INF_M_A99,,,Bestätigte männliche Corona-Fälle mit Alter unbekannt (nach Meldedatum),"(according to
+reporting date)"
+KR_INF_W_A0004,KR_INF_U,Conﬁrmed corona cases with gender unknown,Bestätigte weibliche Corona-Fälle mit Alter bis 4 Jahre (nach Meldedatum),Conﬁrmed corona cases with gender unknown (according to reporting date)
+KR_INF_W_A0514,KR_INF_M_A0004,Conﬁrmed male corona cases - up to 4 years,Bestätigte weibliche Corona-Fälle mit Alter 5 bis 14 Jahre (nach Meldedatum),Conﬁrmed male corona cases up to 4 years of age (according to reporting date)
+KR_INF_W_A1534,KR_INF_M_A0514,Conﬁrmed Male Corona Cases - 5 to 14 Years Old,Bestätigte weibliche Corona-Fälle mit Alter 15 bis 34 Jahre (nach Meldedatum),Conﬁrmed male corona cases aged 5 to 14 years (according to reporting date)
+KR_INF_W_A3559,KR_INF_M_A1534,Conﬁrmed Male Corona Cases - 15 to 34 Years Old,Bestätigte weibliche Corona-Fälle mit Alter 35 bis 59 Jahre (nach Meldedatum),Conﬁrmed male corona cases aged 15 to 34 years (according to reporting date)
+KR_INF_W_A6079,KR_INF_M_A3559,Conﬁrmed Male Corona Cases - 35 to 59 Years Old,Bestätigte weibliche Corona-Fälle mit Alter 60 bis 79 Jahre (nach Meldedatum),Conﬁrmed male corona cases aged 35 to 59 years (according to reporting date)
+KR_INF_W_A80,KR_INF_M_A6079,Conﬁrmed Male Corona Cases - 60 to 79 Years,Bestätigte weibliche Corona-Fälle mit Alter 80 Jahre oder älter (nach Meldedatum),Conﬁrmed male corona cases aged 60 to 79 years (according to reporting date)
+KR_INF_W_A99,KR_INF_M_A80,Conﬁrmed Male Corona Cases - 80 Years or Older,Bestätigte weibliche Corona-Fälle mit Alter unbekannt (nach Meldedatum),Conﬁrmed male corona cases aged 80 years or older (according to reporting date)
+KR_INF_MD_KUM,KR_INF_M_A99,Conﬁrmed male corona cases - unknown,Bestätigte Corona-Fälle kumuliert (nach Meldedatum),Conﬁrmed male corona cases with age unknown (according to reporting date)
+KR_INF_AKTIV,KR_INF_W_A0004,Conﬁrmed female corona cases - up to 4 years,Bestätigte Corona-fälle kumuliert abzgl. Corona-Todesfälle kumuliert abzgl. Corona-Genesene kumiliert (nach Meldedatum),Conﬁrmed female corona cases up to 4 years of age (according to reporting date)
+KR_INZ,KR_INF_W_A0514,Conﬁrmed Female Corona Cases - 5 to 14 Years Old,Bestätigte Corona-Fälle der letzten 7 Tage (nach Meldedatum),Conﬁrmed female corona cases aged 5 to 14 years (according to reporting date)
+KR_INZ_RATE,KR_INF_W_A1534,Conﬁrmed Female Corona Cases - 15 to 34 Years Old,Bestätigte Corona-Fälle der letzten 7 Tage pro 100.000 Einwohner (nach Meldedatum),Conﬁrmed female corona cases aged 15 to 34 years (according to reporting date)
+KR_BETR_RATE,KR_INF_W_A3559,Conﬁrmed Female Corona Cases - 35 to 59 Years Old,Anteil kumulierte Corona-Fälle an Einwohnern (nach Meldedtum),Conﬁrmed female corona cases aged 35 to 59 years (according to reporting date)
+KR_NEUINF_RATE,KR_INF_W_A6079,Conﬁrmed female corona cases - 60 to 79 years old,Anteil Corona-Neuinfektionen an kumulierten Corona-Fällen (nach Meldedatum),Conﬁrmed female corona cases aged 60 to 79 years (according to reporting date)
+KR_ITS_KH,KR_INF_W_A80,Conﬁrmed female corona cases - 80 years of age or older,Meldende Krankenhäuser mit intensivmedizinischer Versorgung (der letzten 7 Tage),Conﬁrmed female corona cases aged 80 years or older (according to reporting date)
+KR_ITS_MELDEB,KR_INF_W_A99,Conﬁrmed female corona cases - age unknown,Meldende Standorte von Krankenhäuser mit intensivmedizinischet Versorgung (der letzten 7 Tage),Conﬁrmed female corona cases with age unknown (according to reporting date)
+KR_ITS_BETT_B,KR_INF_MD_KUM,Conﬁrmed corona cases cumulative,Anzahl belegte Intensivbetten (der letzten 7 Tage),Conﬁrmed corona cases cumulative (according to reporting date)
+KR_ITS_BETT_F,KR_INF_AKTIV,Active corona cases,Anzahl freie Intensivbetten (der letzten 7 Tage),Conﬁrmed corona cases accumulated less corona deaths accumulated minus corona recoveries accumulated
+KR_ITS_BETT,,,Anzahl Intensivbetten insgesamt (der letzten 7 Tage),"(according to
+reporting date)"
+KR_ITS_BETT_EW,KR_INZ,7-day case number,Anzahl Intensivbetten pro 100.000 Einwohner (der letzten 7 Tage),Conﬁrmed corona cases of the last 7 days (according to reporting date)
+KR_ITS_INF,KR_INZ_RATE,7 day incidence,Anzahl COVID-19-Patienten in intensivmedizinischer Behandlung (der letzten 7 Tage),"Conﬁrmed corona cases in the last 7 days per 100,000 inhabitants (according to reporting date)"
+KR_ITS_INF_B,KR_BETR_RATE,Affected Rate,Anzahl COVID-19-Patienten invasis beatmet (der letzten 7 Tage),Share of cumulative corona cases in residents (according to Meldedtum)
+KR_ITS_INF_B_ANT,KR_NEUINF_RATE,New infection rate,Anteil COVID-19-Patienten in Beatmung an allen aktuell intensivmedizinisch behandelten COVID-19-Patienten (der letzten 7 Tage),Percentage of new corona infections in cumulative corona cases (according to reporting date)
+KR_TOD_MD,KR_ITS_KH,Hospitals with ITS capacities,Corona-Todesfälle (nach Meldedatum),Reporting hospitals with intensive medical care (of the last 7 days)
+KR_TOD_A0004,KR_ITS_MELDEB,Reporting areas with ITS capacities,Corona-Todesfälle mit Alter bis 4 Jahre (nach Meldedatum),Reporting locations of hospitals with intensive medical care (of the last 7 days)
+KR_TOD_A0514,KR_ITS_BETT_B,Occupied ITS beds,Corona-Todesfälle mit Alter 5 bis 14 Jahre (nach Meldedatum),Number of occupied intensive care beds (of the last 7 days)
+KR_TOD_A1534,KR_ITS_BETT_F,Free ITS beds,Corona-Todesfälle mit Alter 15 bis 34 Jahre (nach Meldedatum),Number of free intensive care beds (of the last 7 days)
+KR_TOD_A3559,KR_ITS_BETT,ITS beds,Corona-Todesfälle mit Alter 35 bis 59 Jahre (nach Meldedatum),Total number of intensive care beds (of the last 7 days)
+KR_TOD_A6079,KR_ITS_BETT_EW,"ITS beds per 100,000
+inhabitants",Corona-Todesfälle mit Alter 60 bis 79 Jahre (nach Meldedatum),"Number of intensive care beds per 100,000 inhabitants (of the last 7 days)"
+KR_TOD_A80,KR_ITS_INF,"COVID-19
+patients on ITS",Corona-Todesfälle mit Alter 80 Jahre oder älter (nach Meldedatum),"Number of
+COVID-19 patients in intensive care treatment (in the last 7 days)"
+KR_TOD_A99,KR_ITS_INF_B,"Number of COVID-19
+patients on
+ventilation",Corona-Todesfälle mit Alter unbekannt (nach Meldedatum),"Number of
+COVID-19 patients ventilated invasis (in the last 7 days)"
+KR_TOD_M,KR_ITS_INF_B_ANT,"Proportion of COVID-19
+patients in ventilation",Männliche Corona-Todesfälle (nach Meldedatum),Proportion of COVID-19 patients in ventilation of all COVID-19 patients currently treated in intensive care (in the last 7 days)
+KR_TOD_W,KR_TOD_MD,Corona deaths,Weibliche Corona-Todesfälle (nach Meldedatum),Corona deaths (by reporting date)
+KR_TOD_U,KR_TOD_A0004,Corona deaths - up to 4 years,Corona-Todesfälle mit Geschlecht unbekannt (nach Meldedatum),Corona deaths up to 4 years of age (according to reporting date)
+KR_TOD_MD_KUM,KR_TOD_A0514,Corona deaths - 5 to 14 years old,Corona-Todesfälle kumuliert (nach Meldedatum),Corona deaths aged 5 to 14 years (according to reporting date)
+KR_TOD_RATE,KR_TOD_A1534,Corona deaths - 15 to 34 years old,Anteil Corona-Todesfälle kumuliert an bestätigten Corona-Fällen kumuliert (nach Meldedatum),Corona deaths aged 15 to 34 years (according to reporting date)
+KR_INZ_RATE,KR_TOD_A3559,Corona deaths - 35 to 59 years old,Bestätigte Corona-Fälle der letzten 7 Tage pro 100.000 Einwohner (nach Meldedatum),Corona deaths aged 35 to 59 years (according to reporting date)
+KR_TREND,KR_TOD_A6079,Corona deaths - 60 to 79 years old,Steigung einer linearen Regression der 7-Tage-Inzidenzen der vergangenen 7 Tage (in Grad normiert),Corona deaths aged 60 to 79 years (according to reporting date)
+KR_TREND_KL,KR_TOD_A80,Corona deaths -,Steigung einer linearen Regression der 7-Tage-Inzidenzen der vergangenen 7 Tage (in Klassen),Corona deaths aged
+KR_VERF_ALLTECH_2MBIT_1,,80 years of age or older,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 2 Mbit/s haben (bezogen auf alle Techniken)","80 or older (according to
+reporting date)"
+KR_VERF_ALLTECH_2MBIT_2,KR_TOD_A99,Corona deaths - age unknown,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 2 Mbit/s haben (bezogen auf alle Techniken)",Corona deaths with age unknown (according to reporting date)
+KR_VERF_ALLTECH_2MBIT_3,KR_TOD_M,Male corona deaths,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 2 Mbit/s haben (bezogen auf alle Techniken)",Male corona deaths (by reporting date)
+KR_VERF_ALLTECH_2MBIT_4,KR_TOD_W,Female corona deaths,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 2 Mbit/s haben (bezogen auf alle Techniken)",Female corona deaths (by reporting date)
+KR_VERF_ALLTECH_2MBIT_5,KR_TOD_U,Corona deaths with gender unknown,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 2 Mbit/s haben (bezogen auf alle Techniken)",Corona deaths with gender unknown (according to reporting date)
+KR_VERF_ALLTECH_2MBIT_99,KR_TOD_MD_KUM,Cumulative corona deaths,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)",Cumulative corona deaths (according to reporting date)
+KR_VERF_ALLTECH_6MBIT_1,KR_TOD_RATE,Death rate,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 6 Mbit/s haben (bezogen auf alle Techniken)",Percentage of corona deaths accumulated in conﬁrmed corona cases accumulated (according to reporting date)
+KR_VERF_ALLTECH_6MBIT_2,KR_INZ_RATE,7 day incidence,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 6 Mbit/s haben (bezogen auf alle Techniken)","Conﬁrmed corona cases in the last 7 days per 100,000 inhabitants (according to reporting date)"
+KR_VERF_ALLTECH_6MBIT_3,KR_TREND,Trend of the incidence curves,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 6 Mbit/s haben (bezogen auf alle Techniken)",Slope of a linear regression of the 7- day incidences of the past 7 days (normalized in degrees)
+KR_VERF_ALLTECH_6MBIT_4,KR_TREND_KL,Trend of the incidence curves classiﬁed,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 6 Mbit/s haben (bezogen auf alle Techniken)",Slope of a linear regression of the 7- day incidences of the past 7 days (in classes)
+KR_VERF_ALLTECH_6MBIT_5,KR_VERF_ALLTECH_2MBIT_1,"Private broadband availability 2 Mbit
+/ s - 10% of households","Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 6 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 2 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_6MBIT_99,KR_VERF_ALLTECH_2MBIT_2,"Private broadband availability 2 Mbit
+/ s - 11 - 50% of households","Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband availability of> = 2 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_16MBIT_1,KR_VERF_ALLTECH_2MBIT_3,"Private broadband availability 2 Mbit
+/ s - 51-75% of households","Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 16 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 51% -75 of
+households have private broadband availability of> = 2 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_16MBIT_2,KR_VERF_ALLTECH_2MBIT_4,Private broadband availability 2 Mbit,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 16 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 76% - 95% of
+KR_VERF_ALLTECH_16MBIT_3,,/ s - 76-95% of households,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 16 Mbit/s haben (bezogen auf alle Techniken)","households have private broadband availability of> = 2 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_16MBIT_4,KR_VERF_ALLTECH_2MBIT_5,"Private broadband availability 2 Mbit
+/ s - 96-100% of households","Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 16 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 2 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_16MBIT_5,KR_VERF_ALLTECH_2MBIT_99,"Private broadband availability 2 Mbit
+/ s - no information","Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 16 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_16MBIT_99,KR_VERF_ALLTECH_6MBIT_1,"Private broadband availability 6 Mbit
+/ s - 10% of households","Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 6 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_30MBIT_1,KR_VERF_ALLTECH_6MBIT_2,"Private broadband availability 6 Mbit
+/ s - 11 - 50% of households","Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 30 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband availability of> = 6 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_30MBIT_2,KR_VERF_ALLTECH_6MBIT_3,"Private broadband availability 6 Mbit
+/ s - 51-75% of households","Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 30 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 51% -75 of
+households have private broadband availability of> = 6 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_30MBIT_3,KR_VERF_ALLTECH_6MBIT_4,"Private broadband availability 6 Mbit
+/ s - 76-95% of households","Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 30 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 76% - 95% of
+households have private broadband availability of> = 6 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_30MBIT_4,KR_VERF_ALLTECH_6MBIT_5,"Private broadband availability 6 Mbit
+/ s - 96-100% of households","Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 30 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 6 Mbit / s (based on
+all technologies)"
+KR_VERF_ALLTECH_30MBIT_5,KR_VERF_ALLTECH_6MBIT_99,"Private broadband availability 6 Mbit
+/ s - no information","Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 30 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_30MBIT_99,KR_VERF_ALLTECH_16MBIT_1,Private broadband availability 16 Mbit / s - 10% of households,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 16 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_50MBIT_1,KR_VERF_ALLTECH_16MBIT_2,Private broadband availability 16 Mbit / s - 11 - 50% of households,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 50 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband availability of> = 16 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_50MBIT_2,KR_VERF_ALLTECH_16MBIT_3,Private broadband availability 16 Mbit / s - 51-75% of households,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 50 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 51% -75 of
+households have"
+KR_VERF_ALLTECH_50MBIT_3,,,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 50 Mbit/s haben (bezogen auf alle Techniken)","private broadband availability of> = 16 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_50MBIT_4,KR_VERF_ALLTECH_16MBIT_4,Private broadband availability 16 Mbit / s - 76-95% of households,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 50 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 76% - 95% of
+households have private broadband availability of> = 16 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_50MBIT_5,KR_VERF_ALLTECH_16MBIT_5,Private broadband availability 16 Mbit / s - 96- 100% of households,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 50 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 16 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_50MBIT_99,KR_VERF_ALLTECH_16MBIT_99,Private broadband availability 16 Mbit / s - no information,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_100MBIT_1,KR_VERF_ALLTECH_30MBIT_1,Private broadband availability 30 Mbit / s - 10% of households,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 100 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 30 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_100MBIT_2,KR_VERF_ALLTECH_30MBIT_2,Private broadband availability 30 Mbit / s - 11 - 50% of households,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 100 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 11% -50% of
+households have private broadband availability of> = 30 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_100MBIT_3,KR_VERF_ALLTECH_30MBIT_3,Private broadband availability 30 Mbit / s - 51-75% of households,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 100 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 51% -75 of
+households have private broadband availability of> = 30 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_100MBIT_4,KR_VERF_ALLTECH_30MBIT_4,Private broadband availability 30 Mbit / s - 76-95% of households,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 100 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 76% - 95% of
+households have private broadband availability of> = 30 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_100MBIT_5,KR_VERF_ALLTECH_30MBIT_5,Private broadband availability 30 Mbit / s - 96- 100% of households,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 100 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 30 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_100MBIT_99,KR_VERF_ALLTECH_30MBIT_99,Private broadband availability 30 Mbit / s - no information,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_200MBIT_1,KR_VERF_ALLTECH_50MBIT_1,Private broadband availability 50 Mbit / s - 10% of households,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 200 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 50 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_200MBIT_2,KR_VERF_ALLTECH_50MBIT_2,Private broadband availability 50 Mbit / s - 11 - 50% of households,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 200 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband"
+KR_VERF_ALLTECH_200MBIT_3,,,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 200 Mbit/s haben (bezogen auf alle Techniken)","availability of> = 50 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_200MBIT_4,KR_VERF_ALLTECH_50MBIT_3,Private broadband availability 50 Mbit / s - 51-75% of households,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 200 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 51% -75 of
+households have private broadband availability of> = 50 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_200MBIT_5,KR_VERF_ALLTECH_50MBIT_4,Private broadband availability 50 Mbit / s - 76-95% of households,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 200 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 76% - 95% of
+households have private broadband availability of> = 50 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_200MBIT_99,KR_VERF_ALLTECH_50MBIT_5,Private broadband availability 50 Mbit / s - 96- 100% of households,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 50 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_400MBIT_1,KR_VERF_ALLTECH_50MBIT_99,Private broadband availability 50 Mbit / s - no information,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 400 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_400MBIT_2,KR_VERF_ALLTECH_100MBIT_1,Private broadband availability 100 Mbit / s - 10% of households,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 400 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> = 100 Mbit / s (based on all technologies)
+KR_VERF_ALLTECH_400MBIT_3,KR_VERF_ALLTECH_100MBIT_2,Private broadband availability 100 Mbit / s - 11 - 50% of households,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 400 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband availability of> = 100 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_400MBIT_4,KR_VERF_ALLTECH_100MBIT_3,Private broadband availability 100 Mbit / s - 51-75% of households,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 400 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 51% -75 of
+households have private broadband availability of> = 100 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_400MBIT_5,KR_VERF_ALLTECH_100MBIT_4,Private broadband availability 100 Mbit / s - 76-95% of households,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 400 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses at which 76% - 95% of
+households have private broadband availability of> = 100 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_400MBIT_99,KR_VERF_ALLTECH_100MBIT_5,Private broadband availability 100 Mbit / s - 96- 100% of households,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)","Number of addresses where 96% -100% of
+households have private broadband availability of> = 100 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_1000MBIT_1,KR_VERF_ALLTECH_100MBIT_99,Private broadband availability 100 Mbit / s - no information,"Anzahl Adressen, bei denen 10 % der Haushalte eine private Breitbandverfügbarkeit von >= 1000 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_VERF_ALLTECH_1000MBIT_2,KR_VERF_ALLTECH_200MBIT_1,Private broadband availability 200 Mbit / s - 10% of households,"Anzahl Adressen, bei denen 11 %-50% der Haushalte eine private Breitbandverfügbarkeit von >= 1000 Mbit/s haben (bezogen auf alle Techniken)",Number of addresses at which 10% of households have private broadband availability of> =
+KR_VERF_ALLTECH_1000MBIT_3,,,"Anzahl Adressen, bei denen 51 %-75 der Haushalte eine private Breitbandverfügbarkeit von >= 1000 Mbit/s haben (bezogen auf alle Techniken)","200 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_1000MBIT_4,KR_VERF_ALLTECH_200MBIT_2,Private broadband availability 200 Mbit / s - 11 - 50% of households,"Anzahl Adressen, bei denen 76 % - 95% der Haushalte eine private Breitbandverfügbarkeit von >= 1000 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 11% -50% of
+households have private broadband availability of> = 200 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_1000MBIT_5,KR_VERF_ALLTECH_200MBIT_3,Private broadband availability 200 Mbit / s - 51-75% of households,"Anzahl Adressen, bei denen 96 %-100% der Haushalte eine private Breitbandverfügbarkeit von >= 1000 Mbit/s haben (bezogen auf alle Techniken)","Number of addresses where 51% -75 of
+households have private broadband availability of> = 200 Mbit / s (based
+on all technologies)"
+KR_VERF_ALLTECH_1000MBIT_99,KR_VERF_ALLTECH_200MBIT_4,Private broadband availability 200 Mbit / s - 76-95% of households,"Anzahl Adressen, bei denen keine Angabe zur Abdeckung der Haushalte verfügbar ist (bezogen auf alle Techniken)","Number of addresses at which 76% - 95% of
+households have private broadband availability of> = 200 Mbit / s (based
+on all technologies)"
+KR_OPNV_D,KR_VERF_ALLTECH_200MBIT_5,Private broadband availability 200 Mbit / s - 96- 100% of households,Einwohnergewichtete Luftliniendistanz zur nächsten Haltestelle des ÖPNV mit mind. 10 Abfahrten am Tag,"Number of addresses where 96% -100% of
+households have private broadband availability of> = 200 Mbit / s (based
+on all technologies)"
+KR_OPNV_B,KR_VERF_ALLTECH_200MBIT_99,Private broadband availability 200 Mbit / s - no information,Anteil Einwohner mit max. 1000m Luftliniendistanz zur nächsten Haltestelle des ÖPNV mit mind. 10 Abfahrten am Tag,Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_SM_B,KR_VERF_ALLTECH_400MBIT_1,Private broadband availability 400 Mbit / s - 10% of households,Anteil Einwohner mit max. 1000m Luftliniendistanz zum nächsten Supermarkt oder Discounter,Number of addresses at which 10% of households have private broadband availability of> = 400 Mbit / s (based on all technologies)
+KR_SM_D,KR_VERF_ALLTECH_400MBIT_2,Private broadband availability 400 Mbit / s - 11 - 50% of households,Einwohnergewichtete Luftliniendistanz zum nächsten Supermarkt oder Discounter,"Number of addresses where 11% -50% of
+households have private broadband availability of> = 400 Mbit / s (based
+on all technologies)"
+KR_OPNV_IDX,KR_VERF_ALLTECH_400MBIT_3,Private broadband availability 400 Mbit / s - 51-75% of households,Index zur ÖPNV-Verfügbarkeit - Mittelwert über alle Adressen,"Number of addresses at which 51% -75 of
+households have private broadband availability of> = 400 Mbit / s (based
+on all technologies)"
+KR_DIST_BUSH,KR_VERF_ALLTECH_400MBIT_4,Private broadband availability 400 Mbit / s - 76-95% of households,Durchschnittliche Entfernung zur nächsten Bushaltestelle (in Metern),"Number of addresses at which 76% - 95% of
+households have private broadband availability of> = 400 Mbit / s (based
+on all technologies)"
+KR_DIST_BHF,KR_VERF_ALLTECH_400MBIT_5,Private broadband availability 400 Mbit / s - 96- 100% of households,Durchschnittliche Entfernung zum nächsten Bahnhof (in Metern),"Number of addresses where 96% -100% of
+households have private broadband availability of> = 400 Mbit / s (based
+on all technologies)"
+KR_DIST_OPNV,KR_VERF_ALLTECH_400MBIT_99,Private broadband availability 400 Mbit / s - no information,Durchschnittliche Entfernung zur nächsten ÖPNV-Haltestestelle (in Metern),Number of addresses for which no information on household coverage is
+KR_DIST_USTRAB,,,Durchschnittliche Entfernung zur nächsten U-Bahn (in Metern),"available (based on
+all technologies)"
+KR_AR_ALLG,KR_VERF_ALLTECH_1000MBIT_1,Private broadband availability 1000 Mbit / s - 10% of households,Allgemeinärzte je 10.000 Einwohner,Number of addresses at which 10% of households have private broadband availability of> = 1000 Mbit / s (based on all technologies)
+KR_AR_EW,KR_VERF_ALLTECH_1000MBIT_2,Private broadband availability 1000 Mbit / s - 11 - 50% of households,Anzahl Ärzte je 10.000 Einwohner,"Number of addresses where 11% -50% of
+households have private broadband availability of> = 1000 Mbit / s (based on all
+technologies)"
+KR_EW_AR,KR_VERF_ALLTECH_1000MBIT_3,Private broadband availability 1000 Mbit / s - 51-75% of households,Anzahl Einwohner je Arzt,"Number of addresses where 51% -75 of
+households have private broadband availability of> = 1000 Mbit / s (based on all
+technologies)"
+KR_AR_HAUS,KR_VERF_ALLTECH_1000MBIT_4,Private broadband availability 1000 Mbit / s - 76-95% of households,Anzahl Hausärzte je 10.000 Einwohner,"Number of addresses where 76% - 95% of
+households have private broadband availability of> = 1000 Mbit / s (based on all
+technologies)"
+KR_AR_INT,KR_VERF_ALLTECH_1000MBIT_5,Private broadband availability 1000 Mbit / s - 96- 100% of households,Anzahl Internisten je 10.000 Einwohner,"Number of addresses where 96% -100% of
+households have private broadband availability of> = 1000 Mbit / s (based on all
+technologies)"
+KR_AR_KIND,KR_VERF_ALLTECH_1000MBIT_99,Private broadband availability 1000 Mbit / s - no information,Anzahl Kinderärzte je 10.000 Kinder bis zu 15 Jahren,Number of addresses for which no information on household coverage is available (based on all technologies)
+KR_APO,KR_OPNV_D,Local supply Public transport stops - average distance,Anzahl Apotheken je 100.000 Einwohner,Resident-weighted linear distance to the next public transport stop with at least 10 departures a day
+KR_KH,KR_OPNV_B,Local supply public transport stops - population 1km radius,Anzahl Krankenhäuser,Proportion of residents with a maximum straight line distance of 1000 m to the next public transport stop with at least 10 departures a day
+KR_KH_BETT,KR_SM_B,Local supply supermarkets - population 1km radius,Anzahl aufgestellte Betten in Krankenhäusern im Jahresdurchschnitt,Proportion of residents with a maximum straight line distance of 1000 m to the nearest supermarket or discounter
+KR_KH_BETT_EW,KR_SM_D,Local supply supermarkets - average distance,Anzahl aufgestellte Betten in Krankenhäusern  je 1.000 Einwohner,Resident-weighted straight line distance to the nearest supermarket or discount store
+KR_KH_BETT_FAB1,KR_OPNV_IDX,Public transport availability,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Augenheilkunde,Public transport availability index - average over all addresses
+KR_KH_BETT_FAB2,KR_DIST_BUSH,Distance to the bus stop,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Chirurgische Fachabteilungen,Average distance to the next bus stop
+KR_KH_BETT_FAB3,,,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Frauenheilkunde und Geburtshilfe,(in meters)
+KR_KH_BETT_FAB4,KR_DIST_BHF,Distance train station,"Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Hals-, Nasen- und Ohrenheilkunde",Average distance to the nearest train station (in meters)
+KR_KH_BETT_FAB5,KR_DIST_OPNV,Distance to public transport stop,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Haut- und Geschlechtskrankheiten,Average distance to the next public transport stop (in meters)
+KR_KH_BETT_FAB6,KR_DIST_USTRAB,Distance underground,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Innere Medizin,Average distance to the nearest subway (in meters)
+KR_KH_BETT_FAB7,KR_AR_ALLG,General practitioners,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Geriatrie,"General practitioners per 10,000 inhabitants"
+KR_KH_BETT_FAB8,KR_AR_EW,Doctors per inhabitant,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Kinderheilkunde,"Number of doctors per 10,000 inhabitants"
+KR_KH_BETT_FAB9,KR_EW_AR,Inhabitants per doctor,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Neurologie,Number of residents per doctor
+KR_KH_BETT_FAB10,KR_AR_HAUS,Family doctors,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Orthopädie,"Number of general practitioners per 10,000 inhabitants"
+KR_KH_BETT_FAB11,KR_AR_INT,Internists,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Urologie,"Number of internists per 10,000 inhabitants"
+KR_KH_BETT_FAB12,KR_AR_KIND,Pediatricians,Anzahl aufgestellte Betten in Krankenhäusern in allgemeinen Fachabteilungen - Übrige Fachbereiche,"Number of paediatricians per 10,000 children up
+to 15 years"
+KR_KH_BETT_FAB13,KR_APO,Pharmacies,Anzahl aufgestellte Betten in Krankenhäusern in psychiatrischen Fachabteilungen - Kinder- und Jugendpsychiatrie und -psychotherapie,"Number of pharmacies per 100,000 inhabitants"
+KR_KH_BETT_FAB14,KR_KH,Hospitals,Anzahl aufgestellte Betten in Krankenhäusern in psychiatrischen Fachabteilungen - Psychiatrie und Psychotherapie,Number of hospitals
+KR_KH_BETT_FAB15,KR_KH_BETT,Hospital beds,Anzahl aufgestellte Betten in Krankenhäusern in psychiatrischen Fachabteilungen - Psychotherapeutische Medizin,Average number of beds installed in hospitals for the year
+KR_KHP,KR_KH_BETT_EW,"Hospital beds per 1,000 inhabitants",Anzahl vollstationär behandelte Patienten in Krankenhäusern (Wohnort),"Number of beds set up in hospitals per 1,000 inhabitants"
+KR_KHP_DG1,KR_KH_BETT_FAB1,Hospital beds by specialist department - ophthalmology,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - A00-B99 Bestimmte infektiöse und parasitäre Krankheiten,Number of beds set up in hospitals in general specialist departments - ophthalmology
+KR_KHP_DG2,KR_KH_BETT_FAB2,Hospital beds by department - surgical departments,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - C00-D48 Neubildungen,Number of beds set up in hospitals in general specialist departments - surgical departments
+KR_KHP_DG3,KR_KH_BETT_FAB3,Hospital beds by department - gynecology and obstetrics,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - D50-D90 Krankheiten des Blutes und der blutbildenden Organe,Number of beds set up in hospitals in general specialist departments - gynecology and obstetrics
+KR_KHP_DG4,KR_KH_BETT_FAB4,"Hospital beds by department - ear, nose and throat medicine","Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - E00-E90 Endokrine, Ernährungs und Stoffwechselkrankheiten","Number of beds set up in hospitals in general specialist departments - ear, nose and throat medicine"
+KR_KHP_DG5,KR_KH_BETT_FAB5,Hospital beds by department - skin and venereal diseases,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - F00-F99 Psychische Verhaltensstörungen,Number of beds set up in hospitals in general specialist departments - skin and venereal diseases
+KR_KHP_DG6,KR_KH_BETT_FAB6,Hospital beds by specialist department - internal medicine,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - G00-G99 Krankheiten des Nervensystems,Number of beds set up in hospitals in general specialist departments - internal medicine
+KR_KHP_DG7,KR_KH_BETT_FAB7,Hospital beds by department - geriatrics,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - H00-H59 Krankheiten des Auges und der Augenanhangsgebilde,Number of beds set up in hospitals in general specialist
+KR_KHP_DG8,,,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - H60-H95 Krankheiten des Ohres und des Warzenfortsatzes,"departments -
+geriatrics"
+KR_KHP_DG9,KR_KH_BETT_FAB8,Hospital beds by specialist department - paediatrics,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - I00-I99 Krankheiten des Kreislaufsystems,Number of beds set up in hospitals in general specialist departments - paediatrics
+KR_KHP_DG10,KR_KH_BETT_FAB9,Hospital beds by department - neurology,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,Number of beds set up in hospitals in general specialist departments - neurology
+KR_KHP_DG11,KR_KH_BETT_FAB10,Hospital beds by specialist department - orthopedics,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - K00-K93 Krankheiten des Verdauungssystems,Number of beds set up in hospitals in general specialist departments - orthopedics
+KR_KHP_DG12,KR_KH_BETT_FAB11,Hospital beds by department - urology,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - L00-L99 Krankheiten der Haut und der Unterhaut,Number of beds set up in hospitals in general specialist departments - urology
+KR_KHP_DG13,KR_KH_BETT_FAB12,Hospital beds by specialist department - other specialist areas,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - M00-M99 Krankheiten des Muskelskelettsystems und des Bindegewebes,Number of beds set up in hospitals in general specialist departments - other specialist areas
+KR_KHP_DG14,KR_KH_BETT_FAB13,Hospital beds by department - child and adolescent psychiatry and psychotherapy,Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - N00-N99 Krankheiten des Urogenitalsystems,Number of beds set up in hospitals in psychiatric departments - child and adolescent psychiatry and psychotherapy
+KR_KHP_DG15,KR_KH_BETT_FAB14,Hospital beds by department - psychiatry and psychotherapy,"Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - O00-O99 Schwangerschaft, Geburt und Wochenbett",Number of beds set up in hospitals in psychiatric departments - psychiatry and psychotherapy
+KR_KHP_DG16,KR_KH_BETT_FAB15,Hospital beds by specialist department - psychotherapeutic medicine,"Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - P00-P96 Bestimmte Zustände, die ihren Ursprung in der Perinatalperiode haben",Number of beds set up in hospitals in psychiatric departments - psychotherapeutic medicine
+KR_KHP_DG17,KR_KHP,Hospital patients,"Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - Q00-Q99 Angeborene Fehlbildungen, Deformitäten und Chromosomenanomalien",Number of fully inpatients treated in hospitals (place of residence)
+KR_KHP_DG18,KR_KHP_DG1,"Hospital patients by main diagnosis
+- A00-B99","Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - R00-R99 Symptome und abnorme klinische und Laborbefunde, die andernorts nicht klassifiziert sind","Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - A00-
+B99 Certain infectious and
+parasitic diseases"
+KR_KHP_DG19,KR_KHP_DG2,"Hospital patients by main diagnosis
+- C00-D48","Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - S00-T98 Verletzungen,Vergiftungen und bestimmte andere Folgen äußerer Ursachen","Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - C00-
+D48 neoplasms"
+KR_KHP_DG20,KR_KHP_DG3,"Hospital patients by main diagnosis
+- D50-D90",Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - U00-U99 Schlüsselnummern für besondere Zwecke,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - D50-
+D90 diseases of the blood and blood-
+forming organs"
+KR_KHP_DG21,KR_KHP_DG4,"Hospital patients by main diagnosis
+- E00-E90","Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Hauptdiagnoseklasse (ICD 10) - Z00-Z99 Faktoren, die die Gesundheit beeinflussen und zur Inanspruchnahme des Gesundheitswesens führen","Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - E00-
+E90 Endocrine, nutritional and
+metabolic diseases"
+KR_KHP_DG22,KR_KHP_DG5,"Hospital patients by main diagnosis
+- F00-F99",Anzahl vollstationär behandelte Patienten in Krankenhäusern mit Diagnose unbekannt,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - F00-
+F99 Mental
+behavioral disorders"
+KR_KHP_DG10_00U01,,,Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter unter 1 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,
+KR_KHP_DG10_01U05,KR_KHP_DG6,"Hospital patients by main diagnosis
+- G00-G99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 1 bis unter 5 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - G00-
+G99 diseases of the
+nervous system"
+KR_KHP_DG10_05U10,KR_KHP_DG7,"Hospital patients by main diagnosis
+- H00-H59",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 5 bis unter 10 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - H00-
+H59 diseases of the eye and the
+appendages"
+KR_KHP_DG10_10U15,KR_KHP_DG8,"Hospital patients by main diagnosis
+- H60-H95",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 10 bis unter 15 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - H60-
+H95 diseases of the ear and mastoid
+process"
+KR_KHP_DG10_15U20,KR_KHP_DG9,"Hospital patients by main diagnosis
+- I00-I99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 15 bis unter 20 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - I00-I99
+diseases of the
+circulatory system"
+KR_KHP_DG10_20U25,KR_KHP_DG10,"Hospital patients by main diagnosis
+- J00-J99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 20 bis unter 25 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_KHP_DG10_25U30,KR_KHP_DG11,"Hospital patients by main diagnosis
+- K00-K93",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 25 bis unter 30 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - K00-
+K93 diseases of the
+digestive system"
+KR_KHP_DG10_30U35,KR_KHP_DG12,"Hospital patients by main diagnosis
+- L00-L99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 30 bis unter 35 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - L00-
+L99 diseases of the skin and subcutaneous
+tissue"
+KR_KHP_DG10_35U40,KR_KHP_DG13,"Hospital patients by main diagnosis
+- M00-M99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 35 bis unter 40 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - M00-
+M99 diseases of the musculoskeletal system and
+connective tissue"
+KR_KHP_DG10_40U45,KR_KHP_DG14,"Hospital patients by main diagnosis
+- N00-N99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 40 bis unter 45 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - N00-
+N99 diseases of the genitourinary
+system"
+KR_KHP_DG10_45U50,KR_KHP_DG15,"Hospital patients by main diagnosis
+- O00-O99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 45 bis unter 50 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - O00-
+O99 pregnancy, childbirth and the
+puerperium"
+KR_KHP_DG10_50U55,KR_KHP_DG16,"Hospital patients by main diagnosis
+- P00-P96",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 50 bis unter 55 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - P00-
+P96 Certain conditions that have their origin in
+the perinatal period"
+KR_KHP_DG10_55U60,KR_KHP_DG17,Hospital patients,Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 55 bis unter 60 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,Number of fully
+KR_KHP_DG10_60U65,,"by main diagnosis
+- Q00-Q99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 60 bis unter 65 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"inpatients treated in hospitals with main diagnosis class (ICD 10) - Q00-
+Q99 Congenital malformations, deformities and chromosomal
+abnormalities"
+KR_KHP_DG10_65U70,KR_KHP_DG18,"Hospital patients by main diagnosis
+- R00-R99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 65 bis unter 70 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - R00-
+R99 symptoms and abnormal clinical and laboratory ﬁndings not classiﬁed
+elsewhere"
+KR_KHP_DG10_70U75,KR_KHP_DG19,"Hospital patients by main diagnosis
+- S00-T98",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 70 bis unter 75 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - S00-
+T98 Injuries, poisoning and certain other consequences of
+external causes"
+KR_KHP_DG10_75U80,KR_KHP_DG20,"Hospital patients by main diagnosis
+- U00-U99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 75 bis unter 80 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnostic class (ICD 10) - U00-
+U99 key numbers for special
+purposes"
+KR_KHP_DG10_80U85,KR_KHP_DG21,"Hospital patients by main diagnosis
+- Z00-Z99",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 80 bis unter 85 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,"Number of fully inpatients treated in hospitals with main diagnosis class (ICD 10) - Z00-
+Z99 Factors that inﬂuence health and lead to use of the health care
+system"
+KR_KHP_DG10_85U90,KR_KHP_DG22,"Hospital patients by main diagnosis
+- diagnosis
+unknown",Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 85 bis unter 90 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,Number of fully inpatients treated in hospitals with a diagnosis unknown
+KR_KHP_DG10_90U95,KR_KHP_DG10_00U01,Hospital patients with respiratory diseases - under 1 year,Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 90 bis unter 95 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems,Number of fully statinary treated patients in hospitals with age less than 1 year and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_KHP_DG10_95,KR_KHP_DG10_01U05,Hospital patients with respiratory diseases - 1 to less than 5 years,Anzahl vollstatinär behandelte Patienten in Krankenhäusern mit Alter 95 Jahre und Hauptdiagnoseklasse (ICD 10) - J00-J99 Krankheiten des  Atmungssystems und älter,Number of fully statinary treated patients in hospitals aged 1 to less than 5 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PD,KR_KHP_DG10_05U10,Hospital patients with respiratory diseases - 5 to under 10 years,Anzahl Pflegedienste,Number of fully statinary treated patients in hospitals aged 5 to less than 10 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PH,KR_KHP_DG10_10U15,Hospital patients with respiratory diseases - 10 to under 15 years,Anzahl Pflegeheime,Number of fully statinary treated patients in hospitals aged 10 to less than 15 years and main diagnosis class (ICD 10) - J00-J99
+KR_PD_PERS,,,Personal in ambulanten Pflegediensten je 10.000 Einwohner,"Diseases of the
+respiratory system"
+KR_PH_PERS,KR_KHP_DG10_15U20,Hospital patients with respiratory diseases - 15 to under 20 years,Personal in Pflegeheimen je 10.000 Einwohner,Number of fully statinary treated patients in hospitals aged 15 to under 20 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PB,KR_KHP_DG10_20U25,Hospital patients with respiratory diseases - 20 to under 25 years,Pflegebedürftige je 10.000 Einwohner,"Number of fully statinary treated patients in hospitals aged 20 to less than 25 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_PH_PL,KR_KHP_DG10_25U30,Hospital patients with respiratory diseases - 25 to under 30 years,Verfügbare Plätze in Pflegeheimen je 10.000 Einwohner,Number of fully statinary treated patients in hospitals aged 25 to under 30 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PS,KR_KHP_DG10_30U35,Hospital patients with respiratory diseases - 30 to under 35 years,Anteil der Pflegebedürftigen in stationärer Dauerpflege an den Pflegebedürftigen insgesamt (in %),"Number of fully statinary treated patients in hospitals aged 30 to less than 35 years and main diagnosis class (ICD 10) - J00-J99
+diseases of the
+respiratory system"
+KR_PA,KR_KHP_DG10_35U40,Hospital patients with respiratory diseases - 35 to under 40 years,Anteil der Pflegebedürftigen in ambulanter Pflege an den Pflegebedürftigen insgesamt (in %),Number of fully statinary treated patients in hospitals aged 35 to under 40 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PG_EMP,KR_KHP_DG10_40U45,Hospital patients with respiratory diseases - 40 to under 45 years,Anteil der Empfänger von Pflegegeld an den Pflegebedürftigen insgesamt (in %),Number of fully statinary treated patients in hospitals aged 40 to under 45 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_EP,KR_KHP_DG10_45U50,Hospital patients with respiratory diseases - 45 to under 50 years,Anzahl Berufseinpendler über Kreisgrenzen (Arbeitsort),"Number of fully statinary treated patients in hospitals aged 45 to less than 50 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_AP,KR_KHP_DG10_50U55,Hospital patients with respiratory diseases - 50 to under 55 years,Anzahl Berufsauspendler über Kreisgrenzen (Wohnort),Number of fully statinary treated patients in hospitals aged 50 to under 55 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_SP,KR_KHP_DG10_55U60,Hospital patients with respiratory diseases - 55 to under 60 years,Berufspendlersaldo,Number of fully statinary treated patients in hospitals aged 55 to under 60 years and main diagnosis class (ICD 10) - J00-J99 Diseases
+KR_EP_SVB,,,Anteil der Einpendler an den Sozialversicherungspflichtig Beschäftigten am Arbeitsort (in %),"of the respiratory
+system"
+KR_AP_SVB,KR_KHP_DG10_60U65,Hospital patients with respiratory diseases - 60 to under 65 years,Anteil der Auspendler an den Sozialversicherungspflichtig Beschäftigten am Wohnort (in %),Number of fully statinary treated patients in hospitals aged 60 to under 65 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_SP_SVB,KR_KHP_DG10_65U70,Hospital patients with respiratory diseases - 65 to under 70 years,Pendlersaldo je 100 Sozialversicherungspflichtig Beschäftigte am Arbeitsort,Number of fully statinary treated patients in hospitals aged 65 to under 70 years and main diagnosis class (ICD 10) - J00-J99 Diseases of the respiratory system
+KR_PEN_50,KR_KHP_DG10_70U75,Hospital patients with respiratory diseases - 70 to under 75 years,Pendler mit einem Arbeitsweg von 50 km und mehr je 100 Sozialversicherungspflichtig Beschäftigte am Wohnort,"Number of fully statinary treated patients in hospitals aged 70 to less than 75 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_PEN_150,KR_KHP_DG10_75U80,Hospital patients with respiratory diseases - 75 to under 80 years,Pendler mit einem Arbeitsweg von 150 km und mehr je 100 Sozialversicherungspflichtig Beschäftigte am Wohnort,"Number of fully statinary treated patients in hospitals aged 75 to less than 80 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_PEN_300,KR_KHP_DG10_80U85,Hospital patients with respiratory diseases - 80 to under 85 years,Pendler mit einem Arbeitsweg von 300 km und mehr je 100 Sozialversicherungspflichtig Beschäftigte am Wohnort,"Number of fully statinary treated patients in hospitals aged 80 to less than 85 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_PEN_JJJJMM,KR_KHP_DG10_85U90,Hospital patients with respiratory diseases - 85 to under 90 years,EXPERIMENTELL: Veränderung der Pendlermobilität im Vergleich zum Vorjahresmonat,"Number of fully statinary treated patients in hospitals aged 85 to less than 90 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_PKW_DICHTE,KR_KHP_DG10_90U95,Hospital patients with respiratory diseases - 90 to under 95 years,Anzahl Pkw je 1.000 Einwohner,"Number of fully statinary treated patients in hospitals aged 90 to less than 95 years and main diagnosis class (ICD 10) - J00-J99
+Diseases of the
+respiratory system"
+KR_MOB_WEG_2017,KR_KHP_DG10_95,Hospital patients with respiratory diseases - 95 years and older,EXPERIMENTELL: Anzahl Wege pro Person und Tag 2017,"Number of fully statinary treated patients in hospitals with age 95 and main diagnosis class (ICD 10) - J00-J99
+diseases of the respiratory system
+and older"
+KR_MOB_KM _2017,KR_PD,Care services,EXPERIMENTELL: Kilometer pro Person und Tag 2017,Number of care services
+KR_MOB_AH_2017,KR_PH,Nursing homes,EXPERIMENTELL: Außer-Haus-Quote (Personen außer Haus an einem durchschnittlichen Tag) 2017,Number of nursing homes
+KR_MOB_FUSS_2017,KR_PD_PERS,Nursing staff,EXPERIMENTELL: Anteil Wege zu Fuß 2017 (Modal Split),Personnel in
+KR_MOB_RAD_2017,,,EXPERIMENTELL: Anteil Wege mit dem Fahrrad 2017 (Modal Split),"outpatient care services per 10,000
+inhabitants"
+KR_MOB_MIVMF_2017,KR_PH_PERS,Nursing home staff,"EXPERIMENTELL: Anteil Mitfahrer-Wege des motorisierten Individualverkehrs (Auto, Motorrad, Lkw) 2017 (Modal Split)","Nursing home staff per 10,000 inhabitants"
+KR_MOB_MIVF_2017,KR_PB,People in need of care,"EXPERIMENTELL: Anteil Fahrer-Wege des motorisierten Individualverkehrs (Auto, Motorrad, Lkw) 2017 (Modal Split)","People in need of care per 10,000 inhabitants"
+KR_MOB_OEV_2017,KR_PH_PL,Nursing home places,EXPERIMENTELL: Anteil Wege des öffentlichen Verkehrs 2017 (Modal Split),"Available places in nursing homes per 10,000 inhabitants"
+KR_MOB_OEVW_2017,KR_PS,Inpatient care,EXPERIMENTELL: Wege des öffentlichen Verkehrs am Tag pro 1.000 Einwohner 2017,Proportion of people in need of long-term inpatient care among those in need of long- term care (in%)
+KR_MOB_IDX_2017,KR_PA,Ambulant care,EXPERIMENTELL: Aktivitätsindex 2017 (Baseline),Proportion of people in need of care in outpatient care among those in need of care (in%)
+KR_MOB_WEG_F2020,KR_PG_EMP,Recipient of care allowance,EXPERIMENTELL: Schätzung Anzahl Wege pro Person und Tag Mai/Juni 2020,Share of recipients of long-term care allowance among those in need of long-term care (in%)
+KR_MOB_WEG_H2020,KR_EP,Number of commuters,EXPERIMENTELL: Schätzung Anzahl Wege pro Person und Tag Oktober 2020,Number of commuters across district boundaries (place of work)
+KR_MOB_KM _F2020,KR_AP,Number of out- commuters,EXPERIMENTELL: Schätzung Kilometer pro Person und Tag Mai/Juni 2020,Number of commuters across district boundaries (place of residence)
+KR_MOB_KM _H2020,KR_SP,Absolute commuter balance,EXPERIMENTELL: Schätzung Kilometer pro Person und Tag Oktober 2020,Commuter balance
+KR_MOB_AH_F2020,KR_EP_SVB,Proportion of in- commuters,EXPERIMENTELL: Schätzung Außer-Haus-Anteil Mai/Juni 2020,Share of commuters among employees subject to social security contributions at work (in%)
+KR_MOB_AH_H2020,KR_AP_SVB,Share of out- commuters,EXPERIMENTELL: Schätzung Außer-Haus-Anteil Oktober 2020,Share of out- commuters among employees subject to social security contributions at place of residence (in%)
+KR_MOB_IDX_F2020,KR_SP_SVB,Relative commuter balance,EXPERIMENTELL: Schätzung Aktivitätsindex Juni 2020,Commuter balance per 100 employees subject to social security contributions at the place of work
+KR_MOB_IDX_H2020,KR_PEN_50,Commuters with a commute of 50 km and more,EXPERIMENTELL: Schätzung Aktivitätsindex Oktober 2020,Commuters with a commute of 50 km and more for every 100 employees who are subject to social security contributions at their place of residence
+KR_MOB_OEV_F2020,KR_PEN_150,Commuters commuting 150 km and more to work,EXPERIMENTELL: Schätzung Anteil ÖV-Wege Juni 2020,Commuters with a commute of 150 km and more for every 100 employees who are subject to social security contributions at their place of residence
+KR_MOB_OEV_H2020,KR_PEN_300,Commuters with a commute of 300 km and more,EXPERIMENTELL: Schätzung Anteil ÖV-Wege Oktober 2020,Commuters with a commute of 300 km and more for every 100 employees who are subject to social security contributions at
+KR_MOB_OEVW_F2020,,,EXPERIMENTELL: Schätzung ÖV-Wege am Tag pro 1.000 Einwohner Mai/Juni 2020,"their place of
+residence"
+KR_MOB_OEVW_H2020,KR_PEN_YYYYMM,Commuter change,EXPERIMENTELL: Schätzung ÖV-Wege am Tag pro 1.000 Einwohner Oktober 2020,"EXPERIMENTAL:
+Change in commuter mobility compared to the same month of the previous year"
+KR_SCHU_KOM,KR_PKW_DICHTE,Car density,Kommunale Schulden in € je Einwohner,"Number of cars per 1,000 inhabitants"
+KR_SK,KR_MOB_WEG_2017,Paths per person and day (2017),Gemeindliche Steuerkraft in € je Einwohner,"EXPERIMENTAL:
+Number of trips per person and day in 2017"
+KR_US_EW,KR_MOB_KM _2017,Kilometers per person and day (2017),Umsatzsteuer in € je Einwohner,"EXPERIMENTAL:
+kilometers per person per day 2017"
+KR_EIN_MD,KR_MOB_AH_2017,Out-of-home quota (2017),Monatsentgelte der Vollzeitbeschäftigten,"EXPERIMENTAL:
+Out-of-home rate (people away from home on an average day) 2017"
+KR_SCHU_QU,KR_MOB_FUSS_2017,Share of journeys on foot (2017),Private Schuldner je 100 Einwohner 18 Jahre und älter,"EXPERIMENTAL:
+Share of trips on foot 2017 (modal split)"
+KR_HH_EINK_KL1,KR_MOB_RAD_2017,Share of trips by bike (2017),Anzahl Haushalte mit monatl. Netto-Einkommen von 0 bis 1000 €,"EXPERIMENTAL:
+Share of trips by bike in 2017 (modal split)"
+KR_HH_EINK_KL2,KR_MOB_MIVMF_2017,Proportion of motorized vehicle passenger journeys (2017),Anzahl Haushalte mit monatl. Netto-Einkommen über 1000 bis 1500 €,"EXPERIMENTAL:
+Share of passenger journeys in motorized private transport (car, motorcycle, truck) 2017 (modal split)"
+KR_HH_EINK_KL3,KR_MOB_MIVF_2017,Share of motorized vehicle driver journeys (2017),Anzahl Haushalte mit monatl. Netto-Einkommen über 1500 bis 2500 €,"EXPERIMENTAL:
+Share of driver journeys in motorized individual transport (car, motorcycle, truck) 2017 (modal split)"
+KR_HH_EINK_KL4,KR_MOB_OEV_2017,Share of public transport journeys (2017),Anzahl Haushalte mit monatl. Netto-Einkommen über 2500 bis 3500 €,"EXPERIMENTAL:
+Share of public transport routes in 2017 (modal split)"
+KR_HH_EINK_KL5,KR_MOB_OEVW_2017,"Public transport journeys per day per 1,000
+inhabitants (2017)",Anzahl Haushalte mit monatl. Netto-Einkommen über 3500 bis 5000 €,"EXPERIMENTAL:
+Daily public transport routes per 1,000 inhabitants
+in 2017"
+KR_HH_EINK_KL6,KR_MOB_IDX_2017,Activity index (2017),Anzahl Haushalte mit monatl. Netto-Einkommen über 5000 €,"EXPERIMENTAL:
+Activity Index 2017 (Baseline)"
+KR_KK_HH,KR_MOB_WEG_F2020,Paths per person and day (May / June 2020),Durchschnittliche Kaufkraft je Haushalt in € pro Jahr,"EXPERIMENTAL:
+Estimation of the number of trips per person and day May / June 2020"
+KR_KK_EW,KR_MOB_WEG_H2020,Paths per person and day (October 2020),Durchschnittliche Kaufkraft je Einwohner in € pro Jahr,"EXPERIMENTAL:
+Estimation of the number of trips per person and day October 2020"
+KR_BSDL_DICHTE,KR_MOB_KM _F2020,Kilometers per person and day (May / June 2020),Einwohner pro qkm Siedlungs- und Verkehrsfläche,"EXPERIMENTAL:
+Estimation of kilometers per person and day May / June 2020"
+KR_EW_DICHTE,KR_MOB_KM _H2020,Kilometers per person and day (October 2020),Einwohner pro qkm Gesamtfläche,"EXPERIMENTAL:
+Estimate kilometers per person per day October 2020"
+KR_EW_STADT,KR_MOB_AH_F2020,Out-of-home share (May / June 2020),Bevölkerung in Gemeinden mit mindestens 5.000 Einwohnern oder mindestens grundzentraler Funktion,"EXPERIMENTAL:
+Estimate out-of- home share May / June 2020"
+KR_EW_BBSR10,KR_MOB_AH_H2020,Out-of-home share (October 2020),Bevölkerung in Gemeinden mit mindestens 100.000 Einwohnern,"EXPERIMENTAL:
+Estimate out-of- home share October 2020"
+KR_EW_BBSR20,KR_MOB_IDX_F2020,Activity index,Bevölkerung in Gemeinden mit 20.000 bis unter 100.000 Einwohnern,EXPERIMENTAL:
+KR_EW_BBSR30,,20-Jun,Bevölkerung in Gemeinden mit 10.000 bis unter 20.000 Einwohnern,Activity index estimate June 2020
+KR_EW_BBSR40,KR_MOB_IDX_H2020,Activity index (October 2020),Bevölkerung in Gemeinden mit 5.000 bis unter 10.000 Einwohnern,"EXPERIMENTAL:
+Activity index estimate October 2020"
+KR_EW_BBSR50,KR_MOB_OEV_F2020,Share of public transport journeys in June 2020,Bevölkerung in Gemeinden mit weniger als 5.000 Einwohnern und ohne grundzentrale Funktion,"EXPERIMENTAL:
+Estimate of the share of public transport journeys in June 2020"
+KR_FLAECHE,KR_MOB_OEV_H2020,Share of public transport journeys (October 2020),Gesamtfläche des Kreises in Quadratmeter,"EXPERIMENTAL:
+Estimate of the share of public transport journeys in October 2020"
+KR_NUTZ1,KR_MOB_OEVW_F2020,"Public transport journeys per day per 1,000 inhabitants (May / June 2020)",Anteil Siedlungsfläche mit Nutzungsform - Wohnbaufläche (in % der Geamtfläche),"EXPERIMENTAL:
+Estimation of public transport journeys per day per 1,000 inhabitants May / June 2020"
+KR_NUTZ2,KR_MOB_OEVW_H2020,"Public transport journeys per day per 1,000 inhabitants (October 2020)",Anteil Siedlungsfläche mit Nutzungsform - Industrie- und Gewerbefläche (in % der Geamtfläche),"EXPERIMENTAL:
+Estimation of public transport journeys per day per 1,000 inhabitants October 2020"
+KR_NUTZ3,KR_SCHU_KOM,Municipal debt,Anteil Siedlungsfläche mit Nutzungsform - Halde (in % der Geamtfläche),"Municipal debt in
+€ per inhabitant"
+KR_NUTZ4,KR_SK,Control force,Anteil Siedlungsfläche mit Nutzungsform - Bergbaubetrieb (in % der Geamtfläche),Municipal tax in € per inhabitant
+KR_NUTZ5,KR_US_EW,value added tax,"Anteil Siedlungsfläche mit Nutzungsform - Tagebau, Grube, Steinbruch (in % der Geamtfläche)",Sales tax in € per inhabitant
+KR_NUTZ6,KR_EIN_MD,Median income,Anteil Siedlungsfläche mit Nutzungsform - Gemischte Nutzung (in % der Geamtfläche),Monthly wages for full-time employees
+KR_NUTZ7,KR_SCHU_QU,Debtor quota,Anteil Siedlungsfläche mit Nutzungsform - Besondere funktionale Prägung (in % der Geamtfläche),Private debtors per 100 inhabitants aged 18 and over
+KR_NUTZ8,KR_HH_EINK_KL1,Households by income class - 0 to 1000 €,"Anteil Siedlungsfläche mit Nutzungsform - Sport, Freizeit und Erholung (in % der Geamtfläche)",Number of households with monthly Net income from 0 to 1000 €
+KR_NUTZ9,KR_HH_EINK_KL2,Households by income class - € 1000 to € 1500,Anteil Siedlungsfläche mit Nutzungsform - Friedhof (in % der Geamtfläche),Number of households with monthly Net income between € 1000 and € 1500
+KR_NUTZ10,KR_HH_EINK_KL3,Households by income class - € 1500 to € 2500,Anteil Siedlungsfläche mit Nutzungsform - Straßenverkehr (in % der Geamtfläche),Number of households with monthly Net income between 1500 and 2500 €
+KR_NUTZ11,KR_HH_EINK_KL4,Households by income class - € 2500 to € 3500,Anteil Siedlungsfläche mit Nutzungsform - Platz (in % der Geamtfläche),Number of households with monthly Net income between € 2500 and € 3500
+KR_NUTZ12,KR_HH_EINK_KL5,Households by income class - € 3500-5000,Anteil Siedlungsfläche mit Nutzungsform - Bahnverkehr (in % der Geamtfläche),Number of households with monthly Net income between € 3500 and € 5000
+KR_NUTZ13,KR_HH_EINK_KL6,Households by income class - over € 5000,Anteil Siedlungsfläche mit Nutzungsform - Flugverkehr (in % der Geamtfläche),"Number of households with monthly Net income over 5000
+€"
+KR_NUTZ14,KR_KK_HH,Purchasing power per household,Anteil Siedlungsfläche mit Nutzungsform - Schiffsverkehr (in % der Geamtfläche),Average purchasing power per household in € per year
+KR_NUTZ15,KR_KK_EW,Purchasing power per inhabitant,Anteil Siedlungsfläche mit Nutzungsform - Landwirtschaft (in % der Geamtfläche),Average purchasing power per inhabitant in € per year
+KR_NUTZ16,KR_BSDL_DICHTE,Population density,Anteil Siedlungsfläche mit Nutzungsform - Wald (in % der Geamtfläche),Inhabitants per square kilometer of settlement and trafﬁc area
+KR_NUTZ17,,,Anteil Siedlungsfläche mit Nutzungsform - Gehölz (in % der Geamtfläche),
+KR_NUTZ18,KR_EW_DICHTE,Population density,Anteil Siedlungsfläche mit Nutzungsform - Heide (in % der Geamtfläche),Inhabitants per square kilometer of total area
+KR_NUTZ19,KR_EW_STADT,Population in cities,Anteil Siedlungsfläche mit Nutzungsform - Moor (in % der Geamtfläche),"Population in municipalities with at least 5,000 inhabitants or at least a basic function"
+KR_NUTZ20,KR_EW_BBSR10,Population in major cities,Anteil Siedlungsfläche mit Nutzungsform - Sumpf (in % der Geamtfläche),"Population in municipalities with at least 100,000 inhabitants"
+KR_NUTZ21,KR_EW_BBSR20,Population in medium-sized towns,"Anteil Siedlungsfläche mit Nutzungsform - Unland, vegetationslose Fläche (in % der Geamtfläche)","Population in municipalities with 20,000 to less than 100,000 inhabitants"
+KR_NUTZ23,KR_EW_BBSR30,Population in larger small towns,Anteil Siedlungsfläche mit Nutzungsform - Fließgewässer (in % der Geamtfläche),"Population in municipalities with 10,000 to less than 20,000 inhabitants"
+KR_NUTZ24,KR_EW_BBSR40,Population in smaller small towns,Anteil Siedlungsfläche mit Nutzungsform - Hafenbecken (in % der Geamtfläche),"Population in municipalities with 5,000 to less than 10,000 inhabitants"
+KR_NUTZ25,KR_EW_BBSR50,Population in rural communities,Anteil Siedlungsfläche mit Nutzungsform - Stehendes Gewässer (in % der Geamtfläche),"Population in municipalities with fewer than 5,000 inhabitants and without a basic central function"
+KR_NUTZ26,KR_FLAECHE,Area of the circle,Anteil Siedlungsfläche mit Nutzungsform - Meer (in % der Geamtfläche),Total area of the circle in square meters
+KR_AMR,KR_NUTZ1,Land use - residential area,Arbeitsmarktregion,Share of settlement area with type of use - residential area (in% of total area)
+KR_EAD,KR_NUTZ2,Land use - industrial and commercial space,Einwohner und Beschäftigte je km²,Share of settlement area with type of use - industrial and commercial area (in% of total area)
+KR_LAND,KR_NUTZ3,Land use - dump,Anteil Einwohner in Gemeinden mit einer Bevölkerungsdichte kleiner als 150 Einwohner pro km² (in %),Share of settlement area with type of use - dump (in% of the total area)
+KR_MZ,KR_NUTZ4,Land use - mining operations,Anzahl der Mittelzentren und möglichen Mittelzentren,Share of settlement area with type of use - mining operation (in% of the total area)
+KR_OZ,KR_NUTZ5,"Land use - open pit, mine, quarry",Anzahl der Oberzentren und möglichen Oberzentren,"Proportion of settlement area with type of use - opencast mining, pit, quarry (in% of the total area)"
+KR_ROR,KR_NUTZ6,Land use - mixed use,Raumordnungsregion,Proportion of settlement area with type of use - mixed use (in% of the total area)
+KR_RBP,KR_NUTZ7,Land use - special functional character,Summe der mit der Fläche gewichteten Gemeindebevölkerung im Umkreis von 100 km Luftliniendistanz,Share of settlement area with type of use - special functional
+KR_WA_SCHR_KL,,,Wachsende/schrumpfende Kreise,"character (in% of
+the total area)"
+KR_AMT_KL,KR_NUTZ8,"Land use - sport, leisure and recreation",IAB-Arbeitsmarkttyp der Arbeitsagentur,"Share of settlement area with type of use - sport, leisure and recreation (in% of the total area)"
+KR_GRW_FG_KL,KR_NUTZ9,Land use - cemetery,"GRW-Fördergebiete, Förderperiode 2014-2020",Share of settlement area with type of use - cemetery (in% of the total area)
+KR_SR_AM_KL,KR_NUTZ10,Land use - road trafﬁc,Siedlungsstrukturtyp der Arbeitsmarktregion,Share of settlement area with type of use - road trafﬁc (in% of the total area)
+KR_RL_KL,KR_NUTZ11,Land use - space,Raumtyp nach Lage,Share of settlement area with type of use - space (in% of the total area)
+KR_SSK_KL,KR_NUTZ12,Land use - rail transport,Siedlungsstruktureller Kreistyp,Share of settlement area with type of use - rail transport (in% of the total area)
+KR_SSR_KL,KR_NUTZ13,Land use - air trafﬁc,Siedlungsstruktureller Regionstyp,Share of settlement area with type of use - air trafﬁc (in% of the total area)
+KR_STLA_KL,KR_NUTZ14,Land use - shipping,Städtischer Raum/Ländlicher Raum,Share of settlement area with type of use - shipping (in% of the total area)
+KR_MRA_KL,KR_NUTZ15,Land use - agriculture,"Europäische Metropolregion gemäß IKM Stichtag 1.11.2015, Teil A",Share of settlement area with type of use - agriculture (in% of the total area)
+KR_MRB_KL,KR_NUTZ16,Land use - forest,"Europäische Metropolregion gemäß IKM Stichtag 1.11.2015, Teil B",Share of settlement area with type of use - forest (in% of the total area)
+KR_WO_KL,KR_NUTZ17,Land use - wood,West-/Ostdeutschland,Proportion of settlement area with type of use - wood (in% of the total area)
+KR_GRENZE,KR_NUTZ18,Land use - Heath,Region an der ausländischen Grenze,Share of settlement area with type of use - heather (in% of the total area)
+KR_ARM_ALT,KR_NUTZ19,Land use - moor,Anteil der Bevölkerung mit Grundsicherung im Alter an den Einwohnern 65 Jahre und älter (in %),Proportion of settlement area with type of use - peatland (in% of the total area)
+KR_SGB_QU,KR_NUTZ20,Land use - swamp,Empfänger von Leistungen nach SGB II und Empfänger von Leistungen nach SGB XII  je 1.000 Einwohner,Share of settlement area with type of use - swamp (in% of the total area)
+KR_ARM_KIND,KR_NUTZ21,"Land use - land, areas without vegetation",Nicht erwerbsfähige Leistungsberechtigte unter 15 Jahren je 100 Einwohner unter 15 Jahren,"Share of settlement area with type of use - unland, area without vegetation (in% of the total area)"
+KR_BTW_BER,KR_NUTZ23,Land use - rivers,Anzahl Wahlberechtigte bei der Bundestagswahl 2017,Proportion of settlement area with type of use - ﬂowing water (in% of the total area)
+KR_BTW_ANT,KR_NUTZ24,Land use - harbor basin,Anteil Wähler an Wahlberechtigten bei der Bundestagswahl 2017,Proportion of settlement area with type of use - harbor basin (in% of the total area)
+KR_BTW_STIM,KR_NUTZ25,Land use - standing water,Anzahl gültige Zweitstimmen bei der Bundestagswahl 2017,Proportion of settlement area with type of use - standing water (in% of the total area)
+KR_BTW_CDU,KR_NUTZ26,Land use - sea,Stimmenanteile CDU/CSU bei der Bundestagswahl 2017,Share of settlement area with type of
