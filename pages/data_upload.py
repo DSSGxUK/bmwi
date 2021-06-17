@@ -104,7 +104,7 @@ def app():
     label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
     if label_stats == "Yes": 
         stats = ['mean', 'min', '25%', '50%', '75%', 'max']
-        stats_values = merged[col_to_display].describe()[['mean', 'min', '25%', '50%', '75%', 'max']].sort_values()
+        stats_values = merged[col_to_display].describe()[stats].sort_values()
         st.write(stats_values)
         # txt_to_display_stats = st.selectbox("Select which range to annotate",
         #                             options=stats, index=1)

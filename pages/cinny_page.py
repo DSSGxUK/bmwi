@@ -1,3 +1,5 @@
+# interactive map with plotly
+
 # Import necessary libraries 
 from typing import Optional
 import pandas as pd 
@@ -18,7 +20,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Create the app that would be run 
 def app():
 
-    st.write("Hi I am Cinny")
+    st.write("Hi, I am Cinny.")
 
     ''' Section to upload all the data file '''
     st.markdown("## Data Upload and Map Viz.")
@@ -55,7 +57,7 @@ def app():
     col_to_display = st.selectbox("Select which column to visualise on the map",
                                  options=data_cols, 
                                  index=4, 
-                                 format_func = lambda x: get_english_term(x)
+                                 # format_func = lambda x: get_english_term(x)
                                  )
 
     ''' Display the document containing the various column descriptions '''
@@ -82,9 +84,6 @@ def app():
     # Read the map coordinates data 
     with open('georef-germany-kreis/georef-germany-kreis.geojson') as response:
         geojs = json.load(response)
-
-    # Check if the labels need to be added 
-    labels = st.radio("Show labels?", options=["Yes", "No"], index=1)
 
     fig = px.choropleth(data,
                     geojson=geojs, color="kr_firm",
