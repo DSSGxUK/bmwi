@@ -70,3 +70,23 @@ def app():
             # calculate the histogram edges
             data_histogram(data[feature], 10, None, None)
             st.pyplot()
+
+        ''' Section for bivariate analysis '''
+        st.write("Bivariate Analysis")
+        
+        col1, col2 = st.beta_columns(2)
+        
+        # Select the feature 
+        feature1 = col1.selectbox("Select the first feature", options=list(data.columns), index=5)
+        feature2 = col1.selectbox("Select the second feature.", options=list(data.columns), index=6)
+
+        # Check if either of the features are categorical 
+        if data[feature1].dtype.name == 'category' or data[feature2].dtype.name == 'category':
+            print('category')
+        
+        else: 
+            # Create a two column subplot with lmplot and scatter
+            fig = sns.lmplot(x=feature1, y=feature2, data=data, scatter=True)
+            st.subheader("Scatter Plot with regression line.")
+            st.pyplot(fig)
+            st.write(f"Correlation Coefficient: {data[feature1].corr(data[feature2])}")
