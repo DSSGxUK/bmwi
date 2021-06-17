@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st 
 import numpy as np 
 import matplotlib.pyplot as plt 
+import base64
 
 # Function to fix the format of ag5 
 def fix_ags5(x):
@@ -31,6 +32,17 @@ def get_english_term(german_phrase):
     except: 
         return german_phrase.lower()
 
+# Function to convert data into download link
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    params:  dataframe
+    returns: href string
+    """
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}" download="combined_final.csv">Download combined csv file</a>'
+
+    return href
 
 ''' Visualisation Functions '''
 
