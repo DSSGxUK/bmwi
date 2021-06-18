@@ -96,11 +96,10 @@ def app():
     # Check if certain labels need to be added -- by region
     label_ags = st.radio("Show labels by region?", options=["Yes", "No"], index=1)
     if label_ags == "Yes": 
-        ags2 = data['ags2'].unique()
-        bd = data['bundesland'].unique()
-        bundeslands = list()
-        for i in range(16):
-            bundeslands.append(f'{ags2[i]} {bd[i]}')
+        bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
+            '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Württemberg',
+            '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
+            '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thüringen']
         txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
                                     options=bundeslands, index=0)
 
