@@ -96,7 +96,11 @@ def app():
     # Check if certain labels need to be added -- by region
     label_ags = st.radio("Show labels by region?", options=["Yes", "No"], index=1)
     if label_ags == "Yes": 
-        bundeslands = list(range(1,17))
+        ags2 = data['ags2'].unique()
+        bd = data['bundesland'].unique()
+        bundeslands = list()
+        for i in range(16):
+            bundeslands.append(f'{ags2[i]} {bd[i]}')
         txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
                                     options=bundeslands, index=0)
 
@@ -124,7 +128,7 @@ def app():
     # (1) by ags
     if label_ags == "Yes": 
         # get filtered df
-        merged_ags = merged[merged['ags2']==txt_to_display_ags]
+        merged_ags = merged[merged['ags2']==int(txt_to_display_ags[:2])]
         # add text with filters
         for i in merged_ags.index:
             ax.text(merged_ags.longitude[i], merged_ags.latitude[i],

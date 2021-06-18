@@ -74,7 +74,7 @@ def app():
     st.write(filter_df_corr.transpose().corr())
 
     # show stats
-    threshold = st.slider("Select the correlation ratio threshold", min_value=0.8, max_value=1.0, step=0.01)
+    threshold = st.slider("Select the correlation ratio threshold", min_value=0.9, max_value=1.0, step=0.01)
     sum_links = (sum((filter_df_corr.transpose().corr()>threshold).sum())-401)//2
     st.write(f'# links between kreise: {sum_links}')
 
