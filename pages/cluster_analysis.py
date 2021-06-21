@@ -63,8 +63,8 @@ def app():
         plt.ylabel('Percentage of Explained Variance')
         plt.xlabel('Principal Component')
         plt.title('Screen Plot')
-        for index, data in enumerate(per_var):
-            plt.text(x=index+0.9 , y =data+1 , s=f"{data}%" , fontdict=dict(fontsize=10))
+        for index, dt in enumerate(per_var):
+            plt.text(x=index+0.9 , y =dt+1 , s=f"{dt}%" , fontdict=dict(fontsize=10))
         st.pyplot()
     
     # Create the principal components 
@@ -78,13 +78,14 @@ def app():
     
 
     ''' Clustering using k-means '''
-    st.subheader("Clustreing Analysis")
+    st.subheader("Clustering Analysis")
     clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
     
     # Define the k-means object
     km = KMeans(n_clusters=clusters).fit(X)
 
     cluster_map = pd.DataFrame()
+    #st.write(data)
     cluster_map['data_index'] = data.index.values
     cluster_map['cluster'] = km.labels_
     data = cluster_map.merge(data, left_on='data_index', right_index=True)
