@@ -86,10 +86,10 @@ def app():
 
     ''' Clustering using k-means '''
     st.subheader("Clustering Analysis")
-    clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
+    num_clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
     
     # Define the k-means object
-    km = KMeans(n_clusters=clusters).fit(X)
+    km = KMeans(n_clusters=num_clusters).fit(X)
 
     cluster_map = pd.DataFrame()
     #st.write(data)
@@ -103,10 +103,29 @@ def app():
     st.dataframe(data['cluster'].value_counts().sort_index())
 
     # Print the cluster information
-    for i in range(clusters):
+    for i in range(num_clusters):
         st.write(f"Cluster {i+1}:", data[data['cluster']==i]['kreis'].to_list())
-
 
 
     # Allow the final file for download
     st.markdown(get_table_download_link(data, text="Download CSV with cluster information"), unsafe_allow_html=True)
+
+    ''' Cluster Visualisation '''
+    st.subheader("Cluster Visualisation")
+
+    # Change cluster values 
+    cluster_value_map = {0:1, 1:2, 2:3}
+    data = data.replace({"cluster": cluster_value_map})
+    
+    # Create three columns
+    col1, col2, col3 = st.beta_columns(3)
+    cluster1 = col1.slider("Select the cluster", min_value=1, max_value=num_clusters, step=1, value=1)
+    cluster2 = col2.slider("Select the cluster", min_value=1, max_value=num_clusters, step=1, value=2)
+    visual_col = col3.selectbox("Select the feature to be visualised", options=X.columns)
+
+   
+    
+    # Filter data by cluster
+    filter_data = data[data['cluster'].isin([cluster1, cluster2])]
+    sns.kdeplot(data=filter_data, x=visual_col, hue="cluster",  common_norm=False)
+    st.pyplot()
