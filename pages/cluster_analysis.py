@@ -81,7 +81,7 @@ def app():
     if make_3d_plot:
         ax = plt.axes(projection='3d')
         # Data for three-dimensional scattered points
-        ax.scatter3D(PCA_components[0], PCA_components[1], PCA_components[2], c=PCA_components[0], cmap='Blues')
+        ax.scatter3D(PCA_components[0], PCA_components[1], PCA_components[2], c=PCA_components[1])
         st.pyplot()
 
     ''' Clustering using k-means '''
