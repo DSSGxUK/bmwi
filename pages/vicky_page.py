@@ -21,12 +21,25 @@ def app():
     categorical_columns_translated = ['labor market region', 'growing / shrinking circles', 'labor market type', 'grw funding framework', 'settlement structure type of labor market region', 'room type location', 'district settlement structure', 'type of settlement structure', 'urban / rural', 'metropolitan region', 'metropolitan area', 'east west', 'border proximity']
     
     # Check if len of column lists is the same 
-    assert len(categorical_columns) == len(categorical_columns_translated)
+    # assert len(categorical_columns) == len(categorical_columns_translated)
+
+    
+
 
     # Create a usable dataframe 
     useful_df = spatial_planning[categorical_columns]
     useful_df.columns = [col.replace(' ', '_') for col in categorical_columns_translated]
     useful_df.index = spatial_planning['ags5']
+
+    ''' Variable Selection '''
+    st.subheader("Select non-important variables")
+    variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
+                                             options=useful_df.columns, 
+                                             help="If none are selected, then all variables will be used for PCA.")
+
+    # Drop the variables from the data
+    if variables_to_be_dropped:
+        useful_df.drop(variables_to_be_dropped, axis=1, inplace=True)
     
     # Code Block 1
     data_dict = {}
@@ -53,7 +66,9 @@ def app():
                 edge_weights[(pair[0], pair[1])] = 1
     
     ## Code block 3
-    weight_treshold = 10
+    
+    # Select weight threshold 
+    weight_treshold = st.slider(label="Select a threshold value.", min_value=1, max_value=20, value=10, step=1)
 
     G = nx.Graph()
     G.add_nodes_from(spatial_planning['ags5'])
@@ -66,10 +81,14 @@ def app():
     nx.draw_networkx(G, edge_color=(1,0,0), node_size=50, with_labels=False)
     st.pyplot()
 
-    # Get clusters 
+    # Show different clusters
     clusters = [c for c in sorted(nx.connected_components(G), key=len, reverse=True)]
-    for c in clusters:
-        c = list(c)
-        c = [str(i) for i in c]
+
+    # PRint total clusters
+    st.write("The total clusters are: ", len(clusters))
+
+    # Print each cluster members
+    for i in range(len(clusters)):
+        c = list(clusters[i])
         counties = spatial_planning[spatial_planning['ags5'].isin(c)]
-        st.write(list(counties['kreis']))
+        st.write(f"Cluster {i+1}",list(counties['kreis']))
