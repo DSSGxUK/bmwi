@@ -76,6 +76,13 @@ def app():
     sort_param = st.radio("Which component would you like to sort the app by?", options=pca_param.columns, index=0)
     st.dataframe(pca_param.sort_values(by=sort_param, ascending=[False]).head(20))
     
+    ''' 3D Plot for PCA components '''
+    make_3d_plot = st.checkbox("Plot a 3D map of the components?", value=False)
+    if make_3d_plot:
+        ax = plt.axes(projection='3d')
+        # Data for three-dimensional scattered points
+        ax.scatter3D(PCA_components[0], PCA_components[1], PCA_components[2], c=PCA_components[0], cmap='Blues')
+        st.pyplot()
 
     ''' Clustering using k-means '''
     st.subheader("Clustering Analysis")
