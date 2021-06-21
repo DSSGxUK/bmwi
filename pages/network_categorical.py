@@ -43,22 +43,16 @@ def app():
     
     # Code Block 1
     data_dict = {}
-
     for col in useful_df.columns:
         for val in useful_df[col].unique():
             data_dict[col + '_' + str(val)] = list(useful_df.index[useful_df[col] == val])
 
-
     ## Code block 2
     edge_weights = {}
-    
     for key, kreis_list in data_dict.items():
-        
         kreis_list.sort() # sort it to force the pairs to the lower triangle
-        
         # make all the edges (kr1, kr2)
         pairs = [(kreis_list[p1], kreis_list[p2]) for p1 in range(len(kreis_list)) for p2 in range(p1+1,len(kreis_list))]
-        
         for pair in pairs:
             try:
                 edge_weights[(pair[0], pair[1])] +=1
@@ -66,7 +60,6 @@ def app():
                 edge_weights[(pair[0], pair[1])] = 1
     
     ## Code block 3
-    
     # Select weight threshold 
     weight_treshold = st.slider(label="Select a threshold value.", min_value=1, max_value=20, value=10, step=1)
 
@@ -81,14 +74,19 @@ def app():
     nx.draw_networkx(G, edge_color=(1,0,0), node_size=50, with_labels=False)
     st.pyplot()
 
-    # Show different clusters
+    # clustering stats
+    st.header('Clustering Results')
+    st.subheader('Clustering distribution')
+    st.write([len(c) for c in sorted(nx.connected_components(G), key=len, reverse=True) if len(c)!=1])
+    st.subheader('# single-group clusters')
+    st.write(sum([len(c) for c in sorted(nx.connected_components(G), key=len, reverse=True) if len(c)==1]))
+    
+    # translate code to name
+    st.subheader('Clustering groups')
     clusters = [c for c in sorted(nx.connected_components(G), key=len, reverse=True)]
-
-    # PRint total clusters
-    st.write("The total clusters are: ", len(clusters))
-
-    # Print each cluster members
     for i in range(len(clusters)):
         c = list(clusters[i])
+        #c = [str(i) for i in c]
         counties = spatial_planning[spatial_planning['ags5'].isin(c)]
-        st.write(f"Cluster {i+1}",list(counties['kreis']))
+        if len(counties)!=1:
+            st.write(f'Cluster {i+1}', list(counties['kreis']))

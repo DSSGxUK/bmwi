@@ -104,6 +104,7 @@ def app():
         nx.draw_networkx(G, node_size=10, with_labels=False)
         st.pyplot()
 
+        # clustering stats
         st.header('Clustering Results')
         st.subheader('Clustering distribution')
         st.write([len(c) for c in sorted(nx.connected_components(G), key=len, reverse=True) if len(c)!=1])
@@ -113,9 +114,10 @@ def app():
         # translate code to name
         st.subheader('Clustering groups')
         clusters = [c for c in sorted(nx.connected_components(G), key=len, reverse=True)]
-        for c in clusters:
-            c = list(c)
+        for i in range(len(clusters)):
+            c = list(clusters[i])
             #c = [str(i) for i in c]
             counties = data[data['ags5'].isin(c)]
             if len(counties)!=1:
-                st.write(list(counties['kreis']))
+                st.write(f'Cluster {i+1}', list(counties['kreis']))
+
