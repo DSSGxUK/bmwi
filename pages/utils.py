@@ -15,6 +15,27 @@ def fix_ags5(x):
     else:
         return str(x)
 
+''' File Upload Functions '''
+
+
+def read_single_file():
+    """Function to read a single csv file
+
+    Returns:
+        data: Returns a dataframe of the uploaded csv file
+    """
+    # Code to read a single file 
+    uploaded_file = st.file_uploader("Choose a file", type = ['csv', 'xlsx'])
+    global data
+    if uploaded_file is not None:
+        try:
+            data = pd.read_csv(uploaded_file)    # encoding='latin_1' : can be added to read non-English Data
+        except Exception as e:
+            print(e)
+            data = pd.read_excel(uploaded_file, encoding='latin_1')
+    
+    return data
+
 # Function to convert the german phrases to english 
 @st.cache() # caching to reduce time 
 def get_english_term(german_phrase):
@@ -33,16 +54,20 @@ def get_english_term(german_phrase):
         return german_phrase.lower()
 
 # Function to convert data into download link
-def get_table_download_link(df):
+def get_table_download_link(df, text, filename="final.csv"):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
-    params:  dataframe
+    params:  
+        dataframe
+        text: Text to be printed in the file download option
+        filename: Filename to be downloaded [optional]
     returns: href string
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="combined_final.csv">Download combined csv file</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
 
     return href
+
 
 ''' Visualisation Functions '''
 

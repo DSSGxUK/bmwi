@@ -23,15 +23,18 @@ def app():
     st.markdown("### Upload a csv file for analysis.") 
     st.write("\n")
 
-    # Code to read a single file 
-    uploaded_file = st.file_uploader("Choose a file", type = ['csv', 'xlsx'])
-    global data
-    if uploaded_file is not None:
-        try:
-            data = pd.read_csv(uploaded_file, encoding='latin_1')
-        except Exception as e:
-            print(e)
-            data = pd.read_excel(uploaded_file, encoding='latin_1')
+    # # Code to read a single file 
+    # uploaded_file = st.file_uploader("Choose a file", type = ['csv', 'xlsx'])
+    # global data
+    # if uploaded_file is not None:
+    #     try:
+    #         data = pd.read_csv(uploaded_file)    # encoding='latin_1' : can be added to read non-English Data
+    #     except Exception as e:
+    #         print(e)
+    #         data = pd.read_excel(uploaded_file, encoding='latin_1')
+
+    # Read the data file with 401 and rows and n columns
+    data = read_single_file()
     
     ''' Load the data and save the dataset in a separate folder to allow for quick reloads '''
     
@@ -97,23 +100,23 @@ def app():
     label_ags = st.radio("Show labels by region?", options=["Yes", "No"], index=1)
     if label_ags == "Yes": 
         bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
-            '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Württemberg',
+            '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
             '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
-            '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thüringen']
+            '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
         txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
                                     options=bundeslands, index=0)
 
     # Check if certain labels need to be added -- by stats
-    label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
-    if label_stats == "Yes": 
-        stats = ['mean', 'min', '25%', '50%', '75%', 'max']
-        stats_values = merged[col_to_display].describe()[stats].sort_values()
-        st.write(stats_values)
-        # txt_to_display_stats = st.selectbox("Select which range to annotate",
-        #                             options=stats, index=1)
-        txt_to_display_stats = st.slider("Select a range of values", 
-                                        float(stats_values['min']), float(stats_values['max']), 
-                                        (float(stats_values['25%']), float(stats_values['75%'])))
+    # label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
+    # if label_stats == "Yes": 
+    #     stats = ['mean', 'min', '25%', '50%', '75%', 'max']
+    #     stats_values = merged[col_to_display].describe()[stats].sort_values()
+    #     st.write(stats_values)
+    #     # txt_to_display_stats = st.selectbox("Select which range to annotate",
+    #     #                             options=stats, index=1)
+    #     txt_to_display_stats = st.slider("Select a range of values", 
+    #                                     float(stats_values['min']), float(stats_values['max']), 
+    #                                     (float(stats_values['25%']), float(stats_values['75%'])))
     
     # plot
     fig, ax = plt.subplots(figsize=(50,30))
@@ -133,21 +136,21 @@ def app():
             ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
                     f'{merged_ags["kreis"][i]}\n{merged_ags[col_to_display][i]}', fontsize=10)
     
-    # (2) by stats
-    if label_stats == "Yes": 
-        # get filtered df
-        merged_stats = merged[
-            (merged[col_to_display]>=txt_to_display_stats[0]) & 
-            (merged[col_to_display]<=txt_to_display_stats[1])]
-        # add text with filters
-        for i in merged_stats.index:
-            ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
-                    f'{merged_stats["kreis"][i]}\n{merged_stats[col_to_display][i]}', fontsize=10)
+    # # (2) by stats
+    # if label_stats == "Yes": 
+    #     # get filtered df
+    #     merged_stats = merged[
+    #         (merged[col_to_display]>=txt_to_display_stats[0]) & 
+    #         (merged[col_to_display]<=txt_to_display_stats[1])]
+    #     # add text with filters
+    #     for i in merged_stats.index:
+    #         ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
+    #                 f'{merged_stats["kreis"][i]}\n{merged_stats[col_to_display][i]}', fontsize=10)
     
     # add all text
     if labels == "Yes": 
         for i in range(len(merged)):
             ax.text(merged.longitude[i], merged.latitude[i],
-                    f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', size=10)
+                    f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', fontsize=10)
     
     st.pyplot(fig)

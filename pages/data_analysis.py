@@ -25,7 +25,7 @@ def app():
     feature = col1.selectbox("Select the variable", options=data.columns)
     level = st.radio("Select whether you want to return the Kreis above the threshold or below", options=["Above", "Below"])
     
-    threshold = col2.slider("Select the percentile Threshold", min_value=0.05, max_value=1.0, step=0.05)
+    threshold = col2.slider("Select the percentile Threshold", min_value=0.01, max_value=1.0, step=0.01)
     
     # Filter the data 
     if level == "Above":
