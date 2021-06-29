@@ -93,7 +93,8 @@ def app():
         # Create a tsne instance 
         tsne = TSNE(learning_rate=50, 
                     n_components=3,  
-                    random_state=42)  
+                    random_state=42, 
+                    perplexity=25)  
         
         # Fit the model  
         tsne_features = tsne.fit_transform(scaled_data)
@@ -191,7 +192,7 @@ def app():
         num_clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
         
         # Define the k-means object
-        km = KMeans(n_clusters=num_clusters, random_state=42).fit(X)
+        km = KMeans(n_clusters=num_clusters, random_state=42).fit(PCA_components)
 
         cluster_map = pd.DataFrame()
         #st.write(data)
