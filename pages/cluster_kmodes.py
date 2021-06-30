@@ -74,6 +74,11 @@ def app():
 
 
         ''' Cluster Visualisation '''
+
+        ''' 
+            def generate_cluster_map(data): 
+                returns fig 
+        '''
         st.subheader("Cluster Map")
 
         #if st.button("Visualize cluster in map"):
