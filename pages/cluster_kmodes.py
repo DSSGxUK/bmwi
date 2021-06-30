@@ -28,13 +28,16 @@ def app():
     X = data.drop(["cluster", "ags5", "kreis"], axis=1)
 
     ''' Variable and Method Selection '''
-    # Drop variables from data
-    st.subheader("Select non-important variables")
-    variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
-                                             options=list(X.columns), 
-                                             help="If none is selected, then all variables will be used for PCA.")
-    if variables_to_be_dropped:
-        X.drop(variables_to_be_dropped, axis=1, inplace=True)
+    # # Drop variables from data
+    # st.subheader("Select non-important variables")
+    # variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
+    #                                          options=list(X.columns), 
+    #                                          help="If none is selected, then all variables will be used for PCA.")
+    # if variables_to_be_dropped:
+    #     X.drop(variables_to_be_dropped, axis=1, inplace=True)
+
+    ''' Variable and Method Selection '''
+    X = drop_selected_variables(X)
 
     # Select categorical variables from data
     st.subheader("Select categorical variables")
@@ -151,3 +154,10 @@ def app():
         # export df with clusters using the function from utils
         df_cluster = data[['ags5', 'km_cluster']]
         st.markdown(get_table_download_link(df_cluster, text="Download Cluster Results"), unsafe_allow_html=True)
+
+        ''' 
+            1. Save df_cluster (df_cluster.to_csv('data/cluster_file.csv', index=False))
+            2. Read csv
+        '''
+
+
