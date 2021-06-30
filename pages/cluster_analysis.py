@@ -176,7 +176,7 @@ def app():
 
         ''' Generate importance of each feature '''
         pca_param = pd.DataFrame(pca.components_,columns=X.columns,index = ['PC-1','PC-2','PC-3']).T
-        sort_param = st.radio("Which component would you like to sort the app by?", options=pca_param.columns, index=0)
+        sort_param = st.radio("Which component would you like to sort the app by?", options=list(pca_param.columns), index=0)
         st.dataframe(pca_param.sort_values(by=sort_param, ascending=[False]).head(20))
         
         ''' 3D Plot for PCA components '''
@@ -224,7 +224,7 @@ def app():
         col1, col2, col3 = st.beta_columns(3)
         cluster1 = col1.slider("Select the cluster", min_value=1, max_value=num_clusters, step=1, value=1)
         cluster2 = col2.slider("Select the cluster", min_value=1, max_value=num_clusters, step=1, value=2)
-        visual_col = col3.selectbox("Select the feature to be visualised", options=X.columns)
+        visual_col = col3.selectbox("Select the feature to be visualised", options=list(X.columns))
 
     
         

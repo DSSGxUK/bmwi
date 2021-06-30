@@ -31,7 +31,7 @@ def app():
     # Drop variables from data
     st.subheader("Select non-important variables")
     variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
-                                             options=X.columns, 
+                                             options=list(X.columns), 
                                              help="If none is selected, then all variables will be used for PCA.")
     if variables_to_be_dropped:
         X.drop(variables_to_be_dropped, axis=1, inplace=True)

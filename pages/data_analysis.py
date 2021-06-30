@@ -22,7 +22,7 @@ def app():
 
     col1, col2 = st.beta_columns(2)
     # Set a dropdown for variables and checklist for upper or lower 
-    feature = col1.selectbox("Select the variable", options=data.columns)
+    feature = col1.selectbox("Select the variable", options=list(data.columns))
     level = st.radio("Select whether you want to return the Kreis above the threshold or below", options=["Above", "Below"])
     
     threshold = col2.slider("Select the percentile Threshold", min_value=0.01, max_value=1.0, step=0.01)

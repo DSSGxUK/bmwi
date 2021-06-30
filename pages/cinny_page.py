@@ -55,7 +55,7 @@ def app():
     # Collect the columns
     data_cols = data.columns
     col_to_display = st.selectbox("Select which column to visualise on the map",
-                                 options=data_cols, 
+                                 options=list(data_cols), 
                                  index=4, 
                                  # format_func = lambda x: get_english_term(x)
                                  )
