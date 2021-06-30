@@ -56,6 +56,11 @@ def app():
                                  index=6
                                 #  format_func = lambda x: get_english_term(x)
                                  )
+    # check categorical column
+    cat_col_bool=False
+    label_col = st.radio("Is the column to visualize categorical", options=["Yes", "No"], index=1)
+    if label_col == "Yes": 
+        cat_col_bool=True
 
     # ''' Display the document containing the various column descriptions '''
     
@@ -74,83 +79,9 @@ def app():
 
     ''' Display the Kreis Map '''
     st.header(f"The Map visualisation for **{col_to_display}** at the Kreis-level.")
-   
-    # Fix the ag5 column using function defined in utils
+    # prep data for merge
     data['ags5_fix'] = data['ags5'].apply(fix_ags5)
-
-    # Read the map coordinates data 
-    gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
-
-    # Merge the coords with the data 
-    merged = pd.merge(data, gdf, left_on='ags5_fix', right_on='krs_code')
-    
-    # Get the geospatial data 
-    merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
-    merged['coords'] = [coords[0] for coords in merged['coords']]
-    merged['longitude'] = merged['coords'].str[0]
-    merged['latitude'] = merged['coords'].str[1]
-
-    # Convert to geodata
-    merged = gpd.GeoDataFrame(merged)
-
-    # Check if the labels need to be added 
-    labels = st.radio("Show all labels?", options=["Yes", "No"], index=1)
-
-    # Check if certain labels need to be added -- by region
-    label_ags = st.radio("Show labels by region?", options=["Yes", "No"], index=1)
-    if label_ags == "Yes": 
-        bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
-            '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
-            '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
-            '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
-        txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
-                                    options=bundeslands, index=0)
-
-    # Check if certain labels need to be added -- by stats
-    # label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
-    # if label_stats == "Yes": 
-    #     stats = ['mean', 'min', '25%', '50%', '75%', 'max']
-    #     stats_values = merged[col_to_display].describe()[stats].sort_values()
-    #     st.write(stats_values)
-    #     # txt_to_display_stats = st.selectbox("Select which range to annotate",
-    #     #                             options=stats, index=1)
-    #     txt_to_display_stats = st.slider("Select a range of values", 
-    #                                     float(stats_values['min']), float(stats_values['max']), 
-    #                                     (float(stats_values['25%']), float(stats_values['75%'])))
-    
-    # plot
-    fig, ax = plt.subplots(figsize=(50,30))
-    merged.plot(column=col_to_display, scheme="quantiles",
-                ax=ax,
-                cmap='coolwarm', legend=True)
-
-    ax.set_title(f'{col_to_display} in Germany by County', fontsize=15)
-
-    # filters
-    # (1) by ags
-    if label_ags == "Yes": 
-        # get filtered df
-        merged_ags = merged[merged['ags2']==int(txt_to_display_ags[:2])]
-        # add text with filters
-        for i in merged_ags.index:
-            ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
-                    f'{merged_ags["kreis"][i]}\n{merged_ags[col_to_display][i]}', fontsize=10)
-    
-    # # (2) by stats
-    # if label_stats == "Yes": 
-    #     # get filtered df
-    #     merged_stats = merged[
-    #         (merged[col_to_display]>=txt_to_display_stats[0]) & 
-    #         (merged[col_to_display]<=txt_to_display_stats[1])]
-    #     # add text with filters
-    #     for i in merged_stats.index:
-    #         ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
-    #                 f'{merged_stats["kreis"][i]}\n{merged_stats[col_to_display][i]}', fontsize=10)
-    
-    # add all text
-    if labels == "Yes": 
-        for i in range(len(merged)):
-            ax.text(merged.longitude[i], merged.latitude[i],
-                    f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', fontsize=10)
-    
+    # plot function
+    fig = data_map(data, 'ags5_fix', col_to_display, cat_col=cat_col_bool)
+    # show fig
     st.pyplot(fig)
