@@ -46,10 +46,11 @@ def app():
             'metropolitan_region', 'metropolitan_area',
             'east_west', 'border_proximity',
             'support_area_status', 'eligible_area']
-    st.write("Default catergorical variables:", cat_cols)
+    #st.write("Default catergorical variables:", cat_cols)
     variables_to_be_categorical = st.multiselect(label="Which other variables are categorical?", 
-                                options=sorted(list(set(X.columns).difference(set(cat_cols)))),
-                                #default=cat_cols,
+                                options=list(X.columns),
+                                #options=sorted(list(set(X.columns).difference(set(cat_cols)))),
+                                default=cat_cols,
                                 help="If not is selected, the variable will be treated as numerical.")
 
     ''' Clustering using k-modes '''
@@ -141,3 +142,7 @@ def app():
                         f'{merged["kreis"][i]}\n{merged[col_to_display][i]}', fontsize=10)
         
         st.pyplot(fig)
+
+        # export df with clusters using the function from utils
+        df_cluster = data[['ags5', 'km_cluster']]
+        st.markdown(get_table_download_link(df_cluster, text="Download Cluster Results"), unsafe_allow_html=True)
