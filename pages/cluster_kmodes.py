@@ -24,17 +24,7 @@ def app():
     st.write("Uploaded dataset size:", data.shape)
 
     # Select a subset of data columns
-    #X = data.drop(["ags2", "ags5", "kreis"], axis=1)
     X = data.drop(["cluster", "ags5", "kreis"], axis=1)
-
-    ''' Variable and Method Selection '''
-    # # Drop variables from data
-    # st.subheader("Select non-important variables")
-    # variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
-    #                                          options=list(X.columns), 
-    #                                          help="If none is selected, then all variables will be used for PCA.")
-    # if variables_to_be_dropped:
-    #     X.drop(variables_to_be_dropped, axis=1, inplace=True)
 
     ''' Variable and Method Selection '''
     X = drop_selected_variables(X)
@@ -59,7 +49,6 @@ def app():
     ''' Clustering using k-modes '''
     st.subheader("K-Modes Clustering")
     num_clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
-    clusters = list(range(num_clusters))
 
     button_run = st.radio("Run KModes Model", options=["Yes", "No"], index=1)
     if button_run == "Yes": 
@@ -89,11 +78,7 @@ def app():
 
         # export df with clusters using the function from utils
         df_cluster = data[['cluster', 'ags5', 'kreis']]
+        df_cluster.to_csv('data/cluster_km.csv', index=False)
         st.markdown(get_table_download_link(df_cluster, text="Download Cluster Results"), unsafe_allow_html=True)
-
-        ''' 
-            1. Save df_cluster (df_cluster.to_csv('data/cluster_file.csv', index=False))
-            2. Read csv
-        '''
 
 
