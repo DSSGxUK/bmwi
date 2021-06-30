@@ -16,7 +16,7 @@ from .utils import *
 # Define the app 
 def app():
 
-    st.header("Cluster Analysis using Principal Component Analysis.")
+    st.header("Cluster Analysis using KModes.")
 
     # Read the data file with 401 and rows and n columns
     data = read_single_file()
@@ -59,21 +59,24 @@ def app():
     ''' Clustering using k-modes '''
     st.subheader("K-Modes Clustering")
     num_clusters = st.slider("Select the number of clusters.", min_value=2, max_value=10, step=1, value=3, help="Suggested:not more than 4")
-    clusters = [list(range(num_clusters))]
+    clusters = list(range(num_clusters))
 
-    if st.button("Run KModes Model"):
+    button_run = st.radio("Run KModes Model", options=["Yes", "No"], index=1)
+    if button_run == "Yes": 
+    #if st.button("Run KModes Model"):
+    
         # Model building and fitting
         km = KModes(n_clusters=num_clusters, init='Huang', n_init=5, verbose=1)
         km.fit_predict(X, categorical=cat_cols+variables_to_be_categorical)
-        data['km_cluster'] = km.labels_
+        data['cluster'] = km.labels_
 
         # Print the cluster sizes
         st.write("The following are the cluster sizes:")
-        st.write(list(data['km_cluster'].value_counts().sort_index()))
+        st.write(list(data['cluster'].value_counts().sort_index()))
         
         # Print the cluster information
         for i in range(num_clusters):
-            st.write(f"Cluster {i}:", data[data['km_cluster']==i]['kreis'].to_list())
+            st.write(f"Cluster {i}:", data[data['cluster']==i]['kreis'].to_list())
 
 
         ''' Cluster Visualisation '''
@@ -123,7 +126,7 @@ def app():
                                         options=clusters, index=0)
 
         # plot
-        col_to_display = 'km_cluster'
+        col_to_display = 'cluster'
         fig, ax = plt.subplots(figsize=(50,30))
         merged.plot(column=col_to_display, #scheme="NaturalBreaks",
                     #scheme='UserDefined', classification_kwds={'bins':clusters},
@@ -139,7 +142,7 @@ def app():
                         f'{merged_ags["kreis"][i]}\n{merged_ags[col_to_display][i]}', fontsize=10)
         # (2) by cluster
         if label_cls == "Yes": 
-            merged_cls = merged[merged['cluster']==int(txt_to_display_cls[:2])]
+            merged_cls = merged[merged['cluster']==int(txt_to_display_cls)]
             for i in merged_cls.index:
                 ax.text(merged_cls.longitude[i], merged_cls.latitude[i],
                         f'{merged_cls["kreis"][i]}\n{merged_cls[col_to_display][i]}', fontsize=10)
@@ -152,7 +155,7 @@ def app():
         st.pyplot(fig)
 
         # export df with clusters using the function from utils
-        df_cluster = data[['ags5', 'km_cluster']]
+        df_cluster = data[['ags5', 'cluster']]
         st.markdown(get_table_download_link(df_cluster, text="Download Cluster Results"), unsafe_allow_html=True)
 
         ''' 
