@@ -8,7 +8,7 @@ from multipage import MultiPage
 # import your pages here
 from pages import data_upload, data_analysis, data_visualize, cinny_page, network_numerical, \
 merge_data, cluster_analysis, network_categorical, cluster_kmodes, cluster_customization, \
-final_page_v1
+final_page_v1, data_prep
 
 # Create an instance of the app 
 app = MultiPage()
@@ -17,6 +17,7 @@ app = MultiPage()
 st.title("BMWi Tool")
 
 # The main app
+app.add_page("Data Prep", data_prep.app)
 app.add_page("Final Page", final_page_v1.app)
 app.add_page("Upload Data", data_upload.app)
 app.add_page("Data Analysis", data_analysis.app)
