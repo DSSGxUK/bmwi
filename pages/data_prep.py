@@ -52,13 +52,17 @@ def app():
         # (1) wide format
         st.markdown("### Useful Worksheets in Wide Format")
         for sheet_name, sheet_data in cleanerObject.getAllUsefulSheets_wide().items():
-            st.markdown(get_table_download_link(sheet_data, 
-                text=f"Download {sheet_name.replace(' ', '_')}.csv in wide format"), unsafe_allow_html=True)
-            st.write(sheet_name, sheet_data.shape)
+            st.write(sheet_name, sheet_data.shape, \
+                get_table_download_link(sheet_data, text="download csv", \
+                    filename=f"{sheet_name.replace(' ', '_')}_wide.csv"), unsafe_allow_html=True)
+        
         # (2) long format
         st.markdown("### Useful Worksheets in Long Format")
         for sheet_name, sheet_data in cleanerObject.getAllUsefulSheets_long().items():
-            st.markdown(get_table_download_link(sheet_data, 
-                text=f"Download {sheet_name.replace(' ', '_')}.csv in long format"), unsafe_allow_html=True)
-            st.write(sheet_name, sheet_data.shape)
+            st.write(sheet_name, sheet_data.shape, \
+                get_table_download_link(sheet_data, text="download csv", \
+                    filename=f"{sheet_name.replace(' ', '_')}_long.csv"), unsafe_allow_html=True)
         
+        # ** manually get unemployment rate sheet and load it in final_page
+        cleanerObject.getAllUsefulSheets_wide()['Alo Quote'].to_csv('data/AloQuote_wide.csv')
+        cleanerObject.getAllUsefulSheets_long()['Alo Quote'].to_csv('data/AloQuote_long.csv')
