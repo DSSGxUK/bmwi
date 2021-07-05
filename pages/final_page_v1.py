@@ -60,7 +60,6 @@ def app():
 
     # Get the combined predictions 
     combined_df = forecaster.get_predictions_df_appended(NUM_PREDICTIONS)
-    combined_df.reset_index(inplace=True)
     
     st.write("There are two output formats:")
 

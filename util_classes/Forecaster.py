@@ -160,7 +160,8 @@ class Forecaster:
         import pandas as pd
 
         # Get the predictions df and the original df
-        original_df = self.df_pivot_by_ags5
+        pre_original_df = self.df_pivot_by_ags5
+        original_df = pre_original_df.reset_index()
         pred_df = self.get_predictions_df(count)
 
         # Append to the end of original df
