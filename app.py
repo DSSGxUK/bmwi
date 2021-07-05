@@ -1,10 +1,14 @@
 import os
+from typing import final
 import streamlit as st
 import numpy as np
 
 # Custom imports 
 from multipage import MultiPage
-from pages import data_upload, data_analysis, data_visualize, cinny_page, network_numerical, merge_data, cluster_analysis, network_categorical, cluster_kmodes, cluster_customization # import your pages here
+# import your pages here
+from pages import data_upload, data_analysis, data_visualize, cinny_page, network_numerical, \
+merge_data, cluster_analysis, network_categorical, cluster_kmodes, cluster_customization, \
+final_page_v1
 
 # Create an instance of the app 
 app = MultiPage()
@@ -13,6 +17,7 @@ app = MultiPage()
 st.title("BMWi Tool")
 
 # The main app
+app.add_page("Final Page", final_page_v1.app)
 app.add_page("Upload Data", data_upload.app)
 app.add_page("Data Analysis", data_analysis.app)
 app.add_page("Data Visualization", data_visualize.app)
