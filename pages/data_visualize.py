@@ -26,9 +26,8 @@ def app():
     if 'main_data.csv' not in os.listdir('data'):
         st.markdown("Please upload data through `Upload Data` page!")
     else:
-
         # Read the data 
-        data = pd.read_csv('data/main_data.csv', encoding='latin_1')
+        data = read_single_file()
 
         ''' Display a correlation matrix '''
         corr_matrix = st.checkbox("Do you want a correlation matrix?", value=False)
@@ -50,7 +49,7 @@ def app():
         if chart == "Distribution":
             
             kde_check = st.checkbox("Show Kernel Density Estimation?", value=False)
-            # pLot distribution 
+            # plot distribution 
             if kde_check: 
                 sns.distplot(data[feature], 10, kde=True)
             else: 

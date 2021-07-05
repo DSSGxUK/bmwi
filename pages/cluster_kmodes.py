@@ -72,7 +72,7 @@ def app():
         ''' Cluster Visualisation '''
         st.subheader("Cluster Map")
         data['ags5_fix'] = data['ags5'].apply(fix_ags5)
-        fig = data_map(data, 'ags5_fix', 'cluster', cat_col=True)
+        fig = plot_map(data, 'ags5_fix', 'cluster', cat_col=True)
         # show plot
         st.pyplot(fig)
 

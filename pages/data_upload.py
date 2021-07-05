@@ -82,6 +82,6 @@ def app():
     # prep data for merge
     data['ags5_fix'] = data['ags5'].apply(fix_ags5)
     # plot function
-    fig = data_map(data, 'ags5_fix', col_to_display, cat_col=cat_col_bool)
+    fig = plot_map(data, 'ags5_fix', col_to_display, cat_col=cat_col_bool)
     # show fig
     st.pyplot(fig)

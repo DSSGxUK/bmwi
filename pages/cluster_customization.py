@@ -45,7 +45,7 @@ def app():
     if button_run == "Yes": 
         st.subheader("Cluster Map")
         data['ags5_fix'] = data['ags5'].apply(fix_ags5)
-        fig = data_map(data, 'ags5_fix', 'cluster', cat_col=True)
+        fig = plot_map(data, 'ags5_fix', 'cluster', cat_col=True)
         st.pyplot(fig)
     
     # export customized clusters

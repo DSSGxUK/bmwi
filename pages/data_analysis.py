@@ -5,11 +5,15 @@ from pandas._config.config import options
 import streamlit as st 
 import numpy as np 
 
+# Custom modules 
+from .utils import *
+
 # Define the page app 
 def app(): 
     
     ''' Load the data and show descriptive statics '''
-    data = pd.read_csv('data/main_data.csv', encoding='latin_1')
+    data = read_single_file()
+
     st.write("Basic Data Statistics like mean, median and percentiles.")
     st.dataframe(data.describe())
 

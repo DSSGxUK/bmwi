@@ -26,5 +26,8 @@ def app():
 
         st.write(f"The combined dataset is of the size {data.shape}")
 
+        # Save data
+        data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
+
         # Publish the combined df using the function from utils
         st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)

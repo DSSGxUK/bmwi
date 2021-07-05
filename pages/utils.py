@@ -9,24 +9,24 @@ import matplotlib.pyplot as plt
 import base64
 import geopandas as gpd
 
-# Function to fix the format of ag5 
+''' Data Fix Functions'''
 def fix_ags5(x):
+    """Function to fix the format of ag5 """
     if len(str(x))==4:
         return '0'+str(x)
     else:
         return str(x)
 
 ''' File Upload Functions '''
-
-
 def read_single_file():
     """Function to read a single csv file
-
     Returns:
         data: Returns a dataframe of the uploaded csv file
     """
     # Code to read a single file 
-    uploaded_file = st.file_uploader("Choose a file", type = ['csv', 'xlsx'])
+    uploaded_file = st.file_uploader(
+        "The app loads the last-used dataset by default.", 
+        type = ['csv', 'xlsx'])
     global data
     if uploaded_file is not None:
         try:
@@ -34,41 +34,34 @@ def read_single_file():
         except Exception as e:
             print(e)
             data = pd.read_excel(uploaded_file, encoding='latin_1')
-    
+    else:
+        data = pd.read_csv('data/main_data.csv', encoding='latin_1')
+        if data.columns[0]=='Unnamed: 0':
+            data = pd.read_csv('data/main_data.csv', encoding='latin_1', index_col=0)
     return data
 
 ''' Data Filtering methods '''
-
 def drop_selected_variables(df):
-    """Function to drop selected variables in a dataframe
-
+    """Function to drop selected variables in a dataframes
     Args:
         df (DataFrame): dataframe to be filtered
-
     Returns:
         df: Returns the filtered data
     """
-    
     st.subheader("Select non-important variables")
     variables_to_be_dropped = st.multiselect(label="Which variables would you like to drop?", 
                                             options=list(df.columns), 
                                             help="If none are selected, then all variables will be used for PCA.")
-
     # Drop the variables from the data
     if variables_to_be_dropped:
         df.drop(variables_to_be_dropped, axis=1, inplace=True)
-    
     return df
 
 
-
-
-
 ''' Visualisation Functions '''
-
 # Function to plot a map
-def data_map(data, merge_col, data_col, cat_col=False):
-    '''
+def plot_map(data, merge_col, data_col, cat_col=False):
+    """
     Input variables:
     - data: pd.df; dataframe info to plot the map
     - merge_col: str; the ags5 col to merge with gdf
@@ -76,12 +69,16 @@ def data_map(data, merge_col, data_col, cat_col=False):
     - cat_col: bool; whether data_col is categorical, default to False
     Return:
     - fig: plt.fig; the plot figure
-    '''
+    """
     # read the map coordinates data 
     gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
     
     # merge the coords with the data 
-    merged = pd.merge(data, gdf, left_on=merge_col, right_on='krs_code')
+    try:
+        merged = pd.merge(data, gdf, left_on=merge_col, right_on='krs_code')
+    except ValueError:
+        data['ags5_fix'] = data['ags5'].apply(fix_ags5)
+        merged = pd.merge(data, gdf, left_on='ags5_fix', right_on='krs_code')
     
     # get the geospatial data 
     merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
@@ -172,7 +169,17 @@ def data_map(data, merge_col, data_col, cat_col=False):
     
     return fig
 
-
+# Function to plot a (time-series) line plot
+def plot_line(df, x_col, y_col, filter_col=None, filter_val=None):
+    fig, ax = plt.subplots(figsize=(50,20))
+    if (filter_col==None) or (filter_val==None):
+        df.plot(x_col, y_col, ax=ax)
+        ax.set_title(f'{y_col} in Germany')
+    else:
+        filter_df = df[df[filter_col]==filter_val]
+        filter_df.plot(x_col, y_col, ax=ax)
+        ax.set_title(f"{filter_val}'s {y_col} in Germany")
+    return fig
 
 # Funtion to plot a histogram 
 def data_histogram(column, no_of_bins, minimum=None, maximum=None):
