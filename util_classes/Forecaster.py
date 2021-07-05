@@ -155,7 +155,7 @@ class Forecaster:
         last_date = original_df.columns[-1]
 
         # Get the next dates 
-        next_dates = pd.date_range(last_date, periods=count+1).tolist()[1:]
+        next_dates = pd.date_range(last_date, periods=count+1, freq='M').date.tolist()[1:]
         pred_df.columns = next_dates
 
         # Append to the end of original df
