@@ -144,6 +144,8 @@ class Forecaster:
         # Get the next dates 
         next_dates = pd.date_range(last_date, periods=count+1, freq='M').date.tolist()[1:]
         output_df.columns = next_dates
+
+        output_df.reset_index(inplace=True)
     
         return output_df
     
@@ -160,15 +162,6 @@ class Forecaster:
         # Get the predictions df and the original df
         original_df = self.df_pivot_by_ags5
         pred_df = self.get_predictions_df(count)
-        # pred_df.set_index('ags5', inplace=True)
-        # original_df = self.df_pivot_by_ags5
-
-        # # Get the last date in the original df
-        # last_date = original_df.columns[-1]
-
-        # # Get the next dates 
-        # next_dates = pd.date_range(last_date, periods=count+1, freq='M').date.tolist()[1:]
-        # pred_df.columns = next_dates
 
         # Append to the end of original df
         final_df = pd.concat([original_df, pred_df], axis=1)
