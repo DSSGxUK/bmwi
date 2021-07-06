@@ -7,11 +7,9 @@ from util_classes.Forecaster import Forecaster
 from .utils import *
 
 def app(): 
-    pass 
 
     ''' Upload datasets in the German Kreis format @cinny'''
 
-    ## COMMENTED THIS OUT FOR NOW AND CREATED A WORKFLOW FOR THE UNEMPLOYMENT DATA INSTEAD
     # Upload all data files '''
     st.markdown("## Upload csv files for analysis.") 
     st.write("\n")
@@ -25,20 +23,7 @@ def app():
 
     ''' Clean using the cleaner class and merge the data and get final dataset @cinny'''
     # Implemented on data_prep.py page
-
-    ''' Crop dataframe'''
-    # get default values
-    data_cols = list(data.columns)
-    min_date_i = data_cols.index(min(data_cols))
-    max_date_i = data_cols.index(max(data_cols))
-    # get input values
-    start_date = st.selectbox("Select start date", options=data_cols, index=min_date_i)
-    end_date = st.selectbox("Select end date", options=data_cols[min_date_i:], index=max_date_i)
-    start_date_i = data_cols.index(start_date)
-    end_date_i = data_cols.index(end_date)
-    # crop dataframe
-    data = data[data.columns[start_date_i:end_date_i+1]]
-
+    
     ''' Do a SARIMAX Training and get the error value @prakhar '''
     # Set the config for the models
     config = [(1, 1, 2), (1, 0, 2, 12), 't']
