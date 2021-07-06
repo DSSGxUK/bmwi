@@ -39,10 +39,10 @@ class Forecaster:
             if verbose:
                 print("Fitting 401 models ", end='')
             
-            models = [self.get_model(train_data, verbose=True) for train_data in all_train_data[:10]]
+            models = [self.get_model(train_data, verbose=True) for train_data in all_train_data]
             if verbose:
                 print("\nAll Models fitted!")
-            self.models = { df.index.unique()[i]: models[i] for i in range(len(all_train_data[:10])) }
+            self.models = { df.index.unique()[i]: models[i] for i in range(len(all_train_data)) }
             
         
         else:
@@ -124,7 +124,7 @@ class Forecaster:
 
         # Iterate through the kreis list 
         final_preds = []
-        for kreis in self.kreis_list[:10]:
+        for kreis in self.kreis_list:
             
             # Get single predictions 
             preds = self.get_predictions(ags5=kreis, count=count)
