@@ -62,6 +62,8 @@ def app():
 
     st.write("2. This is combined format.")
     st.dataframe(combined_df)
+    combined_df_pro = pd.merge(df_index, combined_df, left_on='ags5', right_on='ags5')
+    combined_df_pro.to_csv('data/combined_df_pro.csv', index=False)
 
     # Download links 
     st.markdown(get_table_download_link(pred_df, 
@@ -87,6 +89,3 @@ def app():
     st.markdown("### Map")
     map_fig = plot_map_wide(combined_df, 'ags5')
     st.pyplot(map_fig)
-
-
-    
