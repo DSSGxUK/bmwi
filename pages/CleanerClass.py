@@ -1,13 +1,10 @@
-'''
-## Assumptions:
-- every kreis is a row (although every row need not be a kreis)
-- The left most column of the table (need not be left most column of sheet) has the ags5 code value
-- every column is a time-stamp (wide format)
-- every cell is a numeric value
-'''
-
 class CleanerClass:
     '''
+    Assumptions:
+        - every kreis is a row (although every row need not be a kreis)
+        - The left most column of the table (need not be left most column of sheet) has the ags5 code value
+        - every column is a time-stamp (wide format)
+        - every cell is a numeric value
     Input: an excel workbook in wide format
     Output: useful worksheets in long and wide formats
     '''
@@ -297,9 +294,8 @@ class CleanerClass:
             # not a string at all
             return False
         
-        
-        
-        
+
+
     def getAllUsefulSheets_wide(self):
         return self.sheets
     
