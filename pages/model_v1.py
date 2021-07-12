@@ -33,7 +33,11 @@ def app():
 
     # Create a forecaster instance
     st.write("Fitting 401 models. Estimated time: 7 minutes...")
-    forecaster = Forecaster(file_location, config, verbose=True, train=True)
+    @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+    def load_forecaster(file_location, config):
+        return Forecaster(file_location, config, verbose=True, train=True)
+
+    forecaster = load_forecaster(file_location, config)
 
     st.write("Model Fitting Complete...")
     
@@ -45,21 +49,26 @@ def app():
 
     # Get the combined predictions 
     combined_df = forecaster.get_predictions_df_appended(NUM_PREDICTIONS)
-    
+    combined_df = combined_df.loc[:,~combined_df.columns.duplicated()] # drop duplicated ags5 column
+
     st.write("There are two output formats:")
 
     st.write("1. This is 'predictions only' format.")
-    st.dataframe(pred_df)
+    df_index = pd.read_csv('data/index.csv')
+    df_index['ags5'] = df_index['ags5'].apply(fix_ags5)
+    pred_df_pro = pd.merge(df_index, pred_df, left_on='ags5', right_on='ags5')
+    st.markdown('**Pro tip**: sort by prediction results to quickly see which kreis may need most help.')
+    st.dataframe(pred_df_pro)
 
     st.write("2. This is combined format.")
     st.dataframe(combined_df)
 
     # Download links 
     st.markdown(get_table_download_link(pred_df, 
-                                        text="Download in the predictions only format.", 
+                                        text="Download predictions only.", 
                                         filename="predictions.csv"), unsafe_allow_html=True)
     st.markdown(get_table_download_link(combined_df, 
-                                        text="Download in the combined format.", 
+                                        text="Download combined data.", 
                                         filename="combined_predictions.csv"), unsafe_allow_html=True)
 
     ''' Add visulaisations of the unemployment predictions @cinny '''
@@ -67,38 +76,17 @@ def app():
     st.write("\n")
 
     # get predictions by kreis 
-    kreis_code = st.selectbox("Select the Kreis to get predictions", options=list(pred_df['ags5'].values))
-    st.dataframe(pred_df[pred_df['ags5']==kreis_code])
+    kreis_code = st.multiselect("Select the Kreis to get predictions", options=list(pred_df['ags5'].values))
+    st.dataframe(pred_df[pred_df['ags5'].isin(kreis_code)])
+
+    # line plot
+    fig1 = plot_line_wide(combined_df, kreis_code, NUM_PREDICTIONS)
+    st.pyplot(fig1)
+
+    # map
+    st.markdown("### Map")
+    map_fig = plot_map_wide(combined_df, 'ags5')
+    st.pyplot(map_fig)
+
 
     
-    # data_cols = list(data.columns)
-    # # set default values: x=date, y=unemployment_rate, filter=None
-    # alq_i = list(data.columns).index('unemployment_rate')
-    # date_i = list(data.columns).index('date')
-    # # set visualization options
-    # x_col = st.selectbox("Select x-axis", options=data_cols, index=date_i)
-    # y_col = st.selectbox("Select y-axis", options=data_cols, index=alq_i)
-    # fig1 = plot_line(data, x_col, y_col)
-    # # show plot
-    # st.pyplot(fig1)
-    
-    # # filtered
-    # # set default values: filter=ags5
-    # ags5_i = list(data.columns).index('ags5')
-    # # set visualization options
-    # filter_col = st.selectbox("Select filter column", options=data_cols, index=ags5_i)
-    # filter_val = st.selectbox("Select filter value", options=list(data[filter_col].unique()), index=0)
-    # fig2 = plot_line(data, x_col, y_col, filter_col=filter_col, filter_val=filter_val)
-    # # show plot
-    # st.pyplot(fig2)
-
-    # # map
-    # st.write("Map")
-    # # set default value
-    # recent_date_i = list(data['date'].unique()).index(max(data['date']))
-    # # set visualization options
-    # map_col = st.selectbox("Select column to visualize", options=data_cols, index=alq_i)
-    # date_val = st.selectbox("Select date to visualize", options=list(data['date'].unique()), index=recent_date_i)
-    # date_data = data[data['date']==date_val]
-    # map_fig = plot_map(date_data, 'ags5', map_col)
-    # st.pyplot(map_fig)

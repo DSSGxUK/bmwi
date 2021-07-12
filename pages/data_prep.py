@@ -27,12 +27,12 @@ def app():
         def load_cleanerObject():
             return CleanerClass(uploaded_file)
         
-        cleanerObject = load_cleanerObject()
+        cleanerObject = load_cleanerObject(uploaded_file)
 
         # Print useful worksheets
         # (1) wide format
         st.markdown("#### Useful Worksheets in Wide Format")
-        st.write('Pro tip: Here, each column is a date. \
+        st.markdown('**Pro tip**: Here, each column is a date. \
             The shape of the format is 401 rows. \
             This format is suitable for univariate analysis.')
         for sheet_name, sheet_data in cleanerObject.getAllUsefulSheets_wide().items():
@@ -42,7 +42,7 @@ def app():
         
         # (2) long format
         st.markdown("#### Useful Worksheets in Long Format")
-        st.write('Pro tip: Here, all the dates are recorded in one column. \
+        st.markdown('**Pro tip**: Here, all the dates are recorded in one column. \
             The shape of the format is (401 * range of dates) rows. \
             This format is suitable to merge multiple variables. \
             The merged file of multiple long format variable is the commonly known wide format data.')
