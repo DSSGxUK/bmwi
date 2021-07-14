@@ -333,8 +333,75 @@ def get_table_download_link(df, text, filename="final.csv"):
 def fix_day(date):
     return date.replace(day=1)
 
+def long_merge_to_wide(sheet_data, sheet_name):
+    '''
+    Input:
+        - sheet_data: list of dataframes in long format
+        - sheet_name: list of sheet names corresponding to sheet_data
+        - Note: long format in one variable data: date is one column, #rows = (401 kreis) * (time range)
+    Output:
+        - wide format merged multi-variable data: apart from index columns (ags, date), each column is a feature
+    '''
+    # sanity check
+    if len(sheet_data) != len(sheet_name):
+        return 'length of sheet_data and sheet_name does not match'
+    
+    # fix and unify sheet formats
+    for i in range(len(sheet_data)):
+        # convert time column to datetime
+        sheet_data[i]['time_stamp'] = pd.to_datetime(sheet_data[i]['time_stamp'])
+        # change column name "value" in long format to actual variable name
+        sheet_data[i].rename(columns={'value': f'{sheet_name[i]}'}, inplace=True)
+    
+    # merge sheets
+    merged_sheet = sheet_data[0]
+    for i in range(1, len(sheet_data)):
+        # merge by outer so because data can have different available time frames
+        merged_sheet = pd.merge(merged_sheet, sheet_data[i], left_on=['ags5', 'time_stamp'], right_on=['ags5', 'time_stamp'], how='outer')
+    
+    # final minor fixes
+    merged_sheet.rename(columns={'time_stamp': 'date'}, inplace=True)
+    merged_sheet.sort_values(['ags5', 'date'], inplace=True)
+    merged_sheet.reset_index(inplace=True, drop=True)
+    
+    return merged_sheet
 
-def long_merge(df_long, df_final_long, varname):
+
+
+def wide_merge_to_long(sheet_data, sheet_name):
+    '''
+    Input:
+        - sheet_data: list of dataframes in wide format
+        - sheet_name: list of sheet names corresponding to sheet_data
+        - Note: wide format one variable data: all columns are dates, 401 rows representing each kreis
+    Output:
+        - long format multi-variable data: apart from index columns (ags, variable), each column is a date
+    '''
+    # sanity check
+    if len(sheet_data) != len(sheet_name):
+        return 'length of sheet_data and sheet_name does not match'
+    
+    # fix and unify sheet formats
+    for i in range(len(sheet_data)):
+        # add a column named variable and put the variable name in
+        sheet_data[i]['variable'] = sheet_name[i]
+        # get ags5 column
+        sheet_data[i].reset_index(inplace=True)
+        sheet_data[i].rename(columns={'index': 'ags5'}, inplace=True)
+    
+    # merge sheets
+    merged_sheet = pd.concat(sheet_data, ignore_index=True)
+    
+    # final minor fixes
+    merged_sheet.sort_values(['ags5', 'variable'], inplace=True)
+    merged_sheet.reset_index(inplace=True, drop=True)
+    merged_sheet = merged_sheet.reindex(sorted(merged_sheet.columns), axis=1)
+    
+    return merged_sheet
+
+
+
+def long_merge2(df_long, df_final_long, varname):
     df_final_long['date'] = pd.to_datetime(df_final_long['date']).dt.date
     df_final_long = df_final_long[df_final_long['variable']!=varname]
     df_long['ags2'] = df_long['ags5'].astype(str).str[:-3]
@@ -344,7 +411,7 @@ def long_merge(df_long, df_final_long, varname):
     df_final_long = pd.concat([df_final_long, df_long], ignore_index=True)
     return df_final_long
 
-def wide_merge(df_wide, df_final_wide, varname):
+def wide_merge2(df_wide, df_final_wide, varname):
     # fix and convert
     df_wide['date'] = pd.to_datetime(df_wide['time_stamp'], format='%Y-%m-%d').apply(fix_day).dt.date
     df_final_wide['date'] = pd.to_datetime(df_final_wide['date']).dt.date

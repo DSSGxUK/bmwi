@@ -8,7 +8,7 @@ from multipage import MultiPage
 # import your pages here
 from pages import data_upload, data_analysis, data_visualize, cinny_page, network_numerical, \
 merge_data, cluster_analysis, network_categorical, cluster_kmodes, cluster_customization, \
-model_v1, data_prep, home_page, error_analysis
+model_v1, data_prep, home_page
 
 # Create an instance of the app 
 app = MultiPage()
@@ -21,7 +21,6 @@ st.markdown('[Documentation](https://bmwi.readthedocs.io/)')
 app.add_page("Home Page", home_page.app)
 app.add_page("Data Prep", data_prep.app)
 app.add_page("Model v1", model_v1.app)
-#app.add_page("Error analysis", error_analysis.app)
 
 # --- other pages ---
 # app.add_page("Upload Data", data_upload.app)
