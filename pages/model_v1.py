@@ -54,16 +54,27 @@ def app():
     st.write("There are two output formats:")
 
     st.write("1. This is 'predictions only' format.")
+    st.markdown('**Pro tip**: sort by prediction results to quickly see which kreis has the highest unemployment rate.')
+
+    # for display per suggestion
     df_index = pd.read_csv('data/index.csv')
     df_index['ags5'] = df_index['ags5'].apply(fix_ags5)
     pred_df_pro = pd.merge(df_index, pred_df, left_on='ags5', right_on='ags5')
-    st.markdown('**Pro tip**: sort by prediction results to quickly see which kreis may need most help.')
+    if 'ags2' in pred_df_pro.columns:
+        pred_df_pro.drop(columns=['ags2'], inplace=True)
+    if 'ags5' in pred_df_pro.columns:
+        pred_df_pro.drop(columns=['ags5'], inplace=True)
     st.dataframe(pred_df_pro)
 
     st.write("2. This is combined format.")
-    st.dataframe(combined_df)
+    # for display per suggestion
     combined_df_pro = pd.merge(df_index, combined_df, left_on='ags5', right_on='ags5')
     combined_df_pro.to_csv('data/combined_df_pro.csv', index=False)
+    if 'ags2' in combined_df_pro.columns:
+        combined_df_pro.drop(columns=['ags2'], inplace=True)
+    if 'ags5' in combined_df_pro.columns:
+        combined_df_pro.drop(columns=['ags5'], inplace=True)
+    st.dataframe(combined_df_pro)
 
     # Download links 
     st.markdown(get_table_download_link(pred_df, 
@@ -73,16 +84,17 @@ def app():
                                         text="Download combined data.", 
                                         filename="combined_predictions.csv"), unsafe_allow_html=True)
 
+
     ''' Add visulaisations of the unemployment predictions @cinny '''
     st.markdown("## Visualize prediction results.") 
     st.write("\n")
 
     # get predictions by kreis 
-    kreis_code = st.multiselect("Select the Kreis to get predictions", options=list(pred_df['ags5'].values))
-    st.dataframe(pred_df[pred_df['ags5'].isin(kreis_code)])
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(combined_df_pro['kreis'].values))
+    st.dataframe(combined_df_pro[combined_df_pro['kreis'].isin(kreis_name)])
 
     # line plot
-    fig1 = plot_line_wide(combined_df, kreis_code, NUM_PREDICTIONS)
+    fig1 = plot_line_wide(combined_df_pro, kreis_name, NUM_PREDICTIONS, df_index='kreis')
     st.pyplot(fig1)
 
     # map

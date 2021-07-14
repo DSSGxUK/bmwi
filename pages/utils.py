@@ -264,12 +264,15 @@ def plot_line_long(df, x_col, y_col, filter_col=None, filter_val=None):
         ax.set_title(f"{filter_val}'s {y_col} in Germany")
     return fig
 
-def plot_line_wide(df, filter_kreis, num_pred):
+def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
     '''
     Input data: columns are dates
     '''
     fig, ax = plt.subplots(figsize=(30,10))
-    filter_df = df.set_index('ags5')
+    filter_df = df.copy()
+    if 'bundesland' in filter_df.columns:
+        filter_df.drop(columns=['bundesland'], inplace=True)
+    filter_df = filter_df.set_index(df_index)
     dates = [str(date) for date in filter_df.columns]
     filter_df.columns = dates
     for kreis in filter_kreis:
