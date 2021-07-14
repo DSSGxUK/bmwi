@@ -194,12 +194,15 @@ def app():
     # Add structural data and combine with the error data 
     df_structural = pd.read_csv('data\df_final_stationary.csv', converters={'ags5': str} )
     df_structural['ags5'] = df_structural['ags5'].apply(fix_ags5)
-    df_mixed = pd.merge(df_structural, df_mean_error[['ags5','bundesland']], on='ags5')
+    df_mixed = pd.merge(df_structural.drop(['cluster'], axis=1), df_mean_error.drop(['kreis', 'ags2'], axis=1), on='ags5')
 
-    st.dataframe(df_mixed)
-    
     df_mixed['bundesland'] = df_mixed['bundesland'].astype('category')  
 
     # Select the structural variable and plot a graph 
-    structure_var = st.selectbox("Select the variable to plot", options=list(df_mixed.columns)[6:], value=0)
-    compare_error_in_two_groups(df_mixed, 'eligible_area')
+    try: 
+        index_val = list(df_mixed.columns).index('eligible_area') - 6
+        st.write(index_val)
+    except: 
+        index_val = 1
+    structure_var = st.selectbox("Select the variable to plot", options=list(df_mixed.columns)[6:], index=index_val)
+    compare_error_in_two_groups(df_mixed, structure_var)
