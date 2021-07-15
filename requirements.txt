@@ -11,3 +11,5 @@ streamlit==0.83.0
 mapclassify==2.4.2
 kmodes==0.11.0
 statsmodels==0.12.2
+regressors==0.0.3
+mlxtend==0.18.0

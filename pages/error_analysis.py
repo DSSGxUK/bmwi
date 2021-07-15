@@ -1,6 +1,7 @@
 # Import necessary libraries 
 from numpy.lib.function_base import average
 from numpy.lib.ufunclike import fix
+import numpy as np 
 import pandas as pd
 import geopandas as gpd
 from pandas._config.config import options 
@@ -189,8 +190,10 @@ def app():
     st.markdown("""---""")
 
     ''' Analysis with Structural Data '''
-    st.subheader("Structural Data Analysis")
 
+    # Only if 
+    st.subheader("Structural Data Analysis")
+    st.write("Compare the structural variable to the error values")
     # Add structural data and combine with the error data 
     df_structural = pd.read_csv('data\df_final_stationary.csv', converters={'ags5': str} )
     df_structural['ags5'] = df_structural['ags5'].apply(fix_ags5)
@@ -201,8 +204,39 @@ def app():
     # Select the structural variable and plot a graph 
     try: 
         index_val = list(df_mixed.columns).index('eligible_area') - 6
-        st.write(index_val)
     except: 
         index_val = 1
     structure_var = st.selectbox("Select the variable to plot", options=list(df_mixed.columns)[6:], index=index_val)
     compare_error_in_two_groups(df_mixed, structure_var)
+
+    st.markdown("""---""")
+    st.subheader("Most important structural")
+
+    st.write("Running a linear regression model")
+    df_mixed.set_index('ags5', drop=True, inplace=True)
+
+    # IDEA: Instead of doing this, we can provide a list of variables which need to be a category. 
+    # Create a utils function which takes in the list and converts them to string 
+    # or we have a list already and convert all those in the data
+    df_mixed['east_west'] = df_mixed['east_west'].astype(str)
+    df_mixed['eligible_area'] = df_mixed['eligible_area'].astype(str)
+    df_mixed['urban_/_rural'] = df_mixed['urban_/_rural'].astype(str)
+
+    # Create X and y 
+    X = df_mixed.drop(['kreis','pred','error','ground_truth'], axis=1)
+    Y = np.log(df_mixed['error'])
+    X = pd.get_dummies(data=X, drop_first=True)
+
+    # Fit the Linear Ression model 
+    regr = LinearRegression()
+    regr.fit(X, Y, sample_weight=None)
+
+    # Apply Sequential selector
+    sfs1 = sfs(regr, k_features = 10,forward=True, floating=False, scoring='r2', cv=5)
+    sfs1.fit(X, Y)
+
+    # Create feature summary table 
+    summary_table_select = pd.DataFrame.from_dict(sfs1.get_metric_dict()).T
+    top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
+    top_n_features = list(summary_table_select['feature_names'][top_n])
+    st.write(f"The top {top_n} features correlated to the error values are:", top_n_features)
