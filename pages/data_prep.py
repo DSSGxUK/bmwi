@@ -26,7 +26,7 @@ def app():
         uploaded_file = st.file_uploader("Upload Excel Workbook", type="xlsx")
 
         # cache cleaning results
-        @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+        #@st.cache(suppress_st_warning=True, allow_output_mutation=True)
         def load_cleanerObject(uploaded_file, data='Unemployment rate'):
             if data=='GDP':
                 return CleanerClassGDP(uploaded_file)
@@ -36,6 +36,7 @@ def app():
 
         # ------------------------------ Cleaner Class workflow -------------------
         # (0) Select cleanerclass
+        st.markdown("**Pro Tip**: If you are encountering problems with the data cleaning, try clearning cache and run again.")
         select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate', 'GDP'], index=0,
                                         help='Refer to documentation for details about input excel workbook format.')
         cleanerObject = load_cleanerObject(uploaded_file, data=select_cleaner)
