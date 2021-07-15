@@ -349,7 +349,9 @@ def long_merge_to_wide(sheet_data, sheet_name):
     # fix and unify sheet formats
     for i in range(len(sheet_data)):
         # convert time column to datetime
-        sheet_data[i]['time_stamp'] = pd.to_datetime(sheet_data[i]['time_stamp'])
+        if 'time_stamp' in sheet_data[i].columns:
+            if len(str(sheet_data[i]['time_stamp'][0]))>6:   #not only year
+                sheet_data[i]['time_stamp'] = pd.to_datetime(sheet_data[i]['time_stamp'])
         # change column name "value" in long format to actual variable name
         sheet_data[i].rename(columns={'value': f'{sheet_name[i]}'}, inplace=True)
     
@@ -357,7 +359,10 @@ def long_merge_to_wide(sheet_data, sheet_name):
     merged_sheet = sheet_data[0]
     for i in range(1, len(sheet_data)):
         # merge by outer so because data can have different available time frames
-        merged_sheet = pd.merge(merged_sheet, sheet_data[i], left_on=['ags5', 'time_stamp'], right_on=['ags5', 'time_stamp'], how='outer')
+        try:
+            merged_sheet = pd.merge(merged_sheet, sheet_data[i], left_on=['ags5', 'time_stamp'], right_on=['ags5', 'time_stamp'], how='outer')
+        except KeyError: #left data already has time_stamp column renamed
+            merged_sheet = pd.merge(merged_sheet, sheet_data[i], left_on=['ags5', 'date'], right_on=['ags5', 'time_stamp'], how='outer')
     
     # final minor fixes
     merged_sheet.rename(columns={'time_stamp': 'date'}, inplace=True)
