@@ -106,4 +106,4 @@ venv.bak/
 .ipynb_checkpoints
 
 /bmwi
-/data
+# /data

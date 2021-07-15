@@ -110,9 +110,9 @@ def app():
     # add all in both subcolumns by default
     col1, col2 = st.beta_columns(2)
 
-    viz_area = col1.selectbox(label="Select Kreis or Bundesland", options=["Kreis", "Bundesland"])
+    viz_area = col1.selectbox(label="Select Kreis or Bundesland", options=["Kreis", "Bundesland"], index=1)
 
-    col2.write()
+    # col2.write()
 
     # Get the options based on column one 
     if viz_area == 'Kreis':
@@ -140,6 +140,7 @@ def app():
             g = sns.lineplot(data=error_data, x="date", y="error")
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
+            st.pyplot()
             # g.legend_.remove()
         
     
@@ -149,7 +150,7 @@ def app():
             g = sns.lineplot(data=error_data, x="date", y="error",  hue='ags2')
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            g.legend_.remove()
+            # g.legend_.remove()
             st.pyplot()
 
         else: 
@@ -207,7 +208,7 @@ def app():
     st.markdown("""---""")
     st.subheader("Most important structural")
 
-    st.write("Running a linear regression model")
+    st.write("Running a linear regression model...")
     df_mixed.set_index('ags5', drop=True, inplace=True)
 
     # IDEA: Instead of doing this, we can provide a list of variables which need to be a category. 
