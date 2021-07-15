@@ -30,12 +30,7 @@ from .utils import fix_ags5, get_table_download_link
 def compare_error_in_two_groups(df, column_name): 
     sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False)
     st.pyplot()
-    # df[column_name] = df[column_name].astype(str)
-    # one, two = list(set(df[column_name]))
-    # df_one = df[df[column_name]==one]
-    # df_two = df[df[column_name]==two]
-    # return ttest_ind(df_one['error'], df_two['error'], equal_var=False)
-
+    
 # Function to plot error maps 
 def plot_error_map(data, date_string="by average"):
     # read the map coordinates data 
@@ -74,7 +69,7 @@ def app():
     st.title("Error Analysis Page")
 
     # Load error data 
-    error_data = pd.read_csv('data\error_2018_2019_nn.csv')
+    error_data = pd.read_csv('data/error_2018_2019_nn.csv')
     error_data['ags5'] = error_data['ags5'].apply(fix_ags5)
 
     ''' Error Map Viz '''
@@ -100,7 +95,7 @@ def app():
 
     ''' Data Addition '''
     # Add the bundesland kreis and ags2 to the data
-    ags5_data = pd.read_csv('data\index.csv')
+    ags5_data = pd.read_csv('data/index.csv')
     ags5_data['ags5'] = ags5_data['ags5'].apply(fix_ags5)
     error_data = pd.merge(ags5_data[['ags5', 'kreis', 'bundesland', 'ags2']], error_data, on='ags5')
     
@@ -195,7 +190,7 @@ def app():
     st.subheader("Structural Data Analysis")
     st.write("Compare the structural variable to the error values")
     # Add structural data and combine with the error data 
-    df_structural = pd.read_csv('data\df_final_stationary.csv', converters={'ags5': str} )
+    df_structural = pd.read_csv('data/df_final_stationary.csv', converters={'ags5': str} )
     df_structural['ags5'] = df_structural['ags5'].apply(fix_ags5)
     df_mixed = pd.merge(df_structural.drop(['cluster'], axis=1), df_mean_error.drop(['kreis', 'ags2'], axis=1), on='ags5')
 
