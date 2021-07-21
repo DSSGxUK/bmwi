@@ -151,7 +151,9 @@ class CleanerClassGDP:
             3. Crop out the table
             '''
             '''
-            3.1 Crop the columns
+            3.1 Crop the columns (from the left)
+            (right we currently don't handle because it is automatically handled in the pd.read_excel function;
+            but if there is metadata on the side in the right it should be cleaned manually before inputting)
             '''
             columns_to_drop = []
 
@@ -167,7 +169,8 @@ class CleanerClassGDP:
             sheet.set_index(KREIS_COL_NAME, inplace=True)
             
             '''
-            3.2 Crop the rows
+            3.2 Crop the rows (top and bottom are thrown away) (work same as 4...?)
+            (check each row and only keep ones with ags5 in ags5_list)
             '''
             sheet.columns = list(sheet.iloc[ROW_WITH_DATES])
             sheet = sheet.iloc[ROW_WITH_DATES+1:] # drop the useless rows
