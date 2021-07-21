@@ -23,14 +23,16 @@ To set up the application on your local machine, follow these steps.
 ```
 git clone link
 ```
+
 2. Create a virtual environment 
 
--  For MacOS/Linux
+    -  For MacOS/Linux
 ```
 python3 -m venv env
 ```
 
-- For Windows 
+    - For Windows 
+    
 ```
 py -m venv env
 ```

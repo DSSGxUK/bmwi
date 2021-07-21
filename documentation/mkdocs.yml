@@ -2,8 +2,12 @@ site_name: BMWi Forecasting Tool
 site_url: https://example.com/
 
 nav:
-    - Home: index.md
-    - First-Time Users: first.md
+    #- Home: index.md
+    - First-Time Users: index.md
+        #- User Profiles: first/users.md
+        #- About: first/about.md
+        #- Site Map: first/map.md
+        #- User Workflow: first/workflow.md
     - Quick Access: quick.md
     - Step-by-Step Guide:
         - Home page: steps/home.md
