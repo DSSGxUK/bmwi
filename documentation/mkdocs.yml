@@ -1,0 +1,19 @@
+site_name: BMWi Forecasting Tool
+site_url: https://example.com/
+
+nav:
+    - Home: index.md
+    - Getting Started: start.md
+    - Step-by-Step Guide: steps.md 
+    - Advanced Features: 
+        - Installation and Setup: installation.md
+    - About:
+        - Tool: about/tool.md
+        - Team: about/team.md 
+        - Licences: about/licenses.md
+    - Our Journey: 
+        - Models: journey/models.md
+        - Clusters: journey/clusters.md
+        - Causal Inference: journey/causal_inf.md
+
+theme: readthedocs
