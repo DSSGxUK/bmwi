@@ -3,8 +3,9 @@
 This section is for people who might want to edit the code base of the application. The repository with all the code can be found [here]().
 
 The application is built using the following tools and frameworks: 
+
 - [Python]() 
-- [Streamlit]() 
+- [Streamlit](https://streamlit.io/) 
 - [Pandas]()
 - [Statsmodels]() 
 - [Keras]() 
@@ -13,26 +14,29 @@ To make edits to the tool, one must know how to work with the aforementioned fra
 
 ## About Streamlit 
 
-This application is built using Streamlit
+This application is built using [Streamlit](https://streamlit.io/), a Python framework to build interactive web applications. It has a rich API for various interactive features which can be learnt more about [here](https://docs.streamlit.io/en/stable/api.html). It's a relatively new framework and its recommended to explore [building basic apps](https://docs.streamlit.io/en/stable/getting_started.html) with it before diving deep into the repository. 
+
+To set up the repository on your local machine follow the installation steps below: 
 
 ## Installation 
 
 To set up the application on your local machine, follow these steps. 
 
 1. Clone the repository on your local machine 
+
 ```
 git clone link
 ```
 
 2. Create a virtual environment 
 
-    -  For MacOS/Linux
+    For MacOS/Linux
+
 ```
 python3 -m venv env
 ```
+    For Windows 
 
-    - For Windows 
-    
 ```
 py -m venv env
 ```
