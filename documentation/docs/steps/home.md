@@ -74,10 +74,13 @@ Note that even when the dataframe is sorted by the column you click, the top res
 <span style="color:gray">*For example, even though the dataframe is currently sorted by `last_year%` when we clicked on it, it is not sorting the top 30 kreis of `last_year%` based on the full dataset, but sorting based on the top 30 kreis of this quarter.*</span>
 
 
+<span style="color:red">Should I add a map highlighting the selected top kreis with annotations, and also colored by the first sorted column.</span>
+
 
 ## Bundesland / Group Ranking
 
-The second section is bundesland / group ranking, containing four elements, following a similar format to the previous section:
+The second section is bundesland / group ranking, containing five elements, following a similar format to the previous section:
+
 
 ### Slide-bar
 
@@ -87,11 +90,13 @@ The slide bar allows you to see the top N kreise with the highest unemployment r
 
 Compared to the previous section, the slide bar range is slightly larger because the reuslts in this section is grouped.
 
+
 ### Sort-by Columns
 
 ![sorted column](../screenshots/sortby3.png)
 
 Similar to the last section, the ranking would then be sorted based on your input column. Different from the last section, this section only allows you to sort by one column for simplicity. 
+
 
 ### Group-by columns
 
@@ -122,6 +127,7 @@ This multi-selection box offers a range of categorical variables to group by. Th
 
 <span style="color:gray">*The default is set to group by both `growth_shrink_cities` and `east_west`.*</span>
 
+
 ### Results
 
 The filtering result is a multi-index dataframe with three columns. The multi-index is presented based on how many columns you group by. The three columns include: 
@@ -131,6 +137,8 @@ The filtering result is a multi-index dataframe with three columns. The multi-in
 - `#kreis`: the number of kreise in that grouping.
 
 - `%count`: the proportion of kreise belonging to that sorted grouping.
+
+<span style="color:red">^ Change column name "kreis" to "#kreis"</span>
 
 
 ![sorted dataframe](../screenshots/sort_df3.png)
@@ -150,3 +158,33 @@ The filtering result is a multi-index dataframe with three columns. The multi-in
 <span style="color:gray">*The `#kreis` and `%counts` are reference indicators to help contextualize the counts in the first column. For example, looking at the first column alone, it seems that growing-cities-West-Germany has the most number of kreise in the top 50 to have high unemployment changes since last year. However, when looking at the third column, we see that growing-above-average-West-Germany is actually the group with the highest percentage of kreise than other group to have the high unemployment changes in a year.*</span>
 
 <span style="color:gray">*Also note the number of multi-indices shown in the example. Since `growth_shrink_cities` have five categories, and `east_west` has two categories, there should be a total of 10 category groups in the index rows. However, the reason why not all combinations are shown is because some categories do not have kreise in it. Sometimes, it could be useful to see what category groups are not in the top lists.*</span>
+
+
+### Visualizations
+
+Visualize the dataframe output results.
+
+As explained in the tip, when grouping by multiple columns, resulting a large number of combinations, it may be hard to see the results clearly using the pie chart or bar chart.
+
+![visualization](../screenshots/visualizations.png)
+
+#### Pie Chart
+The pie chart visualizes the `{sort_by_column}` into proportions.
+
+![pie chart](../screenshots/pie.png)
+
+<span style="color:gray">*As shown above, the sample pie chart visualizes the percentage each category group takes in total from the `last_year%` column. For example, growing-cities-West-Germany group accounts for `22` out of the total of `50` top kreise, therefore, it takes up `44%` as shown in the pie chart.*</span>
+
+
+#### Bar Chart
+As explained earlier, the pie chart could be a biased understanding of the category groups, and that can be balanced by understanding the percentage of those kreis accounting for the whole category group.
+
+The bar chart visualizes the `%counts` column, and draws a horizontal line on the 50% mark.
+
+![bar chart](../screenshots/bar.png)
+
+<span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display is too small on your screen.*</span>
+
+<span style="color:red">^ Also add this as a pro tip on the tool page</span>
+
+<span style="color:red">^ Are there other things that should be added on the home page for quick access?</span>
