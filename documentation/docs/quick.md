@@ -1,4 +1,4 @@
-# Getting Started
+# Quick Access
 
 Welcome to the BMWi tool documentation. This is a tool developed to forecast the Kreis level unemployment rate for the next quarter as well as perform various analyses like the prediction error analysis or Kreis vulnerability detection using structural data. 
 

@@ -2,12 +2,12 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands (To be removed)
+<!-- ## Commands (To be removed)
 
 * `mkdocs new [dir-name]` - Create a new project.
 * `mkdocs serve` - Start the live-reloading docs server.
 * `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* `mkdocs -h` - Print help message and exit. -->
 
 ## About the Project 
 
@@ -20,5 +20,5 @@ This project is a collaboration between [German Federal Ministry for Economic Af
 
 There are multiple aspects to be explored with this tool. Head over to [this page](start.md) to get started with the tool. 
 
-**Note:** If you wish to get the predictions immediately, you can download them [here]() 
+**Note:** If you wish to get the predictions immediately, you can download them [here](). 
 
