@@ -61,6 +61,8 @@ The errors are on the x-axis so the fatter the curve is the more prone that cate
 
 ### Most important Structural Variables 
 
-Write a bit about this method a bit more 
+Individual exploration might be interesting but can also be very time consuming. There is an option to get an overview of which features are most linearly related to the prediction errors. The features are then listed in the order of importance. There is a provision to choose how many variables to show. 
+
+<span style="color:red">Explain how they have been calculated.</span>
 
 ![](https://i.imgur.com/zNZCKye.png)
