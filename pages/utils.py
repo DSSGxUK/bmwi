@@ -393,16 +393,22 @@ def wide_merge_to_long(sheet_data, sheet_name):
         # get ags5 column
         sheet_data[i].reset_index(inplace=True)
         sheet_data[i].rename(columns={'index': 'ags5'}, inplace=True)
-    
+
     # merge sheets
     merged_sheet = pd.concat(sheet_data, ignore_index=True)
     
     # final minor fixes
-    merged_sheet.sort_values(['ags5', 'variable'], inplace=True)
+    merged_sheet.sort_values(['variable', 'ags5'], inplace=True)
     merged_sheet.reset_index(inplace=True, drop=True)
-    merged_sheet = merged_sheet.reindex(sorted(merged_sheet.columns), axis=1)
     
-    return merged_sheet
+    # TypeError: '<' not supported between instances of 'Timestamp' and 'str'
+    #merged_sheet = merged_sheet.reindex(sorted(merged_sheet.columns), axis=1)
+    merged_sheet_index = merged_sheet[['ags5', 'variable']]
+    merged_sheet_data = merged_sheet.drop(columns=['ags5', 'variable'])
+    merged_sheet_data = merged_sheet_data.reindex(sorted(merged_sheet_data.columns), axis=1)
+    merged_sheet_sorted = pd.merge(merged_sheet_index, merged_sheet_data, right_index=True, left_index=True)
+    
+    return merged_sheet_sorted
 
 
 

@@ -24,10 +24,11 @@ def app():
 
         # Read in excel workbook
         uploaded_file = st.file_uploader("Upload Excel Workbook", type="xlsx")
-
+        
         # cache cleaning results
         #@st.cache(suppress_st_warning=True, allow_output_mutation=True)
         def load_cleanerObject(uploaded_file, data='Unemployment rate'):
+            # get cleanerclass
             if data=='GDP':
                 return CleanerClassGDP(uploaded_file)
             else:
@@ -73,13 +74,14 @@ def app():
             # merge function
             merged_df = wide_merge_to_long(select_data, select_var)
 
-        # Confirm selection and then saves to next section of this page to crop timeframe
-        confirm_merge_data = st.radio("Confirm merged dataframe", options=["Yes", "No"], index=1,
-                                        help='Preview and confirm merged data brings you to timeframe cropping section of data prepartion.')
         st.write(merged_df)
         
+        # Confirm merge and then saves to next section of this page to crop timeframe
+        confirm_merge_data = st.radio("Confirm merged dataframe", options=["Yes", "No"], index=1,
+                                        help='Preview and confirm merged data brings you to timeframe cropping section of data prepartion.')
+        
         if confirm_merge_data == 'Yes':
-            merged_df.to_csv('data/merged_df.csv', index=False)
+            merged_df.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
         
 
 
@@ -93,31 +95,35 @@ def app():
         uploaded_files = st.file_uploader("Upload CSV", type="csv", accept_multiple_files=True)
         
         if uploaded_files:
-            st.write(f"{len(uploaded_files)} files found in the data")
             data = pd.read_csv(uploaded_files[0])
             
             # Iterate through the uploaded files 
             for file in uploaded_files[1:]:
                 new_data = pd.read_csv(file)
                 # Merge the data 
-                data = pd.merge(new_data, data, on='ags5')
-            st.write(f"The combined dataset is of the size {data.shape}")
+                data = pd.merge(new_data, data, on=['_id', 'ags2', 'ags5', 'bundesland', 'kreis'])
+                data.drop(columns=['id', '_id', 'ags2', 'bundesland', 'kreis'], inplace=True)
+            #st.write(f"The combined dataset is of the size {data.shape}")
+            st.write(data)
             
-            # Save data
-            data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
+            # Confirm merge and then saves to next section of this page to crop timeframe
+            confirm_merge_data = st.radio("Confirm merged dataframe", options=["Yes", "No"], index=1,
+                                            help='Preview and confirm merged data brings you to timeframe cropping section of data prepartion.')
+            if confirm_merge_data == 'Yes':
+                data.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
             
             # Publish the combined df using the function from utils
-            st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
+            #st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
 
 
     ## -------- Data to pass on to final_page_v1
     st.markdown("## Final dataset cleaning")
-    st.write('Cropping the timeframe of the data is useful for the model to differentiate between normal and crisis time.')
-
-    crop_data = st.radio("Crop time-series data", options=["Yes", "No"], index=1,
+    st.write('Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.')
+    
+    clean_data = st.radio("Cleaning time-series data", options=["Yes", "No"], index=1,
         help='Crop the time-series data to the appropriate timeframe for model prediction.')
     
-    if crop_data == "Yes":
+    if clean_data == "Yes":
         
         upload_data = st.radio("Upload new data", options=["Yes", "No"], index=1)
         if upload_data == "Yes":
@@ -130,6 +136,10 @@ def app():
         
         # Show data statistics 
         st.write("**Data Size:**", data.shape)
+        
+        # Crop timeframe
+        st.markdown("## Cropping timeframe")
+        st.write('Cropping the timeframe of the data is useful for the model to differentiate between normal and crisis time.')
 
         # get default values
         data_cols = list(data.columns)

@@ -1,4 +1,5 @@
 # Home Page: Unemployment Rate Ranking
+
 The home page allows you to get quick takeaways based on the latest prediction results. 
 
 The main feature of this page is to quickly see which kreis (or which group of kreise) are expected to have the highest unemployment rate for the next quarter.
@@ -7,14 +8,14 @@ The main feature of this page is to quickly see which kreis (or which group of k
 ## Kreise Ranking
 The first section is kreise ranking, containing three elements:
 
-[//]: <> ( ![first section: kreise ranking](../screenshots/kreise_ranking.png) )
+[//]: <> ( ![first section: kreise ranking](../home_screenshots/kreise_ranking.png) )
 
 ### Slide bar
 
 The slide bar allows you to see the top N kreise with the highest unemployment rates. It is set in a range from 10 to 100, in increments of 10. The default is set at 10.
 
-![slide bar](../screenshots/slidebar.png)
-[//]: <> ( ![slide bar](../screenshots/slidebar2.png) )
+![slide bar](../home_screenshots/slidebar.png)
+[//]: <> ( ![slide bar](../home_screenshots/slidebar2.png) )
 
 <span style="color:gray">*The screenshot sample is set at 30, meaning that it would show a dataframe with the top 30 highest unemployment rates.*</span>
 
@@ -44,8 +45,8 @@ The available sort by options are:
     - last year (`last_year%`): (this_Q - this_Q_last_year) / (this_Q) * 100
 
 
-![sort by columns](../screenshots/sortby.png)
-[//]: <> ( ![sort by columns](../screenshots/sortby2.png) )
+![sort by columns](../home_screenshots/sortby.png)
+[//]: <> ( ![sort by columns](../home_screenshots/sortby2.png) )
 
 <span style="color:gray">*For example, the screenshot sample is set at the three default columns: this quarter (`2020-03-31`), last quarter (`last_time%`), and the same quarter last year (`last_year%`).*</span>
 
@@ -54,7 +55,7 @@ The available sort by options are:
 
 After setting the number of top kreise you want to see and the columns you want to sort by, you are presented with the dataframe output of your choosing.
 
-![sorted dataframe](../screenshots/sort_df.png)
+![sorted dataframe](../home_screenshots/sort_df.png)
 
 <span style="color:gray">*This dataframe currently shows the top 30 kreis based on their unemployment rate this quarter, and also showing percentage change comparision to last quarter and last year, because they were in the input fields. *</span>
 
@@ -67,7 +68,7 @@ Note that even when the dataframe is sorted by the column you click, the top res
 
 <span style="color:red">^ Does this make sense?</span>
 
-![sorted column](../screenshots/sort_col.png)
+![sorted column](../home_screenshots/sort_col.png)
 
 <span style="color:gray">*This dataframe currently shows the top 30 kreis based on their unemployment rate this quarter, and is also sorted by the percentage change compared to last year.*</span>
 
@@ -86,14 +87,14 @@ The second section is bundesland / group ranking, containing five elements, foll
 
 The slide bar allows you to see the top N kreise with the highest unemployment rates. It is set in a range from 50 to 200, in increments of 10. The default is set at 50.
 
-![slide bar](../screenshots/slidebar3.png)
+![slide bar](../home_screenshots/slidebar3.png)
 
 Compared to the previous section, the slide bar range is slightly larger because the reuslts in this section is grouped.
 
 
 ### Sort-by Columns
 
-![sorted column](../screenshots/sortby3.png)
+![sorted column](../home_screenshots/sortby3.png)
 
 Similar to the last section, the ranking would then be sorted based on your input column. Different from the last section, this section only allows you to sort by one column for simplicity. 
 
@@ -118,12 +119,12 @@ This multi-selection box offers a range of categorical variables to group by. Th
 
 - `metropolitan_region` ("Europäische Metropolregion")
 
-- state-level ("`ags2`" / "`bundesland`")
+- state area code (Amtlicher Gemeindeschlüssel, "`ags2`") / state-level ("`bundesland`")
 
 
 <span style="color:red">^ Are there other groupings that could be useful that are currently not included? Need to add GRW eligible for funding category column.</span>
 
-![grouped by column](../screenshots/groupby.png)
+![grouped by column](../home_screenshots/groupby.png)
 
 <span style="color:gray">*The default is set to group by both `growth_shrink_cities` and `east_west`.*</span>
 
@@ -141,18 +142,17 @@ The filtering result is a multi-index dataframe with three columns. The multi-in
 <span style="color:red">^ Change column name "kreis" to "#kreis"</span>
 
 
-![sorted dataframe](../screenshots/sort_df3.png)
+![sorted dataframe](../home_screenshots/sort_df3.png)
 
 <span style="color:gray">*For example, this sample dataframe shows the top `50` kreise, sorted by `last_year%`, grouped by `growth_shrink_cities` and `east_west`.*</span>
 
 <i>
-<span style="color:gray">Reading the first row: 
+<p style="color:gray">Reading the first row: </p>
 <ul style="color:gray">
     <li> the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `22` of them belong to growing cities in west Germany.
     <li> the second column, `#kreis` means that there is a total of `163` (out of all 401) kreise that are growing cities in west Germany.
     <li> the third column, `%counts`, means that 22 kreise accounts for `13.5%` of all the kreise in the growing-cities-West-Germany group.
 </ul>
-</span>
 </i>
 
 <span style="color:gray">*The `#kreis` and `%counts` are reference indicators to help contextualize the counts in the first column. For example, looking at the first column alone, it seems that growing-cities-West-Germany has the most number of kreise in the top 50 to have high unemployment changes since last year. However, when looking at the third column, we see that growing-above-average-West-Germany is actually the group with the highest percentage of kreise than other group to have the high unemployment changes in a year.*</span>
@@ -166,12 +166,12 @@ Visualize the dataframe output results.
 
 As explained in the tip, when grouping by multiple columns, resulting a large number of combinations, it may be hard to see the results clearly using the pie chart or bar chart.
 
-![visualization](../screenshots/visualizations.png)
+![visualization](../home_screenshots/visualizations.png)
 
 #### Pie Chart
 The pie chart visualizes the `{sort_by_column}` into proportions.
 
-![pie chart](../screenshots/pie.png)
+![pie chart](../home_screenshots/pie.png)
 
 <span style="color:gray">*As shown above, the sample pie chart visualizes the percentage each category group takes in total from the `last_year%` column. For example, growing-cities-West-Germany group accounts for `22` out of the total of `50` top kreise, therefore, it takes up `44%` as shown in the pie chart.*</span>
 
@@ -181,7 +181,7 @@ As explained earlier, the pie chart could be a biased understanding of the categ
 
 The bar chart visualizes the `%counts` column, and draws a horizontal line on the 50% mark.
 
-![bar chart](../screenshots/bar.png)
+![bar chart](../home_screenshots/bar.png)
 
 <span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display is too small on your screen.*</span>
 
