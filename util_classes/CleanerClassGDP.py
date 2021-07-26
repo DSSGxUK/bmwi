@@ -73,12 +73,10 @@ class CleanerClassGDP:
             
             if self.verbose:
                 print('.', end='')
-            '''
-            1. separate the sheets with data from the sheets without
-            '''
             
             '''
-            1.1 sheet must pass a simple length check
+            0. Check metadata sheet
+            sheet must pass a simple length check
             '''
             if sheet.shape[0] < 401:
                 # this sheet does not have data (in the specified format, i.e. each kreis is a separate row)
@@ -86,7 +84,8 @@ class CleanerClassGDP:
                 continue # to the next sheet
             
             ''' 
-            1.2 sheet must contain a few kreis names, all in same column: 
+            1. Find the starting column of the table
+            sheet must contain a few kreis names, all in same column: 
             '''
             #KREIS_NAMES_TO_CHECK = ['hamburg', 'berlin', 'kiel']
             KREIS_CODES_TO_CHECK = ['02000', '11000', '01002']

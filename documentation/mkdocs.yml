@@ -15,7 +15,8 @@ nav:
         - Model page: steps/model.md
         - Error Analysis page: steps\error.md
     - Advanced Features: 
-        - Installation and Setup: installation.md
+        - Installation and Setup: advanced/installation.md
+        - Cleaner Class: advanced/cleanerclass.md
     - About:
         - Tool: about/tool.md
         - Team: about/team.md 

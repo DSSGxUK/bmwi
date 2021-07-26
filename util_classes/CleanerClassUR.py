@@ -81,6 +81,7 @@ class CleanerClassUR:
             
             if self.verbose:
                 print('.', end='')
+
             '''
             1. separate the sheets with data from the sheets without
             '''
