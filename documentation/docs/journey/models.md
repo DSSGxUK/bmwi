@@ -19,6 +19,8 @@ Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used
 
 ### Training Method
 
+The training is done using the clusters that were developed based on the stationary data. The cluster development method has been  
+
 Explain cluster-based walkforward 
 
 
