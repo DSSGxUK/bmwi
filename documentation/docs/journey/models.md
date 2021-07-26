@@ -25,6 +25,8 @@ The intuition behind VAR based cluster methods is that the Kreis in each cluster
 
 *Should I explain walk-forward?*
 
+## Prophet 
+
 
 ## References
 
