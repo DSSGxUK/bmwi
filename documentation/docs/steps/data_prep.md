@@ -2,8 +2,6 @@
 
 Upload the dataset and make any necessary changes to fit the prediction model. 
 
-<span style="color:red">^ What are other data cleaning that could be needed?</span>
-
 ## Reshape and merge datasets
 
 This section process data differently for excel or csv files, and for time-series or structural data type. It assumes that:
@@ -12,9 +10,9 @@ This section process data differently for excel or csv files, and for time-serie
 
 - **structural** data are in **long**-format **csv** files, where each row is a record of one kreis, and each column is one variable
 
-- both assumes to have at least a column containing the kreis-level area code ("")
+- both assumes to have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel")
 
-## Exporting excel worksheets
+## Time-series data excel workbook
 
 ### Error Handling
 
@@ -61,19 +59,22 @@ Because each data is formatted differently in the excel workbook, we created dif
 </i>
 
 
+
+### Select variable
+
+![select variable](../prep_screenshots/select_var.png)
+
+<span style="color:gray">*Choose at least one variable. Choosing no variables at all would result in the IndexError above.*</span>
+
 ### Select data format
 
 ![select data format](../prep_screenshots/select_format.png)
-
-<span style="color:red">^ Change to select "export" data format</span>
 
 #### Long format
 
 ![long format one variable](../prep_screenshots/long_one.png)
 
 <span style="color:gray">*This is an example of a single-variable "long" format data. The dataframe contains three columns: the kreis code (`ags5`), the time (`date`), and the variable (e.g. `Alo Quote`). The number of rows of this file is 401 kreis * #dates for each kreis.*</span>
-
-<span style="color:red">^ If this confusing should we just call it wide format?</span>
 
 #### Wide format
 
@@ -82,13 +83,9 @@ Because each data is formatted differently in the excel workbook, we created dif
 <span style="color:gray">*This is an example of a single-variable "wide" format data. The dataframe contains one index column, the kreis code (`ags5`), and the rest of the columns are dates. The number of rows of this file should be 401.*</span>
 
 
-### Select variable
 
-![select variable](../prep_screenshots/select_var.png)
 
-<span style="color:gray">*Choose at least one variable. Choosing no variables at all would result in the IndexError above.*</span>
-
-### Merging
+<!-- ### Merging
 
 #### Long formats merged to one wide format
 
@@ -106,10 +103,10 @@ Because each data is formatted differently in the excel workbook, we created dif
 
 ![confirm merge](../prep_screenshots/confirm_merge.png)
 
-<span style="color:gray">*A preview of the merged data would be shown like the long and wide formats above. Once you confirm to use the merged data, it would be set as the default loaded dataset on the tool.*</span>
+<span style="color:gray">*A preview of the merged data would be shown like the long and wide formats above. Once you confirm to use the merged data, it would be set as the default loaded dataset on the tool.*</span> -->
 
 
-## Merging multiple csv files
+## Structural data csv files
 
 ![csv](../prep_screenshots/csv.png)
 
