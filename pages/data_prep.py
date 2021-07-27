@@ -65,21 +65,26 @@ def app():
             for sheet_name, sheet_data in cleanerObject.getAllUsefulSheets_long().items():
                 if sheet_name == select_var:
                     merged_df = sheet_data.rename(columns={'value': sheet_name})
-                    merged_df['date'] = pd.to_datetime(merged_df['date'])
-                    merged_df['date'] = merged_df['date'].dt.date
+                    # deal with monthly date values
+                    if select_cleaner == 'Unemployment rate':
+                        merged_df['date'] = pd.to_datetime(merged_df['date'])
+                        merged_df['date'] = merged_df['date'].dt.date
 
         else: #select_format=='wide'
             for sheet_name, sheet_data in cleanerObject.getAllUsefulSheets_wide().items():
                 if sheet_name == select_var:
                     merged_df = sheet_data
+                    
+                    # deal with monthly date values
                     #merged_df.columns = pd.to_datetime(merged_df.columns, format='%Y-%m-%d')
-                    date_list = merged_df.columns
-                    datetime_list = pd.to_datetime(date_list)
-                    date_only_list = []
-                    for date in datetime_list:
-                        date = datetime.strftime(date, '%Y-%m-%d')
-                        date_only_list.append(date)
-                    merged_df.columns = date_only_list
+                    if select_cleaner == 'Unemployment rate':
+                        date_list = merged_df.columns
+                        datetime_list = pd.to_datetime(date_list)
+                        date_only_list = []
+                        for date in datetime_list:
+                            date = datetime.strftime(date, '%Y-%m-%d')
+                            date_only_list.append(date)
+                        merged_df.columns = date_only_list
         
         st.write(merged_df)
         

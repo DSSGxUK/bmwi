@@ -80,7 +80,7 @@ Because each data is formatted differently in the excel workbook, we created dif
 
 ![wide format one variable](../prep_screenshots/wide_one.png)
 
-<span style="color:gray">*This is an example of a single-variable "wide" format data. The dataframe contains one index column, the kreis code (`ags5`), and the rest of the columns are dates. The number of rows of this file should be 401.*</span>
+<span style="color:gray">*This is an example of a single-variable "wide" format data. All the columns in the dataframe are dates. The index of the dataframe is the `ags5` code. The number of rows of this file should be 401.*</span>
 
 
 
