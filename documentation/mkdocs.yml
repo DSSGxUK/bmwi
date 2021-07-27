@@ -23,6 +23,7 @@ nav:
         - Licences: about/licenses.md
     - Our Journey: 
         - Models: journey/models.md
+        - Hierarchical Time Series: journey/hierarchical_ts.md
         - Clusters: journey/clusters.md
         - Causal Inference: journey/causal_inf.md
 
