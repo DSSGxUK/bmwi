@@ -2,9 +2,9 @@
 
 This page walks through the assumptions and implementation code for the excel sheet cleaner. 
 
-We have written two CleanerClasses: for **labor market data (unemployment rate)** and for **GDP**. 
-
 ## Purpose of the CleanerClass
+
+The excel sheet cleaner is what is used on the [Data Prep page]() to get the data for our prediction model from excel workbooks. We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**. 
 
 The goal of the CleanerClass is to retrieve a csv-like format of the data, containing only the essential index columns, variable columns, and the numerical values of the data. Worksheets that are metadata descriptions would be discarded, and the watermark-like header rows would also be cropped out in the process.
 
