@@ -21,7 +21,7 @@ We explored 4 different methods to cluster the Kreise
 Kreise that belong to the same Bundesland have a similar geographic location, 
 and are also affected by the same decisions that are made on a Bundesland level. 
 
-![Bundesland](./clusters_screenshots/hierarchy_bundesland.png)
+![Bundesland](https://i.imgur.com/Se78LkN.png)
 
 * **PCA & K-means** - We started with clustering using 169 numerical features (disregarding the 7 categorical features). 
 First, we reduced the features dimension using PCA 
@@ -53,8 +53,20 @@ Then, we used K-means to cluster the Kreise into 3 clusters based on the PCA fea
 ![PCA & K-means](./clusters_screenshots/Kmeans_of_tSNE.png)
 
 
-* **K-modes** To incoporate categorical features as well, 
+* **K-modes** To incorporate categorical features as well, 
 we also tried K-modes classification on the original 176 features, both numerical and categorical. 
 
 
 ## Cluster groups 
+
+*Should we add a list of all kerise?*
+*Should we add a map?*
+
+
+* **Bundesland**
+
+* **PCA & K-means**
+
+* **tSNE**
+
+* **K-modes** 
