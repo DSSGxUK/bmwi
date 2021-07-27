@@ -27,6 +27,10 @@ The intuition behind VAR based cluster methods is that the Kreis in each cluster
 
 ## Prophet 
 
+# Hierarchical Time Series 
+
+This section talks about the hierarchical time series model. 
+This is a model that utilized the clusters hierarchy in order to teach 
 
 ## References
 
