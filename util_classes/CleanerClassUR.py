@@ -314,10 +314,10 @@ class CleanerClassUR:
             
             for df_name, df_og in self.sheets.items():
                 df = df_og.copy()
-                df = pd.DataFrame([ [ags5, time_stamp, row[time_stamp]] 
+                df = pd.DataFrame([ [ags5, date, row[date]] 
                                     for ags5, row in df.iterrows() 
-                                    for  time_stamp in df.columns ])
-                df.columns = ['ags5', 'time_stamp', 'value']
+                                    for  date in df.columns ])
+                df.columns = ['ags5', 'date', 'value']
                 
                 self.sheets_long[df_name] = df
                 
