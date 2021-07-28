@@ -6,9 +6,7 @@ import numpy as np
 # Custom imports 
 from multipage import MultiPage
 # import your pages here
-from pages import data_upload, data_analysis, data_visualize, cinny_page, network_numerical, \
-merge_data, cluster_analysis, network_categorical, cluster_kmodes, cluster_customization, \
-model_v1, data_prep, home_page, error_analysis
+from pages import model_page, data_prep, home_page, error_analysis
 
 # Create an instance of the app 
 app = MultiPage()
@@ -20,7 +18,7 @@ st.markdown('[Documentation](https://bmwi.readthedocs.io/)')
 # The main app
 app.add_page("Home Page", home_page.app)
 app.add_page("Data Prep", data_prep.app)
-app.add_page("Model v1", model_v1.app)
+app.add_page("Model Page", model_page.app)
 app.add_page("Error Analysis", error_analysis.app)
 
 # --- other pages ---
