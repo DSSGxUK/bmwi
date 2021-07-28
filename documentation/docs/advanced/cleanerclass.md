@@ -1,3 +1,8 @@
+<!-- 
+- go through assumptions and make sure they are exhaustive
+- remove stuff about GDP if we don't end up using it
+-->
+
 # CleanerClass Explained
 
 This page walks through the assumptions and implementation code for the excel sheet cleaner. 
@@ -30,6 +35,11 @@ The assumptions for the input excel workbook are as follows:
     - the output csv file supports both long and wide formats
 - **every cell is a numeric value**
     - categorical values are not permitted in the worksheet
+
+
+As long as aforementioned assumptions are met in the input excel workbook, this CleanerClass should export suitable formats for the model. 
+
+<!-- - differences between UR and GDP cleanerclass -->
 
 ## Code Walkthrough
 
