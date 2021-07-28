@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab3ef658-4c52-4173-898f-dda6fe6303e6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/docs/journey/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/models.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +26,8 @@
         <entry file="file://$PROJECT_DIR$/documentation/docs/journey/clusters.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="190">
-                <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <first_editor relative-caret-position="279">
+                <caret line="52" column="14" lean-forward="true" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
               </first_editor>
               <second_editor />
             </state>
@@ -37,8 +38,8 @@
         <entry file="file://$PROJECT_DIR$/documentation/docs/journey/models.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="449">
-                <caret line="48" column="13" selection-start-line="48" selection-end-line="48" selection-end-column="13" />
+              <first_editor relative-caret-position="551">
+                <caret line="29" column="381" selection-start-line="29" selection-start-column="381" selection-end-line="29" selection-end-column="381" />
               </first_editor>
               <second_editor />
             </state>
@@ -75,9 +76,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/documentation/docs/journey/clusters.md" />
         <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/hierarchical_ts.md" />
+        <option value="$PROJECT_DIR$/documentation/docs/journey/clusters.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/models.md" />
       </list>
     </option>
@@ -180,10 +181,10 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" visible="true" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Python Console" visible="true" weight="0.325" />
       <window_info anchor="bottom" id="Terminal" weight="0.32954547" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -219,16 +220,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/documentation/docs/journey/clusters.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="190">
-            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -244,11 +235,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/journey/clusters.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="279">
+            <caret line="52" column="14" lean-forward="true" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/journey/models.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="449">
-            <caret line="48" column="13" selection-start-line="48" selection-end-line="48" selection-end-column="13" />
+          <first_editor relative-caret-position="551">
+            <caret line="29" column="381" selection-start-line="29" selection-start-column="381" selection-end-line="29" selection-end-column="381" />
           </first_editor>
           <second_editor />
         </state>

@@ -43,14 +43,14 @@ Then, we used K-means to cluster the Kreise into 3 clusters based on the PCA fea
 
 ![PCA & K-means](./clusters_screenshots/hierarchy_PCA.png)
 
-* **tSNE** We started with clustering using 169 numerical features (disregarding the 7 categorical features). 
+* **tSNE & K-means** We used 169 numerical features (disregarding the 7 categorical features). 
 First, we reduced the features dimension using tSNE with 3 components. 
 Then, we used K-means to cluster the Kreise into 3 clusters based on the PCA features. 
   
 
-![PCA & K-means](./clusters_screenshots/tSNE.png)
+![tSNE & K-means](./clusters_screenshots/tSNE.png)
 
-![PCA & K-means](./clusters_screenshots/Kmeans_of_tSNE.png)
+![tSNE & K-means](./clusters_screenshots/Kmeans_of_tSNE.png)
 
 
 * **K-modes** To incorporate categorical features as well, 
