@@ -11,7 +11,6 @@ def fix_ags5(x):
     else:
         return str(x)
 
-
 class Data():
     
     def __init__(self, dataFrame, file_format):
@@ -61,6 +60,7 @@ class Data():
             # save
             self.data_wide = data_wide            
             
+        
         
     def long(self):
         '''
@@ -195,7 +195,9 @@ class AbstractModel():
                 return_df = return_df.sort_index(axis=1) # sort columns
                 return_df.columns = list(range(n)) # rename columns
                 print("directly from csv")
-                return return_df
+                
+                return_df['ags5'] = return_df.index # make the ags5 a separate column
+                return return_df.reset_index(drop=True)
 
             else:
                 predictions = self.wf_pred(self.unemploymentRateData, self.otherData, n, self.params) # get the preds
@@ -205,17 +207,23 @@ class AbstractModel():
                 output_csv = output_csv.merge(predictions, left_index=True, right_index=True)
                 output_csv.to_csv(self.output_save_location)
                 print('Appending to csv')
-                return predictions
+                
+                
+                predictions.columns = [col[11:] for col in predictions.columns]# remove the prefix in col names, use only in cacheing
+                predictions['ags5'] = predictions.index
+                return predictions.reset_index(drop=True)
                 
             
         except FileNotFoundError:
             # make the file
             predictions = self.wf_pred(self.unemploymentRateData, self.otherData, n, self.params) # get the preds
-            predictions.columns = [str(last_date_train)+'_'+str(i) for i in predictions.columns] #rename the columns
-            
+            predictions.columns = [str(last_date_train)+'_'+str(i) for i in predictions.columns] #rename the columns            
             predictions.to_csv(self.output_save_location)   
             print('making csv')
-            return predictions
+            
+            predictions.columns = [col[11:] for col in predictions.columns]
+            predictions['ags5'] = predictions.index
+            return predictions.reset_index(drop=True)
     
     def getWalkForwardPred_3Months(self):
         return self.getWalkForwardPred(3)

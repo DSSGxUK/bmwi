@@ -4,7 +4,7 @@ import pandas as pd
 
 # Custom modules
 from util_classes.VAR_model import Data, VARModel
-from .utils import fix_ags5, get_table_download_link
+from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_wide
 
 def app(): 
 
@@ -54,25 +54,28 @@ def app():
     # Get model predictions 
     pred_output = VARObject.getWalkForwardPred_3Months()
 
+    # Display the dataframe 
+    st.dataframe(pred_output.set_index('ags5'))
+
     # Download links 
     st.markdown(get_table_download_link(pred_output, 
                                         text="Download the predictions.", 
                                         filename="predictions.csv"), unsafe_allow_html=True)
 
 
-    ''' Add visulaisations of the unemployment predictions @cinny '''
-    # st.markdown("## Visualize prediction results.") 
-    # st.write("\n")
+    ''' Add visulaisations of the unemployment predictions '''
+    st.markdown("## Visualize prediction results.") 
+    st.write("\n")
 
-    # # get predictions by kreis 
-    # kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(pred_output ['kreis'].values))
-    # st.dataframe(combined_df_pro[combined_df_pro['kreis'].isin(kreis_name)])
+    # get predictions by kreis 
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(pred_output['ags5'].values))
+    st.dataframe(pred_output[pred_output['ags5'].isin(kreis_name)])
 
-    # # line plot
-    # fig1 = plot_line_wide(combined_df_pro, kreis_name, NUM_PREDICTIONS, df_index='kreis')
-    # st.pyplot(fig1)
+    # line plot
+    fig1 = plot_line_wide(pred_output, kreis_name, 3, df_index='ags5')
+    st.pyplot(fig1)
 
-    # # map
-    # st.markdown("### Map")
-    # map_fig = plot_map_wide(combined_df, 'ags5')
+    # map
+    st.markdown("### Map")
+    # map_fig = plot_map_wide(pred_output, 'ags5') - MAP gives error 
     # st.pyplot(map_fig)
