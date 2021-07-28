@@ -1,11 +1,10 @@
 # Error Analysis Page
 
-<span style="color:gray">* Identify the kreis that are hard to get predictions for.*</span>
+There error analysis is an attempt to see where the unemployment rate predictions “fail”. 
+The errors are [Mean absolute percentage errors (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error), and each one represent how different the prediction is from the ground truth. The errors can be used to see which kreise were difficult to predict for, potentially suggesting the something spacial happened there. The errors can also be easily compared with the structural data, to identify the type of kreise that are harder to predict for. 
 
-The error analysis page uses the errors generated from the latest predictions and compares them with the structural data so that you can idenitfy which Kreis are harder to predict unemployment for and see what is different in those Kreis as opposed to the other Kreis. 
 
-**Note:** The errors calculated for the previous quarter based on the recently uploaded data and, hence, this is a retrospective analysis. One can identify which kreis were harder to predict for in the previous quarter. 
-
+**Note:** To calculate the errors the actual values must be available. Therefore, the errors are calculated for the previous quarter based on the recently uploaded data and, hence, this is a retrospective analysis. 
 ### Launching the page
 
 To open the error analysis page, select the 'Error Analysis` Section from the dropdown on the left as can be viewed in the image below.  
@@ -50,10 +49,9 @@ To view all the Kreis, download the complete error table by clicking on the opti
 
 ## Structural Data Analysis 
 
-The next step is to analyze the errors with regards to the structural data and see hot the errors vary with a particular structural variable. Select a structural variable to compare against the errors. (*Eg: Errors are compared against `eligible_area` in this image*). 
+The next step is to analyze the errors with regards to the structural data and see hot the errors vary with a particular structural variable. Select a structural variable to compare against the errors. (*Eg: Errors are compared against `eligible_area` in this image*).
 
-The errors are on the x-axis so the fatter the curve is the more prone that category is to errors. In the following example, the areas where `eligible_area` is 0 are less prone to prediction errors than areas with code 1. 
-
+The errors are on the x-axis, so the fatter the curve is the more prone that category is to errors. In the following example, the areas where `eligible_area` is 0 have smaller errors than areas with code 1. This means that it is easier to predict kreise that are not eligible for funding then kreise that are eligible. This might be because something unique happened in the eligible kreis that the model can’t explain. 
 
 ![](https://i.imgur.com/cNEJJ5p.png)
 
@@ -61,8 +59,8 @@ The errors are on the x-axis so the fatter the curve is the more prone that cate
 
 ### Most important Structural Variables 
 
-Individual exploration might be interesting but can also be very time consuming. There is an option to get an overview of which features are most linearly related to the prediction errors. The features are then listed in the order of importance. There is a provision to choose how many variables to show. 
+Individual exploration might be interesting but can also be very time consuming. There is an option to get an overview of which features correlate to the errors and therefore explain the variance in the errors well. The features are selected using [Sequential Feature Selector](http://rasbt.github.io/mlxtend/user_guide/feature_selection/SequentialFeatureSelector/), a greedy algorithm that reduces feature dimensions. The features are listed in the order of importance, and there is a provision to choose how many features to show. 
 
-<span style="color:red">Explain how they have been calculated.</span>
+For example, if “eligible area” is selected as one of the important features, this means that the errors of the kreise eligible for funding is very different than the errors of thous who are not. This implies that there is something special about these groups, and it’s worth to plot them.  
 
 ![](https://i.imgur.com/zNZCKye.png)

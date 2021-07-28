@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab3ef658-4c52-4173-898f-dda6fe6303e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/docs/journey/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/models.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/docs/steps/error.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/error.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,12 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/documentation/docs/journey/models.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="551">
-                <caret line="29" column="381" selection-start-line="29" selection-start-column="381" selection-end-line="29" selection-end-column="381" />
+              <first_editor relative-caret-position="-318">
+                <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/error.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="116">
+                <caret line="51" selection-start-line="51" selection-end-line="54" />
               </first_editor>
               <second_editor />
             </state>
@@ -50,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/documentation/docs/advanced/installation.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-138" />
+              <first_editor relative-caret-position="-145" />
               <second_editor />
             </state>
           </provider>
@@ -80,6 +91,7 @@
         <option value="$PROJECT_DIR$/documentation/docs/journey/hierarchical_ts.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/clusters.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/models.md" />
+        <option value="$PROJECT_DIR$/documentation/docs/steps/error.md" />
       </list>
     </option>
   </component>
@@ -140,6 +152,13 @@
               <item name="documentation" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="journey" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="the-tool-bmwi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="the-tool-bmwi" type="462c0819:PsiDirectoryNode" />
+              <item name="documentation" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="steps" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -202,14 +221,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/documentation/docs/advanced/installation.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-138" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/advanced/cleanerclass.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -245,11 +256,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/advanced/installation.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-145" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/journey/models.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="551">
-            <caret line="29" column="381" selection-start-line="29" selection-start-column="381" selection-end-line="29" selection-end-column="381" />
+          <first_editor relative-caret-position="-318">
+            <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/steps/error.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="116">
+            <caret line="51" selection-start-line="51" selection-end-line="54" />
           </first_editor>
           <second_editor />
         </state>
