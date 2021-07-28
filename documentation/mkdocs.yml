@@ -27,5 +27,6 @@ nav:
         - Hierarchical Time Series: journey/hierarchical_ts.md
         - Clusters: journey/clusters.md
         - Causal Inference: journey/causal_inf.md
-
+        - Covid19 restrictions: journey/covid19.md
+        - GDP and Unemploymet rate: journey/GDP.md
 theme: readthedocs
