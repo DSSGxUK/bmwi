@@ -27,10 +27,28 @@ The intuition behind VAR based cluster methods is that the Kreis in each cluster
 
 ## Prophet 
 
-# Hierarchical Time Series 
+Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well.
+## Hierarchical Time Series 
 
-This section talks about the hierarchical time series model. 
-This is a model that utilized the clusters hierarchy in order to teach 
+Hierarchical time series model is a model that utilized the hierarchy in the data. 
+It generates forecasts for each individual time series, 
+but takes into account the relationships within the hierarchy.
+In our case, we considered the hierarchy of the different clusters explained in the [cluster section](). 
+
+We forecasted using different models, 
+- SARIMA
+- auto_arima​
+- Prophet
+
+We aggregated using different methods, 
+- Top-Down
+    - AHP 
+    - PHA​
+- Bottom-Up​
+- WLSS
+
+Unfortunately, the bottom up approach was best, 
+which means that the hierarchy does not add any useful information. 
 
 ## References
 
