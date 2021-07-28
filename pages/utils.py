@@ -171,6 +171,7 @@ def plot_map(data, merge_col, data_col, cat_col=False):
     return fig
 
 def plot_map_wide(data, merge_col):
+    
     # read the map coordinates data 
     gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
     index = pd.read_csv('data/index.csv')

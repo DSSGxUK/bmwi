@@ -62,20 +62,34 @@ def app():
                                         text="Download the predictions.", 
                                         filename="predictions.csv"), unsafe_allow_html=True)
 
-
     ''' Add visulaisations of the unemployment predictions '''
+    
+    # Read the index data 
+    index_data = pd.read_csv('data/index.csv', encoding='latin_1')
+
+    # Fix ags5
+    pred_output['ags5'] = pred_output['ags5'].apply(fix_ags5)
+    index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
+    
+    # Merge with the output data 
+    pred_output = pd.merge(pred_output, index_data, on='ags5')
+
     st.markdown("## Visualize prediction results.") 
     st.write("\n")
 
     # get predictions by kreis 
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(pred_output['ags5'].values))
-    st.dataframe(pred_output[pred_output['ags5'].isin(kreis_name)])
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(pred_output['kreis'].values))
+    st.dataframe(pred_output[pred_output['kreis'].isin(kreis_name)])
+
+    """
+    This section doesn't work well because the date columns are messed up and we need to fix that.  
+    """
 
     # line plot
-    fig1 = plot_line_wide(pred_output, kreis_name, 3, df_index='ags5')
+    fig1 = plot_line_wide(pred_output, kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
     # map
     st.markdown("### Map")
-    # map_fig = plot_map_wide(pred_output, 'ags5') - MAP gives error 
-    # st.pyplot(map_fig)
+    map_fig = plot_map_wide(pred_output, 'kreis') # MAP gives error 
+    st.pyplot(map_fig)
