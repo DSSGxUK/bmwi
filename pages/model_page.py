@@ -91,5 +91,5 @@ def app():
 
     # map
     st.markdown("### Map")
-    map_fig = plot_map_wide(pred_output, 'kreis') # MAP gives error 
+    map_fig = plot_map_wide(pred_output, 'ags5') # MAP gives error 
     st.pyplot(map_fig)
