@@ -332,7 +332,7 @@ def get_table_download_link(df, text, excel=False, filename="final.csv"):
     def to_excel(df):
         output = BytesIO()
         writer = pd.ExcelWriter(output, engine='xlsxwriter')
-        df.to_excel(writer, sheet_name='Sheet1')
+        df.to_excel(writer, sheet_name='Sheet1', index=False)
         writer.save()
         processed_data = output.getvalue()
         return processed_data
@@ -343,10 +343,9 @@ def get_table_download_link(df, text, excel=False, filename="final.csv"):
         href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
     
     elif excel == True: 
-        print("IAM IN EXCEL")
         val = to_excel(df)
         b64 = base64.b64encode(val)  # val looks like b'...'
-        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}">{text}</a>' # decode b'abc' => abc
+        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="predictions.xlsx">{text}</a>' # decode b'abc' => abc
     
     return href
 
