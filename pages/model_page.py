@@ -97,15 +97,19 @@ def app():
     index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
     
     # Merge with the output data 
-    viz_data = pd.merge(viz_data, index_data, on='ags5')
     full_data = pd.merge(wide_df.reset_index().rename(columns={'index': 'ags5'}), viz_data, on='ags5')
+    full_data = pd.merge(index_data, full_data, on='ags5')
+    
+    # Sync with home page
+    full_data.to_csv('data/pred_output_full.csv', index=False)
 
     st.markdown("## Visualize prediction results.") 
     st.write("\n")
 
     # get predictions by kreis 
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(viz_data['kreis'].values))
-    st.dataframe(viz_data[viz_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
+    display_data = pd.merge(index_data, viz_data, on='ags5')
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(display_data['kreis'].values))
+    st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
 
     """
     This section doesn't work well because the date columns are messed up and we need to fix that.  
