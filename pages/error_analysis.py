@@ -100,7 +100,7 @@ def app():
     error_data = pd.merge(ags5_data[['ags5', 'kreis', 'bundesland', 'ags2']], error_data, on='ags5')
     
     # Fix date format 
-    error_data['date'] = pd.to_datetime(error_data['date'], format = '%Y-%m-%d')
+    error_data['date'] = pd.to_datetime(error_data['date'], format = '%m/%d/%Y')
 
 
     ''' Visualisation Section '''
