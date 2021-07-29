@@ -175,13 +175,14 @@ def plot_map_wide(data, merge_col):
     # read the map coordinates data 
     gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
     index = pd.read_csv('data/index.csv')
+    
     # merge the coords with the data 
     try:
         merged = pd.merge(data, gdf, left_on=merge_col, right_on='krs_code')
     except ValueError:
         data['ags5_fix'] = data['ags5'].apply(fix_ags5)
         merged = pd.merge(data, gdf, left_on='ags5_fix', right_on='krs_code')
-
+    
     # get the geospatial data 
     merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
     merged['coords'] = [coords[0] for coords in merged['coords']]
@@ -190,7 +191,7 @@ def plot_map_wide(data, merge_col):
     
     # convert to geodata
     merged = gpd.GeoDataFrame(merged)
-    date_cols = merged.columns[4:-13]
+    date_cols = merged.columns[1:-15]
 
     # useful stats
     merged['last_time'] = merged[date_cols[-1]]-merged[date_cols[-2]]
