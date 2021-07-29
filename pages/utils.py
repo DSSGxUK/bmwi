@@ -191,7 +191,7 @@ def plot_map_wide(data, merge_col):
     
     # convert to geodata
     merged = gpd.GeoDataFrame(merged)
-    date_cols = merged.columns[1:-15]
+    date_cols = merged.columns[4:-12]
 
     # useful stats
     merged['last_time'] = merged[date_cols[-1]]-merged[date_cols[-2]]
