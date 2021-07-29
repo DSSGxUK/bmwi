@@ -112,7 +112,7 @@ def app():
     """
 
     # line plot
-    fig1 = plot_line_wide(full_data, kreis_name, 3, df_index='kreis')
+    fig1 = plot_line_wide(full_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
     # map
