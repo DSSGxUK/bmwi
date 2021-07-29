@@ -1,15 +1,5 @@
-# Import necessary libraries 
+# Import libraries 
 import pandas as pd
-
-''' Utility Functions '''
-
-# Data Fix Functions
-def fix_ags5(x):
-    """Function to fix the format of ag5 """
-    if len(str(x))==4:
-        return '0'+str(x)
-    else:
-        return str(x)
 
 class Data():
     
@@ -160,12 +150,14 @@ class AbstractModel():
     
     
     ## abstractmethod
-    def wf_pred(self, n):
+    def wf_pred(self, data, otherData, n, params):
         '''
         Inputs:
         -------
         self: contains all the training data, params etc
         n: number of timestamps to pred, with walk forward validation
+        params: can contain THE IMPORTANT PARAMETER end_date. So check if this key exists, if it does, crop the training data from data accordingly
+        
         '''
         pass
     
@@ -178,13 +170,17 @@ class AbstractModel():
         '''
         
         ur_data_long = self.unemploymentRateData.long()
-        last_date_train = max(ur_data_long['date'])
+        
+        if 'end_date' in self.params.keys():
+            last_date_train = self.params['end_date']
+        else:
+            last_date_train = max(ur_data_long['date'])
         
         '''1. Check if it is already calculated'''
         ## read the file
         try:
             output_csv = pd.read_csv(self.output_save_location, index_col=0)
-            output_csv.index = [fix_ags5(ags5)  for ags5 in output_csv.index]
+            output_csv.index = [self.fix_ags5(ags5)  for ags5 in output_csv.index]
             
             ## check if the calculation has already been done
             columns_needed= [str(last_date_train)+'_'+str(i) for i in range(n)]
@@ -196,8 +192,9 @@ class AbstractModel():
                 return_df.columns = list(range(n)) # rename columns
                 print("directly from csv")
                 
-                return_df['ags5'] = return_df.index # make the ags5 a separate column
-                return return_df.reset_index(drop=True)
+                return_df.insert(0, 'ags5', return_df.index) # make the ags5 a separate column
+                return_df.columns = [str(col) for col in return_df.columns] # make all the col names str
+                return return_df.reset_index(drop=True).sort_values('ags5', ignore_index=True)
 
             else:
                 predictions = self.wf_pred(self.unemploymentRateData, self.otherData, n, self.params) # get the preds
@@ -210,8 +207,9 @@ class AbstractModel():
                 
                 
                 predictions.columns = [col[11:] for col in predictions.columns]# remove the prefix in col names, use only in cacheing
-                predictions['ags5'] = predictions.index
-                return predictions.reset_index(drop=True)
+                predictions.insert(0, 'ags5', predictions.index)
+                predictions.columns = [str(col) for col in predictions.columns] # make all the col names str
+                return predictions.reset_index(drop=True).sort_values('ags5', ignore_index=True)
                 
             
         except FileNotFoundError:
@@ -222,11 +220,60 @@ class AbstractModel():
             print('making csv')
             
             predictions.columns = [col[11:] for col in predictions.columns]
-            predictions['ags5'] = predictions.index
-            return predictions.reset_index(drop=True)
+            predictions.insert(0, 'ags5', predictions.index)
+            predictions.columns = [str(col) for col in predictions.columns] # make all the col names str
+            return predictions.reset_index(drop=True).sort_values('ags5', ignore_index=True)
     
     def getWalkForwardPred_3Months(self):
         return self.getWalkForwardPred(3)
+    
+    
+    
+    def getWalkForwardErrors(self, n=3):
+        
+        input_df = self.unemploymentRateData.long()
+
+        ''' set the end date to 3 timestamps ahead '''
+        params_of_errors = self.params.copy()
+        dates = list(input_df['date'].unique())
+        dates.sort()
+        
+        # find the index of end date of training set
+        if 'end_date' in params_of_errors.keys():
+            # end date was a parameter that was passed
+            end_date_index = dates.index(params_of_errors['end_date'])
+        else:
+            end_date_index = len(dates)-1
+        
+        # set the end date to 3 time stamps ahead
+        params_of_errors['end_date'] = dates[end_date_index-n]
+        
+        ''' Temporarily change the class's params to prarams needed for generating errors, generate predictions, revert back '''
+        original_params = self.params
+        self.params = params_of_errors
+        
+        preds = self.getWalkForwardPred_3Months()
+        
+        self.params = original_params
+        
+        ''' create the output df '''
+        # make the df with ground truths
+        dates_for_errors = dates[end_date_index-3: end_date_index]
+        ground_truths = input_df[[date in dates_for_errors for date in input_df['date']]]
+        ground_truths.columns = ['ags5', 'date', 'ground_truth']
+        
+        # sort the ground truth and preds df by ags5
+        ground_truths = ground_truths.sort_values(['ags5', 'date']) # sort by ags5 first then within it, by dates
+        preds = preds.sort_values(['ags5']) # sort ags5 here too to match
+        
+        # assign values to the pred column
+        output_df = ground_truths
+        output_df['pred'] =[float(preds[preds['ags5'] == ags5][str(j)]) for ags5 in ground_truths['ags5'].unique() for j in range(n)]
+        
+        # assign values to the error column
+        output_df['error'] = (output_df['pred'] - output_df['ground_truth']).apply(abs)
+        
+        return output_df.reset_index(drop=True)
     
     ## Utils
     def fix_ags5(self, x):
@@ -235,6 +282,7 @@ class AbstractModel():
             return '0'+str(x)
         else:
             return str(x)
+
 
 class VARModel(AbstractModel):
     
