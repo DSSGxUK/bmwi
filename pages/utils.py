@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import base64
 import geopandas as gpd
+from io import BytesIO
 
 ''' Data Fix Functions'''
 def fix_ags5(x):
@@ -320,7 +321,7 @@ def get_english_term(german_phrase):
         return german_phrase.lower()
 
 # Function to convert data into download link
-def get_table_download_link(df, text, filename="final.csv"):
+def get_table_download_link(df, text, excel=False, filename="final.csv"):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     params:  
         dataframe
@@ -328,10 +329,25 @@ def get_table_download_link(df, text, filename="final.csv"):
         filename: Filename to be downloaded [optional]
     returns: href string
     """
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
+    def to_excel(df):
+        output = BytesIO()
+        writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        df.to_excel(writer, sheet_name='Sheet1')
+        writer.save()
+        processed_data = output.getvalue()
+        return processed_data
 
+    if excel == False: 
+        csv = df.to_csv(index=False)
+        b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+        href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
+    
+    elif excel == True: 
+        print("IAM IN EXCEL")
+        val = to_excel(df)
+        b64 = base64.b64encode(val)  # val looks like b'...'
+        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}">{text}</a>' # decode b'abc' => abc
+    
     return href
 
 

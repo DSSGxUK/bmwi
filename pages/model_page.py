@@ -61,12 +61,16 @@ def app():
     # Get model predictions 
     pred_output = VARObject.getWalkForwardPred_3Months()
 
-    # fix date format
+    # Set the ags5 as index 
+    pred_output.set_index('ags5', inplace=True)
+
+    '''fix date format '''
+
     # (1) get next n dates
     last_date_str = unemploymentRateData.wide().columns[-1]
     last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
     datetime_list = []
-    n = len(pred_output.columns)-1
+    n = len(pred_output.columns)
     for _ in range(n):
         next_date = last_date + relativedelta.relativedelta(months=1)
         last_date = next_date
@@ -76,20 +80,27 @@ def app():
     for date in datetime_list:
         date = datetime.strftime(date, '%Y-%m-%d')
         date_only_list.append(date)
-    pred_output.columns = date_only_list + ['ags5']
+    pred_output.columns = date_only_list 
 
     # Display the dataframe     
-    st.dataframe(pred_output.set_index('ags5'))
+    st.dataframe(pred_output)
+
+    # Reset the prediction index 
+    pred_output.reset_index(inplace=True)
+
 
     # Download links 
     st.markdown(get_table_download_link(pred_output, 
                                         text="Download the predictions.", 
-                                        filename="predictions.csv"), unsafe_allow_html=True)
+                                        filename="predictions.csv", 
+                                        excel=True),
+                                         
+                                        unsafe_allow_html=True)
 
     ''' Add visulaisations of the unemployment predictions '''
     
     # Read the index data 
-    index_data = pd.read_csv('data/index.csv', encoding='latin_1')
+    index_data = pd.read_csv('data/index.csv')
 
     # Fix ags5
     viz_data = pred_output.copy()
