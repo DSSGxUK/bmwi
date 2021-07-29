@@ -18,5 +18,5 @@ This project has been completed in collaboration with Data Science for Social Go
 
 The mentors for this project are:
 
-- Doschmund Jeyaraj-Kwiatkowski
+- Doschmund Kwiatkowski
 - Yurii Tolochko
