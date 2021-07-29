@@ -1,5 +1,6 @@
 import streamlit as st 
 import pandas as pd 
+import numpy as np 
 from datetime import datetime
 from dateutil import relativedelta
 
@@ -88,14 +89,23 @@ def app():
     # Reset the prediction index 
     pred_output.reset_index(inplace=True)
 
-
     # Download links 
     st.markdown(get_table_download_link(pred_output, 
                                         text="Download the predictions.", 
                                         filename="predictions.csv", 
                                         excel=True),
-                                         
+
                                         unsafe_allow_html=True)
+
+    ''' Error Data Collection '''
+    error_df = VARObject.getWalkForwardErrors()
+
+    # Calcululate MAPE errors 
+    error_df['mape'] = np.abs(error_df['ground_truth'] - error_df['pred'])/error_df['ground_truth']
+
+    # Save the error df
+    error_df.to_csv('data/errors/errors_VAR.csv', index=False)
+    st.write("Saved the errors..")
 
     ''' Add visulaisations of the unemployment predictions '''
     

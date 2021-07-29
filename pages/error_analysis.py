@@ -58,7 +58,7 @@ def plot_error_map(data, date_string="by average"):
     
     # numerical data_col
     fig, ax = plt.subplots(figsize=(30, 10))
-    merged.plot(column='error', scheme="quantiles",
+    merged.plot(column='mape', scheme="quantiles",
                 ax=ax, cmap='coolwarm', legend=True)
     ax.set_title(title, fontsize=15)
 
@@ -69,7 +69,7 @@ def app():
     st.title("Error Analysis Page")
 
     # Load error data 
-    error_data = pd.read_csv('data/error_2018_2019_nn.csv')
+    error_data = pd.read_csv('data/errors/errors_VAR.csv')
     error_data['ags5'] = error_data['ags5'].apply(fix_ags5)
 
     ''' Error Map Viz '''
@@ -84,7 +84,7 @@ def app():
         
         # Show for average predictions
         if method == 'average': 
-            filter_data = error_data[['ags5', 'error']].groupby('ags5', as_index=False).mean()
+            filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
         else: 
             # Filter by date 
             filter_data = error_data[error_data['date'] == method]
@@ -100,7 +100,10 @@ def app():
     error_data = pd.merge(ags5_data[['ags5', 'kreis', 'bundesland', 'ags2']], error_data, on='ags5')
     
     # Fix date format 
-    error_data['date'] = pd.to_datetime(error_data['date'], format = '%m/%d/%Y')
+    error_data['date'] = pd.to_datetime(error_data['date'], format = '%Y-%m-%d')
+
+    # Fix ags2
+    error_data['ags2'] = error_data['ags2'].astype('str')
 
 
     ''' Visualisation Section '''
@@ -126,10 +129,10 @@ def app():
 
     if viz_area=='Kreis':
         if viz_sub_area=='all': 
-            g = sns.lineplot(data=error_data, x="date", y="error",  hue='ags5')
+            g = sns.lineplot(data=error_data, x="date", y="mape",  hue='ags5')
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            g.legend_.remove()
+            # g.legend_.remove()
             
             st.pyplot()
         
@@ -137,7 +140,7 @@ def app():
 
             # filter data by kreis 
             filter_data = error_data[error_data['ags5'] == viz_sub_area]
-            g = sns.lineplot(data=error_data, x="date", y="error")
+            g = sns.lineplot(data=error_data, x="date", y="mape")
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
             st.pyplot()
@@ -147,7 +150,7 @@ def app():
     elif viz_area=='Bundesland':
         if viz_sub_area=='all': 
 
-            g = sns.lineplot(data=error_data, x="date", y="error",  hue='ags2')
+            g = sns.lineplot(data=error_data, x="date", y="mape",  hue='ags2')
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
             # g.legend_.remove()
@@ -156,10 +159,10 @@ def app():
         else: 
             # filter data by kreis 
             filter_data = error_data[error_data['ags5'] == viz_sub_area]
-            g = sns.lineplot(data=error_data, x="date", y="error")
+            g = sns.lineplot(data=error_data, x="date", y="mape")
             plt.title(f"{viz_area} : {viz_sub_area}")
             g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            g.legend_.remove()
+            # g.legend_.remove()
 
     st.markdown("""---""")
 
@@ -173,11 +176,11 @@ def app():
     n_value = st.slider("Select the number of values to be displayed", min_value=1, max_value=20, step=1, value=5)
 
     if value_choice == 'Highest':
-        output_df = df_mean_error.sort_values(by='error', ascending=False)[['kreis', 'error', 'ags5', 'bundesland']]
+        output_df = df_mean_error.sort_values(by='mape', ascending=False)[['kreis', 'mape', 'ags5', 'bundesland']]
         st.dataframe(output_df.head(n_value).reset_index(drop=True))
     else: 
         st.write(f"Here are the bottom {n_value} kreis based on prediction errors")
-        output_df = df_mean_error.sort_values(by='error', ascending=True)[['kreis', 'error', 'ags5', 'bundesland']]
+        output_df = df_mean_error.sort_values(by='mape', ascending=True)[['kreis', 'mape', 'ags5', 'bundesland']]
         st.dataframe(output_df.head(n_value).reset_index(drop=True))
     
     # Add the full table download link 
@@ -219,8 +222,8 @@ def app():
     df_mixed['urban_/_rural'] = df_mixed['urban_/_rural'].astype(str)
 
     # Create X and y 
-    X = df_mixed.drop(['kreis','pred','error','ground_truth'], axis=1)
-    Y = np.log(df_mixed['error'])
+    X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
+    Y = np.log(df_mixed['mape'])
     X = pd.get_dummies(data=X, drop_first=True)
 
     # Fit the Linear Ression model 
