@@ -24,7 +24,7 @@ def app():
     st.write("Loading the data...")
     
     # Create an instance of the Data Class which returns the long format of the data 
-    data1 = Data(wide_df, 'wide')    # Set the current format of the data as wide to be read properly
+    unemploymentRateData = Data(wide_df, 'wide')    # Set the current format of the data as wide to be read properly
 
     ''' Set the ouput and model params (can be taken externally at a later stage) and prepare the data'''
     output_save_location = 'cache/VAR/output.csv'
@@ -36,8 +36,8 @@ def app():
 
     # NOTEE: A lot of these values can be read from a config file and saved inside the params 
 
-    # Data to be entered into the model  
-    unemploymentRateData = data1
+    # # Data to be entered into the model  
+    # unemploymentRateData = data1
 
     # Read the cluster data 
     cluster_data = pd.read_csv('data/cluster_data.csv')
@@ -51,6 +51,11 @@ def app():
     st.write("Fitting Model Predictions...")
 
     ''' Model Fitting and Predictions '''
+    # @st.cache
+    # def load_model():
+    #     return VARModel(output_save_location, params, unemploymentRateData, cluster_df)
+    
+    # VARObject = load_model()
     VARObject = VARModel(output_save_location, params, unemploymentRateData, cluster_df)
 
     # Get model predictions 
@@ -87,28 +92,30 @@ def app():
     index_data = pd.read_csv('data/index.csv', encoding='latin_1')
 
     # Fix ags5
-    pred_output['ags5'] = pred_output['ags5'].apply(fix_ags5)
+    viz_data = pred_output.copy()
+    viz_data['ags5'] = viz_data['ags5'].apply(fix_ags5)
     index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
     
     # Merge with the output data 
-    pred_output = pd.merge(pred_output, index_data, on='ags5')
+    viz_data = pd.merge(viz_data, index_data, on='ags5')
+    full_data = pd.merge(wide_df.reset_index().rename(columns={'index': 'ags5'}), viz_data, on='ags5')
 
     st.markdown("## Visualize prediction results.") 
     st.write("\n")
 
     # get predictions by kreis 
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(pred_output['kreis'].values))
-    st.dataframe(pred_output[pred_output['kreis'].isin(kreis_name)])
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(viz_data['kreis'].values))
+    st.dataframe(viz_data[viz_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
 
     """
     This section doesn't work well because the date columns are messed up and we need to fix that.  
     """
 
     # line plot
-    fig1 = plot_line_wide(pred_output, kreis_name, 3, df_index='kreis')
+    fig1 = plot_line_wide(full_data, kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
     # map
     st.markdown("### Map")
-    map_fig = plot_map_wide(pred_output, 'ags5') # MAP gives error 
+    map_fig = plot_map_wide(full_data, 'ags5') # MAP gives error 
     st.pyplot(map_fig)
