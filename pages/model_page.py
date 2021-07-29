@@ -1,5 +1,7 @@
 import streamlit as st 
 import pandas as pd 
+from datetime import datetime
+from dateutil import relativedelta
 
 
 # Custom modules
@@ -35,7 +37,7 @@ def app():
     # NOTEE: A lot of these values can be read from a config file and saved inside the params 
 
     # Data to be entered into the model  
-    unemploymentRateData = data1 
+    unemploymentRateData = data1
 
     # Read the cluster data 
     cluster_data = pd.read_csv('data/cluster_data.csv')
@@ -54,7 +56,24 @@ def app():
     # Get model predictions 
     pred_output = VARObject.getWalkForwardPred_3Months()
 
-    # Display the dataframe 
+    # fix date format
+    # (1) get next n dates
+    last_date_str = unemploymentRateData.wide().columns[-1]
+    last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
+    datetime_list = []
+    n = len(pred_output.columns)-1
+    for _ in range(n):
+        next_date = last_date + relativedelta.relativedelta(months=1)
+        last_date = next_date
+        datetime_list.append(next_date)
+    # (2) fix date to only show date and not time
+    date_only_list = []
+    for date in datetime_list:
+        date = datetime.strftime(date, '%Y-%m-%d')
+        date_only_list.append(date)
+    pred_output.columns = date_only_list + ['ags5']
+
+    # Display the dataframe     
     st.dataframe(pred_output.set_index('ags5'))
 
     # Download links 
