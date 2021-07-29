@@ -271,15 +271,19 @@ def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
     '''
     fig, ax = plt.subplots(figsize=(30,10))
     filter_df = df.copy()
+    # drop non-date cols
     if 'bundesland' in filter_df.columns:
         filter_df.drop(columns=['bundesland'], inplace=True)
+    if 'ags2' in filter_df.columns:
+        filter_df.drop(columns=['ags2'], inplace=True)
+    # set index col
     filter_df = filter_df.set_index(df_index)
     dates = [str(date) for date in filter_df.columns]
     filter_df.columns = dates
     for kreis in filter_kreis:
         plt.plot(filter_df[dates[:-num_pred]].loc[kreis], label=kreis)
         plt.plot(filter_df[dates[-(num_pred+1):]].loc[kreis], 'r')
-    plt.axvline(x=df.columns[-(num_pred+1)], alpha=0.5, linestyle='--')
+    plt.axvline(x=filter_df.columns[-(num_pred+1)], alpha=0.5, linestyle='--', c='k')
     ax.set_xticks(list(range(0, len(dates), 12)))
     ax.set_xticklabels(dates[::12])
     ax.legend()
