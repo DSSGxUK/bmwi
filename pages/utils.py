@@ -332,7 +332,7 @@ def get_table_download_link(df, text, excel=False, filename="final.csv"):
     def to_excel(df):
         output = BytesIO()
         writer = pd.ExcelWriter(output, engine='xlsxwriter')
-        df.to_excel(writer, sheet_name='Sheet1')
+        df.to_excel(writer, sheet_name='Sheet1', index=False)
         writer.save()
         processed_data = output.getvalue()
         return processed_data
