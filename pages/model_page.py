@@ -28,7 +28,7 @@ def app():
 
     st.subheader("This page will output the predictions for the next three quarters.")
 
-    st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
+    # st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
 
     ''' Read the Data and set it in the appropriate format '''
     wide_df = pd.read_csv('data/Alo_Quote.csv')
@@ -118,7 +118,7 @@ def app():
 
     # Save the error df
     error_df.to_csv('data/errors/errors_VAR.csv', index=False)
-    st.write("Saved the errors..")
+    st.write("Saved the errors...")
 
     ''' Add visulaisations of the unemployment predictions '''
     
