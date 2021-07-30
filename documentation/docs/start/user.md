@@ -9,7 +9,8 @@ mermaidAPI.initialize({
 });
 </script>
 
-**Pro Tip**: Clicking on the purple nodes leads to the tool page.
+**Pro Tip**: Clicking on the purple nodes leads to the specific step in the documentation.
+<!-- **Pro Tip**: Clicking on the purple nodes leads to the tool page. -->
 
 <div class="mermaid">
 graph TD
@@ -31,10 +32,10 @@ graph TD
     A --> B
     D --> E
     D --> F
-    click A "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/data_prep.py"
-    click B "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click C "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
+    click A "http://127.0.0.1:8000/steps/data_prep/"
+    click B "http://127.0.0.1:8000/steps/model/#fit-model-and-export-predictions"
+    click C "http://127.0.0.1:8000/steps/model/#visualize-prediction-results"
     click D "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click E "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/error_analysis.py"
-    click F "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/home_page.py"
+    click E "http://127.0.0.1:8000/steps/error/"
+    click F "http://127.0.0.1:8000/steps/home/"
 </div>

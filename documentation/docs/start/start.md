@@ -20,7 +20,7 @@ mermaidAPI.initialize({
 
 ## First-time Users
 
-This is a simplified version of the user workflow. 
+This is a simplified version of the user workflow. You can find the detailed [user workflow](http://127.0.0.1:8000/start/user/) here.
 
 <div class="mermaid">
 graph LR
