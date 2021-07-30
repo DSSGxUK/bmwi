@@ -200,7 +200,8 @@ def app():
             help='Crop the time-series data to the appropriate timeframe for model prediction.')
         
         if confirm_crop_data == "Yes":
-            st.write("Last used data now updated to the cropped data.")
+            st.write("Last used data is now updated to the cropped data. \
+                    You can move on to the model page to proceed with data prediction.")
             cropped_data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
             st.write(get_table_download_link(cropped_data, text="download csv", \
                 filename=f"cropped_data.csv"), unsafe_allow_html=True)
