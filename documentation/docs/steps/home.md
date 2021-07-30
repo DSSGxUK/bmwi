@@ -103,6 +103,8 @@ Similar to the last section, the ranking would then be sorted based on your inpu
 
 This multi-selection box offers a range of categorical variables to group by. The options include:
 
+- `bundesland`: the states in Germany
+
 - `growth_shrink_cities` ("wachsende/schrumpfende Kreise")
 
 - `east_west` ("West-/Ostdeutschland")
@@ -119,14 +121,15 @@ This multi-selection box offers a range of categorical variables to group by. Th
 
 - `metropolitan_region` ("Europäische Metropolregion")
 
+- `support area status` ("Gemeinschaftsaufgabe Verbesserung der regionalen Wirtschaftsstruktur")
+
+- `eligible area`: binary variable based on `support area status`
+
 - state area code (Amtlicher Gemeindeschlüssel, "`ags2`") / state-level ("`bundesland`")
-
-
-<span style="color:red">^ Are there other groupings that could be useful that are currently not included? Need to add GRW eligible for funding category column.</span>
 
 ![grouped by column](../home_screenshots/groupby.png)
 
-<span style="color:gray">*The default is set to group by both `growth_shrink_cities` and `east_west`.*</span>
+<span style="color:gray">*The default is set to group by both `east_west` and `eligible area`.*</span>
 
 
 ### Results
@@ -139,25 +142,23 @@ The filtering result is a multi-index dataframe with three columns. The multi-in
 
 - `%count`: the proportion of kreise belonging to that sorted grouping.
 
-<span style="color:red">^ Change column name "kreis" to "#kreis"</span>
-
 
 ![sorted dataframe](../home_screenshots/sort_df3.png)
 
-<span style="color:gray">*For example, this sample dataframe shows the top `50` kreise, sorted by `last_year%`, grouped by `growth_shrink_cities` and `east_west`.*</span>
+<span style="color:gray">*For example, this sample dataframe shows the top `50` kreise, sorted by `last_year%`, grouped by `east_west` and `eligible area`.*</span>
 
 <i>
 <p style="color:gray">Reading the first row: </p>
 <ul style="color:gray">
-    <li> the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `22` of them belong to growing cities in west Germany.
-    <li> the second column, `#kreis` means that there is a total of `163` (out of all 401) kreise that are growing cities in west Germany.
-    <li> the third column, `%counts`, means that 22 kreise accounts for `13.5%` of all the kreise in the growing-cities-West-Germany group.
+    <li> the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
+    <li> the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
+    <li> the third column, `%counts`, means that 21 kreise accounts for `13.5%` of all the kreise in the not-eligible-for-funding-West-Germany group.
 </ul>
 </i>
 
-<span style="color:gray">*The `#kreis` and `%counts` are reference indicators to help contextualize the counts in the first column. For example, looking at the first column alone, it seems that growing-cities-West-Germany has the most number of kreise in the top 50 to have high unemployment changes since last year. However, when looking at the third column, we see that growing-above-average-West-Germany is actually the group with the highest percentage of kreise than other group to have the high unemployment changes in a year.*</span>
+<!-- <span style="color:gray">*The `#kreis` and `%counts` are reference indicators to help contextualize the counts in the first column. For example, looking at the first column alone, it seems that growing-cities-West-Germany has the most number of kreise in the top 50 to have high unemployment changes since last year. However, when looking at the third column, we see that growing-above-average-West-Germany is actually the group with the highest percentage of kreise than other group to have the high unemployment changes in a year.*</span> -->
 
-<span style="color:gray">*Also note the number of multi-indices shown in the example. Since `growth_shrink_cities` have five categories, and `east_west` has two categories, there should be a total of 10 category groups in the index rows. However, the reason why not all combinations are shown is because some categories do not have kreise in it. Sometimes, it could be useful to see what category groups are not in the top lists.*</span>
+<span style="color:gray">_Note the number of multi-indices shown in the example. Since `eligible_area` have two categories, and `east_west` has two categories, there should be a total of 4 category groups in the index rows. However, the reason why not all combinations are shown is because some categories do not have kreise in it. **Sometimes, it could be useful to see what category groups are not in the top lists. In this case, we see that there are no kreise in East Germany eligible funding in the top 50 highest unemployment rates.**_</span>
 
 
 ### Visualizations
@@ -173,18 +174,16 @@ The pie chart visualizes the `{sort_by_column}` into proportions.
 
 ![pie chart](../home_screenshots/pie.png)
 
-<span style="color:gray">*As shown above, the sample pie chart visualizes the percentage each category group takes in total from the `last_year%` column. For example, growing-cities-West-Germany group accounts for `22` out of the total of `50` top kreise, therefore, it takes up `44%` as shown in the pie chart.*</span>
+<span style="color:gray">*As shown above, the sample pie chart visualizes the percentage each category group takes in total from the `last_year%` column. For example, the not-eligible-for-funding-West-Germany group accounts for `21` out of the total of `50` top kreise, therefore, it takes up `42%` as shown in the pie chart.*</span>
 
 
 #### Bar Chart
 As explained earlier, the pie chart could be a biased understanding of the category groups, and that can be balanced by understanding the percentage of those kreis accounting for the whole category group.
 
-The bar chart visualizes the `%counts` column, and draws a horizontal line on the 50% mark.
+The bar chart visualizes the `%counts` column. It also draws a horizontal line on the 50% mark if at least one `%counts` column reaches that mark.
 
 ![bar chart](../home_screenshots/bar.png)
 
-<span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display is too small on your screen.*</span>
-
-<span style="color:red">^ Also add this as a pro tip on the tool page</span>
+<span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display column names is too small on your screen.*</span>
 
 <span style="color:red">^ Are there other things that should be added on the home page for quick access?</span>

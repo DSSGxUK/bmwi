@@ -80,20 +80,22 @@ def app():
 
     st.markdown('### Bundesland / Group rankings')
     n2 = st.slider("Print top n results", min_value=50, max_value=200, step=50, 
-                    help='Print top n results of the column, counts grouped by Bundesland.')
+                    help='Get top n results of the column.')
     col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
     
     df_cat = pd.read_csv('data/categorical_groups.csv')
     df_group = pd.merge(df_cat, df, left_on='ags5', right_on='ags5')
-    group_cols = list(df_group.columns)[2:12] # crop out ags5
+    group_cols = ['bundesland'] + list(df_cat.columns)[2:] # crop out ags5
     # col_to_group = st.selectbox("Select which column to group by", options=group_cols, index=0)
-    col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=group_cols[:2])
+    default_cols = [group_cols[2], group_cols[-1]]
+    col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=default_cols)
     
     # get %
     result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n2)
     n_group = df_group.groupby(col_to_group).count()[['kreis']]
     result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
     result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
+    result_df.rename(columns={'kreis': '#kreis'}, inplace=True)
     st.dataframe(result_df)
     fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n2)
     result_df = result_df.sort_values('%counts', ascending=False)
