@@ -1,6 +1,6 @@
+from numpy.lib.ufunclike import fix
 import streamlit as st 
 import pandas as pd 
-import numpy as np 
 from datetime import datetime
 from dateutil import relativedelta
 
@@ -36,9 +36,6 @@ def app():
     }
 
     # NOTEE: A lot of these values can be read from a config file and saved inside the params 
-
-    # # Data to be entered into the model  
-    # unemploymentRateData = data1
 
     # Read the cluster data 
     cluster_data = pd.read_csv('data/cluster_data.csv')
@@ -92,20 +89,7 @@ def app():
     # Download links 
     st.markdown(get_table_download_link(pred_output, 
                                         text="Download the predictions.", 
-                                        filename="predictions.csv", 
-                                        excel=True),
-
-                                        unsafe_allow_html=True)
-
-    ''' Error Data Collection '''
-    error_df = VARObject.getWalkForwardErrors()
-
-    # Calcululate MAPE errors 
-    error_df['mape'] = np.abs(error_df['ground_truth'] - error_df['pred'])/error_df['ground_truth']
-
-    # Save the error df
-    error_df.to_csv('data/errors/errors_VAR.csv', index=False)
-    st.write("Saved the errors..")
+                                        filename="predictions.csv"), unsafe_allow_html=True)
 
     ''' Add visulaisations of the unemployment predictions '''
     
@@ -114,30 +98,23 @@ def app():
 
     # Fix ags5
     viz_data = pred_output.copy()
-    viz_data['ags5'] = viz_data['ags5'].apply(fix_ags5)
+    viz_data['ags5'] = viz_data['ags5'].apply(fix_ags5) 
     index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
     
     # Merge with the output data 
+    viz_data = pd.merge(viz_data, index_data, on='ags5')
     full_data = pd.merge(wide_df.reset_index().rename(columns={'index': 'ags5'}), viz_data, on='ags5')
-    full_data = pd.merge(index_data, full_data, on='ags5')
-    
-    # Sync with home page
-    full_data.to_csv('data/pred_output_full.csv', index=False)
 
     st.markdown("## Visualize prediction results.") 
     st.write("\n")
+    print(viz_data.head())
 
     # get predictions by kreis 
-    display_data = pd.merge(index_data, viz_data, on='ags5')
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(display_data['kreis'].values))
-    st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
-
-    """
-    This section doesn't work well because the date columns are messed up and we need to fix that.  
-    """
-
+    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(viz_data['kreis'].unique()))
+    st.dataframe(viz_data[viz_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
+    
     # line plot
-    fig1 = plot_line_wide(full_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
+    fig1 = plot_line_wide(full_data, kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
     # map

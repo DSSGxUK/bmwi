@@ -23,7 +23,7 @@ def app():
 
 # -- read in data ------------------------------------------
 
-    df = pd.read_csv('data/combined_df_pro.csv')
+    df = pd.read_csv('data/pred_output_full.csv')
     date_cols = list(df.columns[4:])
     df['last_time%'] = (df[date_cols[-1]]-df[date_cols[-2]])/df[date_cols[-1]]*100
     df['last_year%'] = (df[date_cols[-1]]-df[date_cols[-13]])/df[date_cols[-1]]*100

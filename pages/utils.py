@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import base64
 import geopandas as gpd
+from io import BytesIO
 
 ''' Data Fix Functions'''
 def fix_ags5(x):
@@ -171,16 +172,18 @@ def plot_map(data, merge_col, data_col, cat_col=False):
     return fig
 
 def plot_map_wide(data, merge_col):
+    
     # read the map coordinates data 
     gdf = gpd.read_file('georef-germany-kreis/georef-germany-kreis-millesime.shp')
     index = pd.read_csv('data/index.csv')
+    
     # merge the coords with the data 
     try:
         merged = pd.merge(data, gdf, left_on=merge_col, right_on='krs_code')
     except ValueError:
         data['ags5_fix'] = data['ags5'].apply(fix_ags5)
         merged = pd.merge(data, gdf, left_on='ags5_fix', right_on='krs_code')
-
+    
     # get the geospatial data 
     merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
     merged['coords'] = [coords[0] for coords in merged['coords']]
@@ -189,7 +192,7 @@ def plot_map_wide(data, merge_col):
     
     # convert to geodata
     merged = gpd.GeoDataFrame(merged)
-    date_cols = merged.columns[4:-13]
+    date_cols = merged.columns[4:-12]
 
     # useful stats
     merged['last_time'] = merged[date_cols[-1]]-merged[date_cols[-2]]
@@ -270,15 +273,19 @@ def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
     '''
     fig, ax = plt.subplots(figsize=(30,10))
     filter_df = df.copy()
+    # drop non-date cols
     if 'bundesland' in filter_df.columns:
         filter_df.drop(columns=['bundesland'], inplace=True)
+    if 'ags2' in filter_df.columns:
+        filter_df.drop(columns=['ags2'], inplace=True)
+    # set index col
     filter_df = filter_df.set_index(df_index)
     dates = [str(date) for date in filter_df.columns]
     filter_df.columns = dates
     for kreis in filter_kreis:
         plt.plot(filter_df[dates[:-num_pred]].loc[kreis], label=kreis)
         plt.plot(filter_df[dates[-(num_pred+1):]].loc[kreis], 'r')
-    plt.axvline(x=df.columns[-(num_pred+1)], alpha=0.5, linestyle='--')
+    plt.axvline(x=filter_df.columns[-(num_pred+1)], alpha=0.5, linestyle='--', c='k')
     ax.set_xticks(list(range(0, len(dates), 12)))
     ax.set_xticklabels(dates[::12])
     ax.legend()
@@ -314,7 +321,7 @@ def get_english_term(german_phrase):
         return german_phrase.lower()
 
 # Function to convert data into download link
-def get_table_download_link(df, text, filename="final.csv"):
+def get_table_download_link(df, text, excel=False, filename="final.csv"):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     params:  
         dataframe
@@ -322,10 +329,24 @@ def get_table_download_link(df, text, filename="final.csv"):
         filename: Filename to be downloaded [optional]
     returns: href string
     """
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
+    def to_excel(df):
+        output = BytesIO()
+        writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        df.to_excel(writer, sheet_name='Sheet1', index=False)
+        writer.save()
+        processed_data = output.getvalue()
+        return processed_data
 
+    if excel == False: 
+        csv = df.to_csv(index=False)
+        b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+        href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{text}</a>'
+    
+    elif excel == True: 
+        val = to_excel(df)
+        b64 = base64.b64encode(val)  # val looks like b'...'
+        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="predictions.xlsx">{text}</a>' # decode b'abc' => abc
+    
     return href
 
 
