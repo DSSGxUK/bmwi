@@ -13,6 +13,19 @@ def app():
 
     st.markdown("## Model Output Page")
 
+    # st.markdown('''
+    # <link
+    #   rel="stylesheet"
+    #   href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    #   integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+    #   crossorigin="anonymous"
+    # />
+
+    # ## <i class="fas fa-book"></i> Model Output Page 
+    # ''', 
+    
+    # unsafe_allow_html=True)
+
     st.subheader("This page will output the predictions for the next three quarters.")
 
     st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")

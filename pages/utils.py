@@ -346,7 +346,7 @@ def get_table_download_link(df, text, excel=False, filename="final.csv"):
     elif excel == True: 
         val = to_excel(df)
         b64 = base64.b64encode(val)  # val looks like b'...'
-        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="predictions.xlsx">{text}</a>' # decode b'abc' => abc
+        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename[:-4]}.xlsx">{text}</a>' # decode b'abc' => abc
     
     return href
 
