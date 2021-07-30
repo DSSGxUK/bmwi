@@ -113,56 +113,39 @@ def app():
     # add all in both subcolumns by default
     col1, col2 = st.beta_columns(2)
 
-    viz_area = col1.selectbox(label="Select Kreis or Bundesland", options=["Kreis", "Bundesland"], index=1)
-
-    # col2.write()
+    viz_area = col1.selectbox(label="Select Kreis or Bundesland", options=["Kreis", "Bundesland"], index=0)
 
     # Get the options based on column one 
     if viz_area == 'Kreis':
-        dropdown_options = list(error_data['ags5'].unique())
-        dropdown_options = ['all'] + dropdown_options 
-    elif viz_area == 'Bundesland':
-        dropdown_options = list(error_data['ags2'].unique())
-        dropdown_options = ['all'] + dropdown_options 
+        dropdown_options = list(ags5_data['kreis'].unique())
     
-    viz_sub_area = col2.selectbox("Select all or a particular geographical entitity", options=dropdown_options)
+    elif viz_area == 'Bundesland':
+        dropdown_options = list(ags5_data['bundesland'].unique())
+    
+    # Create a multiselect for the subarea
+    viz_sub_area = col2.multiselect("Select all or a particular geographical entitity", 
+                                    options=dropdown_options, 
+                                    default=[dropdown_options[0]])
 
     if viz_area=='Kreis':
-        if viz_sub_area=='all': 
-            g = sns.lineplot(data=error_data, x="date", y="mape",  hue='ags5')
-            plt.title(f"{viz_area} : {viz_sub_area}")
-            g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            # g.legend_.remove()
-            
-            st.pyplot()
-        
-        else: 
 
-            # filter data by kreis 
-            filter_data = error_data[error_data['ags5'] == viz_sub_area]
-            g = sns.lineplot(data=error_data, x="date", y="mape")
-            plt.title(f"{viz_area} : {viz_sub_area}")
-            g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            st.pyplot()
-            # g.legend_.remove()
+        # filter data by kreis 
+        filter_data = error_data[error_data['kreis'].isin(viz_sub_area)]
+        g = sns.lineplot(data=filter_data, x="date", y="mape", hue='kreis')
+        plt.title(f"{viz_area} Plot")
+        g.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
+        st.pyplot()
         
     
     elif viz_area=='Bundesland':
-        if viz_sub_area=='all': 
-
-            g = sns.lineplot(data=error_data, x="date", y="mape",  hue='ags2')
-            plt.title(f"{viz_area} : {viz_sub_area}")
-            g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            # g.legend_.remove()
-            st.pyplot()
-
-        else: 
-            # filter data by kreis 
-            filter_data = error_data[error_data['ags5'] == viz_sub_area]
-            g = sns.lineplot(data=error_data, x="date", y="mape")
-            plt.title(f"{viz_area} : {viz_sub_area}")
-            g.xaxis.set_major_locator(mdates.MonthLocator(interval=6))
-            # g.legend_.remove()
+    
+        # filter data by kreis 
+        filter_data = error_data[error_data['bundesland'].isin(viz_sub_area)]
+        filter_data = filter_data.groupby(['date', 'bundesland'], as_index=False).mean()
+        g = sns.lineplot(data=filter_data, x='date', y='mape', hue='bundesland')
+        plt.title(f"{viz_area} Plot")
+        g.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
+        st.pyplot()
 
     st.markdown("""---""")
 
@@ -184,7 +167,11 @@ def app():
         st.dataframe(output_df.head(n_value).reset_index(drop=True))
     
     # Add the full table download link 
-    st.markdown(get_table_download_link(df_mean_error, text="Download the full error table", filename="mean_error_table.csv"), unsafe_allow_html=True)
+    st.markdown(get_table_download_link(df_mean_error, 
+                                        text="Download the full error table", 
+                                        filename="mean_error_table.csv", 
+                                        excel=True), 
+                                        unsafe_allow_html=True)
 
     st.markdown("""---""")
 
