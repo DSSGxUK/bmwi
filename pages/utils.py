@@ -199,8 +199,9 @@ def plot_map_wide(data, merge_col):
     merged['last_year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
     merged['last_time%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
     merged['last_year%'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
+    stats_cols = ['last_time', 'last_year', 'last_time%', 'last_year%']
     
-    num_cols = list(merged.columns[merged.dtypes!=object])
+    num_cols = list(date_cols) + stats_cols
     latest_date = num_cols.index(date_cols[-1])
     col = st.selectbox("Select a column", options=num_cols, index=latest_date)
 
