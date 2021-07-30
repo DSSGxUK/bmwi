@@ -199,8 +199,9 @@ def plot_map_wide(data, merge_col):
     merged['last_year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
     merged['last_time%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
     merged['last_year%'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
+    stats_cols = ['last_time', 'last_year', 'last_time%', 'last_year%']
     
-    num_cols = list(merged.columns[merged.dtypes!=object])
+    num_cols = list(date_cols) + stats_cols
     latest_date = num_cols.index(date_cols[-1])
     col = st.selectbox("Select a column", options=num_cols, index=latest_date)
 
@@ -224,7 +225,7 @@ def plot_map_wide(data, merge_col):
         merged_ags = merged[merged['ags2']==int(txt_to_display_ags[:2])]
         for i in merged_ags.index:
             ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
-                    f'{merged_ags["krs_name"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=10)
+                    f'{merged_ags["kreis"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=10)
 
     # (2) by numerical stats
     label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
@@ -240,14 +241,14 @@ def plot_map_wide(data, merge_col):
         # add text with filters
         for i in merged_stats.index:
             ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
-                    f'{merged_stats["krs_name"][i]}\n{round(merged_stats[col][i], 2)}', fontsize=10)
+                    f'{merged_stats["kreis"][i]}\n{round(merged_stats[col][i], 2)}', fontsize=10)
 
     # (3) add all text
     labels = st.radio("Show all labels?", options=["Yes", "No"], index=1)
     if labels == "Yes": 
         for i in range(len(merged)):
             ax.text(merged.longitude[i], merged.latitude[i],
-                    f'{merged["krs_name"][i]}\n{round(merged[col][i], 2)}', fontsize=10)
+                    f'{merged["kreis"][i]}\n{round(merged[col][i], 2)}', fontsize=10)
                     
     return fig
 
@@ -345,7 +346,7 @@ def get_table_download_link(df, text, excel=False, filename="final.csv"):
     elif excel == True: 
         val = to_excel(df)
         b64 = base64.b64encode(val)  # val looks like b'...'
-        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="predictions.xlsx">{text}</a>' # decode b'abc' => abc
+        href = f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename[:-4]}.xlsx">{text}</a>' # decode b'abc' => abc
     
     return href
 

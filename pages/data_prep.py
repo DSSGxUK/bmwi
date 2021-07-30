@@ -119,7 +119,8 @@ def app():
             merged_df.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
         
 
-
+    st.markdown("""---""")
+    
     ## ------ Upload multiple csv files
     st.markdown("### Merging multiple csv files.")
     non_time_series = st.radio("Structural data.", options=["Yes", "No"], index=1,
@@ -150,7 +151,8 @@ def app():
             # Publish the combined df using the function from utils
             #st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
 
-
+    st.markdown("""---""")
+    
     ## -------- Data to pass on to final_page_v1
     st.markdown("## Final dataset cleaning")
     st.write('Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.')
@@ -200,7 +202,8 @@ def app():
             help='Crop the time-series data to the appropriate timeframe for model prediction.')
         
         if confirm_crop_data == "Yes":
-            st.write("Last used data now updated to the cropped data.")
+            st.write("Last used data is now updated to the cropped data. \
+                    You can move on to the model page to proceed with data prediction.")
             cropped_data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
             st.write(get_table_download_link(cropped_data, text="download csv", \
                 filename=f"cropped_data.csv"), unsafe_allow_html=True)
