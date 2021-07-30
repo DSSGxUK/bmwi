@@ -119,7 +119,8 @@ def app():
             merged_df.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
         
 
-
+    st.markdown("""---""")
+    
     ## ------ Upload multiple csv files
     st.markdown("### Merging multiple csv files.")
     non_time_series = st.radio("Structural data.", options=["Yes", "No"], index=1,
@@ -150,7 +151,8 @@ def app():
             # Publish the combined df using the function from utils
             #st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
 
-
+    st.markdown("""---""")
+    
     ## -------- Data to pass on to final_page_v1
     st.markdown("## Final dataset cleaning")
     st.write('Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.')
