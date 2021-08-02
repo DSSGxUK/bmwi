@@ -21,6 +21,22 @@ def app():
     st.markdown("## Unemployment Rate Ranking")
     st.markdown('**Pro Tip**: click on the column to sort')
 
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    The contents of this page are: 
+    * [Unemployment Rate Ranking](#unemployment-rate-ranking)
+        * [Kreise Rankings](#kreise-rankings)
+        * [Bundesland Rankings](#bundesland-group-rankings)
+    
+
+    We can also put images here and anything under the sun. 
+
+    """)
+
+    # --- adds a horizontal line
+
 # -- read in data ------------------------------------------
 
     df = pd.read_csv('data/pred_output_full.csv')
