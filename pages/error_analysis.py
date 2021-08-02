@@ -4,7 +4,8 @@ from numpy.lib.ufunclike import fix
 import numpy as np 
 import pandas as pd
 import geopandas as gpd
-from pandas._config.config import options 
+from pandas._config.config import options
+from seaborn.relational import scatterplot 
 import streamlit as st 
 
 import matplotlib.pyplot as plt
@@ -13,6 +14,7 @@ from matplotlib import pyplot
 import matplotlib.dates as mdates
 
 import random
+import json 
 from scipy.stats import ttest_ind
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
@@ -23,13 +25,26 @@ from mlxtend.feature_selection import SequentialFeatureSelector as sfs
 # Custom modules 
 from .utils import fix_ags5, get_table_download_link
 
+# DEFINE THE CONSTANTS
+# Read the categorical data inside the file 
+with open('data/metadata/data_types.json') as f:
+    data = json.load(f)
+    CAT_COLS = data["data_types"]["categorical"]
 
 ''' Functions for this page '''
 
 # function to do that for a spesific column 
 def compare_error_in_two_groups(df, column_name): 
-    sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False)
-    st.pyplot()
+    
+    # Check if the variable is structural 
+    if column_name in CAT_COLS: 
+        sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False)
+        st.pyplot()
+
+    else: 
+        sns.scatterplot(data=df, x="error", y=column_name)
+        st.pyplot()
+
     
 # Function to plot error maps 
 def plot_error_map(data, date_string="by average"):
@@ -176,10 +191,10 @@ def app():
     st.markdown("""---""")
 
     ''' Analysis with Structural Data '''
-
-    # Only if 
     st.subheader("Structural Data Analysis")
     st.write("Compare the structural variable to the error values")
+
+
     # Add structural data and combine with the error data 
     df_structural = pd.read_csv('data/df_final_stationary.csv', converters={'ags5': str} )
     df_structural['ags5'] = df_structural['ags5'].apply(fix_ags5)
@@ -201,12 +216,9 @@ def app():
     st.write("Running a linear regression model...")
     df_mixed.set_index('ags5', drop=True, inplace=True)
 
-    # IDEA: Instead of doing this, we can provide a list of variables which need to be a category. 
-    # Create a utils function which takes in the list and converts them to string 
-    # or we have a list already and convert all those in the data
-    df_mixed['east_west'] = df_mixed['east_west'].astype(str)
-    df_mixed['eligible_area'] = df_mixed['eligible_area'].astype(str)
-    df_mixed['urban_/_rural'] = df_mixed['urban_/_rural'].astype(str)
+    # Convert categorical columns to str type 
+    for col in CAT_COLS: 
+        df_mixed[col] = df_mixed[col].astype(str)
 
     # Create X and y 
     X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
