@@ -5,13 +5,13 @@
 
 # CleanerClass Explained
 
-This page walks through the assumptions and implementation code for the excel sheet cleaner. 
+This page walks through the assumptions and the implementation code for the excel sheet cleaner. 
 
 ## Purpose of the CleanerClass
 
-The excel sheet cleaner is what is used on the [Data Prep page]() to get the data for our prediction model from excel workbooks. We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**. 
+The excel sheet cleaner is used on the [Data Prep page]() to get the formatted data for our forecast model from excel workbooks.<!-- We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**.  -->
 
-The goal of the CleanerClass is to retrieve a csv-like format of the data, containing only the essential index columns, variable columns, and the numerical values of the data. Worksheets that are metadata descriptions would be discarded, and the watermark-like header rows would also be cropped out in the process.
+The goal of the CleanerClass is to retrieve a python friendly format of the data, containing only the essential index columns, variable columns, and the numerical values of the data. Worksheets that contain only metadata or descriptions would be discarded, and the watermark-like header rows would also be cropped out in the process.
 
 ## Assumed Formatting for the CleanerClass
 
@@ -23,18 +23,22 @@ The assumptions for the input excel workbook are as follows:
 
 - **every kreis is a row**
     - although every row need not be a kreis
-    - for example, there are also rows that represents the whole bundesland
+        - for example, there are also rows that represents the whole bundesland
+    - all 401 kreis's AGS5 values must exist, and exist in the same column
+        - The ags5 values for cities like Berlin and Hamburg must exist (not just their ags2 values)
 - **the left most column of the table has the ags5 code value**
     - the left most column of the table need not be left most column of sheet
-    - "sheet" is the data format we are given, and "table" is the data format we would end up with
-    - thus, once the CleanerClass finds the ags5 column, that column becomes the left most column of the result table, and every column left to the ags5 column would be cropped out
+        - "sheet" describes a single Excel sheet, and "table" describes the acutual tabular data (along with the indexes and columns)
+    - thus, once the CleanerClass finds the ags5 column, that column becomes the left most column of the output table, and every column left to the ags5 column would be cropped out
     - in other words, no data should be recorded to the left on the ags5 column
     - also, any essential columns should also be recorded to the right of the ags5 column
 - **every column is a time-stamp** 
-    - the input excel workbook is expected to be in wide format
-    - the output csv file supports both long and wide formats
+    - the input excel workbook is expected to be in wide format (i.e., kreise are rows; timestamps are columns)
+    - however, after cleaning, the CleanerClass can provide both wide and long formats
+    - there must be atleast 5 timestamps
 - **every cell is a numeric value**
     - categorical values are not permitted in the worksheet
+    - any column with non-numeric data (like: 'Zero', 'Does not exist', null), will be dropped (only if the non-numeric data exists in a row containing an AGS5 value, below the row containing the timestamps)
 
 
 As long as aforementioned assumptions are met in the input excel workbook, this CleanerClass should export suitable formats for the model. 
@@ -43,7 +47,7 @@ As long as aforementioned assumptions are met in the input excel workbook, this 
 
 ## Code Walkthrough
 
-There are only minor differences between the CleanerClass for unemployment rate and the one for GDP. This page would go through a generalized cleanerclass in detail.
+<!-- There are only minor differences between the CleanerClass for unemployment rate and the one for GDP. --> This page would go through the implementation of the cleanerclass in detail.
 
 ### Class Initiation
 
