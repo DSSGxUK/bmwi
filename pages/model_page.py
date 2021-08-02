@@ -1,3 +1,4 @@
+from numpy.lib.function_base import average
 import streamlit as st 
 import pandas as pd 
 import numpy as np 
@@ -156,5 +157,13 @@ def app():
 
     # map
     st.markdown("### Map")
+
+    # Add the average of the predictions as a column for the plots 
+    average_cols = pd.DataFrame(pred_output.mean(axis=1))
+    average_cols.columns = ['average']
+    full_data = pd.concat([full_data, average_cols], axis=1)
+
+    print
+
     map_fig = plot_map_wide(full_data, 'ags5') # MAP gives error 
     st.pyplot(map_fig)
