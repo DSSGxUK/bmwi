@@ -160,7 +160,6 @@ def app():
     # Add the average of the predictions as a column for the plots 
     average_cols = pd.DataFrame(pred_output.mean(axis=1))
     average_cols.columns = ['average']
-    print(average_cols)
     full_data = pd.concat([full_data, average_cols], axis=1)
 
     print
