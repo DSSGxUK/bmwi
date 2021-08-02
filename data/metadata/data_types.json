@@ -1,0 +1,13 @@
+{
+  "data_types": {
+    "categorical": ["support_area_status","eligible_area", "labor_market_region",
+      "growing_/_shrinking_circles", "labor_market_type",
+      "grw_funding_framework",
+      "settlement_structure_type_of_labor_market_region",
+      "room_type_location", "district_settlement_structure",
+      "type_of_settlement_structure", "urban_/_rural", "metropolitan_region",
+      "metropolitan_area", "east_west", "border_proximity"], 
+      "numerical": []
+  }
+  
+}
