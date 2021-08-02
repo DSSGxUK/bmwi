@@ -126,41 +126,46 @@ def app():
                     Proceed to the **"Final Dataset Cleaning"** section below if you want to crop the timeframe. \
                     Alternatively, you could directly proceed to the **"Model"** page and proceed with \
                     unemployment rate prediction.')
+            # formatting
+            merged_df.reset_index(inplace=True)
+            merged_df['index'] = merged_df['index'].apply(fix_ags5)
+            merged_df.set_index('index', inplace=True)
+            # export data
             merged_df.to_csv('data/main_data.csv', index=True, encoding='latin_1')
             # merged_df.to_csv('data/main_data.csv', index=False, encoding='latin_1')
         
 
-    st.markdown("""---""")
+    # st.markdown("""---""")
     
     ## ------ Upload multiple csv files
-    st.markdown("### Merging multiple csv files.")
-    non_time_series = st.radio("Structural data.", options=["Yes", "No"], index=1,
-        help='Structural data are non-time-series and contain 401 rows representing each kreis, and with "ags5" column.')
+    # st.markdown("### Merging multiple csv files.")
+    # non_time_series = st.radio("Structural data.", options=["Yes", "No"], index=1,
+    #     help='Structural data are non-time-series and contain 401 rows representing each kreis, and with "ags5" column.')
     
-    if non_time_series == "Yes": 
-        # Read all the files 
-        uploaded_files = st.file_uploader("Upload CSV", type="csv", accept_multiple_files=True)
+    # if non_time_series == "Yes": 
+    #     # Read all the files 
+    #     uploaded_files = st.file_uploader("Upload CSV", type="csv", accept_multiple_files=True)
         
-        if uploaded_files:
-            data = pd.read_csv(uploaded_files[0])
+    #     if uploaded_files:
+    #         data = pd.read_csv(uploaded_files[0])
             
-            # Iterate through the uploaded files 
-            for file in uploaded_files[1:]:
-                new_data = pd.read_csv(file)
-                # Merge the data 
-                data = pd.merge(new_data, data, on=['_id', 'ags2', 'ags5', 'bundesland', 'kreis'])
-                data.drop(columns=['id', '_id', 'ags2', 'bundesland', 'kreis'], inplace=True)
-            #st.write(f"The combined dataset is of the size {data.shape}")
-            st.write(data)
+    #         # Iterate through the uploaded files 
+    #         for file in uploaded_files[1:]:
+    #             new_data = pd.read_csv(file)
+    #             # Merge the data 
+    #             data = pd.merge(new_data, data, on=['_id', 'ags2', 'ags5', 'bundesland', 'kreis'])
+    #             data.drop(columns=['id', '_id', 'ags2', 'bundesland', 'kreis'], inplace=True)
+    #         #st.write(f"The combined dataset is of the size {data.shape}")
+    #         st.write(data)
             
-            # Confirm merge and then saves to next section of this page to crop timeframe
-            confirm_merge_data = st.radio("Confirm merged dataframe", options=["Yes", "No"], index=1,
-                                            help='Preview and confirm merged data brings you to timeframe cropping section of data prepartion.')
-            if confirm_merge_data == 'Yes':
-                data.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
+    #         # Confirm merge and then saves to next section of this page to crop timeframe
+    #         confirm_merge_data = st.radio("Confirm merged dataframe", options=["Yes", "No"], index=1,
+    #                                         help='Preview and confirm merged data brings you to timeframe cropping section of data prepartion.')
+    #         if confirm_merge_data == 'Yes':
+    #             data.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
             
-            # Publish the combined df using the function from utils
-            #st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
+    #         # Publish the combined df using the function from utils
+    #         #st.markdown(get_table_download_link(data, text="Download Combined CSV"), unsafe_allow_html=True)
 
     st.markdown("""---""")
     
@@ -214,8 +219,11 @@ def app():
             help='Crop the time-series data to the appropriate timeframe for model prediction.')
         
         if confirm_crop_data == "Yes":
-            st.write("Last used data is now updated to the cropped data. \
-                    You can move on to the model page to proceed with data prediction.")
-            cropped_data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
+            st.markdown('Last used data is now updated to the cropped data. \
+                    You can move on to the **"Model page"** to proceed with data prediction.')
+            cropped_data.reset_index(inplace=True)
+            cropped_data['index'] = cropped_data['index'].apply(fix_ags5)
+            cropped_data.set_index('index', inplace=True)
+            cropped_data.to_csv('data/main_data.csv', index=True, encoding='latin_1')
             st.write(get_table_download_link(cropped_data, text="Download cropped data in excel", \
                 filename=f"cropped_data", excel=True), unsafe_allow_html=True)
