@@ -122,7 +122,12 @@ def app():
                                         help='Preview and confirm data brings you to timeframe cropping section of data prepartion.')
         
         if confirm_merge_data == 'Yes':
-            merged_df.to_csv('data/merged_df.csv', index=False, encoding='latin_1')
+            st.markdown('Last used data is now updated to the selected data. \
+                    Proceed to the **"Final Dataset Cleaning"** section below if you want to crop the timeframe. \
+                    Alternatively, you could directly proceed to the **"Model"** page and proceed with \
+                    unemployment rate prediction.')
+            merged_df.to_csv('data/main_data.csv', index=True, encoding='latin_1')
+            # merged_df.to_csv('data/main_data.csv', index=False, encoding='latin_1')
         
 
     st.markdown("""---""")
@@ -172,7 +177,8 @@ def app():
         if upload_data == "Yes":
             data = read_single_file()
         else:
-            data = pd.read_csv('data/merged_df.csv')
+            data = pd.read_csv('data/main_data.csv', index_col=0)
+            # data.set_index('Unnamed: 0', inplace=True)
         
         # Raw data display  
         st.dataframe(data)
@@ -211,5 +217,5 @@ def app():
             st.write("Last used data is now updated to the cropped data. \
                     You can move on to the model page to proceed with data prediction.")
             cropped_data.to_csv('data/main_data.csv', index=False, encoding='latin_1')
-            st.write(get_table_download_link(cropped_data, text="download csv", \
-                filename=f"cropped_data.csv"), unsafe_allow_html=True)
+            st.write(get_table_download_link(cropped_data, text="Download cropped data in excel", \
+                filename=f"cropped_data", excel=True), unsafe_allow_html=True)
