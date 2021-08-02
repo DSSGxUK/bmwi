@@ -40,7 +40,8 @@ def app():
         # (0) Select cleanerclass
         st.markdown("**Pro Tip**: If you are encountering problems, try clearing cache and run again.")
         
-        select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate', 'GDP'], index=0,
+        # select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate', 'GDP'], index=0,
+        select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate'], index=0,
                                         help='Refer to documentation for details about input excel workbook format.')
         cleanerObject = load_cleanerObject(uploaded_file, data=select_cleaner)
         sheet_names = [sheet_name for sheet_name, _ in cleanerObject.getAllUsefulSheets_long().items()]
@@ -52,11 +53,16 @@ def app():
         #             Multiple long format variable data merged together are known as the "wide format" data.')
 
         # (1) Select the variable you want
-        select_var = st.selectbox("Select the one variable you want to feed in the model.", options=sheet_names,
+        # select_var = st.selectbox("Select the one variable you want to feed in the model.", options=sheet_names,
+        #                             help='Refer to documentation for details about merging best practices.')
+        
+        # (1) Select the variable you want (default: unemployment rate)
+        alq = sheet_names.index('Alo Quote')
+        select_var = st.selectbox("Select the one variable you want to feed in the model.", options=sheet_names, index=alq,
                                     help='Refer to documentation for details about merging best practices.')
         
         # (2) Select wide or long format
-        select_format = st.selectbox("Select export data format.", options=['long', 'wide'], index=0,
+        select_format = st.selectbox("Select export data format.", options=['long', 'wide'], index=1,
                                     help='Refer to documentation for details about input and output formats.')
         st.markdown('**Pro Tip**: Wide format is when each column is a date, and long format is when all dates are recorded in one column.')
         
