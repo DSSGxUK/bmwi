@@ -235,7 +235,8 @@ def plot_map_wide(data, merge_col):
         st.write(stats_values)
         txt_to_display_stats = st.slider("Select a range of values", 
                                         float(stats_values['min']), float(stats_values['max']), 
-                                        (float(stats_values['25%']), float(stats_values['75%'])))
+                                        # (float(stats_values['25%']), float(stats_values['75%'])))
+                                        (float(stats_values['75%']), float(stats_values['max'])))
         # get filtered df
         merged_stats = merged[(merged[col]>=txt_to_display_stats[0]) & (merged[col]<=txt_to_display_stats[1])]
         # add text with filters
