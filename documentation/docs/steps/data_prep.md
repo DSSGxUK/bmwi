@@ -2,15 +2,21 @@
 
 Upload the dataset and make any necessary changes to fit the prediction model. 
 
-## Reshape and merge datasets
+<!-- ## Reshape and merge datasets -->
 
-This section process data differently for excel or csv files, and for time-series or structural data type. It assumes that:
+<!-- This section process data differently for excel or csv files, and for time-series or structural data type. It assumes that:
 
 - **time-series** data are in **wide**-format **excel** workbooks, where each worksheet contains data for one variable
 
 - **structural** data are in **long**-format **csv** files, where each row is a record of one kreis, and each column is one variable
 
-- both assumes to have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel")
+- both assumes to have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel") -->
+
+This section process the input excel workbook for time-series or structural data type. It assumes that the data is:
+
+- in **wide**-format, where each worksheet contains data for one variable
+
+- have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel")
 
 ## Time-series data excel workbook
 
@@ -28,7 +34,7 @@ When you open up the page, you will likely be facing this error. No worries, tha
 
 ### Select data to clean
 
-Because each data is formatted differently in the excel workbook, we created different cleaners for different data. Select the appropriate cleaner based on the data input. Currently, we support: 
+<!-- Because each data is formatted differently in the excel workbook, we created different cleaners for different data. Select the appropriate cleaner based on the data input. Currently, we support:  -->
 
 ![select cleanerclass](../prep_screenshots/select_cleaner.png)
 
@@ -45,7 +51,7 @@ Because each data is formatted differently in the excel workbook, we created dif
 </ul>
 </i>
 
-- `GDP` (GDP data, containing kreis-level GDP breakdown)
+<!-- - `GDP` (GDP data, containing kreis-level GDP breakdown)
 
 ![gdp data](../prep_screenshots/gdp_data.png)
 
@@ -56,7 +62,7 @@ Because each data is formatted differently in the excel workbook, we created dif
     <li> The rest of the columns should represent each year.
     <li> Each worksheet represents a different variable. For example, the current worksheet selected is "1.1", which according to the trailing title means gross domestic product ("bruttoinlandsprodukt"). 
 </ul>
-</i>
+</i> -->
 
 
 
@@ -106,7 +112,7 @@ Because each data is formatted differently in the excel workbook, we created dif
 <span style="color:gray">*A preview of the merged data would be shown like the long and wide formats above. Once you confirm to use the merged data, it would be set as the default loaded dataset on the tool.*</span> -->
 
 
-## Structural data csv files
+<!-- ## Structural data csv files
 
 ![csv](../prep_screenshots/csv.png)
 
@@ -114,7 +120,7 @@ Because each data is formatted differently in the excel workbook, we created dif
 
 ![merge csv](../prep_screenshots/csv_merge.png)
 
-<span style="color:gray">*A simple merge using the `ags5` column, we have a merged file of 401 rows, and the combination of all the selected columns. In this example, we merged two files, `raumordnung` and `point_of_interest`. Again, a preview of the merged file would be shownn, and once confirmed, it would be the default loaded dataset.*</span>
+<span style="color:gray">*A simple merge using the `ags5` column, we have a merged file of 401 rows, and the combination of all the selected columns. In this example, we merged two files, `raumordnung` and `point_of_interest`. Again, a preview of the merged file would be shownn, and once confirmed, it would be the default loaded dataset.*</span> -->
 
 
 ## Final dataset cleaning
