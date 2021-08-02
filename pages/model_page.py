@@ -31,7 +31,8 @@ def app():
     # st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
 
     ''' Read the Data and set it in the appropriate format '''
-    wide_df = pd.read_csv('data/Alo_Quote.csv')
+    # wide_df = pd.read_csv('data/Alo_Quote.csv')
+    wide_df = pd.read_csv('data/main_data.csv')
     wide_df.columns = ['ags5'] + list(wide_df.columns[1:])
     wide_df.set_index('ags5', inplace=True)
 
