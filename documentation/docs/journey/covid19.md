@@ -1,1 +1,0 @@
-# Covid19 restrictions
