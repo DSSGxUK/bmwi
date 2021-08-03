@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ab3ef658-4c52-4173-898f-dda6fe6303e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/docs/journey/causal_inf.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/causal_inf.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/docs/about/team.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/about/team.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/journey/clusters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/docs/journey/covid19.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/docs/start/start.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/start/start.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/mkdocs.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,18 +19,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="608">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/visualizations.md">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/start/quick.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-1043">
-                <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/start/start.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="263">
+                <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               </first_editor>
               <second_editor />
             </state>
@@ -37,11 +48,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/rankings.md">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/start/user.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1710">
-                <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/about/team.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="247">
+                <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               </first_editor>
               <second_editor />
             </state>
@@ -60,12 +81,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/documentation/docs/journey/clusters.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="325">
-                <caret line="131" column="1732" selection-start-line="131" selection-start-column="1732" selection-end-line="131" selection-end-column="1732" />
+              <first_editor relative-caret-position="496">
+                <caret line="148" column="4" lean-forward="true" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -101,19 +122,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="439">
-                <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/data_prep.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="456">
-                <caret line="24" selection-start-line="24" selection-end-line="24" />
+                <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
               </first_editor>
               <second_editor />
             </state>
@@ -125,6 +134,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>sense</find>
+      <find>on the sa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,10 +150,12 @@
         <option value="$PROJECT_DIR$/documentation/docs/steps/visualizations.md" />
         <option value="$PROJECT_DIR$/documentation/docs/steps/model.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/models.md" />
-        <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/causal_inf.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/covid19.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/clusters.md" />
+        <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
+        <option value="$PROJECT_DIR$/documentation/docs/start/start.md" />
+        <option value="$PROJECT_DIR$/documentation/docs/about/team.md" />
       </list>
     </option>
   </component>
@@ -181,7 +193,21 @@
               <item name="the-tool-bmwi" type="462c0819:PsiDirectoryNode" />
               <item name="documentation" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="about" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="the-tool-bmwi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="the-tool-bmwi" type="462c0819:PsiDirectoryNode" />
+              <item name="documentation" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="journey" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="the-tool-bmwi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="the-tool-bmwi" type="462c0819:PsiDirectoryNode" />
+              <item name="documentation" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="start" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="the-tool-bmwi" type="b2602c69:ProjectViewProjectNode" />
@@ -326,13 +352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/steps/model.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -377,7 +396,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="439">
-            <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+            <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
@@ -386,8 +405,51 @@
     <entry file="file://$PROJECT_DIR$/documentation/docs/journey/clusters.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="325">
-            <caret line="131" column="1732" selection-start-line="131" selection-start-column="1732" selection-end-line="131" selection-end-column="1732" />
+          <first_editor relative-caret-position="496">
+            <caret line="148" column="4" lean-forward="true" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/start/quick.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/start/start.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="263">
+            <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/start/user.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/about/team.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="247">
+            <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           </first_editor>
           <second_editor />
         </state>
