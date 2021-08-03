@@ -13,7 +13,7 @@ To open the error analysis page, select the 'Error Analysis` Section from the dr
 
 There are a variety of different plots that can be explored and have been explained in detail below. 
 
-## Map Visualisation 
+<!-- ## Map Visualisation 
 
 This is the first step of visualisation that one can view. Select the checkbox `Visualize error on a map?`. This will toggle open the following section. 
 
@@ -21,15 +21,15 @@ This is the first step of visualisation that one can view. Select the checkbox `
 
 Here, you will see the `average` option selected by default. This will make a map with the average value of errors. This average is calculated over all the dates of the predictions. On clicking on the dropdown and selecting a specific date, the errors for that date will be plotted as seen below. 
 
-![](https://i.imgur.com/XozVJQH.png)
+![](https://i.imgur.com/XozVJQH.png) -->
 
 ## Error Plots by Bundesland 
 
-This section allows for a kreis-level or bundesland-level analysis. The left dropdown allows selection by Kreis or by Bundesland and the right dropdown allows selection of `all` or a particular region. 
+This section allows for a kreis-level or bundesland-level analysis. The left dropdown allows selection by Kreis or by Bundesland and the right dropdown allows selection of one or more regions. 
 
-![](https://i.imgur.com/JwGjwvt.png)
+![](https://i.imgur.com/WnXTJJk.png)
 
-Selecting `all` displays every kreis or bundesland in the same graph. Selecting an individual entry would plot the errors for a specific kreis or bundesland. The individual entries can be selected from the right dropdown option. 
+ Selecting an individual entry would plot the errors for a specific kreis or bundesland. You can select multiple bundesland or kreis. The individual entries can be selected from the right dropdown option. 
 
 ![](https://i.imgur.com/eu9P1dS.png)
 

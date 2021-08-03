@@ -214,7 +214,7 @@ def plot_map_wide(data, merge_col):
 
     # annotation
     # (1) by bundesland
-    label_ags = st.radio("Show labels by region?", options=["Yes", "No"], index=1)
+    label_ags = st.radio("Show labels by Bundesland?", options=["Yes", "No"], index=1)
     if label_ags == "Yes": 
         bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
             '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
@@ -228,7 +228,8 @@ def plot_map_wide(data, merge_col):
                     f'{merged_ags["kreis"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=10)
 
     # (2) by numerical stats
-    label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1)
+    label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1, 
+                        help="Show labels of Kreise in a particular range of values.")
     if label_stats == "Yes": 
         stats = ['mean', 'min', '25%', '50%', '75%', 'max']
         stats_values = merged[col].describe()[stats].sort_values()

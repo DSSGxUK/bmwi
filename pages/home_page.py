@@ -109,7 +109,7 @@ def app():
     st.markdown('## Prediction Results')
     pred_output = pd.read_csv('data/output.csv')
     prediction1 = '''
-            Once the model is ran, you can always go to the Visualization page \
+            Once the model is run, you can always go to the Visualization page \
             or Ranking page for quick access of the prediction results and interpretation.\
             You can also go to the Error Analysis page to validate prediction results.
             '''
