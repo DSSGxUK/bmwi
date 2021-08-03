@@ -17,6 +17,16 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Create the app that would be run 
 def app():
 
+    ''' Page introduction '''
+    
+    st.write("""
+    
+    **About the project:** This project is a collaboration between German Federal Ministry for Economic Affairs and Energy (BMWi) 
+    and Data Science for Social Good Fellowship, UK. This tool allows you to forecast the monthly unemployment rate 
+    for the next quarter at the Kreis level in Germany, based on the previous unemployment rate data. 
+    
+    """)
+
     ''' Dashboard home page '''
     st.markdown("## Unemployment Rate Ranking")
     st.markdown('**Pro Tip**: click on the column to sort')
