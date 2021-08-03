@@ -195,11 +195,11 @@ def plot_map_wide(data, merge_col):
     date_cols = merged.columns[4:-12]
 
     # useful stats
-    merged['last_time'] = merged[date_cols[-1]]-merged[date_cols[-2]]
+    merged['last_month'] = merged[date_cols[-1]]-merged[date_cols[-2]]
     merged['last_year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
-    merged['last_time%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
+    merged['last_month%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
     merged['last_year%'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
-    stats_cols = ['last_time', 'last_year', 'last_time%', 'last_year%']
+    stats_cols = ['last_month', 'last_year', 'last_month%', 'last_year%']
     
     num_cols = list(date_cols) + stats_cols
     latest_date = num_cols.index(date_cols[-1])
