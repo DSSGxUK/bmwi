@@ -23,11 +23,18 @@ The training is done using the clusters that were developed based on the station
 
 The intuition behind VAR based cluster methods is that the Kreis in each cluster move together in terms of the unemployment rate and affect each other. The regional clusters are made using Bundesland and does not perform as well as the custom clusters which were created using statistical data. Since VAR learns from parallel series, the kreis in each cluster affect each other's unemployment rate within the same cluster. 
 
-*Should I explain walk-forward?*
 
 ## Prophet 
 
 Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well.
+
+We fitted the Prophet model and did a grid search to chose the hyper-parameters. 
+However, it did not perform well for our data. 
+
+## SARIMA 
+
+## Neural network 
+
 ## Hierarchical Time Series 
 
 Hierarchical time series model is a model that utilized the hierarchy in the data. 
