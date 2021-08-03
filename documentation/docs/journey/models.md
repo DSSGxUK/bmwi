@@ -19,7 +19,7 @@ Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used
 
 ### Training Method
 
-The training is done using the clusters that were developed based on the stationary data. The cluster development method has been elucidated within the [cluster section]().
+The training is done using the clusters that were developed based on the stationary data. The cluster development method has been elucidated within the [cluster section](../clusters).
 
 The intuition behind VAR based cluster methods is that the Kreis in each cluster move together in terms of the unemployment rate and affect each other. The regional clusters are made using Bundesland and does not perform as well as the custom clusters which were created using statistical data. Since VAR learns from parallel series, the kreis in each cluster affect each other's unemployment rate within the same cluster. 
 
@@ -46,7 +46,7 @@ We explored multiple architectures including fully-connected, simple RNN, LSTM, 
 Hierarchical time series model is a model that utilized the hierarchy in the data. 
 It generates forecasts for each individual time series, 
 but takes into account the relationships within the hierarchy.
-In our case, we considered the hierarchy of the different clusters explained in the [cluster section](). 
+In our case, we considered the hierarchy of the different clusters explained in the [cluster section](../../journey/clusters/). 
 
 We forecasted using different models, 
 - SARIMA
@@ -66,3 +66,8 @@ which means that the hierarchy does not add any useful information.
 ## References
 
 [1] https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
+[2] https://facebook.github.io/prophet/docs/quick_start.html
+[3] https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html
+[4] https://machinelearningmastery.com/sarima-for-time-series-forecasting-in-python/
+[5] https://keras.io/guides/sequential_model/
+[6] https://scikit-hts.readthedocs.io/en/latest/index.html

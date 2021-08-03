@@ -29,6 +29,16 @@ graph TD
     F[Error Analysis page: compare structural, crisis-time data]
     end
     A --> B
+<!-- <<<<<<< vighnesh_docs_work
+    D -.-> E
+    D -.-> F
+    click A "../../steps/data_prep/"
+    click B "../../steps/model/#fit-model-and-export-predictions"
+    click C "../../steps/model/#visualize-prediction-results"
+    click E "../../steps/error/"
+    click F "../../steps/home/"
+</div>
+======= -->
     B --> D
     E --> F
 </div>
@@ -43,3 +53,4 @@ graph TD
     click E "http://127.0.0.1:8000/steps/error/"
     click F "http://127.0.0.1:8000/steps/home/"
 </div> -->
+<!-- >>>>>>> main -->
