@@ -27,7 +27,7 @@ def app():
     
     # unsafe_allow_html=True)
 
-    st.subheader("This page will output the predictions for the next three quarters.")
+    st.subheader("This page will output the predictions for the next three months.")
 
     # st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
 
@@ -43,7 +43,7 @@ def app():
     unemploymentRateData = Data(wide_df, 'wide')    # Set the current format of the data as wide to be read properly
 
     ''' Set the ouput and model params (can be taken externally at a later stage) and prepare the data'''
-    output_save_location = 'cache/VAR/output.csv'
+    output_save_location = 'data/predictions/VAR/output.csv'
     params = {
         'lag_value': 9, 
         'second_diff': False,
@@ -51,9 +51,6 @@ def app():
     }
 
     # NOTEE: A lot of these values can be read from a config file and saved inside the params 
-
-    # # Data to be entered into the model  
-    # unemploymentRateData = data1
 
     # Read the cluster data 
     cluster_data = pd.read_csv('data/cluster_data.csv')
