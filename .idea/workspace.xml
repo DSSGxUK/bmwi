@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab3ef658-4c52-4173-898f-dda6fe6303e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/documentation/docs/steps/model.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/model.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/mkdocs.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,22 +13,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="285">
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/documentation/docs/steps/model.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+              <first_editor relative-caret-position="365">
+                <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
               </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/home.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
               <second_editor />
             </state>
           </provider>
@@ -49,8 +60,8 @@
         <entry file="file://$PROJECT_DIR$/documentation/docs/steps/data_prep.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="187">
-                <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="42" />
+              <first_editor relative-caret-position="301">
+                <caret line="24" selection-start-line="24" selection-end-line="24" />
               </first_editor>
               <second_editor />
             </state>
@@ -70,16 +81,16 @@
         <option value="$PROJECT_DIR$/documentation/docs/steps/error.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/clusters.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/covid19.md" />
-        <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/GDP.md" />
         <option value="$PROJECT_DIR$/documentation/docs/steps/model.md" />
+        <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="width" value="1920" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -177,15 +188,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="972" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16309012" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12140575" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Python Console" visible="true" weight="0.36433122" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32954547" />
+      <window_info anchor="bottom" id="Python Console" weight="0.325" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.2556818" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -268,18 +279,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/steps/data_prep.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="187">
-            <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="42" />
+          <first_editor relative-caret-position="301">
+            <caret line="24" selection-start-line="24" selection-end-line="24" />
           </first_editor>
           <second_editor />
         </state>
@@ -298,10 +302,25 @@
     <entry file="file://$PROJECT_DIR$/documentation/docs/steps/model.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+          <first_editor relative-caret-position="365">
+            <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/steps/home.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/mkdocs.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
