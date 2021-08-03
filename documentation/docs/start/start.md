@@ -51,9 +51,10 @@ graph LR
 When you open the tool, the first page you see is the **Home** page.
 
 1. Your prediction journey starts on the **Data Prep** page. There, you upload the data, and do necessary preprocessing that would then feed into the model. [Click here](../data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx) to download an Excel file containing data till May 2021. This Excel file contains the format of the input that our tool was tested on.
-2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Model** page. The preprocessed data from the page before is automatically loaded. The predictions may take a while to run. The prediction results are cached, which means it should run faster the second time you try to predict the same data. On the same model page, there are some line plots and map visualizations to quickly understand the prediction results, e.g. which kreis has the highest unemployment rate, whether the trend for that kreis is going up or down.
-3. The **Error Analysis** page would be automatically loaded with the prediction results. This page helps you look closer into which kreise were harder to predict, and how that compares with their basic infrastructures, such as number of hospitals, number of schools etc.
-4. The **Home** page is also automatically loaded with the prediction results. Apart from the map and line plot that you immediately saw on the model page, the home page contains kreis-level and grouped rankings of unemployment rates and their percentage changes. The home page is set to be the first page of the tool for quick access.
+2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Model** page. The preprocessed data from the page before is automatically loaded. The predictions may take a while to run. The prediction results are cached, which means it should run faster the second time you try to predict the same data. 
+3. The **Visualizations** page includes line plots and map visualizations to quickly understand the prediction results, e.g. which kreis has the highest unemployment rate, whether the trend for that kreis is going up or down.
+4. The **Rankings** page contains kreis-level and grouped rankings of unemployment rates and their percentage changes. 
+5. The **Error Analysis** page would be automatically loaded with the prediction results. This page helps you look closer into which kreise were harder to predict, and how that compares with their basic infrastructures, such as number of hospitals, number of schools etc.
 
 <br>
 

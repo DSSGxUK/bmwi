@@ -69,7 +69,7 @@ def plot_error_map(data, date_string="by average"):
     merged = gpd.GeoDataFrame(merged)
     
     # Set title 
-    title = f"Errors in prediction in Germany by County {(date_string)}" 
+    title = f"Errors in prediction in Germany by Kreis {(date_string)}" 
     
     # numerical data_col
     fig, ax = plt.subplots(figsize=(30, 10))
@@ -81,32 +81,58 @@ def plot_error_map(data, date_string="by average"):
 
 def app():
     
-    st.title("Error Analysis Page")
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    Page Outline: 
+    - [Error Plots by Bundesland or Kreis](#error-plots-by-bundesland-or-kreis)
+    - [Kreis Level Overview](#kreis-level-overview)
+    - [Structural Data Analysis](#structural-data-analysis)
+    - [Most Important Structure](#most-important-structure)
+
+    """)
+    
+    st.markdown("## Error Analysis Page")
 
     # Load error data 
     error_data = pd.read_csv('data/errors/errors_VAR.csv')
     error_data['ags5'] = error_data['ags5'].apply(fix_ags5)
 
-    ''' Error Map Viz '''
-    error_checkbox = st.checkbox("Visualize error on a map?", value=False)
+    # ''' Error Map Viz '''
+    # st.markdown("### Error visualization on a Map")
 
-    if error_checkbox: 
-        st.subheader("Error visualization on a Map")
-        st.write("\nLoading Map..")
+    # # Display a date range
+    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+    
+    # # Show for average predictions
+    # if method == 'average': 
+    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    # else: 
+    #     # Filter by date 
+    #     filter_data = error_data[error_data['date'] == method]
         
-        # Display a date range
-        method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+    # st.pyplot(plot_error_map(filter_data, date_string=method))
+    
+    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
+
+    # if error_checkbox: 
+    #     st.subheader("Error visualization on a Map")
+    #     st.write("\nLoading Map..")
         
-        # Show for average predictions
-        if method == 'average': 
-            filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-        else: 
-            # Filter by date 
-            filter_data = error_data[error_data['date'] == method]
+    #     # Display a date range
+    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+        
+    #     # Show for average predictions
+    #     if method == 'average': 
+    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    #     else: 
+    #         # Filter by date 
+    #         filter_data = error_data[error_data['date'] == method]
             
-        st.pyplot(plot_error_map(filter_data, date_string=method))
+    #     st.pyplot(plot_error_map(filter_data, date_string=method))
         
-        st.markdown("""---""")
+    #     st.markdown("""---""")
 
     ''' Data Addition '''
     # Add the bundesland kreis and ags2 to the data
@@ -211,7 +237,7 @@ def app():
     compare_error_in_two_groups(df_mixed, structure_var)
 
     st.markdown("""---""")
-    st.subheader("Most important structural")
+    st.subheader("Most important structure")
 
     st.write("Running a linear regression model...")
     df_mixed.set_index('ags5', drop=True, inplace=True)

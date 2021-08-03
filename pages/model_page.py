@@ -13,6 +13,15 @@ from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_w
 def app(): 
 
     st.markdown("## Model Output Page")
+    
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    Page Outline: 
+    - [Prediction Results](#prediction-results)
+    """)
+    
 
     # st.markdown('''
     # <link
@@ -27,23 +36,24 @@ def app():
     
     # unsafe_allow_html=True)
 
-    st.subheader("This page will output the predictions for the next three months.")
+    st.write("This page will output the predictions for the next three months.")
 
     # st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
 
+    st.markdown('### Prediction Results')
     ''' Read the Data and set it in the appropriate format '''
     # wide_df = pd.read_csv('data/Alo_Quote.csv')
     wide_df = pd.read_csv('data/main_data.csv')
     wide_df.columns = ['ags5'] + list(wide_df.columns[1:])
     wide_df.set_index('ags5', inplace=True)
 
-    st.write("Loading the data...")
+    # st.write("Loading the data...")
     
     # Create an instance of the Data Class which returns the long format of the data 
     unemploymentRateData = Data(wide_df, 'wide')    # Set the current format of the data as wide to be read properly
 
     ''' Set the ouput and model params (can be taken externally at a later stage) and prepare the data'''
-    output_save_location = 'data/predictions/VAR/output.csv'
+    output_save_location = 'data/output.csv'
     params = {
         'lag_value': 9, 
         'second_diff': False,
@@ -81,7 +91,7 @@ def app():
 
     # (1) get next n dates
     last_date_str = unemploymentRateData.wide().columns[-1]
-    last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
+    last_date = datetime.strptime(last_date_str, '%Y/%m/%d')
     datetime_list = []
     n = len(pred_output.columns)
     for _ in range(n):
@@ -91,7 +101,7 @@ def app():
     # (2) fix date to only show date and not time
     date_only_list = []
     for date in datetime_list:
-        date = datetime.strftime(date, '%Y-%m-%d')
+        date = datetime.strftime(date, '%Y/%m/%d')
         date_only_list.append(date)
     pred_output.columns = date_only_list 
 
@@ -118,49 +128,8 @@ def app():
     # Save the error df
     error_df.to_csv('data/errors/errors_VAR.csv', index=False)
     st.write("Saved the errors...")
-
-    ''' Add visulaisations of the unemployment predictions '''
     
-    # Read the index data 
-    index_data = pd.read_csv('data/index.csv')
+    st.markdown('Go to **Visualization** page and **Ranking** page for interpretation of the predictions.\
+                Check out **Error Analysis** page for prediction validation.')
 
-    # Fix ags5
-    viz_data = pred_output.copy()
-    viz_data['ags5'] = viz_data['ags5'].apply(fix_ags5)
-    index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
     
-    # Merge with the output data 
-    full_data = pd.merge(wide_df.reset_index().rename(columns={'index': 'ags5'}), viz_data, on='ags5')
-    full_data = pd.merge(index_data, full_data, on='ags5')
-    
-    # Sync with home page
-    full_data.to_csv('data/pred_output_full.csv', index=False)
-
-    st.markdown("## Visualize prediction results.") 
-    st.write("\n")
-
-    # get predictions by kreis 
-    display_data = pd.merge(index_data, viz_data, on='ags5')
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(display_data['kreis'].values))
-    st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
-
-    """
-    This section doesn't work well because the date columns are messed up and we need to fix that.  
-    """
-
-    # line plot
-    fig1 = plot_line_wide(full_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
-    st.pyplot(fig1)
-
-    # map
-    st.markdown("### Map")
-
-    # Add the average of the predictions as a column for the plots 
-    average_cols = pd.DataFrame(pred_output.mean(axis=1))
-    average_cols.columns = ['predictions_average']
-    full_data = pd.concat([full_data, average_cols], axis=1)
-
-    print
-
-    map_fig = plot_map_wide(full_data, 'ags5') # MAP gives error 
-    st.pyplot(map_fig)

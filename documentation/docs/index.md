@@ -1,7 +1,5 @@
 # Welcome to BMWi Forecasting Tool
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
 <!-- ## Commands (To be removed)
 
 * `mkdocs new [dir-name]` - Create a new project.
@@ -13,7 +11,7 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 This project is a collaboration between [German Federal Ministry for Economic Affairs and Energy (BMWi)](https://www.bmwi.de/Navigation/EN/Home/home.html) and [Data Science for Social Good Fellowship, UK](https://warwick.ac.uk/research/data-science/warwick-data/dssgx/). The goal of the project is to robustify BMWI’s forecasts by developing a bottom-up forecasting model for predicting economic development in Germany based on regional data. The bottom-up approach focusses The project will draw on fine-grained data on the demographic, economic and sectoral structure of regions with the aim of improving economic forecasts during times of shocks. 
 
-## About the Tool 
+<!-- ## About the Tool  -->
 
 
 ## Getting Started 
