@@ -1,6 +1,6 @@
 # Data Prep page
 
-Upload the dataset and make any necessary changes to fit the prediction model. 
+Upload the dataset and make any necessary changes to fit the prediction model. You can find a 
 
 <!-- ## Reshape and merge datasets -->
 
@@ -28,9 +28,9 @@ When you open up the page, you will likely be facing this error. No worries, tha
 
 ### Upload Excel Workbook
 
-![export excel workbook](../prep_screenshots/export_excel.png)
+![export excel workbook](../prep_screenshots/export_excel.JPG)
 
-<span style="color:gray">*When you confirm that you are using an excel workbook containing time-series data, you are prompted to upload the data. In this sample screenshot, you can see that the file "7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx" is being uploaded.*</span>
+<span style="color:gray">*When you confirm that you are using an excel workbook containing time-series data, you are prompted to upload the data. In this sample screenshot, you can see that the file ["7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx"](../../data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx) is being uploaded.*</span>
 
 ### Select data to clean
 

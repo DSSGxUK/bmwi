@@ -9,7 +9,7 @@ This page walks through the assumptions and the implementation code for the exce
 
 ## Purpose of the CleanerClass
 
-The excel sheet cleaner is used on the [Data Prep page]() to get the formatted data for our forecast model from excel workbooks.<!-- We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**.  -->
+The excel sheet cleaner is used on the [Data Prep page](https://bmwi-tool.herokuapp.com/) to get the formatted data for our forecast model from excel workbooks.<!-- We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**.  -->
 
 The goal of the CleanerClass is to retrieve a python friendly format of the data, containing only the essential index columns, variable columns, and the numerical values of the data. Worksheets that contain only metadata or descriptions would be discarded, and the watermark-like header rows would also be cropped out in the process.
 

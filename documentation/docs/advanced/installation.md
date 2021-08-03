@@ -4,11 +4,11 @@ This section is for people who might want to edit the code base of the applicati
 
 The application is built using the following tools and frameworks: 
 
-- [Python]() 
+- [Python](https://docs.python.org/3/) 
 - [Streamlit](https://streamlit.io/) 
-- [Pandas]()
-- [Statsmodels]() 
-- [Keras]() 
+- [Pandas](https://pandas.pydata.org/docs/)
+- [Statsmodels](https://www.statsmodels.org/stable/index.html) 
+<!-- - [Keras]()  -->
 
 To make edits to the tool, one must know how to work with the aforementioned frameworks. More details about each of them can be found on the links provided above. 
 
@@ -25,7 +25,7 @@ To set up the application on your local machine, follow these steps.
 1. Clone the repository on your local machine 
 
 ```
-git clone link
+git clone <link>
 ```
 
 2. Create a virtual environment 

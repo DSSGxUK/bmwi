@@ -29,7 +29,7 @@ The default is set to sort by three columns, in the order of: this quarter (`yyy
 
 2. The input order also means that the top N kreis filtering is based on the first input column. Using the default selections as an example, the filtered result is the top N kreis based on unemployment rates of this quarter. However, the top N kreis last quarter may be a different 10 kreise. In order to get those top N kreise, you would have to put "last quarter" as the first sorting column in the input field.
 
-<span style="color:red">^ Does this make sense?</span>
+<!-- <span style="color:red">^ Does this make sense?</span> -->
 
 
 The available sort by options are:
@@ -66,7 +66,7 @@ The arrow circled in red next to the column means that the dataframe is currentl
 
 Note that even when the dataframe is sorted by the column you click, the top results is still filtered from the full dataframe based on the first input column. 
 
-<span style="color:red">^ Does this make sense?</span>
+<!-- <span style="color:red">^ Does this make sense?</span> -->
 
 ![sorted column](../home_screenshots/sort_col.png)
 
@@ -75,7 +75,7 @@ Note that even when the dataframe is sorted by the column you click, the top res
 <span style="color:gray">*For example, even though the dataframe is currently sorted by `last_year%` when we clicked on it, it is not sorting the top 30 kreis of `last_year%` based on the full dataset, but sorting based on the top 30 kreis of this quarter.*</span>
 
 
-<span style="color:red">Should I add a map highlighting the selected top kreis with annotations, and also colored by the first sorted column.</span>
+<!-- <span style="color:red">Should I add a map highlighting the selected top kreis with annotations, and also colored by the first sorted column.</span> -->
 
 
 ## Bundesland / Group Ranking
@@ -186,4 +186,4 @@ The bar chart visualizes the `%counts` column. It also draws a horizontal line o
 
 <span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display column names is too small on your screen.*</span>
 
-<span style="color:red">^ Are there other things that should be added on the home page for quick access?</span>
+<!-- <span style="color:red">^ Are there other things that should be added on the home page for quick access?</span> -->
