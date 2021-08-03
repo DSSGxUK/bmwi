@@ -12,7 +12,7 @@ def app():
     st.subheader("This page has been added to visualize the results of the predictions for the next three months.")
 
     ''' Read the predictions data '''
-    pred_output = pd.read_csv('data/predictions/VAR/output.csv', index_col=0)
+    pred_output = pd.read_csv('data/output.csv', index_col=0)
 
     # Reset the prediction index 
     pred_output.reset_index(inplace=True)
