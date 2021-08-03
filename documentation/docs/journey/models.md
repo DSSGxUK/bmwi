@@ -33,7 +33,13 @@ However, it did not perform well for our data.
 
 ## SARIMA 
 
+Autoregressive Integrated Moving Average, or ARIMA, is one of the most widely used forecasting methods for univariate time series data forecasting. Although the method can handle data with a trend, it does not support time series with a seasonal component. An extension to ARIMA that supports the direct modeling of the seasonal component of the series is called SARIMA.
+
+The hyperparameters were tuned for all the time series (time series of unemployment of each kreis) using grid search individually. Most of the series converged best for the hyperparameters p:1, d:1, q:1, s_p:1, s_d:0, s_q:1 with each season containing a year. So these hyperparameters were chosen for all the 401 models that were trained for all the kreise.
+
 ## Neural network 
+
+We explored multiple architectures including fully-connected, simple RNN, LSTM, GRU. Fully-Connected networks with the inputs as the unemployment rates of past 12 months always constintently performed better than other architectures. The best Fully Connected Neural Networks was of the shape: 32, 16, 8, 4, 1 with ReLu for the activation function for all but the last layer.
 
 ## Hierarchical Time Series 
 
