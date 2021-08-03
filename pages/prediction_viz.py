@@ -70,11 +70,9 @@ def app():
     st.markdown("### Map of Germany on Kreis-level")
 
     # Add the average of the predictions as a column for the plots 
-    average_cols = pd.DataFrame(pred_output.mean(axis=1))
-    average_cols.columns = ['predictions_average']
-    full_data = pd.concat([full_data, average_cols], axis=1)
-
-    print
+    # average_cols = pd.DataFrame(pred_output.mean(axis=1))
+    # average_cols.columns = ['predictions_average']
+    # full_data = pd.concat([full_data, average_cols], axis=1)
 
     map_fig = plot_map_wide(full_data, 'ags5') # MAP gives error 
     st.pyplot(map_fig)
