@@ -33,10 +33,10 @@ graph TD
     A --> B
     D --> E
     D --> F
-    click A "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/data_prep.py"
-    click B "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click C "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click D "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click E "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/error_analysis.py"
-    click F "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/home_page.py"
+    click A "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/data_prep.py"
+    click B "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/model_v1.py"
+    click C "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/model_v1.py"
+    click D "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/model_v1.py"
+    click E "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/error_analysis.py"
+    click F "https://github.com/prakharrathi25/the-tool-bmwi/tree/main/pages/home_page.py"
 </div>
