@@ -20,11 +20,11 @@ This section process the input excel workbook for time-series or structural data
 
 ## Time-series data excel workbook
 
-### Error Handling
+<!-- ### Error Handling
 
 ![error 1](../prep_screenshots/error1.png)
 
-When you open up the page, you will likely be facing this error. No worries, that just means you haven't uploaded a data yet!
+When you open up the page, you will likely be facing this error. No worries, that just means you haven't uploaded a data yet! -->
 
 ### Upload Excel Workbook
 
@@ -36,9 +36,9 @@ When you open up the page, you will likely be facing this error. No worries, tha
 
 <!-- Because each data is formatted differently in the excel workbook, we created different cleaners for different data. Select the appropriate cleaner based on the data input. Currently, we support:  -->
 
-![select cleanerclass](../prep_screenshots/select_cleaner.png)
+<!-- ![select cleanerclass](../prep_screenshots/select_cleaner.png) -->
 
-- `Unemployment rate` (labor market data, containing unemployment rate information) 
+<!-- - `Unemployment rate` (labor market data, containing unemployment rate information)  -->
 
 ![unemployment rate data](../prep_screenshots/alq_data.png)
 
@@ -70,7 +70,9 @@ When you open up the page, you will likely be facing this error. No worries, tha
 
 ![select variable](../prep_screenshots/select_var.png)
 
-<span style="color:gray">*Choose at least one variable. Choosing no variables at all would result in the IndexError above.*</span>
+<span style="color:gray">*The default variable is set to "unemployment rate".*</span>
+
+<!-- <span style="color:gray">*Choose at least one variable. Choosing no variables at all would result in the IndexError above.*</span> -->
 
 ### Select data format
 

@@ -22,6 +22,8 @@ def app():
         help='This excel workbook may contain one or multiple worksheets.')
     
     if time_series == "Yes":
+        
+        st.markdown("**Pro Tip**: If you are encountering problems, try clearing cache and run again.")
 
         # Read in excel workbook
         uploaded_file = st.file_uploader("Upload Excel Workbook", type="xlsx")
@@ -38,12 +40,20 @@ def app():
 
         # ------------------------------ Cleaner Class workflow -------------------
         # (0) Select cleanerclass
-        st.markdown("**Pro Tip**: If you are encountering problems, try clearing cache and run again.")
-        
         # select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate', 'GDP'], index=0,
-        select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate'], index=0,
-                                        help='Refer to documentation for details about input excel workbook format.')
-        cleanerObject = load_cleanerObject(uploaded_file, data=select_cleaner)
+        # select_cleaner = st.selectbox("Select data to clean.", options=['Unemployment rate'], index=0,
+        #                                 help='Refer to documentation for details about input excel workbook format.')
+        select_cleaner = 'Unemployment rate'
+        
+        try:
+            # cleanerObject = load_cleanerObject(uploaded_file, data=select_cleaner)
+            cleanerObject = load_cleanerObject(uploaded_file, data=select_cleaner)
+        except ValueError:
+            st.markdown('A sample of the data format can be found \
+                        [here](https://cinnylin.github.io/bmwi-docs/steps/data_prep/#time-series-data-excel-workbook) \
+                        and is automatiaclly loaded by default.')
+            cleanerObject = CleanerClassUR('data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx')
+        
         sheet_names = [sheet_name for sheet_name, _ in cleanerObject.getAllUsefulSheets_long().items()]
         
         # # (1) Select the variables you want
