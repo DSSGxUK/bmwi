@@ -1,5 +1,9 @@
+from numpy.lib.ufunclike import fix
 import streamlit as st 
 import pandas as pd 
+
+# Custom modules 
+from .utils import fix_ags5, plot_line_wide, plot_map_wide
 
 def app(): 
 
@@ -8,23 +12,22 @@ def app():
     st.subheader("This page has been added to visualize the results of the predictions for the next three months.")
 
     ''' Read the predictions data '''
-    pred_output = pd.read_csv('')
+    pred_output = pd.read_csv('data/predictions/VAR/output.csv', index_col=0)
 
     # Reset the prediction index 
     pred_output.reset_index(inplace=True)
-
-    # Download links 
-    st.markdown(get_table_download_link(pred_output, 
-                                        text="Download the predictions.", 
-                                        filename="predictions.csv", 
-                                        excel=True),
-
-                                        unsafe_allow_html=True)
+    pred_output.rename(columns={'index':'ags5'}, inplace=True)
 
     ''' Add visulaisations of the unemployment predictions '''
     
     # Read the index data 
     index_data = pd.read_csv('data/index.csv')
+
+    # Load wide df 
+    wide_df = pd.read_csv('data/main_data.csv')
+    wide_df.columns = ['ags5'] + list(wide_df.columns[1:])
+    # wide_df.set_index('ags5', inplace=True)
+    wide_df['ags5'] = wide_df['ags5'].apply(fix_ags5)
 
     # Fix ags5
     viz_data = pred_output.copy()
@@ -32,7 +35,7 @@ def app():
     index_data['ags5'] = index_data['ags5'].apply(fix_ags5)
     
     # Merge with the output data 
-    full_data = pd.merge(wide_df.reset_index().rename(columns={'index': 'ags5'}), viz_data, on='ags5')
+    full_data = pd.merge(wide_df, viz_data, on='ags5')
     full_data = pd.merge(index_data, full_data, on='ags5')
     
     # Sync with home page
