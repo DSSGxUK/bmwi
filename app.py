@@ -18,7 +18,7 @@ st.markdown('[Documentation](https://bmwi.readthedocs.io/)')
 # The main app
 app.add_page("Home Page", home_page.app)
 app.add_page("Data Prep", data_prep.app)
-app.add_page("Model Page", model_page.app)
+app.add_page("Predictions Page", model_page.app)
 app.add_page("Error Analysis", error_analysis.app)
 
 # --- other pages ---
