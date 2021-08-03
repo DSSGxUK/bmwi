@@ -13,6 +13,15 @@ from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_w
 def app(): 
 
     st.markdown("## Model Output Page")
+    
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    Page Outline: 
+    - [Prediction Results](#prediction-results)
+    """)
+    
 
     # st.markdown('''
     # <link
@@ -27,17 +36,18 @@ def app():
     
     # unsafe_allow_html=True)
 
-    st.subheader("This page will output the predictions for the next three months.")
+    st.write("This page will output the predictions for the next three months.")
 
     # st.write("**Note: Add a flowchart or something here if needed. Looks a bit empty.**")
 
+    st.markdown('### Prediction Results')
     ''' Read the Data and set it in the appropriate format '''
     # wide_df = pd.read_csv('data/Alo_Quote.csv')
     wide_df = pd.read_csv('data/main_data.csv')
     wide_df.columns = ['ags5'] + list(wide_df.columns[1:])
     wide_df.set_index('ags5', inplace=True)
 
-    st.write("Loading the data...")
+    # st.write("Loading the data...")
     
     # Create an instance of the Data Class which returns the long format of the data 
     unemploymentRateData = Data(wide_df, 'wide')    # Set the current format of the data as wide to be read properly
@@ -118,6 +128,9 @@ def app():
     # Save the error df
     error_df.to_csv('data/errors/errors_VAR.csv', index=False)
     st.write("Saved the errors...")
+    
+    st.markdown('Go to **Visualization** page and **Ranking** page for interpretation of the predictions.\
+        And check out **Error Analysis** page for prediction validation.')
 
     # ''' Add visulaisations of the unemployment predictions '''
     

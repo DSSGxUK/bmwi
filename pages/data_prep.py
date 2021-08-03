@@ -12,6 +12,17 @@ from util_classes.CleanerClassUR import CleanerClassUR
 
 ''' App to merge the data sets together'''
 def app():
+    
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    Page Outline: 
+    - [Export and merge datasets](#exporting-excel-worksheets)
+    - [Dataset Cleaning](#dataset-cleaning)
+        - [Cropping Timeframe](#cropping-timeframe)
+
+    """)
 
     st.markdown("## Export and merge datasets")
 
@@ -27,6 +38,7 @@ def app():
 
         # Read in excel workbook
         uploaded_file = st.file_uploader("Upload Excel Workbook", type="xlsx")
+        st.write('**Note**: It takes awhile to load the default data.')
         
         # cache cleaning results
         @st.cache(suppress_st_warning=True, allow_output_mutation=True)
@@ -180,7 +192,7 @@ def app():
     st.markdown("""---""")
     
     ## -------- Data to pass on to final_page_v1
-    st.markdown("## Final dataset cleaning")
+    st.markdown("## Dataset cleaning")
     st.write('Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.')
     
     clean_data = st.radio("Cleaning time-series data", options=["Yes", "No"], index=1,

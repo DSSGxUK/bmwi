@@ -6,10 +6,19 @@ import pandas as pd
 from .utils import fix_ags5, plot_line_wide, plot_map_wide
 
 def app(): 
+    
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
+    --- 
+
+    Page Outline: 
+    - [Time-Series Line Plot](#line-plot)
+    - [Map of Germany on Kreis-level](#map)
+    """)
 
     st.markdown("## Prediction Visualisation Page")
 
-    st.subheader("This page has been added to visualize the results of the predictions for the next three months.")
+    st.write("This page has been added to visualize the results of the predictions for the next three months.")
 
     ''' Read the predictions data '''
     pred_output = pd.read_csv('data/output.csv', index_col=0)
@@ -41,7 +50,7 @@ def app():
     # Sync with home page
     full_data.to_csv('data/pred_output_full.csv', index=False)
 
-    st.markdown("## Visualize prediction results.") 
+    st.markdown("### Time-Series Line Plot") 
     st.write("\n")
 
     # get predictions by kreis 
@@ -58,7 +67,7 @@ def app():
     st.pyplot(fig1)
 
     # map
-    st.markdown("### Map")
+    st.markdown("### Map of Germany on Kreis-level")
 
     # Add the average of the predictions as a column for the plots 
     average_cols = pd.DataFrame(pred_output.mean(axis=1))
