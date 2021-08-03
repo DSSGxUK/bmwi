@@ -18,7 +18,7 @@ This project is a collaboration between [German Federal Ministry for Economic Af
 
 ## Getting Started 
 
-There are multiple aspects to be explored with this tool. Head over to [this page](start.md) to get started with the tool. 
+There are multiple aspects to be explored with this tool. Head over to [this page](start/start.md) to get started with the tool. 
 
 **Note:** If you wish to get the predictions immediately, you can download them [here](). 
 
