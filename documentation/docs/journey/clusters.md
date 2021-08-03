@@ -74,9 +74,6 @@ To incorporate categorical features as well, we also tried K-modes classificatio
 
 *Should we add a list of all kerise?*
 
-*Should we add a map?*
-
-
 ### Bundesland
 
 ### PCA & K-means
