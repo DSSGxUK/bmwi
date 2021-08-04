@@ -29,8 +29,8 @@ def app():
 
     ''' Dashboard home page '''
     st.markdown("## Unemployment Rate Ranking")
-    st.markdown('**Pro Tip**: click on the column to sort')
-
+    st.write('This page shows the highest unemployment rates based on Kreis-level or a categorical group of your choice.')
+    
 
 # -- read in data ------------------------------------------
 
@@ -72,7 +72,8 @@ def app():
 # --------------------------------------------------------
 
     ''' Print the features of the data to sort '''
-    
+    st.markdown('**Pro Tip**: click on the column to sort')
+
     st.markdown('### Kreise rankings')
     n1 = st.slider("Print top n results", min_value=10, max_value=100, step=10,
                     help='Print top n results by kreise.')
@@ -86,6 +87,14 @@ def app():
     if 'ags5' in kreise_ranking.columns:
         kreise_ranking.drop(columns=['ags5'], inplace=True)
     st.dataframe(kreise_ranking)
+    
+    kreise_ranking_text = '''
+        This default shows the top 10 kreis based on their unemployment rate for the latest predicted month, 
+        and is also sorted by the percentage change compared to last year and last month.
+        '''
+    kreise_ranking_section = st.beta_expander('Kreise Ranking Interpretation', False)
+    kreise_ranking_section.markdown(kreise_ranking_text)
+
 
 # --------------------------------------------------------
 
@@ -108,15 +117,62 @@ def app():
     result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
     result_df.rename(columns={'kreis': '#kreis'}, inplace=True)
     st.dataframe(result_df)
+    
+    group_ranking_text = '''
+        *For example, this sample dataframe shows the top `50` kreise, 
+        sorted by `last_year%`, grouped by `east_west` and `eligible area`.*
+
+        Reading the first row:
+            
+        - the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
+            
+        - the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
+            
+        - the third column, `%counts`, means that 21 kreise accounts for `13.5%` of all the kreise in the not-eligible-for-funding-West-Germany group.
+            
+        Note the number of multi-indices shown in the example. 
+        Since `eligible_area` is a binary varaible with two categories, 
+        and `east_west` is also a binary variable with two categories, 
+        there should be a total of 4 category groups in the index rows. 
+        
+        However, the reason why not all combinations are shown is because some categories do not have Kreise in it. 
+        
+        _Sometimes, it could be useful to see what category groups are not in the top lists. 
+        In this case, we see that there are no Kreise in East Germany eligible funding 
+        in the top 50 highest unemployment rates._
+        '''
+    group_ranking_section = st.beta_expander('Grouped Ranking Interpretation', False)
+    group_ranking_section.markdown(group_ranking_text)
+   
+    
     fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n2)
     result_df = result_df.sort_values('%counts', ascending=False)
     fig2 = plot_bar([str(col) for col in result_df.index], result_df['%counts'])
+    
     
     st.markdown('**Pro Tip**: Visualizations work better when only grouping by one or a few columns.')
     display_fig1 = st.checkbox('Pie chart', help='Visualizes selected column counts by groups.')
     if display_fig1:
         st.pyplot(fig1)
+        
+        pie_text = '''
+            *As shown above, the sample pie chart visualizes the percentage each category group takes 
+            in total from the `last_year%` column. For example, the not-eligible-for-funding-West-Germany group 
+            accounts for `21` out of the total of `50` top kreise, 
+            therefore, it takes up `42%` as shown in the pie chart.*
+            '''
+        pie_section = st.beta_expander('Pie Chart Interpretation', False)
+        pie_section.markdown(pie_text)
     
     display_fig2 = st.checkbox('Bar chart', help='Visualizes selected column percentage counts by group.')
     if display_fig2:
         st.pyplot(fig2)
+        
+        bar_text = '''
+            *As shown above, the sample bar chart visualizes the percentage 
+            the top 50 kreise took up for its whole category group. 
+            Note that you could use the two arrows on the top right to expand the plot if the
+            display column names is too small on your screen.*
+            '''
+        bar_section = st.beta_expander('Bar Chart Interpretation', False)
+        bar_section.markdown(bar_text)
