@@ -73,10 +73,6 @@ Note that even when the dataframe is sorted by the column you click, the top res
 
 <span style="color:gray">*For example, even though the dataframe is currently sorted by `last_year%` when we clicked on it, it is not sorting the top 30 kreis of `last_year%` based on the full dataset, but sorting based on the top 30 kreis of this quarter.*</span>
 
-
-<span style="color:red">Should I add a map highlighting the selected top kreis with annotations, and also colored by the first sorted column.</span>
-
-
 ## Bundesland / Group Ranking
 
 The second section is bundesland / group ranking, containing five elements, following a similar format to the previous section:
