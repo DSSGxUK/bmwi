@@ -195,14 +195,16 @@ def plot_map_wide(data, merge_col):
     date_cols = merged.columns[4:-12]
 
     # useful stats
+    merged['predictions_average'] = merged[date_cols[:-3]].mean(axis=1)
     merged['last_month'] = merged[date_cols[-1]]-merged[date_cols[-2]]
     merged['last_year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
     merged['last_month%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
     merged['last_year%'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
-    stats_cols = ['last_month', 'last_year', 'last_month%', 'last_year%']
+    stats_cols = ['predictions_average', 'last_month', 'last_year', 'last_month%', 'last_year%']
     
     num_cols = list(date_cols) + stats_cols
-    latest_date = num_cols.index(date_cols[-1])
+    num_cols = num_cols[-9:]
+    latest_date = num_cols.index('predictions_average')
     col = st.selectbox("Select a column", options=num_cols, index=latest_date)
 
     # plot
@@ -210,7 +212,7 @@ def plot_map_wide(data, merge_col):
     merged.plot(column=col, scheme="quantiles",
                 ax=ax,
                 cmap='coolwarm', legend=True)
-    ax.set_title(f'{col} in Germany by County',fontsize=15)
+    ax.set_title(f'{col} in Germany on Kreis-level',fontsize=15)
 
     # annotation
     # (1) by bundesland

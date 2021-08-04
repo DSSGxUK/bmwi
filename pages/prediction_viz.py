@@ -70,12 +70,12 @@ def app():
     st.markdown("### Map of Germany on Kreis-level")
 
     # Add the average of the predictions as a column for the plots 
-    average_cols = pd.DataFrame(pred_output[pred_output.columns[1:]].mean(axis=1))
-    average_cols.columns = ['predictions_average']
-    full_data = pd.concat([full_data, average_cols], axis=1)
-    partial_data = full_data.iloc[:,-4:]
-    partial_data['ags5'] = full_data['ags5']
+    # average_cols = pd.DataFrame(pred_output[pred_output.columns[1:]].mean(axis=1))
+    # average_cols.columns = ['predictions_average']
+    # full_data = pd.concat([full_data, average_cols], axis=1)
+    # partial_data = full_data.iloc[:,-4:]
+    # partial_data['ags5'] = full_data['ags5']
     
     # partial_data = 
-    map_fig = plot_map_wide(partial_data, 'ags5') 
+    map_fig = plot_map_wide(full_data, 'ags5') 
     st.pyplot(map_fig)
