@@ -9,7 +9,7 @@ nav:
         - Quick Access: start/quick.md
         #- Site Map: start/map.md
     - Step-by-Step Guide:
-        - Home page: steps/home.md
+        # - Home page: steps/home.md
         - Data Prep page: steps/data_prep.md
         - Model page: steps/model.md
         - Visualizations: steps/visualizations.md
