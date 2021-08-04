@@ -114,7 +114,7 @@ def app():
         
         st.write(merged_df)
     
-        confirm_merge_data = st.radio("Save dataframe", options=["Yes", "No"], index=1,
+        confirm_merge_data = st.radio("Confirm dataframe", options=["Yes", "No"], index=1,
                                         help='Preview and confirm data brings you to timeframe cropping section of data prepartion.')
         
         if confirm_merge_data == 'Yes':

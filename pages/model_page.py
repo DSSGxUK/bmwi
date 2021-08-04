@@ -71,6 +71,7 @@ def app():
     cluster_df.columns = ['ags5', 'cluster']
 
     st.write("Fitting Model Predictions...")
+    st.write("Estimated prediction time: 2 minutes...")
 
     ''' Model Fitting and Predictions '''
     VARObject = VARModel(output_save_location, params, unemploymentRateData, cluster_df)
