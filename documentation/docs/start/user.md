@@ -36,8 +36,8 @@ graph TD
     click A "../../steps/data_prep/"
     click B "../../steps/model/#fit-model-and-export-predictions"
     click D "../../steps/model/#visualize-prediction-results"
-    click E "../../steps/error/"
-    click F "../../steps/home/"
+    click E "../../steps/rankings/"
+    click F "../../steps/error/"
 </div>
 
 </br>
