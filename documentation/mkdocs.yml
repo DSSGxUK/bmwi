@@ -13,7 +13,7 @@ nav:
         - Data Prep page: steps/data_prep.md
         - Model page: steps/model.md
         - Visualizations: steps/visualizations.md
-        - Rankings: steps/ranking.md
+        - Rankings: steps/rankings.md
         - Error Analysis page: steps/error.md
     - Advanced Features: 
         - Technical Workflow: advanced/tech_flow.md
