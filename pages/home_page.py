@@ -107,7 +107,7 @@ def app():
     
     ''' Prediction Results '''
     st.markdown('## Prediction Results')
-    pred_output = pd.read_csv('data/output.csv')
+    pred_output = pd.read_csv('data/pred_output_full.csv')
     prediction1 = '''
             Once the model is run, you can always go to the Visualization page \
             or Ranking page for quick access of the prediction results and interpretation.\
