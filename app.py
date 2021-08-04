@@ -14,7 +14,7 @@ app = MultiPage()
 
 # Title of the main page
 st.title("BMWi Tool")
-st.markdown('[Documentation](https://bmwi.readthedocs.io/)')
+st.markdown('[Documentation](https://cinnylin.github.io/bmwi-docs/)')
 
 # The main app
 app.add_page("Home Page", home_page.app)

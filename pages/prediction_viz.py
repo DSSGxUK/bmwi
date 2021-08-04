@@ -55,7 +55,9 @@ def app():
 
     # get predictions by kreis 
     display_data = pd.merge(index_data, viz_data, on='ags5')
-    kreis_name = st.multiselect("Select the Kreis to get predictions", options=list(display_data['kreis'].values))
+    kreis_name = st.multiselect("Select the Kreis to get predictions", 
+                                options=list(display_data['kreis'].values), 
+                                default=[list(display_data['kreis'].values)[0]])
     st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
 
     """
