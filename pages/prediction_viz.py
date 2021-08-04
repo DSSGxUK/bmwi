@@ -21,7 +21,7 @@ def app():
     st.write("This page has been added to visualize the results of the predictions for the next three months.")
 
     ''' Read the predictions data '''
-    pred_output = pd.read_csv('data/output.csv', index_col=0)
+    pred_output = pd.read_csv('data/prediction_output_from_model_page.csv', index_col=0)
 
     # Reset the prediction index 
     pred_output.reset_index(inplace=True)
@@ -70,9 +70,12 @@ def app():
     st.markdown("### Map of Germany on Kreis-level")
 
     # Add the average of the predictions as a column for the plots 
-    # average_cols = pd.DataFrame(pred_output.mean(axis=1))
-    # average_cols.columns = ['predictions_average']
-    # full_data = pd.concat([full_data, average_cols], axis=1)
-
-    map_fig = plot_map_wide(full_data, 'ags5') # MAP gives error 
+    average_cols = pd.DataFrame(pred_output[pred_output.columns[1:]].mean(axis=1))
+    average_cols.columns = ['predictions_average']
+    full_data = pd.concat([full_data, average_cols], axis=1)
+    partial_data = full_data.iloc[:,-4:]
+    partial_data['ags5'] = full_data['ags5']
+    
+    # partial_data = 
+    map_fig = plot_map_wide(partial_data, 'ags5') 
     st.pyplot(map_fig)

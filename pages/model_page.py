@@ -42,7 +42,6 @@ def app():
 
     st.markdown('### Prediction Results')
     ''' Read the Data and set it in the appropriate format '''
-    # wide_df = pd.read_csv('data/Alo_Quote.csv')
     wide_df = pd.read_csv('data/main_data.csv')
     wide_df.columns = ['ags5'] + list(wide_df.columns[1:])
     wide_df.set_index('ags5', inplace=True)
@@ -74,11 +73,6 @@ def app():
     st.write("Fitting Model Predictions...")
 
     ''' Model Fitting and Predictions '''
-    # @st.cache
-    # def load_model():
-    #     return VARModel(output_save_location, params, unemploymentRateData, cluster_df)
-    
-    # VARObject = load_model()
     VARObject = VARModel(output_save_location, params, unemploymentRateData, cluster_df)
 
     # Get model predictions 
@@ -91,7 +85,7 @@ def app():
 
     # (1) get next n dates
     last_date_str = unemploymentRateData.wide().columns[-1]
-    last_date = datetime.strptime(last_date_str, '%Y/%m/%d')
+    last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
     datetime_list = []
     n = len(pred_output.columns)
     for _ in range(n):
@@ -101,12 +95,14 @@ def app():
     # (2) fix date to only show date and not time
     date_only_list = []
     for date in datetime_list:
-        date = datetime.strftime(date, '%Y/%m/%d')
+        date = datetime.strftime(date, '%Y-%m-%d')
         date_only_list.append(date)
     pred_output.columns = date_only_list 
 
     # Display the dataframe     
     st.dataframe(pred_output)
+
+    pred_output.to_csv('data/prediction_output_from_model_page.csv', index=True)
 
     # Reset the prediction index 
     pred_output.reset_index(inplace=True)
