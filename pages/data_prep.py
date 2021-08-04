@@ -42,7 +42,8 @@ def app():
 
     # Read in excel workbook
     uploaded_file = st.file_uploader("Upload Excel Workbook", type="xlsx")
-    st.write('**Note**: It takes awhile to load the data.')
+    st.write("""**Note**: It takes roughly 5 minutes to load the data. 
+    If you see a `Running` statement on the top right, then everything is working fine. Please wait while the data loads. """)
     
     # cache cleaning results
     @st.cache(suppress_st_warning=True, allow_output_mutation=True)
