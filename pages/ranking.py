@@ -89,10 +89,10 @@ def app():
     st.dataframe(kreise_ranking)
     
     kreise_ranking_text = '''
-        This default shows the top 10 kreis based on their unemployment rate for the latest predicted month, 
-        and is also sorted by the percentage change compared to last year and last month.
+        The default shows the top 10 kreis based on their unemployment rate for the latest predicted month, 
+        and is also sorted by the percentage change compared to last month and last year.
         '''
-    kreise_ranking_section = st.beta_expander('Kreise Ranking Interpretation', False)
+    kreise_ranking_section = st.beta_expander('Kreise Ranking Default Interpretation', False)
     kreise_ranking_section.markdown(kreise_ranking_text)
 
 
@@ -118,8 +118,8 @@ def app():
     result_df.rename(columns={'kreis': '#kreis'}, inplace=True)
     st.dataframe(result_df)
     
-    group_ranking_text = '''
-        *For example, this sample dataframe shows the top `50` kreise, 
+    group_ranking_default_text = '''
+        *For example, the default dataframe shows the top `50` kreise, 
         sorted by `last_year%`, grouped by `east_west` and `eligible area`.*
 
         Reading the first row:
@@ -141,9 +141,8 @@ def app():
         In this case, we see that there are no Kreise in East Germany eligible funding 
         in the top 50 highest unemployment rates._
         '''
-    group_ranking_section = st.beta_expander('Grouped Ranking Interpretation', False)
-    group_ranking_section.markdown(group_ranking_text)
-   
+    group_ranking_section = st.beta_expander('Grouped Ranking Default Interpretation', False)
+    group_ranking_section.markdown(group_ranking_default_text)
     
     fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n2)
     result_df = result_df.sort_values('%counts', ascending=False)
@@ -156,7 +155,7 @@ def app():
         st.pyplot(fig1)
         
         pie_text = '''
-            *As shown above, the sample pie chart visualizes the percentage each category group takes 
+            *As shown above, the default pie chart visualizes the percentage each category group takes 
             in total from the `last_year%` column. For example, the not-eligible-for-funding-West-Germany group 
             accounts for `21` out of the total of `50` top kreise, 
             therefore, it takes up `42%` as shown in the pie chart.*
@@ -169,7 +168,7 @@ def app():
         st.pyplot(fig2)
         
         bar_text = '''
-            *As shown above, the sample bar chart visualizes the percentage 
+            *As shown above, the default bar chart visualizes the percentage 
             the top 50 kreise took up for its whole category group. 
             Note that you could use the two arrows on the top right to expand the plot if the
             display column names is too small on your screen.*
