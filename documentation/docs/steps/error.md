@@ -9,7 +9,7 @@ The errors are [Mean absolute percentage errors (MAPE)](https://en.wikipedia.org
 
 To open the error analysis page, select the 'Error Analysis` Section from the dropdown on the left as can be viewed in the image below.  
 
-![This is the description](https://i.imgur.com/ggb86sd.png)
+![This is the description](./error_screenshots/description.png)
 
 There are a variety of different plots that can be explored and have been explained in detail below. 
 
@@ -27,17 +27,17 @@ Here, you will see the `average` option selected by default. This will make a ma
 
 This section allows for a kreis-level or bundesland-level analysis. The left dropdown allows selection by Kreis or by Bundesland and the right dropdown allows selection of one or more regions. 
 
-![](https://i.imgur.com/WnXTJJk.png)
+![](./error_screenshots/error_line_plot.png)
 
  Selecting an individual entry would plot the errors for a specific kreis or bundesland. You can select multiple bundesland or kreis. The individual entries can be selected from the right dropdown option. 
 
-![](https://i.imgur.com/eu9P1dS.png)
+![](./error_screenshots/plot_options.png)
 
 ## Kreis Level Overview 
 
 The goal of the application is to break down the predictions as well as the errors at the Kreis level. The following section performs error data analysis. It helps in understanding which Kreis are the hardest to estimate for unemployment rate. 
 
-![](https://i.imgur.com/fSZlYL7.png)
+![](./error_screenshots/kreis.png)
 
 <span style="color:gray">*This dataframe currently shows 5 kreis based on their unemployment rate forecasting errors for <strong>previous</strong> quarter.*</span>
 
@@ -53,7 +53,7 @@ The next step is to analyze the errors with regards to the structural data and s
 
 The errors are on the x-axis, so the fatter the curve is the more prone that category is to errors. In the following example, the areas where `eligible_area` is 0 have smaller errors than areas with code 1. This means that it is easier to predict kreise that are not eligible for funding then kreise that are eligible. This might be because something unique happened in the eligible kreis that the model can’t explain. 
 
-![](https://i.imgur.com/cNEJJ5p.png)
+![](./error_screenshots/error_comparison.png)
 
 **Future:** Later, we can add a check to see if the variable is a categorical or numerical variable.  
 
@@ -63,4 +63,4 @@ Individual exploration might be interesting but can also be very time consuming.
 
 For example, if “eligible area” is selected as one of the important features, this means that the errors of the kreise eligible for funding is very different than the errors of thous who are not. This implies that there is something special about these groups, and it’s worth to plot them.  
 
-![](https://i.imgur.com/zNZCKye.png)
+![](./error_screenshots/imp_features.png)
