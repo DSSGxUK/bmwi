@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://example.com/steps/rankings/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Rankings - BMWi Forecasting Tool</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Rankings";
+    var mkdocs_page_input_path = "steps\\rankings.md";
+    var mkdocs_page_url = "/steps/rankings/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BMWi Forecasting Tool</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/start/">Start Here</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/user/">User Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/quick/">Quick Access</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Step-by-Step Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../data_prep/">Data Prep page</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../model/">Model page</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../visualizations/">Visualizations</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Rankings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kreise-ranking">Kreise Ranking</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#slide-bar">Slide bar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sort-by-columns">Sort-by Columns</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#results">Results</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bundesland-group-ranking">Bundesland / Group Ranking</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#slide-bar_1">Slide-bar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sort-by-columns_1">Sort-by Columns</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#group-by-columns">Group-by columns</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#results_1">Results</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualizations">Visualizations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pie-chart">Pie Chart</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#bar-chart">Bar Chart</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../error/">Error Analysis page</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Advanced Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/tech_flow/">Technical Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/installation/">Installation and Setup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/cleanerclass/">Cleaner Class</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Our Journey</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/models/">Models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/clusters/">Clusters</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/causal_inf/">Causal Inference</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../../journey/covid19.md">Covid19 restrictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/GDP/">GDP and Unemployment rate</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/tool/">Tool</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/project/">Project</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/team/">Team</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/licenses/">Licences</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BMWi Forecasting Tool</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Step-by-Step Guide &raquo;</li>
+        
+      
+    
+    <li>Rankings</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="unemployment-rate-ranking">Unemployment Rate Ranking</h1>
+<p>The ranking page allows you to get quick takeaways based on the latest prediction results. </p>
+<p>The main feature of this page is to quickly see which kreis (or which group of kreise) are expected to have the highest unemployment rate for the next quarter.</p>
+<h2 id="kreise-ranking">Kreise Ranking</h2>
+<p>The first section is kreise ranking, containing three elements:</p>
+<h3 id="slide-bar">Slide bar</h3>
+<p>The slide bar allows you to see the top N kreise with the highest unemployment rates. It is set in a range from 10 to 100, in increments of 10. The default is set at 10.</p>
+<p><img alt="slide bar" src="../home_screenshots/slidebar.png" /></p>
+<p><span style="color:gray"><em>The screenshot sample is set at 30, meaning that it would show a dataframe with the top 30 highest unemployment rates.</em></span></p>
+<h3 id="sort-by-columns">Sort-by Columns</h3>
+<p>This is a multi-selection input field where you can choose multiple columns you want to sort the kreise ranking by. The ranking would then be sorted based on your input selections. </p>
+<p>The default is set to sort by three columns, in the order of: this quarter (<code>yyyy-mm-dd</code>), last quarter (<code>last_time%</code>), and the same quarter last year (<code>last_year%</code>). It is important to note that the order of your input selection matters:</p>
+<ol>
+<li>
+<p>The input order means that it would first sort by the first input column, and then sort by the second input column if two kreis has the same result for the first input column.</p>
+</li>
+<li>
+<p>The input order also means that the top N kreis filtering is based on the first input column. Using the default selections as an example, the filtered result is the top N kreis based on unemployment rates of this quarter. However, the top N kreis last quarter may be a different 10 kreise. In order to get those top N kreise, you would have to put "last quarter" as the first sorting column in the input field.</p>
+</li>
+</ol>
+<p><span style="color:red">^ Does this make sense?</span></p>
+<p>The available sort by options are:</p>
+<ul>
+<li>
+<p>metedata index: state (<code>bundesland</code>) and county (<code>kreis</code>)</p>
+</li>
+<li>
+<p>all the input dates (<code>yyyy-mm-dd</code>)</p>
+</li>
+<li>
+<p>derived calculations: </p>
+<ul>
+<li>
+<p>last quarter (<code>last_time%</code>): (this_Q - last_Q) / (this_Q) * 100</p>
+</li>
+<li>
+<p>last year (<code>last_year%</code>): (this_Q - this_Q_last_year) / (this_Q) * 100</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="sort by columns" src="../home_screenshots/sortby.png" /></p>
+<p><span style="color:gray"><em>For example, the screenshot sample is set at the three default columns: this quarter (<code>2020-03-31</code>), last quarter (<code>last_time%</code>), and the same quarter last year (<code>last_year%</code>).</em></span></p>
+<h3 id="results">Results</h3>
+<p>After setting the number of top kreise you want to see and the columns you want to sort by, you are presented with the dataframe output of your choosing.</p>
+<p><img alt="sorted dataframe" src="../home_screenshots/sort_df.png" /></p>
+<p><span style="color:gray"><em>This dataframe currently shows the top 30 kreis based on their unemployment rate this quarter, and also showing percentage change comparision to last quarter and last year, because they were in the input fields. </em></span></p>
+<p><strong>Pro Tip</strong>: Click on a column to sort by the column. Click again to switch between ascending and descending sorting.</p>
+<p>The arrow circled in red next to the column means that the dataframe is currently sorted by that column. The arrow facing downwards means that the column is sorted in descending order.</p>
+<p>Note that even when the dataframe is sorted by the column you click, the top results is still filtered from the full dataframe based on the first input column. </p>
+<p><img alt="sorted column" src="../home_screenshots/sort_col.png" /></p>
+<p><span style="color:gray"><em>This dataframe currently shows the top 30 kreis based on their unemployment rate this quarter, and is also sorted by the percentage change compared to last year.</em></span></p>
+<p><span style="color:gray"><em>For example, even though the dataframe is currently sorted by <code>last_year%</code> when we clicked on it, it is not sorting the top 30 kreis of <code>last_year%</code> based on the full dataset, but sorting based on the top 30 kreis of this quarter.</em></span></p>
+<h2 id="bundesland-group-ranking">Bundesland / Group Ranking</h2>
+<p>The second section is bundesland / group ranking, containing five elements, following a similar format to the previous section:</p>
+<h3 id="slide-bar_1">Slide-bar</h3>
+<p>The slide bar allows you to see the top N kreise with the highest unemployment rates. It is set in a range from 50 to 200, in increments of 10. The default is set at 50.</p>
+<p><img alt="slide bar" src="../home_screenshots/slidebar3.png" /></p>
+<p>Compared to the previous section, the slide bar range is slightly larger because the reuslts in this section is grouped.</p>
+<h3 id="sort-by-columns_1">Sort-by Columns</h3>
+<p><img alt="sorted column" src="../home_screenshots/sortby3.png" /></p>
+<p>Similar to the last section, the ranking would then be sorted based on your input column. Different from the last section, this section only allows you to sort by one column for simplicity. </p>
+<h3 id="group-by-columns">Group-by columns</h3>
+<p>This multi-selection box offers a range of categorical variables to group by. The options include:</p>
+<ul>
+<li>
+<p><code>bundesland</code>: the states in Germany</p>
+</li>
+<li>
+<p><code>growth_shrink_cities</code> ("wachsende/schrumpfende Kreise")</p>
+</li>
+<li>
+<p><code>east_west</code> ("West-/Ostdeutschland")</p>
+</li>
+<li>
+<p><code>labor_market_type</code> ("IAB-Arbeitsmarkttyp der Arbeitsagentur")</p>
+</li>
+<li>
+<p><code>settlement_type_of_labor_market_region</code> ("Siedlungsstrukturtyp der Arbeitsmarktregion")</p>
+</li>
+<li>
+<p><code>district_settlement_structure</code> ("Siedlungsstruktureller Kreistyp")</p>
+</li>
+<li>
+<p><code>type_of_settlement_structure</code> ("Siedlungsstruktureller Regionstyp")</p>
+</li>
+<li>
+<p><code>urban_rural</code> ("Städtischer Raum / Ländlicher Raum")</p>
+</li>
+<li>
+<p><code>metropolitan_region</code> ("Europäische Metropolregion")</p>
+</li>
+<li>
+<p><code>support area status</code> ("Gemeinschaftsaufgabe Verbesserung der regionalen Wirtschaftsstruktur")</p>
+</li>
+<li>
+<p><code>eligible area</code>: binary variable based on <code>support area status</code></p>
+</li>
+<li>
+<p>state area code (Amtlicher Gemeindeschlüssel, "<code>ags2</code>") / state-level ("<code>bundesland</code>")</p>
+</li>
+</ul>
+<p><img alt="grouped by column" src="../home_screenshots/groupby.png" /></p>
+<p><span style="color:gray"><em>The default is set to group by both <code>east_west</code> and <code>eligible area</code>.</em></span></p>
+<h3 id="results_1">Results</h3>
+<p>The filtering result is a multi-index dataframe with three columns. The multi-index is presented based on how many columns you group by. The three columns include: </p>
+<ul>
+<li>
+<p><code>{sort_by_column}</code>: the column to sort by in the filtering dataframe. The default is set to sort by its percentage change compared to <code>last_year%</code>.</p>
+</li>
+<li>
+<p><code>#kreis</code>: the number of kreise in that grouping.</p>
+</li>
+<li>
+<p><code>%count</code>: the proportion of kreise belonging to that sorted grouping.</p>
+</li>
+</ul>
+<p><img alt="sorted dataframe" src="../home_screenshots/sort_df3.png" /></p>
+<p><span style="color:gray"><em>For example, this sample dataframe shows the top <code>50</code> kreise, sorted by <code>last_year%</code>, grouped by <code>east_west</code> and <code>eligible area</code>.</em></span></p>
+<p><i></p>
+<p style="color:gray">Reading the first row: </p>
+<ul style="color:gray">
+    <li> the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
+    <li> the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
+    <li> the third column, `%counts`, means that 21 kreise accounts for `13.5%` of all the kreise in the not-eligible-for-funding-West-Germany group.
+</ul>
+<p></i></p>
+<!-- <span style="color:gray">*The `#kreis` and `%counts` are reference indicators to help contextualize the counts in the first column. For example, looking at the first column alone, it seems that growing-cities-West-Germany has the most number of kreise in the top 50 to have high unemployment changes since last year. However, when looking at the third column, we see that growing-above-average-West-Germany is actually the group with the highest percentage of kreise than other group to have the high unemployment changes in a year.*</span> -->
+
+<p><span style="color:gray"><em>Note the number of multi-indices shown in the example. Since <code>eligible_area</code> have two categories, and <code>east_west</code> has two categories, there should be a total of 4 category groups in the index rows. However, the reason why not all combinations are shown is because some categories do not have kreise in it. <strong>Sometimes, it could be useful to see what category groups are not in the top lists. In this case, we see that there are no kreise in East Germany eligible funding in the top 50 highest unemployment rates.</strong></em></span></p>
+<h3 id="visualizations">Visualizations</h3>
+<p>Visualize the dataframe output results.</p>
+<p>As explained in the tip, when grouping by multiple columns, resulting a large number of combinations, it may be hard to see the results clearly using the pie chart or bar chart.</p>
+<p><img alt="visualization" src="../home_screenshots/visualizations.png" /></p>
+<h4 id="pie-chart">Pie Chart</h4>
+<p>The pie chart visualizes the <code>{sort_by_column}</code> into proportions.</p>
+<p><img alt="pie chart" src="../home_screenshots/pie.png" /></p>
+<p><span style="color:gray"><em>As shown above, the sample pie chart visualizes the percentage each category group takes in total from the <code>last_year%</code> column. For example, the not-eligible-for-funding-West-Germany group accounts for <code>21</code> out of the total of <code>50</code> top kreise, therefore, it takes up <code>42%</code> as shown in the pie chart.</em></span></p>
+<h4 id="bar-chart">Bar Chart</h4>
+<p>As explained earlier, the pie chart could be a biased understanding of the category groups, and that can be balanced by understanding the percentage of those kreis accounting for the whole category group.</p>
+<p>The bar chart visualizes the <code>%counts</code> column. It also draws a horizontal line on the 50% mark if at least one <code>%counts</code> column reaches that mark.</p>
+<p><img alt="bar chart" src="../home_screenshots/bar.png" /></p>
+<p><span style="color:gray"><em>As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display column names is too small on your screen.</em></span></p>
+<p><span style="color:red">^ Are there other things that should be added on the home page for quick access?</span></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../error/" class="btn btn-neutral float-right" title="Error Analysis page">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../visualizations/" class="btn btn-neutral" title="Visualizations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../visualizations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../error/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -11,10 +11,10 @@ Vector Autoregression (VAR) is a forecasting algorithm that can be used when two
 
 Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used when two or more time series influence each other. It is considered as an Autoregressive model because, each variable (Time Series) is modeled as a function of the past values, that is the predictors are nothing but the lags (time delayed value) of the series.The primary difference between VAR and other Autoregressive (AR) modesl is that these models are uni-directional, where, the predictors influence the Y and not vice-versa. Whereas, VAR is bi-directional. That is, the variables influence each other.
 
-![](https://i.imgur.com/eL8M1io.png)
+![](./models_screenshots/AR.png?raw=True)
 <span style="color:grey;">*Typical AR Model: Future value only depends on the past values of that series.*</span>
 
-![](https://i.imgur.com/PBSbjM1.png)
+![](./models_screenshots/VAR.png?raw=True)
 <span style="color:grey;">*VAR Model: Future values of one series depends on the past value of the same series and the parallel series*</span>
 
 ### Training Method
@@ -50,7 +50,7 @@ In our case, we considered the hierarchy of the different clusters explained in 
 
 We forecasted using different models, 
 - SARIMA
-- auto_arima​
+- Auto Arima
 - Prophet
 
 We aggregated using different methods, 
