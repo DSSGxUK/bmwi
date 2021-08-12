@@ -69,8 +69,22 @@ def app():
     This section doesn't work well because the date columns are messed up and we need to fix that.  
     """
 
+    # customize start date
+    date_cols = list(full_data.columns)[4:]
+    default_start_date = date_cols[-13] #one year
+    default_start_date_index = date_cols.index(default_start_date)
+    # the start date cant be less than 6 months because of date labels on x-axis
+    start_date = st.selectbox("Pick start date:", options=date_cols[:-6], 
+                              index=default_start_date_index)
+    start_date_index = date_cols.index(start_date)
+    
+    # crop dataframe with start date
+    index_cols = list(full_data.columns)[:4]
+    selected_cols = date_cols[start_date_index:]
+    cropped_data = full_data[index_cols+selected_cols] 
+    
     # line plot
-    fig1 = plot_line_wide(full_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
+    fig1 = plot_line_wide(cropped_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
     # map
