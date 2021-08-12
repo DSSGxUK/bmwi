@@ -7,7 +7,7 @@ import numpy as np
 from multipage import MultiPage
 
 # import your pages here
-from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking, test_map
+from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking, test_map, test_map2
 
 # Create an instance of the app 
 app = MultiPage()
@@ -24,6 +24,7 @@ app.add_page("Predictions Page", model_page.app)
 app.add_page("Visualization Page", prediction_viz.app)
 app.add_page("Ranking Page", ranking.app)
 app.add_page("Error Analysis", error_analysis.app)
-app.add_page("Map Test", test_map.app)
+app.add_page("Map with Folium", test_map.app)
+app.add_page("Map with Bokeh", test_map2.app)
 
 app.run()
