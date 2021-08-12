@@ -100,8 +100,15 @@ def app():
         date_only_list.append(date)
     pred_output.columns = date_only_list 
 
-    # Display the dataframe     
-    st.dataframe(pred_output)
+    # Display the dataframe  
+    df_index = pd.read_csv('data/index.csv')
+    df_index.drop(columns=['ags2'], inplace=True)
+    df_index['ags5'] = df_index['ags5'].apply(fix_ags5)
+    df_pred = pred_output.reset_index()
+    df_pred.rename(columns={'index': 'ags5'})
+    df_display = pd.merge(df_index, df_pred, on='ags5')
+    df_display.set_index('ags5', inplace=True)  
+    st.dataframe(df_display)
 
     pred_output.to_csv('data/prediction_output_from_model_page.csv', index=True)
 
