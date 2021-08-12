@@ -10,8 +10,8 @@ nav:
         #- Site Map: start/map.md
     - Step-by-Step Guide:
         # - Home page: steps/home.md
-        - Data Prep page: steps/data_prep.md
-        - Model page: steps/model.md
+        - Data Prep Page: steps/data_prep.md
+        - Model Page: steps/model.md
         - Visualizations: steps/visualizations.md
         - Rankings: steps/rankings.md
         - Error Analysis page: steps/error.md
@@ -30,4 +30,5 @@ nav:
         - Project: about/project.md
         - Team: about/team.md
         - Licences: about/licenses.md
-theme: readthedocs
+theme: 
+    name: readthedocs
