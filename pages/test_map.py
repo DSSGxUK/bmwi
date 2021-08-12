@@ -42,7 +42,7 @@ def app():
     # style_function = lambda x: {'fillColor': '#0000ff' if
     #                     x['properties']['name']=='Alabama' else
     #                     '#00ff00'}
-    folium.features.GeoJson(data=(open(merged, "r", encoding="utf-8-sig")).read(),
+    folium.features.GeoJson(data=(open(german_geo, "r", encoding="utf-8-sig")).read(),
                             name="States", 
                             # style_function=style_function,
                             popup=folium.GeoJsonPopup(fields=["krs_name_short"])).add_to(m)
