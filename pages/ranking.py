@@ -108,7 +108,8 @@ def app():
     group_cols = ['bundesland'] + list(df_cat.columns)[2:] # crop out ags5
     # col_to_group = st.selectbox("Select which column to group by", options=group_cols, index=0)
     default_cols = [group_cols[2], group_cols[-1]]
-    col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=default_cols)
+    col_to_group = st.multiselect("Select which columns to group by", 
+                                  options=group_cols, default=default_cols)
     
     # get %
     result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n2)
@@ -122,13 +123,13 @@ def app():
         *For example, the default dataframe shows the top `50` kreise, 
         sorted by `last_year%`, grouped by `east_west` and `eligible area`.*
 
-        Reading the first row:
+        Reading the first row (`west`-`eligible for funding`-group):
             
         - the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
             
         - the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
             
-        - the third column, `%counts`, means that 21 kreise accounts for `13.5%` of all the kreise in the not-eligible-for-funding-West-Germany group.
+        - the third column, `%counts`, means that 21 kreise accounts for `22.58%` of all the kreise in the eligible-for-funding-West-Germany group.
             
         Note the number of multi-indices shown in the example. 
         Since `eligible_area` is a binary varaible with two categories, 
@@ -138,7 +139,7 @@ def app():
         However, the reason why not all combinations are shown is because some categories do not have Kreise in it. 
         
         _Sometimes, it could be useful to see what category groups are not in the top lists. 
-        In this case, we see that there are no Kreise in East Germany eligible funding 
+        In this case, we see that there are no Kreise in East Germany not eligible for funding 
         in the top 50 highest unemployment rates._
         '''
     group_ranking_section = st.beta_expander('Grouped Ranking Default Interpretation', False)
