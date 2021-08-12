@@ -1,7 +1,7 @@
 ''' Functions that need to be used regularly '''
 
 # Import necessary libraries 
-from numpy.core.fromnumeric import size
+from numpy.core.fromnumeric import size, sort
 import pandas as pd 
 import streamlit as st 
 import numpy as np 
@@ -215,44 +215,71 @@ def plot_map_wide(data, merge_col):
     ax.set_title(f'{col} in Germany on Kreis-level',fontsize=15)
 
     # annotation
-    # (1) by bundesland
-    label_ags = st.radio("Show labels by Bundesland?", options=["Yes", "No"], index=1)
-    if label_ags == "Yes": 
-        bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
+    ## they can type in the bundesland or kreis they want to annotate
+    bundeslands = list(merged['bundesland'].unique())
+    bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
             '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
             '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
             '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
-        txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
-                                    options=bundeslands, index=0)
-        merged_ags = merged[merged['ags2']==int(txt_to_display_ags[:2])]
-        for i in merged_ags.index:
-            ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
-                    f'{merged_ags["kreis"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=10)
+    kreise = list(merged['kreis'])
+    regions_to_annotate = st.multiselect('Type in the Kreis or whole Bundesland to annotate:',
+                                         options=sorted(bundeslands+kreise),
+                                         default=['Berlin', 'Hamburg', 'München, Kreis'])
+    
+    fontsize = 15
+    for region in regions_to_annotate:
+        # bundesland
+        if region[0].isdigit():
+            merged_ags = merged[merged['ags2']==int(region[:2])]
+            for i in merged_ags.index:
+                ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
+                        f'{merged_ags["kreis"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=fontsize)
+        
+        # kreise
+        else:
+            merged_kreis = merged[merged['kreis']==region]
+            for i in merged_kreis.index:
+                ax.text(merged_kreis.longitude[i], merged_kreis.latitude[i],
+                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[col][i], 2)}', fontsize=fontsize)
+    
+    # # (1) by bundesland
+    # label_ags = st.radio("Show labels by Bundesland?", options=["Yes", "No"], index=1)
+    # if label_ags == "Yes": 
+    #     bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
+    #         '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
+    #         '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
+    #         '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
+    #     txt_to_display_ags = st.selectbox("Select which Bundesland to annotate",
+    #                                 options=bundeslands, index=0)
+    #     merged_ags = merged[merged['ags2']==int(txt_to_display_ags[:2])]
+    #     for i in merged_ags.index:
+    #         ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
+    #                 f'{merged_ags["kreis"][i]}\n{round(merged_ags[col][i], 2)}', fontsize=10)
 
-    # (2) by numerical stats
-    label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1, 
-                        help="Show labels of Kreise in a particular range of values.")
-    if label_stats == "Yes": 
-        stats = ['mean', 'min', '25%', '50%', '75%', 'max']
-        stats_values = merged[col].describe()[stats].sort_values()
-        st.write(stats_values)
-        txt_to_display_stats = st.slider("Select a range of values", 
-                                        float(stats_values['min']), float(stats_values['max']), 
-                                        # (float(stats_values['25%']), float(stats_values['75%'])))
-                                        (float(stats_values['75%']), float(stats_values['max'])))
-        # get filtered df
-        merged_stats = merged[(merged[col]>=txt_to_display_stats[0]) & (merged[col]<=txt_to_display_stats[1])]
-        # add text with filters
-        for i in merged_stats.index:
-            ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
-                    f'{merged_stats["kreis"][i]}\n{round(merged_stats[col][i], 2)}', fontsize=10)
+    # # (2) by numerical stats
+    # label_stats = st.radio("Show labels by stats?", options=["Yes", "No"], index=1, 
+    #                     help="Show labels of Kreise in a particular range of values.")
+    # if label_stats == "Yes": 
+    #     stats = ['mean', 'min', '25%', '50%', '75%', 'max']
+    #     stats_values = merged[col].describe()[stats].sort_values()
+    #     st.write(stats_values)
+    #     txt_to_display_stats = st.slider("Select a range of values", 
+    #                                     float(stats_values['min']), float(stats_values['max']), 
+    #                                     # (float(stats_values['25%']), float(stats_values['75%'])))
+    #                                     (float(stats_values['75%']), float(stats_values['max'])))
+    #     # get filtered df
+    #     merged_stats = merged[(merged[col]>=txt_to_display_stats[0]) & (merged[col]<=txt_to_display_stats[1])]
+    #     # add text with filters
+    #     for i in merged_stats.index:
+    #         ax.text(merged_stats.longitude[i], merged_stats.latitude[i],
+    #                 f'{merged_stats["kreis"][i]}\n{round(merged_stats[col][i], 2)}', fontsize=10)
 
-    # (3) add all text
-    labels = st.radio("Show all labels?", options=["Yes", "No"], index=1)
-    if labels == "Yes": 
-        for i in range(len(merged)):
-            ax.text(merged.longitude[i], merged.latitude[i],
-                    f'{merged["kreis"][i]}\n{round(merged[col][i], 2)}', fontsize=10)
+    # # (3) add all text
+    # labels = st.radio("Show all labels?", options=["Yes", "No"], index=1)
+    # if labels == "Yes": 
+    #     for i in range(len(merged)):
+    #         ax.text(merged.longitude[i], merged.latitude[i],
+    #                 f'{merged["kreis"][i]}\n{round(merged[col][i], 2)}', fontsize=10)
                     
     return fig
 
