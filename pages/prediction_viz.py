@@ -51,13 +51,18 @@ def app():
     full_data.to_csv('data/pred_output_full.csv', index=False)
 
     st.markdown("### Time-Series Line Plot") 
-    st.write("\n")
+    st.markdown('''
+                _The Kreise options are listed in alphabetical order.
+                You can also directly type the name of the Kreis 
+                you want to visualize in the box._
+                ''')
 
     # get predictions by kreis 
     display_data = pd.merge(index_data, viz_data, on='ags5')
+    kreis_options = sorted(list(display_data['kreis'].values))
     kreis_name = st.multiselect("Select the Kreis to get predictions", 
-                                options=list(display_data['kreis'].values), 
-                                default=[list(display_data['kreis'].values)[0]])
+                                options=kreis_options, 
+                                default=[kreis_options[0]])
     st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
 
     """
