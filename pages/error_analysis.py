@@ -17,9 +17,7 @@ import random
 import json 
 from scipy.stats import ttest_ind
 import statsmodels.api as sm
-from statsmodels.formula.api import ols
 from sklearn.linear_model import LinearRegression, RidgeCV, Ridge
-from regressors import stats
 from mlxtend.feature_selection import SequentialFeatureSelector as sfs
 
 # Custom modules 
@@ -241,6 +239,7 @@ def app():
     st.subheader("Most important structure")
 
     st.write("Running a linear regression model...")
+    st.write("This section takes a while to run and changing features ")
     df_mixed.set_index('ags5', drop=True, inplace=True)
 
     # Convert categorical columns to str type 
@@ -251,7 +250,7 @@ def app():
     X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
     Y = np.log(df_mixed['mape'])
     X = pd.get_dummies(data=X, drop_first=True)
-
+    
     # Fit the Linear Ression model 
     regr = LinearRegression()
     regr.fit(X, Y, sample_weight=None)

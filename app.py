@@ -1,6 +1,7 @@
+import streamlit as st
+
 import os
 from typing import final
-import streamlit as st
 import numpy as np
 
 # Custom imports 
@@ -8,6 +9,9 @@ from multipage import MultiPage
 
 # import your pages here
 from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking, test_map, test_map2
+
+# Change the page name and icon 
+st.set_page_config(page_title="BMWi Forecasting Tool", page_icon='📊')
 
 # Create an instance of the app 
 app = MultiPage()
