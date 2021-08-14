@@ -1,5 +1,10 @@
 # Welcome to BMWi Forecasting Tool
 
+We could mention details like:
+
+- Project Overview 
+- Problem Statement 
+- Our solution 
 
 ## About the Project 
 
@@ -17,7 +22,8 @@ There are multiple aspects to be explored with this tool. Head over to [this pag
 Once you have started the tool, there are ways to customize your application.
 
 - Start by selecting the dropdown on the top right of the page. 
-- Go to `Settings`
+- Go to `Settings`.
+![settings launch](./images/settings_start.PNG)
 - Select `Wide Mode` if you want the application to appear in a wider format. You can also change the application colors by selecting the `theme` dropdown option. You can find the references for the application below. 
 
 ![settings](./images/settings.PNG)
