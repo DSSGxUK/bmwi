@@ -12,10 +12,10 @@ Upload the dataset and make any necessary changes to fit the prediction model. Y
 
 - both assumes to have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel") -->
 
-This section process the input excel workbook for time-series or structural data type. It assumes that the data is:
+This section processes the excel file that is inputted. The excel file must contain time-series data adhering to the following rules: 
 
-- in **wide**-format, where each worksheet contains data for one variable
-
+- data should be in **wide**-format (the columns are different timestamps, rows are kreise)
+- one sheet cannot have more than one variable (e.g., unemployment rate)
 - have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel")
 
 ## Time-series data excel workbook
@@ -48,6 +48,7 @@ When you open up the page, you will likely be facing this error. No worries, tha
     <li> The index column "Region" shows that each row is a record of one kreis.
     <li> The rest of the columns should represent each year and month.
     <li> Each worksheet represents a different variable. For example, the current worksheet selected is "Alo_Quote", which stands for unemployment rate ("Arbeitslosenquote"). 
+    <li> It is important that there is a sheet which is called "Alo_Quote" which contain the unemployment rate data. 
 </ul>
 </i>
 
