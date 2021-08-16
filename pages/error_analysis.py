@@ -4,21 +4,14 @@ from numpy.lib.ufunclike import fix
 import numpy as np 
 import pandas as pd
 import geopandas as gpd
-from pandas._config.config import options
-from seaborn.relational import scatterplot 
 import streamlit as st 
 
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
-from matplotlib import pyplot
 import matplotlib.dates as mdates
 
-import random
 import json 
-from scipy.stats import ttest_ind
 import statsmodels.api as sm
-from sklearn.linear_model import LinearRegression, RidgeCV, Ridge
-from mlxtend.feature_selection import SequentialFeatureSelector as sfs
 
 # Custom modules 
 from .utils import fix_ags5, get_table_download_link
@@ -30,6 +23,25 @@ with open('data/metadata/data_types.json') as f:
     CAT_COLS = data["data_types"]["categorical"]
 
 ''' Functions for this page '''
+
+# Function to get a dataframe of p-values and features 
+def results_summary_to_dataframe(results):
+    '''take the result of an statsmodel results table and transforms it into a dataframe'''
+    pvals = results.pvalues
+    coeff = results.params
+    conf_lower = results.conf_int()[0]
+    conf_higher = results.conf_int()[1]
+
+    results_df = pd.DataFrame({"pvals":pvals})
+
+    #Reordering...
+    results_df = results_df[["pvals"]]
+    
+    # Set columns and index
+    results_df.reset_index(inplace=True)
+    results_df = results_df.rename(columns={'index': 'feature'})
+    
+    return results_df
 
 # function to do that for a spesific column 
 def compare_error_in_two_groups(df, column_name): 
@@ -223,6 +235,13 @@ def app():
     # Add structural data and combine with the error data 
     df_structural = pd.read_csv('data/df_final_stationary.csv', converters={'ags5': str} )
     df_structural['ags5'] = df_structural['ags5'].apply(fix_ags5)
+    
+    # Fix structual cols 
+    df_structural["urban_/_rural"] = np.where(df_structural["urban_/_rural"]==1, 'urban', 'rural')
+    df_structural['eligible_area'] = np.where(df_structural['eligible_area']==1, 'eligible_area', 'not_eligible_area')
+    df_structural['east_west'] = np.where(df_structural['east_west']==1, 'west', 'east')
+    
+    # Create a mixed dataset
     df_mixed = pd.merge(df_structural.drop(['cluster'], axis=1), df_mean_error.drop(['kreis', 'ags2'], axis=1), on='ags5')
 
     df_mixed['bundesland'] = df_mixed['bundesland'].astype('category')  
@@ -239,7 +258,7 @@ def app():
     st.subheader("Most important structure")
 
     st.write("Running a linear regression model...")
-    st.write("This section takes a while to run and changing features ")
+    st.write("This section takes a while to run and changing features above will result in the model running again.")
     df_mixed.set_index('ags5', drop=True, inplace=True)
 
     # Convert categorical columns to str type 
@@ -248,19 +267,35 @@ def app():
 
     # Create X and y 
     X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
+    
+    # Conditional column removal 
+    if 'ags2' in X.columns and 'bundesland' in X.columns: 
+        X = X.drop(['ags2'], axis=1)
+    if 'labor_market_region' in X.columns: 
+        X.drop(['labor_market_region'], axis=1, inplace=True)
+    if 'labor_market_type' in X.columns: 
+        X.drop(['labor_market_type'], axis=1, inplace=True)
     Y = np.log(df_mixed['mape'])
     X = pd.get_dummies(data=X, drop_first=True)
+
+    print("DATA SHAPES", X.shape, Y.shape)
     
     # Fit the Linear Ression model 
-    regr = LinearRegression()
-    regr.fit(X, Y, sample_weight=None)
+    regr_model = sm.OLS(Y, X)
+    results = regr_model.fit()
 
-    # Apply Sequential selector
-    sfs1 = sfs(regr, k_features = 10,forward=True, floating=False, scoring='r2', cv=5)
-    sfs1.fit(X, Y)
+    # get p-values table
+    res = results_summary_to_dataframe(results)
 
-    # Create feature summary table 
-    summary_table_select = pd.DataFrame.from_dict(sfs1.get_metric_dict()).T
+    # Display the results 
+    high_low = st.radio("Select highest or lowest p-values", options=["Lowest", "Highest"])
     top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
-    top_n_features = list(summary_table_select['feature_names'][top_n])
-    st.write(f"The top {top_n} features correlated to the error values are:", top_n_features)
+
+    if high_low == 'Highest':
+        res.sort_values(by='pvals', inplace=True, ascending=False)
+    else: 
+        res.sort_values(by='pvals', inplace=True)
+
+    st.write(f"The {high_low} features with the {high_low} p-values are:")
+    st.dataframe(res.iloc[:top_n].reset_index(drop=True))
+
