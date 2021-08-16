@@ -277,8 +277,6 @@ def app():
         X.drop(['labor_market_type'], axis=1, inplace=True)
     Y = np.log(df_mixed['mape'])
     X = pd.get_dummies(data=X, drop_first=True)
-
-    print("DATA SHAPES", X.shape, Y.shape)
     
     # Fit the Linear Ression model 
     regr_model = sm.OLS(Y, X)
