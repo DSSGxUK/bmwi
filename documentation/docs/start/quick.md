@@ -9,14 +9,14 @@ There are different things you can explore depending on the use case. The common
 <!-- Link to the github with the latest predictions -->
 <!-- - If you want the latest unemployment rate predictions, then you can visit [this page]().  -->
 
-- If you want understand the step-by-step procedure to get fresh predictions, head to the [Step-By-Step Guide](../../steps/home). 
+- If you want understand the step-by-step procedure to get fresh predictions, head to the [Step-By-Step Guide](../../steps/data_prep/). 
 
-- To set up the tool on your local machine, follow the [installation guide](../../advanced/installation). 
+- To set up the tool on your local machine, follow the [installation guide](../../advanced/installation/#installation-steps). 
 
-- If you want to check out the techincal documentation and understand the prediction functions, visit the [techical documentation](../../advanced/tech_flow) page.
+- If you want to get more details about the data cleaning, analysis and the machine learning models that we built, head over to [our journey](../../journey/models/) section.  
 
-- If you want to get more details about the data cleaning, analysis and the machine learning models that we built, head over to [our journey](../../journey/models) section.  
+- To know more about the team which developed this application, check out the [Team Page](../../about/team/). 
 
-- To know more about the team which developed this application, check out the [Team Page](../../about/team). 
+<!-- - If you want to check out the techincal documentation and understand the prediction functions, visit the [techical documentation](../../advanced/tech_flow) page. -->
 
 <!-- <span style="color:red">Add a download link here</span> -->
