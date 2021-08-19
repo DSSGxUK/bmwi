@@ -10,11 +10,11 @@ nav:
         #- Site Map: start/map.md
     - Step-by-Step Guide:
         # - Home page: steps/home.md
-        - Data Prep Page: steps/data_prep.md
-        - Model Page: steps/model.md
+        - Data Prep: steps/data_prep.md
+        - Predictions: steps/model.md
         - Visualizations: steps/visualizations.md
         - Rankings: steps/rankings.md
-        - Error Analysis page: steps/error.md
+        - Error Analysis: steps/error.md
     - Advanced Features: 
         - Technical Workflow: advanced/tech_flow.md
         - Installation and Setup: advanced/installation.md

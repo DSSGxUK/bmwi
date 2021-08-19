@@ -1,4 +1,4 @@
-# Model Page 
+# Predictions 
 
 This section focuses on getting the results from the model.
 The results will include unemployment rate predictions the next three months, for all 401 kreise.

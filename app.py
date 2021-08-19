@@ -22,11 +22,11 @@ st.markdown('[Documentation](https://cinnylin.github.io/bmwi-docs/)&nbsp;&nbsp;&
 st.markdown('')
 
 # The main app
-app.add_page("Home Page", home_page.app)
+app.add_page("Home", home_page.app)
 app.add_page("Data Prep", data_prep.app)
-app.add_page("Predictions Page", model_page.app)
-app.add_page("Visualization Page", prediction_viz.app)
-app.add_page("Ranking Page", ranking.app)
+app.add_page("Predictions", model_page.app)
+app.add_page("Visualization", prediction_viz.app)
+app.add_page("Ranking", ranking.app)
 app.add_page("Error Analysis", error_analysis.app)
 
 app.run()

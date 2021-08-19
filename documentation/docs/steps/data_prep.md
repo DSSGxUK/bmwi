@@ -1,4 +1,4 @@
-# Data Prep page
+# Data Prep
 
 Upload the dataset and make any necessary changes to fit the prediction model. You can find a 
 

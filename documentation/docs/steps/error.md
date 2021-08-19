@@ -1,4 +1,4 @@
-# Error Analysis Page
+# Error Analysis
 
 There error analysis is an attempt to see where the unemployment rate predictions “fail”. 
 The errors are [Mean absolute percentage errors (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error), and each one represent how different the prediction is from the ground truth. The errors can be used to see which kreise were difficult to predict for, potentially suggesting the something spacial happened there. The errors can also be easily compared with the structural data, to identify the type of kreise that are harder to predict for. 
