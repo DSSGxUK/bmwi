@@ -115,7 +115,7 @@ def app():
 	plt.ylabel(f"Unemployment Rate in {kreis_to_plot}")
 	plt.title("Unemployment Rate Predictions with confidence intervals")
 	plt.xticks(rotation=90)
-	plt.ylim(0, 16) 
+	plt.ylim(0, ci_df_full['higher'].max()) 
 
 	plt.fill_between(filter_data['date'], filter_data['lower'], filter_data['higher'], alpha=.3)
 	st.pyplot()
