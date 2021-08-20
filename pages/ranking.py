@@ -42,11 +42,11 @@ def app():
     
 # -- functions ----------------------------------------------
 
-    def top_n(df, cols=[date_cols[-1], 'last_time%', 'last_year%'], n=10):
-        return df.sort_values(cols, ascending=False)[:n][['ags5', 'bundesland', 'kreis']+cols]
+    def top_n(df, cols=[date_cols[-1], 'last_time%', 'last_year%'], n=10, ascending=False):
+        return df.sort_values(cols, ascending=ascending)[:n][['ags5', 'bundesland', 'kreis']+cols]
     
-    def top_n_group(df, col, group_col, n=100):
-        return df.sort_values(col, ascending=False)[:n].groupby(group_col).count()[[col]].sort_values([col], ascending=False)
+    def top_n_group(df, col, group_col, n=100, ascending=False):
+        return df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count()[[col]].sort_values([col], ascending=ascending)
 
     def plot_pie(df, col, group_col, n):
         result_df = top_n_group(df, col, group_col, n=n)
@@ -75,12 +75,14 @@ def app():
     st.markdown('**Pro Tip**: click on the column to sort')
 
     st.markdown('### Kreise rankings')
-    n1 = st.slider("Print top n results", min_value=10, max_value=100, step=10,
+    n1 = st.slider("Print top n results", min_value=10, max_value=401, step=10,
                     help='Print top n results by kreise.')
     cols_to_sort = st.multiselect("Select which columns to sort by", options=data_cols, 
                                     default=[date_cols[-1], 'last_time%', 'last_year%'],
                                     help='Fetching data based on first selected column, and displaying data for other selected columns.')
-    kreise_ranking = top_n(df, cols=cols_to_sort, n=n1)
+    kreise_sort_direction = st.checkbox('Ascending order?', value=False, 
+                                        help='default descending order shows the kreise with highest unemployment rates.')
+    kreise_ranking = top_n(df, cols=cols_to_sort, n=n1, ascending=kreise_sort_direction)
     # for display per suggestion
     if 'ags2' in kreise_ranking.columns:
         kreise_ranking.drop(columns=['ags2'], inplace=True)
@@ -99,20 +101,21 @@ def app():
 # --------------------------------------------------------
 
     st.markdown('### Bundesland / Group rankings')
-    n2 = st.slider("Print top n results", min_value=50, max_value=200, step=50, 
+    n2 = st.slider("Print top n results", min_value=50, max_value=401, step=50, 
                     help='Get top n results of the column.')
     col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
+    group_sort_direction = st.checkbox('Ascending order?', value=False, 
+                                        help='default descending order shows the groups with highest unemployment rates.')
     
     df_cat = pd.read_csv('data/categorical_groups.csv')
     df_group = pd.merge(df_cat, df, left_on='ags5', right_on='ags5')
     group_cols = ['bundesland'] + list(df_cat.columns)[2:] # crop out ags5
     # col_to_group = st.selectbox("Select which column to group by", options=group_cols, index=0)
     default_cols = [group_cols[2], group_cols[-1]]
-    col_to_group = st.multiselect("Select which columns to group by", 
-                                  options=group_cols, default=default_cols)
+    col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=default_cols)
     
     # get %
-    result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n2)
+    result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n2, ascending=group_sort_direction)
     n_group = df_group.groupby(col_to_group).count()[['kreis']]
     result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
     result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
