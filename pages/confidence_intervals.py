@@ -20,15 +20,25 @@ def app():
 
 	''' Add page details '''
 	st.markdown("## Confidence Intervals")
-	
+
+	# ''' Dashboard sidebar '''
+	# st.sidebar.markdown("""
+    # --- 
+
+    # Page Outline: 
+    # - [Confidence Intervals](#confidence-intervals)
+	# - [Visualisation](#visualisation-section)
+    # """)	
+
 	''' Dashboard sidebar '''
 	st.sidebar.markdown("""
     --- 
 
     Page Outline: 
     - [Confidence Intervals](#confidence-intervals)
-	- [Visualisation](#visualisation-section)
-    """)	
+    - [Visualisation](#visualisation-section)
+
+    """)
 
 	st.write("""This section provides confidence intervals for the predictions
 				that have been calculated in the previous section.""")
@@ -77,10 +87,6 @@ def app():
 		ci_df = ci_df.append(ci_ags5.iloc[-3:].reset_index(drop=True))
 		ci_df_full = ci_df_full.append(ci_ags5.iloc[-15:].reset_index(drop=True)) 
 
-	# # Clip the data to the last three
-	# ci_df_full = ci_df.copy() [-15:]
-	# ci_df = ci_df.iloc[-3:].reset_index(drop=True)
-	
 	# Merge with full data to add bundesland and kreis 
 	ci_df = pd.merge(ci_df, full_data[['ags5', 'kreis', 'bundesland']])
 	ci_df_full = pd.merge(ci_df_full, full_data[['ags5', 'kreis', 'bundesland']])
