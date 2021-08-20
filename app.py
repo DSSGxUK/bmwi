@@ -10,6 +10,9 @@ from multipage import MultiPage
 # import your pages here
 from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking
 
+# Change the page name and icon 
+st.set_page_config(page_title="BMWi Forecasting Tool", page_icon='📊')
+
 # Create an instance of the app 
 app = MultiPage()
 
