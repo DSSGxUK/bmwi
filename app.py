@@ -8,7 +8,7 @@ import numpy as np
 from multipage import MultiPage
 
 # import your pages here
-from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking
+from pages import model_page, data_prep, home_page, error_analysis, prediction_viz, ranking, confidence_intervals
 
 # Change the page name and icon 
 st.set_page_config(page_title="BMWi Forecasting Tool", page_icon='📊')
@@ -25,6 +25,7 @@ st.markdown('')
 app.add_page("Home", home_page.app)
 app.add_page("Data Prep", data_prep.app)
 app.add_page("Predictions", model_page.app)
+app.add_page("Confidence Intervals", confidence_intervals.app)
 app.add_page("Visualization", prediction_viz.app)
 app.add_page("Ranking", ranking.app)
 app.add_page("Error Analysis", error_analysis.app)
