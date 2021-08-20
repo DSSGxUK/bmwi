@@ -42,6 +42,8 @@ The second argument is the location to create the virtual environment. Generally
 
     - For Windows - `.\env\Scripts\activate`
 
+<br> 
+
 - Install requirements 
 
 ```bash

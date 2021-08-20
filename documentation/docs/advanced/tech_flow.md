@@ -33,10 +33,10 @@ graph TD
     A --> B
     D --> E
     D --> F
-    click A "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/data_prep.py"
-    click B "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/model_page.py"
-    click C "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/prediction_viz.py"
-    click D "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/model_page.py"
-    click E "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/error_analysis.py"
-    click F "https://github.com/prakharrathi25/the-tool-bmwi/blob/814aeeac9fff59c19286c86534a11476cf801f52/pages/ranking.py"
+    click A "https://github.com/DSSGxUK/bmwi/blob/main/pages/data_prep.py"
+    click B "https://github.com/DSSGxUK/bmwi/blob/main/pages/model_page.py"
+    click C "https://github.com/DSSGxUK/bmwi/blob/main/pages/prediction_viz.py"
+    click D "https://github.com/DSSGxUK/bmwi/blob/main/pages/model_page.py"
+    click E "https://github.com/DSSGxUK/bmwi/blob/main/pages/error_analysis.py"
+    click F "https://github.com/DSSGxUK/bmwi/blob/main/pages/ranking.py"
 </div>

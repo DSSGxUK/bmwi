@@ -40,10 +40,10 @@ graph LR
     A -.-> B
     B -.-> E
     B -.-> F
-    click A "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/data_prep.py"
-    click B "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click E "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/error_analysis.py"
-    click F "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/home_page.py"
+    click A "https://github.com/DSSGxUK/bmwi/blob/main/pages/data_prep.py"
+    click B "https://github.com/DSSGxUK/bmwi/blob/main/pages/model_page.py"
+    click E "https://github.com/DSSGxUK/bmwi/blob/main/pages/error_analysis.py"
+    click F "https://github.com/DSSGxUK/bmwi/blob/main/pages/home_page.py"
 </div>
 
 <br> -->
@@ -63,7 +63,7 @@ graph LR
     A1(First-time Users)
     A1-->A2[Step-By-Step Guide]
     A1-->A3[Tool]
-    click A2 "../../steps/home/"
+    click A2 "../../steps/data_prep/"
     click A3 "https://bmwi-tool.herokuapp.com/"
     style A2 fill:#CAEEFE,stroke:#2596be,color:#063970
     style A3 fill:#CAEEFE,stroke:#2596be,color:#063970

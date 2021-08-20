@@ -181,4 +181,4 @@ The bar chart visualizes the `%counts` column. It also draws a horizontal line o
 
 <span style="color:gray">*As shown above, the sample bar chart visualizes the percentage the top 50 kreise took up for its whole category group. Note that you could use the two arrows on the top right to expand the plot if the display column names is too small on your screen.*</span>
 
-<span style="color:red">^ Are there other things that should be added on the home page for quick access?</span>
+<!-- <span style="color:red">^ Are there other things that should be added on the home page for quick access?</span> -->
