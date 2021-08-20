@@ -14,7 +14,7 @@ import json
 import statsmodels.api as sm
 
 # Custom modules 
-from .utils import fix_ags5, get_table_download_link
+from .utils import fix_ags5, get_table_download_link, plot_map
 
 # DEFINE THE CONSTANTS
 # Read the categorical data inside the file 
@@ -48,12 +48,14 @@ def compare_error_in_two_groups(df, column_name):
     
     # Check if the variable is structural 
     if column_name in CAT_COLS: 
-        sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False)
-        st.pyplot()
+        kdefig, ax = plt.subplots(figsize=(10,6))
+        sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False, ax=ax)
+        st.pyplot(kdefig)
 
     else: 
-        sns.scatterplot(data=df, x="error", y=column_name)
-        st.pyplot()
+        scatterfig, ax = plt.subplots(figsize=(10,6))
+        sns.scatterplot(data=df, x="error", y=column_name, ax=ax)
+        st.pyplot(scatterfig)
 
     
 # Function to plot error maps 
@@ -200,8 +202,48 @@ def app():
         st.pyplot()
 
     st.markdown("""---""")
+    
+    # ''' Error Map Viz '''
+    st.markdown("### Error visualization on a Map")
+    
+    fig = plot_map(error_data, merge_col='ags5', data_col='error')
+    st.pyplot(fig)
+
+    # # Display a date range
+    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+    
+    # # Show for average predictions
+    # if method == 'average': 
+    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    # else: 
+    #     # Filter by date 
+    #     filter_data = error_data[error_data['date'] == method]
+        
+    # st.pyplot(plot_error_map(filter_data, date_string=method))
+    
+    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
+
+    # if error_checkbox: 
+    #     st.subheader("Error visualization on a Map")
+    #     st.write("\nLoading Map..")
+        
+    #     # Display a date range
+    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+        
+    #     # Show for average predictions
+    #     if method == 'average': 
+    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    #     else: 
+    #         # Filter by date 
+    #         filter_data = error_data[error_data['date'] == method]
+            
+    #     st.pyplot(plot_error_map(filter_data, date_string=method))
+        
+    st.markdown("""---""")
+    
 
     ''' MEAN ERROR ANALYSIS '''
+    
     df_mean_error = error_data.groupby(['ags5','ags2','bundesland','kreis'], as_index=False).mean()
 
     st.subheader("Kreis Level Overview")
@@ -257,43 +299,44 @@ def app():
     st.markdown("""---""")
     st.subheader("Most important structure")
 
-    st.write("Running a linear regression model...")
-    st.write("This section takes a while to run and changing features above will result in the model running again.")
-    df_mixed.set_index('ags5', drop=True, inplace=True)
-
-    # Convert categorical columns to str type 
-    for col in CAT_COLS: 
-        df_mixed[col] = df_mixed[col].astype(str)
-
-    # Create X and y 
-    X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
+    run_lr = st.checkbox('Run linear regression model', value=False)
     
-    # Conditional column removal 
-    if 'ags2' in X.columns and 'bundesland' in X.columns: 
-        X = X.drop(['ags2'], axis=1)
-    if 'labor_market_region' in X.columns: 
-        X.drop(['labor_market_region'], axis=1, inplace=True)
-    if 'labor_market_type' in X.columns: 
-        X.drop(['labor_market_type'], axis=1, inplace=True)
-    Y = np.log(df_mixed['mape'])
-    X = pd.get_dummies(data=X, drop_first=True)
-    
-    # Fit the Linear Ression model 
-    regr_model = sm.OLS(Y, X)
-    results = regr_model.fit()
+    if run_lr:
+        st.write("Takes around 2 minutes to run...")
+        df_mixed.set_index('ags5', drop=True, inplace=True)
 
-    # get p-values table
-    res = results_summary_to_dataframe(results)
+        # Convert categorical columns to str type 
+        for col in CAT_COLS: 
+            df_mixed[col] = df_mixed[col].astype(str)
 
-    # Display the results 
-    high_low = st.radio("Select highest or lowest p-values", options=["Lowest", "Highest"])
-    top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
+        # Create X and y 
+        X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
 
-    if high_low == 'Highest':
-        res.sort_values(by='pvals', inplace=True, ascending=False)
-    else: 
-        res.sort_values(by='pvals', inplace=True)
+        # Conditional column removal 
+        if 'ags2' in X.columns and 'bundesland' in X.columns: 
+            X = X.drop(['ags2'], axis=1)
+        if 'labor_market_region' in X.columns: 
+            X.drop(['labor_market_region'], axis=1, inplace=True)
+        if 'labor_market_type' in X.columns: 
+            X.drop(['labor_market_type'], axis=1, inplace=True)
+        Y = np.log(df_mixed['mape'])
+        X = pd.get_dummies(data=X, drop_first=True)
 
-    st.write(f"The {high_low} features with the {high_low} p-values are:")
-    st.dataframe(res.iloc[:top_n].reset_index(drop=True))
+        # Fit the Linear Ression model 
+        regr_model = sm.OLS(Y, X)
+        results = regr_model.fit()
 
+        # get p-values table
+        res = results_summary_to_dataframe(results)
+
+        # Display the results 
+        high_low = st.radio("Select highest or lowest p-values", options=["Lowest", "Highest"])
+        top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
+
+        if high_low == 'Highest':
+            res.sort_values(by='pvals', inplace=True, ascending=False)
+        else: 
+            res.sort_values(by='pvals', inplace=True)
+
+        st.write(f"The {high_low} features with the {high_low} p-values are:")
+        st.dataframe(res.iloc[:top_n].reset_index(drop=True))
