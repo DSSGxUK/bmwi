@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 from pandas._config.config import options
+from seaborn import utils
 from seaborn.relational import scatterplot 
 import streamlit as st 
 
@@ -23,7 +24,7 @@ from regressors import stats
 from mlxtend.feature_selection import SequentialFeatureSelector as sfs
 
 # Custom modules 
-from .utils import fix_ags5, get_table_download_link
+from .utils import fix_ags5, get_table_download_link, plot_map
 
 # DEFINE THE CONSTANTS
 # Read the categorical data inside the file 
@@ -38,12 +39,14 @@ def compare_error_in_two_groups(df, column_name):
     
     # Check if the variable is structural 
     if column_name in CAT_COLS: 
-        sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False)
-        st.pyplot()
+        kdefig, ax = plt.subplots(figsize=(10,6))
+        sns.kdeplot(data=df, x="error", hue=column_name,  common_norm=False, ax=ax)
+        st.pyplot(kdefig)
 
     else: 
-        sns.scatterplot(data=df, x="error", y=column_name)
-        st.pyplot()
+        scatterfig, ax = plt.subplots(figsize=(10,6))
+        sns.scatterplot(data=df, x="error", y=column_name, ax=ax)
+        st.pyplot(scatterfig)
 
     
 # Function to plot error maps 
@@ -190,8 +193,48 @@ def app():
         st.pyplot()
 
     st.markdown("""---""")
+    
+    # ''' Error Map Viz '''
+    st.markdown("### Error visualization on a Map")
+    
+    fig = plot_map(error_data, merge_col='ags5', data_col='error')
+    st.pyplot(fig)
+
+    # # Display a date range
+    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+    
+    # # Show for average predictions
+    # if method == 'average': 
+    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    # else: 
+    #     # Filter by date 
+    #     filter_data = error_data[error_data['date'] == method]
+        
+    # st.pyplot(plot_error_map(filter_data, date_string=method))
+    
+    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
+
+    # if error_checkbox: 
+    #     st.subheader("Error visualization on a Map")
+    #     st.write("\nLoading Map..")
+        
+    #     # Display a date range
+    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
+        
+    #     # Show for average predictions
+    #     if method == 'average': 
+    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
+    #     else: 
+    #         # Filter by date 
+    #         filter_data = error_data[error_data['date'] == method]
+            
+    #     st.pyplot(plot_error_map(filter_data, date_string=method))
+        
+    st.markdown("""---""")
+    
 
     ''' MEAN ERROR ANALYSIS '''
+    
     df_mean_error = error_data.groupby(['ags5','ags2','bundesland','kreis'], as_index=False).mean()
 
     st.subheader("Kreis Level Overview")
@@ -240,28 +283,32 @@ def app():
     st.markdown("""---""")
     st.subheader("Most important structure")
 
-    st.write("Running a linear regression model...")
-    df_mixed.set_index('ags5', drop=True, inplace=True)
+    run_lr = st.checkbox('Run linear regression model', value=False)
+    
+    if run_lr:
+        # st.write("Running a linear regression model...")
+        st.write("Takes around 2 minutes to run...")
+        df_mixed.set_index('ags5', drop=True, inplace=True)
 
-    # Convert categorical columns to str type 
-    for col in CAT_COLS: 
-        df_mixed[col] = df_mixed[col].astype(str)
+        # Convert categorical columns to str type 
+        for col in CAT_COLS: 
+            df_mixed[col] = df_mixed[col].astype(str)
 
-    # Create X and y 
-    X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
-    Y = np.log(df_mixed['mape'])
-    X = pd.get_dummies(data=X, drop_first=True)
+        # Create X and y 
+        X = df_mixed.drop(['kreis','pred','mape', 'error', 'ground_truth'], axis=1)
+        Y = np.log(df_mixed['mape'])
+        X = pd.get_dummies(data=X, drop_first=True)
 
-    # Fit the Linear Ression model 
-    regr = LinearRegression()
-    regr.fit(X, Y, sample_weight=None)
+        # Fit the Linear Ression model 
+        regr = LinearRegression()
+        regr.fit(X, Y, sample_weight=None)
 
-    # Apply Sequential selector
-    sfs1 = sfs(regr, k_features = 10,forward=True, floating=False, scoring='r2', cv=5)
-    sfs1.fit(X, Y)
+        # Apply Sequential selector
+        sfs1 = sfs(regr, k_features = 10,forward=True, floating=False, scoring='r2', cv=5)
+        sfs1.fit(X, Y)
 
-    # Create feature summary table 
-    summary_table_select = pd.DataFrame.from_dict(sfs1.get_metric_dict()).T
-    top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
-    top_n_features = list(summary_table_select['feature_names'][top_n])
-    st.write(f"The top {top_n} features correlated to the error values are:", top_n_features)
+        # Create feature summary table 
+        summary_table_select = pd.DataFrame.from_dict(sfs1.get_metric_dict()).T
+        top_n = st.slider("Select the top-n features", min_value=1, max_value=10, step=1, value=5)
+        top_n_features = list(summary_table_select['feature_names'][top_n])
+        st.write(f"The top {top_n} features correlated to the error values are:", top_n_features)
