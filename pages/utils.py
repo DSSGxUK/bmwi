@@ -132,9 +132,15 @@ def plot_map(data, merge_col, data_col, cat_col=False):
         # kreise
         else:
             merged_kreis = merged[merged['kreis']==region]
+            
+            # highlight kreis boundary
+            merged_kreis.boundary.plot(ax=ax, color='#FFFF00', linewidth=3, hatch="///")
+            
+            # annotate text
             for i in merged_kreis.index:
                 ax.text(merged_kreis.longitude[i], merged_kreis.latitude[i],
-                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[data_col][i], 2)}', fontsize=fontsize)
+                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[data_col][i], 2)}', 
+                        fontsize=fontsize, color='k', weight='bold')
     
     
     # # check if the labels need to be added 
@@ -268,9 +274,15 @@ def plot_map_wide(data, merge_col):
         # kreise
         else:
             merged_kreis = merged[merged['kreis']==region]
+            
+            # highlight kreis boundary
+            merged_kreis.boundary.plot(ax=ax, color='#FFFF00', linewidth=3, hatch="///")
+            
+            # annotate text
             for i in merged_kreis.index:
                 ax.text(merged_kreis.longitude[i], merged_kreis.latitude[i],
-                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[col][i], 2)}', fontsize=fontsize)
+                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[col][i], 2)}', 
+                        fontsize=fontsize, color='k', weight='bold')
     
     # # (1) by bundesland
     # label_ags = st.radio("Show labels by Bundesland?", options=["Yes", "No"], index=1)
