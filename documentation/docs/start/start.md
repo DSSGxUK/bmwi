@@ -40,10 +40,10 @@ graph LR
     A -.-> B
     B -.-> E
     B -.-> F
-    click A "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/data_prep.py"
-    click B "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click E "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/error_analysis.py"
-    click F "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/home_page.py"
+    click A "https://github.com/DSSGxUK/bmwi/blob/main/pages/data_prep.py"
+    click B "https://github.com/DSSGxUK/bmwi/blob/main/pages/model_page.py"
+    click E "https://github.com/DSSGxUK/bmwi/blob/main/pages/error_analysis.py"
+    click F "https://github.com/DSSGxUK/bmwi/blob/main/pages/home_page.py"
 </div>
 
 <br> -->
@@ -51,7 +51,7 @@ graph LR
 When you open the tool, the first page you see is the **Home** page.
 
 1. Your prediction journey starts on the **Data Prep** page. There, you upload the data, and do necessary preprocessing that would then feed into the model. [Click here](../data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx) to download an Excel file containing data till May 2021. This Excel file contains the format of the input that our tool was tested on.
-2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Model** page. The preprocessed data from the page before is automatically loaded. The predictions may take a while to run. The prediction results are cached, which means it should run faster the second time you try to predict the same data. 
+2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Model** page. The data which was uploaded on the data prep page is automatically loaded on the model page. The predictions may take a while to run. The prediction results are cached, which means it would run faster the second time you try to predict the same data. 
 3. The **Visualizations** page includes line plots and map visualizations to quickly understand the prediction results, e.g. which kreis has the highest unemployment rate, whether the trend for that kreis is going up or down.
 4. The **Rankings** page contains kreis-level and grouped rankings of unemployment rates and their percentage changes. 
 5. The **Error Analysis** page would be automatically loaded with the prediction results. This page helps you look closer into which kreise were harder to predict, and how that compares with their basic infrastructures, such as number of hospitals, number of schools etc.
@@ -63,7 +63,7 @@ graph LR
     A1(First-time Users)
     A1-->A2[Step-By-Step Guide]
     A1-->A3[Tool]
-    click A2 "../../steps/home/"
+    click A2 "../../steps/data_prep/"
     click A3 "https://bmwi-tool.herokuapp.com/"
     style A2 fill:#CAEEFE,stroke:#2596be,color:#063970
     style A3 fill:#CAEEFE,stroke:#2596be,color:#063970

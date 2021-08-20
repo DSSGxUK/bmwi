@@ -1,4 +1,4 @@
-# Visualizations Page 
+# Visualizations
 
 This section allowas you to on see visualizations of the model results.
 

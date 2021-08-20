@@ -7,7 +7,7 @@ This section talks about the various models that we have built and tested. It do
 
 Vector Autoregression (VAR) is a forecasting algorithm that can be used when two or more time series influence each other. That is, the relationship between the time series involved is bi-directional. 
 
-### Model Introduction
+**Model Introduction**
 
 Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used when two or more time series influence each other. It is considered as an Autoregressive model because, each variable (Time Series) is modeled as a function of the past values, that is the predictors are nothing but the lags (time delayed value) of the series.The primary difference between VAR and other Autoregressive (AR) modesl is that these models are uni-directional, where, the predictors influence the Y and not vice-versa. Whereas, VAR is bi-directional. That is, the variables influence each other.
 
@@ -17,7 +17,7 @@ Vector Autoregression (VAR) is a multivariate forecasting algorithm that is used
 ![](./models_screenshots/VAR.png?raw=True)
 <span style="color:grey;">*VAR Model: Future values of one series depends on the past value of the same series and the parallel series*</span>
 
-### Training Method
+**Training Method**
 
 The training is done using the clusters that were developed based on the stationary data. The cluster development method has been elucidated within the [cluster section](../clusters).
 
