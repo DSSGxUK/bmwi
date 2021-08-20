@@ -35,28 +35,9 @@ graph TD
 
     click A "../../steps/data_prep/"
     click B "../../steps/model/#fit-model-and-export-predictions"
-    click D "../../steps/model/#visualize-prediction-results"
+    click D "../../steps/visualizations/"
     click E "../../steps/rankings/"
     click F "../../steps/error/"
 </div>
 
 </br>
-<!-- <<<<<<< vighnesh_docs_work
-    D -.-> E
-    D -.-> F
-    click A "../../steps/data_prep/"
-    click B "../../steps/model/#fit-model-and-export-predictions"
-    click C "../../steps/model/#visualize-prediction-results"
-    click E "../../steps/error/"
-    click F "../../steps/home/"
-</div>
-======= -->
-<!-- <div>
-    click A "http://127.0.0.1:8000/steps/data_prep/"
-    click B "http://127.0.0.1:8000/steps/model/#fit-model-and-export-predictions"
-    click C "http://127.0.0.1:8000/steps/model/#visualize-prediction-results"
-    click D "https://github.com/prakharrathi25/the-tool-bmwi/blob/main/pages/model_v1.py"
-    click E "http://127.0.0.1:8000/steps/error/"
-    click F "http://127.0.0.1:8000/steps/home/"
-</div> -->
-<!-- >>>>>>> main -->
