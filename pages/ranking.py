@@ -73,7 +73,7 @@ def app():
     def plot_bar(x_col, y_col):
         fig, ax = plt.subplots(figsize=(25,10))
         ax.bar(x_col, y_col)
-        plt.xticks(rotation=60)
+        plt.xticks(rotation=90)
         if max(y_col)>=0.5:
             plt.axhline(y=0.5, alpha=0.3, c='r')
         return fig
