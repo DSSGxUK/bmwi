@@ -12,6 +12,7 @@ nav:
         # - Home page: steps/home.md
         - Data Prep: steps/data_prep.md
         - Predictions: steps/model.md
+        - Confidence intervals: steps/ci.md
         - Visualizations: steps/visualizations.md
         - Rankings: steps/rankings.md
         - Error Analysis: steps/error.md
@@ -22,7 +23,6 @@ nav:
     - Our Journey: 
         - Models: journey/models.md
         - Clusters: journey/clusters.md
-        - Causal Inference: journey/causal_inf.md
         - Covid19 restrictions: journey/covid19.md
         - GDP and Unemployment rate: journey/GDP.md
     - About:
