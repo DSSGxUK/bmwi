@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 from dateutil import relativedelta
 
-# pd.options.display.float_format = "{:,.2f}".format
+pd.options.display.float_format = "{:,.2f}".format
 
 # Custom modules
 from util_classes.VAR_model import Data, VARModel
@@ -22,20 +22,6 @@ def app():
     Page Outline: 
     - [Prediction Results](#prediction-results)
     """)
-    
-
-    # st.markdown('''
-    # <link
-    #   rel="stylesheet"
-    #   href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-    #   integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
-    #   crossorigin="anonymous"
-    # />
-
-    # ## <i class="fas fa-book"></i> Model Output Page 
-    # ''', 
-    
-    # unsafe_allow_html=True)
 
     st.write("This page will output the predictions for the next three months.")
 
@@ -109,7 +95,11 @@ def app():
     df_pred.rename(columns={'index': 'ags5'})
     df_display = pd.merge(df_index, df_pred, on='ags5')
     df_display.set_index('ags5', inplace=True)  
-    st.dataframe(df_display)
+    st.dataframe(df_display.style.format({
+            date_only_list[0]: '{:.2f}', 
+            date_only_list[1]: '{:.2f}', 
+            date_only_list[2]: '{:.2f}'
+            }))
 
     pred_output.to_csv('data/prediction_output_from_model_page.csv', index=True)
 
@@ -141,7 +131,11 @@ def app():
     last_row = last_row.reindex(['bundesland']+date_only_list)
     last_row['bundesland'] = 'Germany'    
     agg_output = agg_output.append(last_row)
-    st.dataframe(agg_output)
+    st.dataframe(agg_output.style.format({
+            date_only_list[0]: '{:.2f}', 
+            date_only_list[1]: '{:.2f}', 
+            date_only_list[2]: '{:.2f}'
+            }))
 
     # Download links 
     st.markdown(get_table_download_link(agg_output, 
