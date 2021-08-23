@@ -53,13 +53,13 @@ The options are:
 
 - A specific predicted month
 
-- `last_month`: Difference in unemployment rate compared to last month
+- `difference compared to last month`: Difference in unemployment rate compared to last month
 
-- `last_year`: Difference in unemployment rate compared to this month last year 
+- `difference compared to last year`: Difference in unemployment rate compared to this month last year 
 
-- `last_month%`: Percentage of change in unemployment rate compared to same time last month
+- `percentage difference compared to last month`: Percentage of change in unemployment rate compared to same time last month
 
-- `last_year%`: Percentage of change in unemployment rate compared to same time last year
+- `percentage difference compared to last year`: Percentage of change in unemployment rate compared to same time last year
 
 - `predictions_average`: Average of predictions of the next quarter
 

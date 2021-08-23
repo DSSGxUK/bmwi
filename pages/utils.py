@@ -231,12 +231,14 @@ def plot_map_wide(data, merge_col):
     date_cols = merged.columns[4:-12]
 
     # useful stats
-    merged['predictions_average'] = merged[date_cols[:-3]].mean(axis=1)
-    merged['last_month'] = merged[date_cols[-1]]-merged[date_cols[-2]]
-    merged['last_year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
-    merged['last_month%'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
-    merged['last_year%'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
-    stats_cols = ['predictions_average', 'last_month', 'last_year', 'last_month%', 'last_year%']
+    merged['predictions average'] = merged[date_cols[:-3]].mean(axis=1)
+    merged['difference compared to last month'] = merged[date_cols[-1]]-merged[date_cols[-2]]
+    merged['difference compared to last year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
+    merged['percentage difference compared to last month'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
+    merged['percentage difference compared to last year'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
+    stats_cols = ['predictions_average', 
+                  'difference compared to last month', 'difference compared to last year', 
+                  'percentage difference compared to last month', 'percentage difference from last year']
     
     num_cols = list(date_cols) + stats_cols
     num_cols = num_cols[-9:]
