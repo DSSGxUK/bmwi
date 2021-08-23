@@ -57,9 +57,9 @@ The options are:
 
 - `difference compared to last year`: Difference in unemployment rate compared to this month last year 
 
-- `percentage difference compared to last month`: Percentage of change in unemployment rate compared to same time last month
+- `% month diff`: Percentage of change in unemployment rate compared to same time last month
 
-- `percentage difference compared to last year`: Percentage of change in unemployment rate compared to same time last year
+- `% year diff`: Percentage of change in unemployment rate compared to same time last year
 
 - `predictions_average`: Average of predictions of the next quarter
 
