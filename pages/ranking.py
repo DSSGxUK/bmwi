@@ -19,18 +19,27 @@ def app():
     
     ''' Dashboard sidebar '''
     st.sidebar.markdown("""
-    --- 
+        --- 
 
-    Page Outline: 
-    - [Kreise Rankings](#kreise-rankings)
-    - [Grouped Rankings](#bundesland-group-rankings)
+        Page Outline: 
+        - [Kreise Rankings](#kreise-rankings)
+        - [Grouped Rankings](#bundesland-group-rankings)
 
-    """)
+        """)
 
     ''' Dashboard home page '''
     st.markdown("## Unemployment Rate Ranking")
-    st.write('This page shows the highest unemployment rates based on Kreis-level or a categorical group of your choice.')
-    
+    st.markdown('''
+        This page sorts the unemployment rates based on Kreis-level or categorical groups.
+        ''')
+    page_note = st.beta_expander('Tips and notes for this page', expanded=False)
+    page_note.markdown('''
+        1. click on the columns on the dataframes to sort by that column
+        
+        2. `% month diff` means percentage change of unemployment rate between the latest predicted month and the last month; and same for year
+        
+        3. the grouped ranking section can be slightly confusing at first, read the default interpretation or watch our video documentation first to get the idea
+        ''')
 
 # -- read in data ------------------------------------------
 
@@ -72,17 +81,22 @@ def app():
 # --------------------------------------------------------
 
     ''' Print the features of the data to sort '''
-    st.markdown('**Pro Tip**: click on the column to sort')
 
     st.markdown('### Kreise rankings')
-    n1 = st.slider("Print top n results", min_value=10, max_value=401, step=10,
+    n1 = st.slider("Print top n results", min_value=50, max_value=401, step=50, value=100,
                     help='Print top n results by kreise.')
-    cols_to_sort = st.multiselect("Select which columns to sort by", options=data_cols, 
-                                    default=[date_cols[-1], '% month diff', '% year diff'],
+    
+    col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
+    
+    data_cols.remove(col_to_sort)
+    cols_to_add = st.multiselect("Additional columns to show in the dataframe", options=data_cols, 
+                                    # default=[date_cols[-1], '% month diff', '% year diff'],
                                     help='Fetching data based on first selected column, and displaying data for other selected columns.')
-    kreise_sort_direction = st.checkbox('Ascending order?', value=False, 
+    
+    sort_direction = st.checkbox('Ascending order?', value=False, 
                                         help='default descending order shows the kreise with highest unemployment rates.')
-    kreise_ranking = top_n(df, cols=cols_to_sort, n=n1, ascending=kreise_sort_direction)
+    
+    kreise_ranking = top_n(df, cols=[col_to_sort]+cols_to_add, n=n1, ascending=sort_direction)
     
     # for display per suggestion
     if 'ags2' in kreise_ranking.columns:
@@ -91,22 +105,24 @@ def app():
         kreise_ranking.drop(columns=['ags5'], inplace=True)
     st.dataframe(kreise_ranking.reset_index(drop=True))
     
-    kreise_ranking_text = '''
-        The default shows the top 10 kreis based on their unemployment rate for the latest predicted month, 
-        and is also sorted by the percentage change compared to last month and last year.
-        '''
-    kreise_ranking_section = st.beta_expander('Kreise Ranking Default Interpretation', False)
-    kreise_ranking_section.markdown(kreise_ranking_text)
+    # kreise_ranking_text = '''
+    #     The default shows the top 100 kreis based on their unemployment rate for the latest predicted month, 
+    #     and is also sorted by the percentage change compared to last month and last year.
+    #     '''
+    # kreise_ranking_section = st.beta_expander('Kreise Ranking Default Interpretation', False)
+    # kreise_ranking_section.markdown(kreise_ranking_text)
 
 
 # --------------------------------------------------------
 
-    st.markdown('### Bundesland / Group rankings')
-    n2 = st.slider("Print top n results", min_value=50, max_value=401, step=50, 
-                    help='Get top n results of the column.')
-    col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
-    group_sort_direction = st.checkbox('Ascending order?', value=False, 
-                                        help='default descending order shows the groups with highest unemployment rates.')
+    st.markdown('### Grouped rankings')
+    # n2 = st.slider("Print top n results", min_value=50, max_value=401, step=50, 
+    #                 help='Get top n results of the column.')
+    
+    # col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
+    
+    # group_sort_direction = st.checkbox('Ascending order?', value=False, 
+    #                                     help='default descending order shows the groups with highest unemployment rates.')
     
     df_cat = pd.read_csv('data/categorical_groups.csv')
     df_group = pd.merge(df_cat, df, left_on='ags5', right_on='ags5')
@@ -116,7 +132,7 @@ def app():
     col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=default_cols)
     
     # get %
-    result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n2, ascending=group_sort_direction)
+    result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n1, ascending=sort_direction)
     n_group = df_group.groupby(col_to_group).count()[['kreis']]
     result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
     result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
@@ -149,7 +165,7 @@ def app():
     group_ranking_section = st.beta_expander('Grouped Ranking Default Interpretation', False)
     group_ranking_section.markdown(group_ranking_default_text)
     
-    fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n2)
+    fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n1)
     result_df = result_df.sort_values('%counts', ascending=False)
     fig2 = plot_bar([str(col) for col in result_df.index], result_df['%counts'])
     
