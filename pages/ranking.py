@@ -36,13 +36,13 @@ def app():
 
     df = pd.read_csv('data/pred_output_full.csv')
     date_cols = list(df.columns[4:])
-    df['last_time%'] = (df[date_cols[-1]]-df[date_cols[-2]])/df[date_cols[-1]]*100
-    df['last_year%'] = (df[date_cols[-1]]-df[date_cols[-13]])/df[date_cols[-1]]*100
-    data_cols = date_cols + ['last_time%', 'last_year%']
+    df['percentage difference compared to last month'] = (df[date_cols[-1]]-df[date_cols[-2]])/df[date_cols[-1]]*100
+    df['percentage difference compared to last year'] = (df[date_cols[-1]]-df[date_cols[-13]])/df[date_cols[-1]]*100
+    data_cols = date_cols + ['percentage difference compared to last month', 'percentage difference compared to last year']
     
 # -- functions ----------------------------------------------
 
-    def top_n(df, cols=[date_cols[-1], 'last_time%', 'last_year%'], n=10, ascending=False):
+    def top_n(df, cols=[date_cols[-1], 'percentage difference compared to last month', 'percentage difference compared to last year'], n=10, ascending=False):
         return df.sort_values(cols, ascending=ascending)[:n][['ags5', 'bundesland', 'kreis']+cols]
     
     def top_n_group(df, col, group_col, n=100, ascending=False):
@@ -78,7 +78,7 @@ def app():
     n1 = st.slider("Print top n results", min_value=10, max_value=401, step=10,
                     help='Print top n results by kreise.')
     cols_to_sort = st.multiselect("Select which columns to sort by", options=data_cols, 
-                                    default=[date_cols[-1], 'last_time%', 'last_year%'],
+                                    default=[date_cols[-1], 'percentage difference compared to last month', 'percentage difference compared to last year'],
                                     help='Fetching data based on first selected column, and displaying data for other selected columns.')
     kreise_sort_direction = st.checkbox('Ascending order?', value=False, 
                                         help='default descending order shows the kreise with highest unemployment rates.')
@@ -124,11 +124,11 @@ def app():
     
     group_ranking_default_text = '''
         *For example, the default dataframe shows the top `50` kreise, 
-        sorted by `last_year%`, grouped by `east_west` and `eligible area`.*
+        sorted by `percentage difference compared to last year`, grouped by `east_west` and `eligible area`.*
 
         Reading the first row (`west`-`eligible for funding`-group):
             
-        - the first column, `last_year%`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
+        - the first column, `percentage difference compared to last year`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
             
         - the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
             
@@ -160,7 +160,7 @@ def app():
         
         pie_text = '''
             *As shown above, the default pie chart visualizes the percentage each category group takes 
-            in total from the `last_year%` column. For example, the not-eligible-for-funding-West-Germany group 
+            in total from the `percentage difference compared to last year` column. For example, the not-eligible-for-funding-West-Germany group 
             accounts for `21` out of the total of `50` top kreise, 
             therefore, it takes up `42%` as shown in the pie chart.*
             '''
