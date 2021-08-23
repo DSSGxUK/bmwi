@@ -12,6 +12,7 @@ nav:
         # - Home page: steps/home.md
         - Data Prep: steps/data_prep.md
         - Predictions: steps/model.md
+        - Confidence intervals: steps/ci.md
         - Visualizations: steps/visualizations.md
         - Rankings: steps/rankings.md
         - Error Analysis: steps/error.md
