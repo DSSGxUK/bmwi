@@ -84,7 +84,7 @@ def app():
 
 		
 		# Append to dataframe
-		ci_df = ci_df.append(ci_ags5.iloc[-3:].reset_index(drop=True))
+		ci_df = ci_df.append(ci_ags5.iloc[-4:].reset_index(drop=True))
 		ci_df_full = ci_df_full.append(ci_ags5.iloc[-15:].reset_index(drop=True)) 
 
 	# Merge with full data to add bundesland and kreis 
@@ -113,7 +113,10 @@ def app():
 	# Filter by kreis 
 	filter_data = ci_df[ci_df['kreis'] == kreis_to_plot]
 	filter_data1 = ci_df_full[ci_df_full['kreis'] == kreis_to_plot]
-	plt.plot(filter_data1['date'], filter_data1['prediction'])
+
+	# Plot the ground truth in blue
+	plt.plot(filter_data1['date'].iloc[:-3 or None], filter_data1['prediction'].iloc[:-3 or None], c='green')
+	plt.plot(filter_data1['date'].iloc[-4:], filter_data1['prediction'].iloc[-4:])
 
 	# Plot details 
 	plt.xlabel("Dates")
