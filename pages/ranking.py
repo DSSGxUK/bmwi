@@ -55,16 +55,29 @@ def app():
         return df.sort_values(cols, ascending=ascending)[:n][['ags5', 'bundesland', 'kreis']+cols]
     
     def top_n_group(df, col, group_col, n=100, ascending=False):
-        # add this so showing 0 in groupby
-        df_test = df.set_index(group_col)
-        index_levels = [df_test.index.levels[i] for i in range(len(group_col))]
-        mux = pd.MultiIndex.from_product(index_levels, names=group_col)
-        # groupby data
-        result_df = df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count().reindex(mux, fill_value=0)[[col]]
-        # add kreis names
-        n_group = df.groupby(group_col).count().reindex(mux, fill_value=0)[['kreis']]
-        result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
-        return result_df.sort_values([col], ascending=ascending)
+        
+        if len(group_col)>1:
+            # add this so showing 0 in groupby
+            df_test = df.set_index(group_col)
+            index_levels = [df_test.index.levels[i] for i in range(len(group_col))]
+            mux = pd.MultiIndex.from_product(index_levels, names=group_col)
+            
+            # groupby data
+            result_df = df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count().reindex(mux, fill_value=0)[[col]]
+            
+            # add kreis names
+            n_group = df.groupby(group_col).count().reindex(mux, fill_value=0)[['kreis']]
+            result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
+            return result_df.sort_values([col], ascending=ascending)
+        
+        else:
+            # groupby data
+            result_df = df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count()[[col]]
+            
+            # add kreis names
+            n_group = df.groupby(group_col).count()[['kreis']]
+            result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
+            return result_df.sort_values([col], ascending=ascending)
 
     def plot_pie(df, col, group_col, n):
         result_df = top_n_group(df, col, group_col, n=n)
@@ -147,13 +160,13 @@ def app():
     # group_sort_direction = st.checkbox('Ascending order?', value=False, 
     #                                     help='default descending order shows the groups with highest unemployment rates.')
     
-    df_cat = pd.read_csv('data/categorical_groups.csv')
+    df_cat = pd.read_csv('data/categorical_groups.csv', index_col=0)
     df_group = pd.merge(df_cat, df, left_on='ags5', right_on='ags5')
     group_cols = ['bundesland'] + list(df_cat.columns)[2:] # crop out ags5
     # col_to_group = st.selectbox("Select which column to group by", options=group_cols, index=0)
-    default_cols = [group_cols[2], group_cols[-1]]
+    default_cols = ['east_west', 'eligible_area'] #[group_cols[1], group_cols[-1]]
     col_to_group = st.multiselect("Select which columns to group by", options=group_cols, default=default_cols)
-    
+
     
     try:
         # get %
