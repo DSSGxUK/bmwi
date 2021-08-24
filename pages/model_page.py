@@ -5,8 +5,6 @@ import numpy as np
 from datetime import datetime
 from dateutil import relativedelta
 
-pd.options.display.float_format = "{:,.2f}".format
-
 # Custom modules
 from util_classes.VAR_model import Data, VARModel
 from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_wide
