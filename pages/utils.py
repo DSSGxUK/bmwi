@@ -345,7 +345,7 @@ def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
     '''
     Input data: columns are dates
     '''
-    fig, ax = plt.subplots(figsize=(30,10))
+    fig, ax = plt.subplots(figsize=(10,5))
     filter_df = df.copy()
     
     # drop non-date cols
