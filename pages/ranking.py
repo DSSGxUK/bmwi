@@ -104,10 +104,15 @@ def app():
     if 'ags5' in kreise_ranking.columns:
         kreise_ranking.drop(columns=['ags5'], inplace=True)
 
-    st.dataframe(kreise_ranking.reset_index(drop=True))
+    # get the columns to be formatted 
+    cols_to_format = list(kreise_ranking.columns)[2:]
+    st.dataframe(kreise_ranking.reset_index(drop=True).style.format(
+        subset=cols_to_format,
+        formatter="{:.2f}"
+    ))
 
     # Download links 
-    st.markdown(get_table_download_link(kreise_ranking, 
+    st.markdown(get_table_download_link(kreise_ranking.reset_index(drop=True), 
                                         text="Download the kreis ranking file.", 
                                         filename="kreis_ranking.csv", 
                                         excel=True),

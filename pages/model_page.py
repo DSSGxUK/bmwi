@@ -142,9 +142,6 @@ def app():
                                         excel=True),
                                         unsafe_allow_html=True)
 
-
-
-
     ''' Error Data Collection '''
     error_df = VARObject.getWalkForwardErrors()
 

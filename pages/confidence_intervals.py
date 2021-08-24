@@ -90,7 +90,12 @@ def app():
 	# Merge with full data to add bundesland and kreis 
 	ci_df = pd.merge(ci_df, full_data[['ags5', 'kreis', 'bundesland']])
 	ci_df_full = pd.merge(ci_df_full, full_data[['ags5', 'kreis', 'bundesland']])
-	st.dataframe(ci_df)
+	# st.dataframe(ci_df)
+	st.dataframe(ci_df.style.format({
+							'lower': '{:.2f}', 
+							'prediction': '{:.2f}', 
+							'higher': '{:.2f}'
+							}))
 
 	# Save the data 
 	ci_df.to_csv('data/confidence_intervals.csv', index=False)

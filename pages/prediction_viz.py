@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd 
 
 # Custom modules 
-from .utils import fix_ags5, plot_line_wide, plot_map_wide
+from .utils import fix_ags5, plot_line_wide, plot_map_wide, get_table_download_link
 
 def app(): 
     
@@ -63,7 +63,23 @@ def app():
     kreis_name = st.multiselect("Select the Kreis to get predictions", 
                                 options=kreis_options, 
                                 default=[kreis_options[0]])
-    st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
+    # resulting df
+    viz_output = display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5'])
+    
+    # get viz output columns to be formated 
+    viz_output_cols = viz_output.columns[2:]
+    st.dataframe(viz_output.style.format({
+            viz_output_cols[0]: '{:.2f}', 
+            viz_output_cols[1]: '{:.2f}', 
+            viz_output_cols[2]: '{:.2f}'
+            }))
+
+    # Download links 
+    st.markdown(get_table_download_link(viz_output, 
+                                        text="Download the subset ranking data", 
+                                        filename="subset_ranking_data.csv", 
+                                        excel=True),
+                                        unsafe_allow_html=True)
 
     """
     This section doesn't work well because the date columns are messed up and we need to fix that.  
