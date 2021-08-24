@@ -13,6 +13,11 @@ from pages import model_page, data_prep, home_page, error_analysis, prediction_v
 # Change the page name and icon 
 st.set_page_config(page_title="BMWi Forecasting Tool", page_icon='📊')
 
+# remove rightsidebar 
+# st.markdown("""
+#     <style>div[data-testid="stToolbar"] { display: none;}</style>
+#     """, unsafe_allow_html=True)
+
 # Create an instance of the app 
 app = MultiPage()
 
