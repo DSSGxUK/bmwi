@@ -55,7 +55,16 @@ def app():
         return df.sort_values(cols, ascending=ascending)[:n][['ags5', 'bundesland', 'kreis']+cols]
     
     def top_n_group(df, col, group_col, n=100, ascending=False):
-        return df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count()[[col]].sort_values([col], ascending=ascending)
+        # add this so showing 0 in groupby
+        df_test = df.set_index(group_col)
+        index_levels = [df_test.index.levels[i] for i in range(len(group_col))]
+        mux = pd.MultiIndex.from_product(index_levels, names=group_col)
+        # groupby data
+        result_df = df.sort_values(col, ascending=ascending)[:n].groupby(group_col).count().reindex(mux, fill_value=0)[[col]]
+        # add kreis names
+        n_group = df.groupby(group_col).count().reindex(mux, fill_value=0)[['kreis']]
+        result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
+        return result_df.sort_values([col], ascending=ascending)
 
     def plot_pie(df, col, group_col, n):
         result_df = top_n_group(df, col, group_col, n=n)
@@ -86,12 +95,13 @@ def app():
     n1 = st.slider("Print top n results", min_value=50, max_value=401, step=50, value=100,
                     help='Print top n results by kreise.')
     
-    col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1)
+    col_to_sort = st.selectbox("Select which column to sort by", options=data_cols, index=len(data_cols)-1,
+                               help='The default `% year diff` means the percentage change from the latest predicted date and the year before.')
     
     data_cols.remove(col_to_sort)
     cols_to_add = st.multiselect("Additional columns to show in the dataframe", options=data_cols, 
                                     # default=[date_cols[-1], '% month diff', '% year diff'],
-                                    help='Fetching data based on first selected column, and displaying data for other selected columns.')
+                                    help='Showing data from other columns you wish to see in the dataframe.')
     
     sort_direction = st.checkbox('Ascending order?', value=False, 
                                         help='default descending order shows the kreise with highest unemployment rates.')
@@ -148,10 +158,8 @@ def app():
     try:
         # get %
         result_df = top_n_group(df_group, col_to_sort, col_to_group, n=n1, ascending=sort_direction)
-        n_group = df_group.groupby(col_to_group).count()[['kreis']]
-        result_df = pd.merge(result_df, n_group, left_index=True, right_index=True)
-        result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
-        result_df.rename(columns={'kreis': '#kreis'}, inplace=True)
+        result_df['% counts'] = result_df[col_to_sort]/result_df['kreis']
+        result_df.rename(columns={'kreis': '# kreis'}, inplace=True)
         st.dataframe(result_df)
         
         # Download links 
@@ -169,28 +177,21 @@ def app():
                 
             - the first column, `% year diff`, means that in the top 50 kreise with highest percentage change in unemployment rate compared to last year, `21` of them belong to kreise in west Germany that are not eligible for funding.
                 
-            - the second column, `#kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
+            - the second column, `# kreis` means that there is a total of `93` (out of all 401) kreise that are kreise in west Germany that are not eligible for funding.
                 
-            - the third column, `%counts`, means that 21 kreise accounts for `22.58%` of all the kreise in the eligible-for-funding-West-Germany group.
+            - the third column, `% counts`, means that 21 kreise accounts for `22.58%` of all the kreise in the eligible-for-funding-West-Germany group.
                 
-            Note the number of multi-indices shown in the example. 
-            Since `eligible_area` is a binary varaible with two categories, 
-            and `east_west` is also a binary variable with two categories, 
-            there should be a total of 4 category groups in the index rows. 
-            
-            However, the reason why not all combinations are shown is because some categories do not have Kreise in it. 
-            
-            _Sometimes, it could be useful to see what category groups are not in the top lists. 
+            _Sometimes, it could be useful to see what category groups are `0`. 
             In this case, we see that there are no Kreise in East Germany not eligible for funding 
-            in the top 50 highest unemployment rates._
+            in the top 100 highest unemployment rates._
             '''
         
         group_ranking_section = st.beta_expander('Grouped Ranking Default Interpretation', False)
         group_ranking_section.markdown(group_ranking_default_text)
         
         fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n1)
-        result_df = result_df.sort_values('%counts', ascending=False)
-        fig2 = plot_bar([str(col) for col in result_df.index], result_df['%counts'])
+        result_df = result_df.sort_values('% counts', ascending=False)
+        fig2 = plot_bar([str(col) for col in result_df.index], result_df['% counts'])
         
         
         st.markdown('**Pro Tip**: Visualizations work better when only grouping by one or a few columns.')
