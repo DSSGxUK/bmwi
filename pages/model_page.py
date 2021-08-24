@@ -5,8 +5,6 @@ import numpy as np
 from datetime import datetime
 from dateutil import relativedelta
 
-# pd.options.display.float_format = "{:,.2f}".format
-
 # Custom modules
 from util_classes.VAR_model import Data, VARModel
 from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_wide
@@ -22,20 +20,6 @@ def app():
     Page Outline: 
     - [Prediction Results](#prediction-results)
     """)
-    
-
-    # st.markdown('''
-    # <link
-    #   rel="stylesheet"
-    #   href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-    #   integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
-    #   crossorigin="anonymous"
-    # />
-
-    # ## <i class="fas fa-book"></i> Model Output Page 
-    # ''', 
-    
-    # unsafe_allow_html=True)
 
     st.write("This page will output the predictions for the next three months.")
 
@@ -109,7 +93,11 @@ def app():
     df_pred.rename(columns={'index': 'ags5'})
     df_display = pd.merge(df_index, df_pred, on='ags5')
     df_display.set_index('ags5', inplace=True)  
-    st.dataframe(df_display)
+    st.dataframe(df_display.style.format({
+            date_only_list[0]: '{:.2f}', 
+            date_only_list[1]: '{:.2f}', 
+            date_only_list[2]: '{:.2f}'
+            }))
 
     pred_output.to_csv('data/prediction_output_from_model_page.csv', index=True)
 
@@ -123,6 +111,39 @@ def app():
                                         excel=True),
 
                                         unsafe_allow_html=True)
+
+    ''' Get aggregate data '''
+    st.markdown("### Aggregate Predictions")
+    agg_output = VARObject.getWalfForwardAgg(3)
+    agg_output.columns = ['ags2'] + date_only_list 
+    # Save the last row 
+    last_row = agg_output.iloc[agg_output.shape[0]-1]
+
+    # merge with index data 
+    df_index['ags2'] = df_index['ags5'].apply(lambda x: x[:2])
+    df_index_bundesland = df_index.drop_duplicates(subset=['ags2', 'bundesland'])
+    agg_output = pd.merge(df_index_bundesland[['ags2', 'bundesland']], agg_output, how='inner')
+    agg_output.drop(['ags2'], axis=1, inplace=True)
+
+    # add the last row 
+    last_row = last_row.reindex(['bundesland']+date_only_list)
+    last_row['bundesland'] = 'Germany'    
+    agg_output = agg_output.append(last_row)
+    st.dataframe(agg_output.style.format({
+            date_only_list[0]: '{:.2f}', 
+            date_only_list[1]: '{:.2f}', 
+            date_only_list[2]: '{:.2f}'
+            }))
+
+    # Download links 
+    st.markdown(get_table_download_link(agg_output, 
+                                        text="Download the aggregate predictions.", 
+                                        filename="aggregate_predictions.csv", 
+                                        excel=True),
+                                        unsafe_allow_html=True)
+
+
+
 
     ''' Error Data Collection '''
     error_df = VARObject.getWalkForwardErrors()

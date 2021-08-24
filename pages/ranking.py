@@ -89,6 +89,13 @@ def app():
     if 'ags5' in kreise_ranking.columns:
         kreise_ranking.drop(columns=['ags5'], inplace=True)
     st.dataframe(kreise_ranking)
+
+    # Download links 
+    st.markdown(get_table_download_link(kreise_ranking, 
+                                        text="Download the kreis ranking file.", 
+                                        filename="kreis_ranking.csv", 
+                                        excel=True),
+                                        unsafe_allow_html=True)
     
     kreise_ranking_text = '''
         The default shows the top 10 kreis based on their unemployment rate for the latest predicted month, 
@@ -121,6 +128,13 @@ def app():
     result_df['%counts'] = result_df[col_to_sort]/result_df['kreis']
     result_df.rename(columns={'kreis': '#kreis'}, inplace=True)
     st.dataframe(result_df)
+
+    # Download links 
+    st.markdown(get_table_download_link(result_df, 
+                                        text="Download the group rankings file.", 
+                                        filename="group_ranking.csv", 
+                                        excel=True),
+                                        unsafe_allow_html=True)
     
     group_ranking_default_text = '''
         *For example, the default dataframe shows the top `50` kreise, 
