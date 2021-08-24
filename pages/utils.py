@@ -232,17 +232,15 @@ def plot_map_wide(data, merge_col):
 
     # useful stats
     merged['predictions average'] = merged[date_cols[:-3]].mean(axis=1)
-    merged['difference compared to last month'] = merged[date_cols[-1]]-merged[date_cols[-2]]
-    merged['difference compared to last year'] = merged[date_cols[-1]]-merged[date_cols[-13]]
+    merged['month diff'] = merged[date_cols[-1]]-merged[date_cols[-2]]
+    merged['year diff'] = merged[date_cols[-1]]-merged[date_cols[-13]]
     merged['% month diff'] = (merged[date_cols[-1]]-merged[date_cols[-2]])/merged[date_cols[-1]]*100
     merged['% year diff'] = (merged[date_cols[-1]]-merged[date_cols[-13]])/merged[date_cols[-1]]*100
-    stats_cols = ['predictions_average', 
-                  'difference compared to last month', 'difference compared to last year', 
-                  '% month diff', 'percentage difference from last year']
+    stats_cols = ['predictions average', 'month diff', 'year diff', '% month diff', '% year diff']
     
     num_cols = list(date_cols) + stats_cols
     num_cols = num_cols[-9:]
-    latest_date = num_cols.index('predictions_average')
+    latest_date = num_cols.index('predictions average')
     col = st.selectbox("Select a column", options=num_cols, index=latest_date)
 
     # plot
