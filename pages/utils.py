@@ -341,9 +341,12 @@ def plot_line_long(df, x_col, y_col, filter_col=None, filter_val=None):
         ax.set_title(f"{filter_val}'s {y_col} in Germany")
     return fig
 
-def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
+def plot_line_wide(df, filter_kreis, num_pred=3, df_index='ags5'):
     '''
-    Input data: columns are dates
+    - df: input data is wide format, i.e. columns are dates
+    - filter_kreis: kreis names to plot
+    - num_pred: prediction results are last n months
+    - df_index: default ags5 as index column (thus each line is a kreis)
     '''
     fig, ax = plt.subplots(figsize=(10,5))
     filter_df = df.copy()
@@ -373,6 +376,52 @@ def plot_line_wide(df, filter_kreis, num_pred, df_index='ags5'):
     ax.legend()
     
     return fig
+
+
+def plot_line_group(df_full, col_to_group, num_pred=3):
+    '''
+    - df_full: input data is wide format, i.e. columns are dates
+    - num_pred: prediction results are last n months
+    - df_index: default ags5 as index column (thus each line is a kreis)
+    '''
+    fig, ax = plt.subplots(figsize=(10,5))
+    filter_df = df_full.copy()
+    
+    # drop non-date cols
+    if 'bundesland' in filter_df.columns:
+        filter_df.drop(columns=['bundesland'], inplace=True)
+    if 'ags2' in filter_df.columns:
+        filter_df.drop(columns=['ags2'], inplace=True)
+    if 'ags5' in filter_df.columns:
+        filter_df.drop(columns=['ags5'], inplace=True)
+    
+    multi_index = filter_df.groupby(col_to_group).count().index
+    
+    for index in multi_index:
+        plot_df = filter_df.set_index(col_to_group).loc[index].mean()
+        
+        if '% month diff' in plot_df.index:
+            plot_df.drop(labels=['% month diff'], inplace=True)
+        if '% year diff' in plot_df.index:
+            plot_df.drop(labels=['% year diff'], inplace=True)
+        
+        dates = plot_df.index
+        
+        plt.plot(plot_df.loc[dates[:-num_pred]], label=index)
+        plt.plot(plot_df.loc[dates[-(num_pred+1):]], 'r')
+    
+    # line between truth and prediction
+    plt.axvline(x=dates[-(num_pred+1)], alpha=0.5, linestyle='--', c='k')
+    
+    # date labels on x-axis
+    n_cols = len(list(df_full.columns))-4
+    interval = int(n_cols/6)
+    ax.set_xticks(list(range(0, len(dates), interval)))
+    ax.set_xticklabels(dates[::interval])
+    ax.legend()
+    
+    return fig
+
 
 # Funtion to plot a histogram 
 def data_histogram(column, no_of_bins, minimum=None, maximum=None):
