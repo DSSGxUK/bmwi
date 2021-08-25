@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd 
 
 # Custom modules 
-from .utils import fix_ags5, plot_line_wide, plot_map_wide, get_table_download_link
+from .utils import fix_ags5, plot_line_wide, plot_map_bundesland, plot_map_wide, get_table_download_link
 
 def app(): 
     
@@ -12,8 +12,9 @@ def app():
     --- 
 
     Page Outline: 
-    - [Time-Series Line Plot](#line-plot)
-    - [Map of Germany on Kreis-level](#map)
+    - [Time-Series Line Plot](#time-series-line-plot)
+    - [Map of Germany on Kreis-level](#map-of-germany-on-kreis-level)
+    - [Map of Bundesland on Kreis-level](#map-of-bundesland-on-kreis-level)
     """)
 
     st.markdown("## Prediction Visualisation Page")
@@ -103,9 +104,6 @@ def app():
     fig1 = plot_line_wide(cropped_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
-    # map
-    st.markdown("### Map of Germany on Kreis-level")
-
     # Add the average of the predictions as a column for the plots 
     # average_cols = pd.DataFrame(pred_output[pred_output.columns[1:]].mean(axis=1))
     # average_cols.columns = ['predictions average']
@@ -114,5 +112,13 @@ def app():
     # partial_data['ags5'] = full_data['ags5']
     
     # partial_data = 
+    
+    # map
+    st.markdown("### Map of Germany on Kreis-level")
     map_fig = plot_map_wide(full_data, 'ags5') 
     st.pyplot(map_fig)
+    
+    # map
+    st.markdown("### Map of Bundesland on Kreis-level")
+    map_fig2 = plot_map_bundesland(full_data, 'ags5') 
+    st.pyplot(map_fig2)
