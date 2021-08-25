@@ -18,20 +18,20 @@ def func(x):
 
 def app(): 
 
-	''' Add page details '''
-	st.markdown("## Confidence Intervals")
+    ''' Add page details '''
+    st.markdown("## Confidence Intervals")
 
-	# ''' Dashboard sidebar '''
-	# st.sidebar.markdown("""
+    # ''' Dashboard sidebar '''
+    # st.sidebar.markdown("""
     # --- 
 
     # Page Outline: 
     # - [Confidence Intervals](#confidence-intervals)
-	# - [Visualisation](#visualisation-section)
-    # """)	
+    # - [Visualisation](#visualisation-section)
+    # """)  
 
-	''' Dashboard sidebar '''
-	st.sidebar.markdown("""
+    ''' Dashboard sidebar '''
+    st.sidebar.markdown("""
     --- 
 
     Page Outline: 
@@ -40,90 +40,96 @@ def app():
 
     """)
 
-	st.write("""This section provides confidence intervals for the predictions
-				that have been calculated in the previous section.""")
+    st.write("""This section provides confidence intervals for the predictions
+                that have been calculated in the previous section.""")
 
-			
+            
 
-	st.write("Calculating the confidence intervals. The calculation can take upto 3 minutes...")
-	# Read the relevant data (full pred data)
-	full_data = pd.read_csv('data/pred_output_full.csv')
+    st.write("Calculating the confidence intervals. The calculation can take up to 3 minutes...")
+    # Read the relevant data (full pred data)
+    full_data = pd.read_csv('data/pred_output_full.csv')
 
-	# Fix ags5 
-	full_data['ags5'] = full_data['ags5'].apply(fix_ags5) 
+    # Fix ags5 
+    full_data['ags5'] = full_data['ags5'].apply(fix_ags5) 
 
-	''' Generate the confidence intervals '''
+    ''' Generate the confidence intervals '''
 
-	# Define the confidence intervals dataframe (one for preds and one for all)
-	ci_df = pd.DataFrame(columns =  ['date','ags5','lower', 'prediction', 'higher'])
-	ci_df['date'] = pd.to_datetime(ci_df['date'], format = '%Y-%m-%d')
-	ci_df_full = pd.DataFrame(columns =  ['date','ags5','lower', 'prediction', 'higher'])
-	ci_df_full['date'] = pd.to_datetime(ci_df['date'], format = '%Y-%m-%d')
+    # Define the confidence intervals dataframe (one for preds and one for all)
+    ci_df = pd.DataFrame(columns =  ['date','ags5','lower', 'prediction', 'upper'])
+    ci_df['date'] = pd.to_datetime(ci_df['date'], format = '%Y-%m-%d')
+    ci_df_full = pd.DataFrame(columns =  ['date','ags5','lower', 'prediction', 'upper'])
+    ci_df_full['date'] = pd.to_datetime(ci_df['date'], format = '%Y-%m-%d')
 
-	kreis_list = list(full_data['ags5'].unique())
-	def func(x):
-		return x
+    kreis_list = list(full_data['ags5'].unique())
+ 
+    @st.cache#(allow_output_mutation=True)
+    def confidence_interval(ci_df, ci_df_full, kreis_list, full_data):
 
-	# Loop through the data
-	for kreis in kreis_list: 
-		
-		# get kreis data 
-		kreis_data = full_data[full_data['ags5'] == kreis][list(full_data.columns[4:])]
-		pred_ags5 = kreis_data.T[kreis_data.T.columns[0]].values    # convert the (1, 172) df to a list with 172 items
-		
-		# Define the bootstrap ci class and get the inveral 
-		bs = StationaryBootstrap(10, pred_ags5)
-		ci_ags5 = bs.conf_int(func)
-		ci_ags5 = pd.DataFrame(ci_ags5).T
-		
-		# Add the interval to the dataframe 
-		ci_ags5.columns = ['lower', 'higher']
-		ci_ags5['prediction'] = list(pred_ags5)
-		ci_ags5['ags5'] = kreis
-		ci_ags5['date'] = list(kreis_data.columns)
+        # Loop through the data
+        for kreis in kreis_list: 
+            
+            # get kreis data 
+            kreis_data = full_data[full_data['ags5'] == kreis][list(full_data.columns[4:])]
+            pred_ags5 = kreis_data.T[kreis_data.T.columns[0]].values    # convert the (1, 172) df to a list with 172 items
+            
+            # Define the bootstrap ci class and get the inveral 
+            bs = StationaryBootstrap(10, pred_ags5)
+            ci_ags5 = bs.conf_int(func)
+            ci_ags5 = pd.DataFrame(ci_ags5).T
+            
+            # Add the interval to the dataframe 
+            ci_ags5.columns = ['lower', 'upper']
+            ci_ags5['prediction'] = list(pred_ags5)
+            ci_ags5['ags5'] = kreis
+            ci_ags5['date'] = list(kreis_data.columns)
 
-		
-		# Append to dataframe
-		ci_df = ci_df.append(ci_ags5.iloc[-4:].reset_index(drop=True))
-		ci_df_full = ci_df_full.append(ci_ags5.iloc[-15:].reset_index(drop=True)) 
+            
+            # Append to dataframe
+            ci_df = ci_df.append(ci_ags5.iloc[-4:].reset_index(drop=True))
+            ci_df_full = ci_df_full.append(ci_ags5.iloc[-15:].reset_index(drop=True)) 
 
-	# Merge with full data to add bundesland and kreis 
-	ci_df = pd.merge(ci_df, full_data[['ags5', 'kreis', 'bundesland']])
-	ci_df_full = pd.merge(ci_df_full, full_data[['ags5', 'kreis', 'bundesland']])
-	# st.dataframe(ci_df)
-	st.dataframe(ci_df.style.format({
-							'lower': '{:.2f}', 
-							'prediction': '{:.2f}', 
-							'higher': '{:.2f}'
-							}))
+        # Merge with full data to add bundesland and kreis 
+        ci_df = pd.merge(ci_df, full_data[['ags5', 'kreis', 'bundesland']])
+        ci_df_full = pd.merge(ci_df_full, full_data[['ags5', 'kreis', 'bundesland']])
 
-	# Save the data 
-	ci_df.to_csv('data/confidence_intervals.csv', index=False)
+        return ci_df, ci_df_full
 
-	st.markdown(get_table_download_link(ci_df, 
-										"Download the confidence intervals", 
-										excel=True, 
-										filename="confidence_intervals.csv"), unsafe_allow_html=True)
+    ci_df, ci_df_full = confidence_interval(ci_df, ci_df_full, kreis_list, full_data)
+ 
+    # st.dataframe(ci_df)
+    st.dataframe(ci_df.style.format({
+                            'lower': '{:.2f}', 
+                            'prediction': '{:.2f}', 
+                            'upper': '{:.2f}'
+                            }))
 
-	''' Confidence Interval plots '''
-	st.markdown("## Visualisation Section")
-	# Select the plotting counties 
-	kreis_to_plot = st.selectbox("Select which Kreis to visualize", options=list(ci_df['kreis'].unique()))
-	
-	# Filter by kreis 
-	filter_data = ci_df[ci_df['kreis'] == kreis_to_plot]
-	filter_data1 = ci_df_full[ci_df_full['kreis'] == kreis_to_plot]
+    # Save the data 
+    ci_df.to_csv('data/confidence_intervals.csv', index=False)
 
-	# Plot the ground truth in blue
-	plt.plot(filter_data1['date'].iloc[:-3 or None], filter_data1['prediction'].iloc[:-3 or None], c='green')
-	plt.plot(filter_data1['date'].iloc[-4:], filter_data1['prediction'].iloc[-4:])
+    st.markdown(get_table_download_link(ci_df, 
+                                        "Download the confidence intervals", 
+                                        excel=True, 
+                                        filename="confidence_intervals.csv"), unsafe_allow_html=True)
 
-	# Plot details 
-	plt.xlabel("Dates")
-	plt.ylabel(f"Unemployment Rate in {kreis_to_plot}")
-	plt.title("Unemployment Rate Predictions with confidence intervals")
-	plt.xticks(rotation=90)
-	plt.ylim(0, ci_df_full['higher'].max()) 
+    ''' Confidence Interval plots '''
+    st.markdown("## Visualisation Section")
+    # Select the plotting counties 
+    kreis_to_plot = st.selectbox("Select which Kreis to visualize", options=list(ci_df['kreis'].unique()))
+    
+    # Filter by kreis 
+    filter_data = ci_df[ci_df['kreis'] == kreis_to_plot]
+    filter_data1 = ci_df_full[ci_df_full['kreis'] == kreis_to_plot]
 
-	plt.fill_between(filter_data['date'], filter_data['lower'], filter_data['higher'], alpha=.3)
-	st.pyplot()
+    # Plot the ground truth in blue
+    plt.plot(filter_data1['date'].iloc[:-3 or None], filter_data1['prediction'].iloc[:-3 or None], c='green')
+    plt.plot(filter_data1['date'].iloc[-4:], filter_data1['prediction'].iloc[-4:])
+
+    # Plot details 
+    plt.xlabel("Dates")
+    plt.ylabel(f"Unemployment Rate in {kreis_to_plot}")
+    plt.title("Unemployment Rate Predictions with confidence intervals")
+    plt.xticks(rotation=90)
+    plt.ylim(0, ci_df_full['upper'].max()) 
+
+    plt.fill_between(filter_data['date'], filter_data['lower'], filter_data['upper'], alpha=.3)
+    st.pyplot()
