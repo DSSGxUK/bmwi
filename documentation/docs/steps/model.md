@@ -17,6 +17,14 @@ The table has three columns, each one holding the unemployment rate predictions 
 
 After the model is fitted, it is possible to click the "Download the predictions" link and and xslx table with the predictions will be downloaded. 
 
+### Aggregation of Predictions
+
+The predictions from the County level are aggregated to the Bundesland and Country level using a weighted mean, weighted on the population of the kreise. 
+
+![](./model_screenshots/aggregate.JPG)
+
+NOTE: The populations used to aggregate are data from the timeframe: December 31, 2018 - December 31, 2019, collected from [corona-datenplattform](https://www.corona-datenplattform.de/dataset/bevoelkerung).
+
 <!-- ## Visualize prediction results -->
 
 ## Predictions Line Plot
