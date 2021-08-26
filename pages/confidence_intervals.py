@@ -89,7 +89,7 @@ def app():
 			
 			# Append to dataframe
 			ci_df = ci_df.append(ci_ags5.iloc[-4:].reset_index(drop=True))
-			ci_df_full = ci_df_full.append(ci_ags5.iloc[-15:].reset_index(drop=True)) 
+			ci_df_full = ci_df_full.append(ci_ags5.iloc[-25:].reset_index(drop=True)) 
 
 		# Merge with full data to add bundesland and kreis 
 		ci_df = pd.merge(ci_df, full_data[['ags5', 'kreis', 'bundesland']])
@@ -101,9 +101,9 @@ def app():
  
 	# st.dataframe(ci_df)
 	st.dataframe(ci_df.style.format({
-							'lower': '{:.2f}', 
-							'prediction': '{:.2f}', 
-							'upper': '{:.2f}'
+							'lower': '{:.1f}', 
+							'prediction': '{:.1f}', 
+							'upper': '{:.1f}'
 							}))
 
 	# Save the data 

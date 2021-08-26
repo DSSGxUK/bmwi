@@ -70,9 +70,9 @@ def app():
     # get viz output columns to be formated 
     viz_output_cols = viz_output.columns[2:]
     st.dataframe(viz_output.style.format({
-            viz_output_cols[0]: '{:.2f}', 
-            viz_output_cols[1]: '{:.2f}', 
-            viz_output_cols[2]: '{:.2f}'
+            viz_output_cols[0]: '{:.1f}', 
+            viz_output_cols[1]: '{:.1f}', 
+            viz_output_cols[2]: '{:.1f}'
             }))
 
     # Download links 

@@ -94,9 +94,9 @@ def app():
     df_display = pd.merge(df_index, df_pred, on='ags5')
     df_display.set_index('ags5', inplace=True)  
     st.dataframe(df_display.style.format({
-            date_only_list[0]: '{:.2f}', 
-            date_only_list[1]: '{:.2f}', 
-            date_only_list[2]: '{:.2f}'
+            date_only_list[0]: '{:.1f}', 
+            date_only_list[1]: '{:.1f}', 
+            date_only_list[2]: '{:.1f}'
             }))
 
     pred_output.to_csv('data/prediction_output_from_model_page.csv', index=True)
@@ -131,9 +131,9 @@ def app():
     last_row['bundesland'] = 'Germany'    
     agg_output = agg_output.append(last_row)
     st.dataframe(agg_output.style.format({
-            date_only_list[0]: '{:.2f}', 
-            date_only_list[1]: '{:.2f}', 
-            date_only_list[2]: '{:.2f}'
+            date_only_list[0]: '{:.1f}', 
+            date_only_list[1]: '{:.1f}', 
+            date_only_list[2]: '{:.1f}'
             }))
 
     # Download links 

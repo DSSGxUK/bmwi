@@ -131,7 +131,7 @@ def app():
     cols_to_format = list(kreise_ranking.columns)[2:]
     st.dataframe(kreise_ranking.reset_index(drop=True).style.format(
         subset=cols_to_format,
-        formatter="{:.2f}"
+        formatter="{:.1f}"
     ))
 
     # Download links 

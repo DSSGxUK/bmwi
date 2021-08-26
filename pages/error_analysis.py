@@ -112,41 +112,6 @@ def app():
     error_data = pd.read_csv('data/errors/errors_VAR.csv')
     error_data['ags5'] = error_data['ags5'].apply(fix_ags5)
 
-    # ''' Error Map Viz '''
-    # st.markdown("### Error visualization on a Map")
-
-    # # Display a date range
-    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-    
-    # # Show for average predictions
-    # if method == 'average': 
-    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    # else: 
-    #     # Filter by date 
-    #     filter_data = error_data[error_data['date'] == method]
-        
-    # st.pyplot(plot_error_map(filter_data, date_string=method))
-    
-    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
-
-    # if error_checkbox: 
-    #     st.subheader("Error visualization on a Map")
-    #     st.write("\nLoading Map..")
-        
-    #     # Display a date range
-    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-        
-    #     # Show for average predictions
-    #     if method == 'average': 
-    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    #     else: 
-    #         # Filter by date 
-    #         filter_data = error_data[error_data['date'] == method]
-            
-    #     st.pyplot(plot_error_map(filter_data, date_string=method))
-        
-    #     st.markdown("""---""")
-
     ''' Data Addition '''
     # Add the bundesland kreis and ags2 to the data
     ags5_data = pd.read_csv('data/index.csv')
@@ -208,36 +173,6 @@ def app():
     
     fig = plot_map(error_data, merge_col='ags5', data_col='error')
     st.pyplot(fig)
-
-    # # Display a date range
-    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-    
-    # # Show for average predictions
-    # if method == 'average': 
-    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    # else: 
-    #     # Filter by date 
-    #     filter_data = error_data[error_data['date'] == method]
-        
-    # st.pyplot(plot_error_map(filter_data, date_string=method))
-    
-    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
-
-    # if error_checkbox: 
-    #     st.subheader("Error visualization on a Map")
-    #     st.write("\nLoading Map..")
-        
-    #     # Display a date range
-    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-        
-    #     # Show for average predictions
-    #     if method == 'average': 
-    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    #     else: 
-    #         # Filter by date 
-    #         filter_data = error_data[error_data['date'] == method]
-            
-    #     st.pyplot(plot_error_map(filter_data, date_string=method))
         
     st.markdown("""---""")
     
