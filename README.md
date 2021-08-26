@@ -27,17 +27,17 @@ The following diagram shows the tool architecture which includes the data proces
 
 ![architecture](./img/architecture.jfif)
 
-## 🧩 Components
+<!-- ## 🧩 Components
 
 The different components of the this application are:
 
-![user-workflow](./img/flowchart.png)
+![user-workflow](./img/flowchart.png) -->
 
 ## 🖥️ Dashboard
 
 The dashboard of the tool is built using [Streamlit](https://streamlit.io/). 
 
-![dashboard](./img/dashboard.JPG)
+![dashboard](./img/dashboard.png)
 
 ## ⚡ How to Run 
 
