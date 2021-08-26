@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://example.com/advanced/cleanerclass/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Cleaner Class - BMWi Forecasting Tool</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cleaner Class";
+    var mkdocs_page_input_path = "advanced\\cleanerclass.md";
+    var mkdocs_page_url = "/advanced/cleanerclass/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BMWi Forecasting Tool</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/start/">Start Here</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/user/">User Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/quick/">Quick Access</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Step-by-Step Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/data_prep/">Data Preparation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/model/">Predictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/ci/">Confidence intervals</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/visualizations/">Visualizations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/rankings/">Rankings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/error/">Error Analysis</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Advanced Features</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../tech_flow/">Technical Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation and Setup</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cleaner Class</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#purpose-of-the-cleanerclass">Purpose of the CleanerClass</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assumed-formatting-for-the-cleanerclass">Assumed Formatting for the CleanerClass</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#class-initiation">Class Initiation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#0-check-metadata-sheet">0. Check metadata sheet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#1-find-the-starting-column-of-the-table">1. Find the starting column of the table</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-find-the-starting-row-of-the-table">2. Find the starting row of the table</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-crop-out-the-table">3. Crop out the table</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#31-crop-the-columns">3.1 Crop the columns</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#32-crop-the-rows">3.2 Crop the rows</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-throw-away-rows-that-are-not-kreis">4. Throw away rows that are not kreis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-check-columns-data-type">5. Check columns data type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-drop-columns-with-na">6. Drop columns with NA</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#61-drop-all-column-names-as-na">6.1 Drop all column names as NA</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#62-drop-columns-with-na-values">6.2 Drop columns with NA values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-set-the-ags5-index-to-string-of-length-5">7. Set the ags5 index to string of length 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8-sort-the-sheet-by-ags5-value">8. Sort the sheet by ags5 value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#9-throw-away-empty-sheets">9. Throw away empty sheets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#class-attributes">Class Attributes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_date">is_date</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getallusefulsheets_wide">getAllUsefulSheets_wide</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getallusefulsheets_long">getAllUsefulSheets_long</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getthrownawayrows">getThrownAwayRows</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getthrownawaycolumns">getThrownAwayColumns</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Our Journey</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/models/">Models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/clusters/">Clusters</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/covid19/">Covid19 restrictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/GDP/">GDP and Unemployment rate</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/tool/">Tool</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/project/">Project</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/team/">Team</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/licenses/">Licences</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BMWi Forecasting Tool</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Advanced Features &raquo;</li>
+        
+      
+    
+    <li>Cleaner Class</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <!-- 
+- go through assumptions and make sure they are exhaustive
+- remove stuff about GDP if we don't end up using it
+-->
+
+<h1 id="cleanerclass-explained">CleanerClass Explained</h1>
+<p>This page walks through the assumptions and the implementation code for the excel sheet cleaner. </p>
+<h2 id="purpose-of-the-cleanerclass">Purpose of the CleanerClass</h2>
+<p>The excel sheet cleaner is used on the <a href="https://bmwi-tool.herokuapp.com/">Data Prep page</a> to get the formatted data for our forecast model from excel workbooks.<!-- We have written two CleanerClasses: one for **labor market data (unemployment rate)** and one for **GDP**.  --></p>
+<p>The goal of the CleanerClass is to retrieve a python friendly format of the data, containing only the essential index columns, variable columns, and the numerical values of the data. Worksheets that contain only metadata or descriptions would be discarded, and the watermark-like header rows would also be cropped out in the process.</p>
+<h2 id="assumed-formatting-for-the-cleanerclass">Assumed Formatting for the CleanerClass</h2>
+<p>As explained briefly in the Data Prep page, below is the expected structure of the excel workbook.</p>
+<p><img alt="alq excel" src="../cleanerclass_screenshots/alq_data.png" /></p>
+<p>The assumptions for the input excel workbook are as follows:</p>
+<ul>
+<li><strong>every kreis is a row</strong><ul>
+<li>although every row need not be a kreis<ul>
+<li>for example, there are also rows that represents the whole bundesland</li>
+</ul>
+</li>
+<li>all 401 kreis's AGS5 values must exist, and exist in the same column<ul>
+<li>The ags5 values for cities like Berlin and Hamburg must exist (not just their ags2 values)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>the left most column of the table has the ags5 code value</strong><ul>
+<li>the left most column of the table need not be left most column of sheet<ul>
+<li>"sheet" describes a single Excel sheet, and "table" describes the acutual tabular data (along with the indexes and columns)</li>
+</ul>
+</li>
+<li>thus, once the CleanerClass finds the ags5 column, that column becomes the left most column of the output table, and every column left to the ags5 column would be cropped out</li>
+<li>in other words, no data should be recorded to the left on the ags5 column</li>
+<li>also, any essential columns should also be recorded to the right of the ags5 column</li>
+</ul>
+</li>
+<li><strong>every column is a time-stamp</strong> <ul>
+<li>the input excel workbook is expected to be in wide format (i.e., kreise are rows; timestamps are columns)</li>
+<li>however, after cleaning, the CleanerClass can provide both wide and long formats</li>
+<li>there must be atleast 5 timestamps</li>
+</ul>
+</li>
+<li><strong>every cell is a numeric value</strong><ul>
+<li>categorical values are not permitted in the worksheet</li>
+<li>any column with non-numeric data (like: 'Zero', 'Does not exist', null), will be dropped (only if the non-numeric data exists in a row containing an AGS5 value, below the row containing the timestamps)</li>
+</ul>
+</li>
+</ul>
+<p>As long as aforementioned assumptions are met in the input excel workbook, this CleanerClass should export suitable formats for the model. </p>
+<!-- - differences between UR and GDP cleanerclass -->
+
+<h2 id="code-walkthrough">Code Walkthrough</h2>
+<!-- There are only minor differences between the CleanerClass for unemployment rate and the one for GDP. -->
+<p>This page would go through the implementation of the cleanerclass in detail.</p>
+<h3 id="class-initiation">Class Initiation</h3>
+<p>First, we import the necessary library, <code>pandas</code>, to read in excel workbook in Python. Second, we set a variable called <code>AGS5_LIST</code>, which is a list that stores all the ags5 code in numerical value.</p>
+<pre><code># import requirements
+import pandas as pd
+
+#global variable: list of ags5 codes, numeric data type
+AGS5_LIST = [ 1001,  1002,  1003,  1004,  1051,  1053,  1054,  1055, ...]
+</code></pre>
+<p>Then, we start writing the CleanerClass. First, we initiate the attributes for the class.</p>
+<ul>
+<li><code>self.sheet</code>: stores the useful worksheets read from the input workbook into a dictionary</li>
+<li><code>self.thrownAwayColumns</code>: stores the name and value of the columns that were discarded in each worksheet into a dictionary</li>
+<li><code>self.thrownAwayRows</code>: stores the rows that were discarded in each worksheet into a dictionary</li>
+<li><code>self.sheet_to_df_map</code>: stores all the worksheets of the workbook into a dictionary, where the key is the name of the worksheet, and the value is the worksheet dataframe</li>
+</ul>
+<pre><code>class CleanerClass:
+
+    def __init__(self, file_location, verbose=True):
+
+            self.verbose = verbose
+            self.sheets = {}  # by default we store it in the wide format
+            self.thrownAwayColumns = {}
+            self.thrownAwayRows = {}
+
+            if verbose:
+                print(&quot;Reading the file...&quot;)
+
+            # use sheet_name = None to read all sheets as an ordered dict
+            self.sheet_to_df_map = pd.read_excel(file_location, engine='openpyxl', sheet_name=None) 
+
+            if verbose:
+                print(&quot;file read complete!&quot;)
+</code></pre>
+<p><code>for sheet_name, sheet_df in self.sheet_to_df_map.items()</code> loops through each worksheet in the workbook using the <code>self.sheet_to_df_map</code> dictionary that we initializes in the last step. </p>
+<p><code>sheet = sheet_df.copy()</code> makes a deep copy of each worksheet dataframe, so that any processing made from this point on would not affect the data from the actual worksheet itself.</p>
+<pre><code>        for sheet_name, sheet_df in self.sheet_to_df_map.items():
+            ## loop through all the sheets
+
+            sheet = sheet_df.copy()
+
+            if self.verbose:
+                print(&quot;\nprocessing the sheet &quot;, sheet_name, end='')
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="0-check-metadata-sheet">0. Check metadata sheet</h3>
+<p>If the sheet does not have at least 401 rows, it is not a useful sheet. Because we assume the worksheet to follow the format that each kreis is a separate row, and that there are 401 kreise in Germany. This step discards the sheets that contain descriptions instead of numerical-valued data.</p>
+<pre><code>            if sheet.shape[0] &lt; 401:
+                continue # to the next sheet
+</code></pre>
+<h3 id="1-find-the-starting-column-of-the-table">1. Find the starting column of the table</h3>
+<p>To check if the column is an <code>ags5</code> column, and not just a column that happen to a variable column that contains the ags5 values. To do this, we randomly selected three ags5 codes from three kreise and checked if all three codes were in the column. If so, it is an ags5 column, and the sheet is one that we can possibly work with.</p>
+<pre><code>            #KREIS_NAMES_TO_CHECK = ['hamburg', 'berlin', 'kiel']
+            KREIS_CODES_TO_CHECK = ['02000', '11000', '01002']
+            KREIS_COL_NO = None 
+            KREIS_COL_NAME = None
+
+            for kreis_code in KREIS_CODES_TO_CHECK:
+
+                for i, col in enumerate(sheet.columns):
+                    # find if kreis name is in a substring
+                    substring_loc = sheet[col].str.contains(kreis_code, case=False) # returns a number &gt;0 (position where kreis_code starts)
+
+                    found = sum(substring_loc &gt; 0)
+
+                    # if found, just break away, no need to look anymore
+                    if found:
+                        if KREIS_COL_NO is None:
+                            KREIS_COL_NO = i
+                            KREIS_COL_NAME = col 
+                        else:
+                            assert KREIS_COL_NO == i
+
+                        break
+
+            if KREIS_COL_NAME is None:
+                # no column was found with the kreis names
+                # therefore, not a useful sheet
+                continue  # to the next sheet
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="2-find-the-starting-row-of-the-table">2. Find the starting row of the table</h3>
+<p>In step <strong>1</strong>, we found the starting column, <code>ags5</code>. This step, we find the starting index. To find the starting row, we find the row with dates. Here, we set an arbitrary cutoff at 5. When a row contains at least 5 values that are dates, we consider that row to be the date row with date columns, and consider that row to be the starting row of the table.</p>
+<pre><code>            col_names = sheet.columns
+            DATE_COUNT_CUTOFF = 5 # the number of dates a column must have to qualify as the row which has the table's col names
+            ROW_WITH_DATES = None
+
+            sheet.reset_index(drop=True, inplace=True) # reset index so that we have the index as a range starting from 0
+
+            for index, row in sheet.iterrows():
+                is_date_arr = [self.is_date(str(row[col_name])) for col_name in col_names]
+                if sum(is_date_arr) &gt;= DATE_COUNT_CUTOFF:
+                    # we found the row!
+                    ROW_WITH_DATES = index  
+                    break
+
+
+            if ROW_WITH_DATES is None:
+                # no row had dates
+                # therefore, not a table with time series data
+                # therefore not a useful sheet (sheet with needed data)
+                continue # to the next sheet
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="3-crop-out-the-table">3. Crop out the table</h3>
+<h4 id="31-crop-the-columns">3.1 Crop the columns</h4>
+<p>As explained earlier, step <strong>1</strong> finds the <code>ags5</code> column, which we consider to be the starting column of the table. This step crops out all the other columns left to the <code>ags5</code> column. In other words, any important index columns in the worksheet should be recorded on the right to the <code>ags5</code> column.</p>
+<p><strong>Note</strong>: The CleanerClass currenly does not handle the right boundary of the table because it is automatically handled in the <code>pd.read_excel</code> function. However, if there is any metadata on the right side, it should be cleaned manually before inputting to the cleanerclass.</p>
+<pre><code>            columns_to_drop = []
+
+            for col_name in sheet.columns:
+                if col_name == KREIS_COL_NAME:
+                    # end the loop
+                    break
+
+                columns_to_drop.append(col_name)
+
+            sheet.drop(columns_to_drop, axis=1, inplace=True)
+            sheet.set_index(KREIS_COL_NAME, inplace=True)    
+</code></pre>
+<h4 id="32-crop-the-rows">3.2 Crop the rows</h4>
+<p>As explained earlier, step <strong>2</strong> finds the row that contains the date columns, which we consider to be the starting row of the table. This step crops all the other rows above the date-columns row.</p>
+<pre><code>        sheet.columns = list(sheet.iloc[ROW_WITH_DATES])
+        sheet = sheet.iloc[ROW_WITH_DATES+1:]
+        sheet.index.name = None
+
+        if self.verbose:
+            print('.', end='')
+</code></pre>
+<h3 id="4-throw-away-rows-that-are-not-kreis">4. Throw away rows that are not kreis</h3>
+<p>This step goes through all the rest of the rows below the date-columns row, and discard the ones that are not records on a kreis-level. For implementation, it checks whether the area code in the <code>ags5</code> column is in the <code>AGS5_LIST</code> we initiated.</p>
+<p>A special situation to consider are kreise like Hamburg and Berlin, where they are a county ("kreis") and a state ("bundesland") at the same time. We want to make sure however it is recorded in the worksheet, it would be included to our final table and not accidentally discarded by our cleaner.</p>
+<pre><code>            AGS5_LIST_TEMP = self.AGS5_LIST.copy()
+            #new_index = []
+            rows_to_drop = []
+
+            for index, row in sheet.iterrows():
+
+                row_is_needed = False
+
+                for ags5_loc, ags5 in enumerate(AGS5_LIST_TEMP):
+
+                    if &quot;{:05d}&quot;.format(ags5) == str(index):
+                        AGS5_LIST_TEMP.pop(ags5_loc) # remove that ags5 from AGS5_LIST_TEMP
+                        #new_index.append(ags5) # add that index
+                        row_is_needed = True # We need this row
+                        break # no need to search for other ags5 in AGS5_LIST_TEMP
+
+                if row_is_needed is False:
+                    rows_to_drop.append(index)
+
+
+            if len(AGS5_LIST_TEMP) == 2:
+                # berlin and hamburg are not divided down into it's kreis
+                BERLIN_HAMBURG = [2000, 11000]
+                BERLIN_HAMBURG_STR = [&quot;{:05d}&quot;.format(ags5) for ags5 in BERLIN_HAMBURG]
+                BERLIN_HAMBURG_ags2 = [2, 11]
+                BERLIN_HAMBURG_ags2_STR = [&quot;{:02d}&quot;.format(ags2) for ags2 in BERLIN_HAMBURG_ags2]
+
+                ags5s_to_pop = []
+                for ags5_loc, ags5 in enumerate(AGS5_LIST_TEMP):
+                    if ags5 in BERLIN_HAMBURG or BERLIN_HAMBURG_STR:
+                        # this bundesland is not then subdivided bacause these 2 bunds. have only one kreis under them
+                        # so use the bundesland info as the kreis info
+                        ags5s_to_pop.append(ags5_loc)
+                        #new_index.append(ags5)
+                        for i in range(len(BERLIN_HAMBURG)):
+                            if ags5 == BERLIN_HAMBURG[i] or ags5 == BERLIN_HAMBURG_STR[i]:
+                                try:
+                                    rows_to_drop.remove(BERLIN_HAMBURG_ags2[i])
+                                    # replace the ags2 index with corresponding ags5
+                                    sheet.index = [BERLIN_HAMBURG_STR[i] if ind == BERLIN_HAMBURG_ags2_STR[i] else ind for ind in sheet.index]
+                                except:
+                                    rows_to_drop.remove(BERLIN_HAMBURG_ags2_STR[i])
+                                    sheet.index = [BERLIN_HAMBURG_STR[i] if ind == BERLIN_HAMBURG_ags2_STR[i] else ind for ind in sheet.index]
+                                break
+                ags5s_to_pop.sort(reverse=True)
+                for ags5_loc in ags5s_to_pop:
+                    AGS5_LIST_TEMP.pop(ags5_loc)
+
+            if len(AGS5_LIST_TEMP) != 0:
+                # some ags5 does not exist!
+                continue # to next sheet
+
+            sheet.drop(rows_to_drop, axis=0, inplace=True)
+            sheet.index = [int(ind) for ind in sheet.index]
+
+            self.thrownAwayRows[sheet_name] = rows_to_drop
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="5-check-columns-data-type">5. Check columns data type</h3>
+<p>This step goes through each columns, and discards the columns where the value is not numerical. The discarded columns are stored in the <code>self.thrownAwayColumns</code> dictionary we initiated at the start.</p>
+<pre><code>            cols_with_non_numeric_vals = []
+
+            for col in sheet.columns:
+                try:
+                    # find if the col has int or float as dtype:
+                    rem = sheet[col] % 1
+                    if sum(rem) == 0:
+                        col_type = 'int64'
+                    else:
+                        col_type = 'float64'
+
+                    sheet[col] = sheet[col].astype(col_type)
+
+                except:
+                    # col cannot be converted to numeric type
+                    cols_with_non_numeric_vals.append(col)
+
+            sheet.drop(cols_with_non_numeric_vals, axis=1, inplace=True)
+
+            self.thrownAwayColumns[sheet_name] = cols_with_non_numeric_vals
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="6-drop-columns-with-na">6. Drop columns with NA</h3>
+<h4 id="61-drop-all-column-names-as-na">6.1 Drop all column names as NA</h4>
+<p>Drop the column names that are not a valid date.</p>
+<pre><code>sheet = sheet[sheet.columns.dropna()]
+</code></pre>
+<h4 id="62-drop-columns-with-na-values">6.2 Drop columns with NA values</h4>
+<p>Drop the columns with NA values and store the variable names to the <code>self.thrownAwayColumns</code> dictionary we initiated from the start.</p>
+<pre><code>            cols_with_na = sheet.columns[sheet.isnull().any()]
+            sheet.drop(cols_with_na, axis=1, inplace=True)
+
+            self.thrownAwayColumns[sheet_name].extend(cols_with_na)
+
+            if self.verbose:
+                print('.', end='')
+</code></pre>
+<h3 id="7-set-the-ags5-index-to-string-of-length-5">7. Set the ags5 index to string of length 5</h3>
+<p>Unify the format of the <code>ags5</code> codes to be length of 5, data type string. For example, the original area code <code>1001</code>, data type <code>int</code> would be converted to <code>01001</code>, data type <code>str</code>.</p>
+<pre><code>            sheet.index = [&quot;{:05d}&quot;.format(ags5) for ags5 in sheet.index]
+</code></pre>
+<h3 id="8-sort-the-sheet-by-ags5-value">8. Sort the sheet by ags5 value</h3>
+<pre><code>            sheet = sheet.sort_index()
+</code></pre>
+<h3 id="9-throw-away-empty-sheets">9. Throw away empty sheets</h3>
+<p>If the shape of the sheet is empty, discard this sheet and move on to the next sheet.</p>
+<pre><code>            if 0 in sheet.shape:
+                continue # to next sheet
+</code></pre>
+<h3 id="class-attributes">Class Attributes</h3>
+<p>Define functions of the class. In implementation, once a class is called, we can use these pre-defined functions within the class to access the dictionaries and other values we stored in the class initiation steps.</p>
+<h3 id="is_date"><code>is_date</code></h3>
+<p>This function takes a string and returns whether the string can be interpreted as a date.</p>
+<pre><code>    def is_date(self, string, fuzzy=False):
+        from dateutil.parser import parse
+
+        if isinstance(string, str):
+            try: 
+                parse(string, fuzzy=fuzzy)
+                return True
+
+            except ValueError:
+                # not a string that can be parsed
+                return False
+        else:
+            # not a string at all
+            return False
+</code></pre>
+<h3 id="getallusefulsheets_wide"><code>getAllUsefulSheets_wide</code></h3>
+<p>The assumed input data format is wide format. Thus, all the useful sheets are stored in wide format by default. </p>
+<pre><code>    def getAllUsefulSheets_wide(self):
+        return self.sheets
+</code></pre>
+<h3 id="getallusefulsheets_long"><code>getAllUsefulSheets_long</code></h3>
+<p>As explained above, wide format is the assumed input format and default output format. To get long formats of the sheet, we need to do some reshaping of the data.</p>
+<pre><code>    def getAllUsefulSheets_long(self):
+        try:
+            return self.sheets_long
+
+        except AttributeError:
+            self.sheets_long = {}
+
+            for df_name, df_og in self.sheets.items():
+                df = df_og.copy()
+                df = pd.DataFrame([ [ags5, time_stamp, row[time_stamp]] 
+                                    for ags5, row in df.iterrows() 
+                                    for  time_stamp in df.columns ])
+                df.columns = ['ags5', 'time_stamp', 'value']
+
+                self.sheets_long[df_name] = df
+
+            return self.sheets_long
+</code></pre>
+<h3 id="getthrownawayrows"><code>getThrownAwayRows</code></h3>
+<p>The discarded rows are stored in the <code>self.thrownAwayRows</code> dictionary we initiated at the start.</p>
+<pre><code>    def getThrownAwayRows(self):
+        return self.thrownAwayRows
+</code></pre>
+<h3 id="getthrownawaycolumns"><code>getThrownAwayColumns</code></h3>
+<p>The discarded columns are stored in the <code>self.thrownAwayColumns</code> dictionary we initiated at the start.</p>
+<pre><code>    def getThrownAwayColumns(self):
+        return self.thrownAwayColumns
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../journey/models/" class="btn btn-neutral float-right" title="Models">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation and Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../journey/models/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

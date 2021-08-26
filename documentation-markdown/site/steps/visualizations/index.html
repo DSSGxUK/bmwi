@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://example.com/steps/visualizations/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Visualizations - BMWi Forecasting Tool</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Visualizations";
+    var mkdocs_page_input_path = "steps\\visualizations.md";
+    var mkdocs_page_url = "/steps/visualizations/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BMWi Forecasting Tool</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/start/">Start Here</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/user/">User Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/quick/">Quick Access</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Step-by-Step Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../data_prep/">Data Preparation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../model/">Predictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ci/">Confidence intervals</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Visualizations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#predictions-line-plot">Predictions Line Plot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#predictions-map">Predictions Map</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#choose-varaible-to-plot-map">Choose varaible to plot map</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adding-labels-to-the-map">Adding labels to the map</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#add-labels-based-on-bundesland">add labels based on bundesland</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-labels-based-on-value">add labels based on value</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-all-labels">add all labels</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../rankings/">Rankings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../error/">Error Analysis</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Advanced Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/tech_flow/">Technical Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/installation/">Installation and Setup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/cleanerclass/">Cleaner Class</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Our Journey</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/models/">Models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/clusters/">Clusters</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/covid19/">Covid19 restrictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/GDP/">GDP and Unemployment rate</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/tool/">Tool</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/project/">Project</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/team/">Team</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/licenses/">Licences</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BMWi Forecasting Tool</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Step-by-Step Guide &raquo;</li>
+        
+      
+    
+    <li>Visualizations</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="visualizations">Visualizations</h1>
+<p>This section allowas you to on see visualizations of the model results.</p>
+<h2 id="predictions-line-plot">Predictions Line Plot</h2>
+<p>A time series of the predictions of each kreis can be plotted. For that, you need to chose a kreis from the drop down menu, or type its name. Then the unemployment rate predictions will be printed, and a time series graph will be plotted. </p>
+<p>The graph shows on the ground truth unemployment rates in blue, 
+and the predicted values in red.  </p>
+<p><img alt="" src="../model_screenshots/vis1.png" /></p>
+<p>It is also possible to choose multiple kreise. </p>
+<p>Then, the unemployment rate predictions for each kreis will be printed separately, 
+and a time series graph for all kreise will be plotted. </p>
+<p>The graph shows the values of each kreis in a different line. The ground truth unemployment rates in different colors on the left,  and the predicted values in red on the right. </p>
+<p><img alt="" src="../model_screenshots/vis2.png" /></p>
+<h2 id="predictions-map">Predictions Map</h2>
+<h3 id="choose-varaible-to-plot-map">Choose varaible to plot map</h3>
+<p>Another option is to plot the unemployment rates on a map of Germany. </p>
+<p>First, you need to choose which unemployment rate to plot. </p>
+<p><img alt="" src="../model_screenshots/plot_var.png" /></p>
+<p>The options are: </p>
+<ul>
+<li>
+<p>A specific ground truth month</p>
+</li>
+<li>
+<p>A specific predicted month</p>
+</li>
+<li>
+<p>Difference in unemployment rate compared to last month</p>
+</li>
+<li>
+<p>Difference in unemployment rate compared to this month last year </p>
+</li>
+<li>
+<p>Percentage of change in unemployment rate compared to same time last month</p>
+</li>
+<li>
+<p>Percentage of change in unemployment rate compared to same time last year</p>
+</li>
+</ul>
+<!-- - An average of the three predicted months  -->
+
+<p><img alt="" src="../model_screenshots/map5.png" /></p>
+<p><span style="color:gray"><em>This is a kreis-level map of Germany based on unemployment rate on predicted for August 2021.</em></span></p>
+<h3 id="adding-labels-to-the-map">Adding labels to the map</h3>
+<p>You can add the kreis name and unemployment rate of that kreis to the map based on your selection. We offer three selections as detailed above, which can be used together.</p>
+<h4 id="add-labels-based-on-bundesland">add labels based on bundesland</h4>
+<p><img alt="" src="../model_screenshots/select_bdl.png" /></p>
+<p>After choosing a column, it is also possible to add labels of a specific bundesland to the plot. For that, change the "show labels by region" to "Yes", and choose a bundesland from the drop down menu or type its name. The labels of the kreise of this bundesland will be added to the map. </p>
+<p><img alt="" src="../model_screenshots/map2.png" /></p>
+<p><span style="color:gray"><em>For example, the default adds kreis name and unemployment rates for the kreis Schleswig-Holstein.</em></span></p>
+<h4 id="add-labels-based-on-value">add labels based on value</h4>
+<p><img alt="" src="../model_screenshots/select_stats.png" /></p>
+<p>Alternatively, it is also possible to add kreise labels to the plot based on their values. 
+For that, change the "show labels by stats" to "Yes", and choose a which values to show. The labels of the kreise  whose values are between these values will be added to the map. </p>
+<p><img alt="" src="../model_screenshots/map3.png" /></p>
+<p><span style="color:gray"><em>For example, the default adds kreis name and unemployment rates for the kreis with its unemployment rate above the third quartile (75%).</em></span></p>
+<h4 id="add-all-labels">add all labels</h4>
+<p>The last option is to add the labels of all kreis. For that, change the "show all labels" to "Yes", and all kreis labels will be shown. </p>
+<p><img alt="" src="../model_screenshots/map4.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rankings/" class="btn btn-neutral float-right" title="Rankings">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ci/" class="btn btn-neutral" title="Confidence intervals"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ci/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../rankings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
