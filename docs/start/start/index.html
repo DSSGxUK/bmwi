@@ -162,7 +162,8 @@ mermaidAPI.initialize({
 });
 </script>
 
-<p><em>We have identified four potential types of users that would benefit from this documentation and tool. If you have a suggestion of another type of user we did not think of, please let us know.</em></p>
+<!-- *We have identified four potential types of users that would benefit from this documentation and tool. If you have a suggestion of another type of user we did not think of, please let us know.* -->
+
 <p><a href="#first-time-users">🤯 First-time Users</a> |
 <a href="#experienced-users">😊 Experienced Users</a> |
 <a href="#quick-access">😅 Quick Access</a> |
@@ -199,7 +200,7 @@ graph LR
 <p>When you open the tool, the first page you see is the <strong>Home</strong> page.</p>
 <ol>
 <li>Your prediction journey starts on the <strong>Data Prep</strong> page. There, you upload the data, and do necessary preprocessing that would then feed into the model. <a href="../../data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx">Click here</a> to download an Excel file containing data till May 2021. This Excel file contains the format of the input that our tool was tested on.</li>
-<li>Once you "confirm" the preprocessed data on the <strong>Data Prep</strong> page, you can go to the <strong>Model</strong> page. The data which was uploaded on the data prep page is automatically loaded on the model page. The predictions may take a while to run. The prediction results are cached, which means it would run faster the second time you try to predict the same data. </li>
+<li>Once you "confirm" the preprocessed data on the <strong>Data Prep</strong> page, you can go to the <strong>Predictions</strong> page. The data which was uploaded on the data prep page is automatically loaded on the predictions page. The predictions may take a while to run. The prediction results are cached, which means it would run faster the second time you try to predict the same data. </li>
 <li>The <strong>Visualizations</strong> page includes line plots and map visualizations to quickly understand the prediction results, e.g. which kreis has the highest unemployment rate, whether the trend for that kreis is going up or down.</li>
 <li>The <strong>Rankings</strong> page contains kreis-level and grouped rankings of unemployment rates and their percentage changes. </li>
 <li>The <strong>Error Analysis</strong> page would be automatically loaded with the prediction results. This page helps you look closer into which kreise were harder to predict, and how that compares with their basic infrastructures, such as number of hospitals, number of schools etc.</li>
@@ -241,22 +242,19 @@ graph LR
 <div class='mermaid'>
 graph LR
     C1(Quick Access) 
-    C1 --> C2[Prediction Results]
+    C1 --> C2[Prediction Results on Tool]
     C1 --> C3[Quick Access documentation]
-    C1 --> C4[Quick Access tool page]
-    click C2 "../../start/start/"
+    click C2 "https://bmwi-tool.herokuapp.com/#prediction-results"
     click C3 "../../start/quick/"
-    click C4 "../../start/quick/"
     style C2 fill:#CAEEFE,stroke:#2596be,color:#063970
     style C3 fill:#CAEEFE,stroke:#2596be,color:#063970
-    style C4 fill:#CAEEFE,stroke:#2596be,color:#063970
 </div>
 
 <p><br></p>
 <!-- - If you just want to get the prediction results for this quarter, [here]() is the link to download the excel file. -->
 <ul>
 <li>If you want to quickly get a grasp of the project, the tool, and the documentation, <a href="../../start/start/">this page</a> is for you.</li>
-<li>If you want to get a light interpreattion for the latest prediction results, the <a href="https://bmwi-tool.herokuapp.com/">home page</a> of the tool provides rankings, and the <a href="https://bmwi-tool.herokuapp.com/">model page</a> provides line plots and a map of Germany.</li>
+<li>If you want to get a light interpretation for the latest prediction results, the <a href="https://bmwi-tool.herokuapp.com/">home page</a> of the tool provides rankings, and the <a href="https://bmwi-tool.herokuapp.com/">predictions page</a> provides line plots and a map of Germany.</li>
 </ul>
 <p><br></p>
 <h2 id="technical-users">Technical Users</h2>

@@ -3,6 +3,14 @@
 There error analysis is an attempt to see where the unemployment rate predictions “fail”. 
 The errors are [Mean absolute percentage errors (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error), and each one represent how different the prediction is from the ground truth. The errors can be used to see which kreise were difficult to predict for, potentially suggesting the something spacial happened there. The errors can also be easily compared with the structural data, to identify the type of kreise that are harder to predict for. 
 
+### Video Documentation 
+
+The following video will walk you through this section and how to use the various interactive widgets. 
+<div style="text-align:center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=gSpz9Lcbl7A&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<hr>
+
 
 **Note:** To calculate the errors the actual values must be available. Therefore, the errors are calculated for the previous quarter based on the recently uploaded data and, hence, this is a retrospective analysis. 
 ### Launching the page
