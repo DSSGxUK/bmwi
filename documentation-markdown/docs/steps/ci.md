@@ -3,6 +3,14 @@
 This section focuses on getting 95% confidence intervals for the predictions of the model.
 The results will include unemployment rate confidence interval predictions the next three months, for all 401 kreise.
 
+### Video Documentation 
+
+The following video will walk you through this section and how to use the various interactive widgets. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9fVbfjKOgvQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>
+
 The confidence intervals are calculated using stationary bootstrap for time-series data, which uses blocks with an exponentially distributed lengths.
 For more information see the [Arch package](https://arch.readthedocs.io/en/latest/bootstrap/timeseries-bootstraps.html
 ). 

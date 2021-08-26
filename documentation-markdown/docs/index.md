@@ -7,3 +7,9 @@ This project is a collaboration between [German Federal Ministry for Economic Af
 ## Getting Started 
 
 There are multiple aspects to be explored with this tool. Head over to the [getting started page](start/start.md) of the documentation! 
+
+The following video will provide you with an introduction to the tool
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/US5DkvE1Ogs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr>

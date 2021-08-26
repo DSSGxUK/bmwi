@@ -1,16 +1,17 @@
 # Predictions 
 
 This section focuses on getting the results from the model.
-The results will include unemployment rate predictions the next three months, for all 401 kreise.
+The results will include unemployment rate predictions the next three months, for all 401 kreise. After the model it fitted, it is possible to download and visualize the predictions. 
+
 
 ### Video Documentation 
 
 The following video will walk you through this section and how to use the various interactive widgets. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BTVtRuKCUxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HdhCaM6xglE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+<hr>
 
-After the model it fitted, it is possible to download and visualize the predictions. 
 
 ## Fit Model and Export Predictions 
 This page automatically takes the cleaned dataset and fits the model on it. 
