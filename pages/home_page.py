@@ -55,17 +55,25 @@ def app():
     ''' Workflow in detail '''
     sample_input = pd.read_excel('data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx')
     sample_link = get_table_download_link(sample_input, text="Click here", filename="data", excel=True)
-    data1 = '''
+    
+    # data1 = '''
+    #     Your prediction journey starts on the **Data Prep** page. 
+    #     There, you upload the data, and do necessary preprocessing that would then feed into the model.
+    #     '''
+    # data2 = '''
+    #     to download an Excel file containing data till May 2021. 
+    #     This Excel file contains the format of the input that our tool was tested on.
+    #     '''
+    data_section = st.beta_expander("Data Prep page", False)
+    # data_section.markdown(data1+sample_link+data2, unsafe_allow_html=True)
+    data_link = 'https://dssgxuk.github.io/bmwi/data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx'
+    data = f'''
         Your prediction journey starts on the **Data Prep** page. 
         There, you upload the data, and do necessary preprocessing that would then feed into the model.
-        '''
-    data2 = '''
-        to download an Excel file containing data till May 2021. 
+        [Click here]({data_link}) to download an Excel file containing data till May 2021. 
         This Excel file contains the format of the input that our tool was tested on.
         '''
-    data_section = st.beta_expander("Data Prep page", False)
-    data_section.markdown(data1+sample_link+data2, unsafe_allow_html=True)
-    
+    data_section.markdown(data, unsafe_allow_html=True)
     
     pred = '''
         Once you "confirm" the preprocessed data on the **Data Prep** page, 
