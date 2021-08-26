@@ -10,6 +10,6 @@ There are multiple aspects to be explored with this tool. Head over to the [gett
 
 The following video will provide you with an introduction to the tool
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/US5DkvE1Ogs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=US5DkvE1Ogs&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=1&t=1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr>
