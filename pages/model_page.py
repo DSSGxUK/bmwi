@@ -114,6 +114,7 @@ def app():
 
     ''' Get aggregate data '''
     st.markdown("### Aggregate Predictions")
+    st.write('Aggregated predictions on Bundesland level and for the whole country.')
     agg_output = VARObject.getWalfForwardAgg(3)
     agg_output.columns = ['ags2'] + date_only_list 
     # Save the last row 

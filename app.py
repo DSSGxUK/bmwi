@@ -23,16 +23,16 @@ app = MultiPage()
 
 # Title of the main page
 st.title("BMWi Tool")
-st.markdown('[Documentation](https://cinnylin.github.io/bmwi-docs/)&nbsp;&nbsp;&nbsp;[Feedback Form](https://forms.gle/ceXoDGGijXM1JoDr7)')
+st.markdown('[Documentation](https://cinnylin.github.io/bmwi-docs/)')
 st.markdown('')
 
 # The main app
 app.add_page("Home", home_page.app)
-app.add_page("Data Prep", data_prep.app)
+app.add_page("Data Preparation", data_prep.app)
 app.add_page("Predictions", model_page.app)
 app.add_page("Confidence Intervals", confidence_intervals.app)
-app.add_page("Visualization", prediction_viz.app)
-app.add_page("Ranking", ranking.app)
+app.add_page("Visualizations", prediction_viz.app)
+app.add_page("Rankings", ranking.app)
 app.add_page("Error Analysis", error_analysis.app)
 
 app.run()
