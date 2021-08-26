@@ -23,7 +23,7 @@ app = MultiPage()
 
 # Title of the main page
 st.title("BMWi Tool")
-st.markdown('[Documentation](https://cinnylin.github.io/bmwi-docs/)')
+st.markdown('[Documentation](https://dssgxuk.github.io/bmwi/)')
 st.markdown('')
 
 # The main app

@@ -105,7 +105,7 @@ def app():
     pred_output.reset_index(inplace=True)
 
     # Download links 
-    st.markdown(get_table_download_link(pred_output, 
+    st.markdown(get_table_download_link(df_display, 
                                         text="Download the predictions.", 
                                         filename="predictions.csv", 
                                         excel=True),
