@@ -1,6 +1,4 @@
-# Data Prep
-
-Upload the dataset and make any necessary changes to fit the prediction model. You can find a 
+# Data Preparation
 
 <!-- ## Reshape and merge datasets -->
 
@@ -128,7 +126,7 @@ When you open up the page, you will likely be facing this error. No worries, tha
 
 ## Final dataset cleaning
 
-Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.
+In this case, cropping to a certain dataframe: removing data from certain time periods that we may not want the mode to learn from.
 
 ### Loading dataset
 

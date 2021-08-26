@@ -2,15 +2,16 @@
 
 ## Project Partners
 
-This project is a collaboration between [German Federal Ministry of Economic Affairs and Energy (BMWi)](https://www.bmwi.de/Navigation/EN/Home/home.html) and [Data Science for Social Good Foundation Fellowship UK](https://warwick.ac.uk/research/data-science/warwick-data/dssgx/). 
+This project is a collaboration between [Data Science for Social Good Foundation Fellowship UK](https://warwick.ac.uk/research/data-science/warwick-data/dssgx/) and [German Federal Ministry of Economic Affairs and Energy (BMWi)](https://www.bmwi.de/Navigation/EN/Home/home.html). 
+
+### [Data Science for Social Good (DSSG)](https://www.datascienceforsocialgood.org/)
+
+The DSSG Foundation helps NGOs and government bodies achieve more with their data by enhancing their services, interventions and outreach, helping fulfil their mission of improving the world and people’s lives. Its fellowship programme trains students to create industry-standard data science products in collaboration with these agencies to deliver positive social impact.
 
 ### [German Federal Ministry of Economics and Energy (BMWi)](https://www.bmwi.de/Navigation/EN/Home/home.html)
 
 The main responsibilities of BMWi include supporting SMEs and start-ups, promoting digitization within industrial companies, and designing the path for energy transition.  **_Ultimately, the goal pf BMWi is to ensure Germany’s economic competitiveness and a high level of employment._**
 
-### [Data Science for Social Good (DSSG)](https://www.datascienceforsocialgood.org/)
-
-The DSSG Foundation helps NGOs and government bodies achieve more with their data by enhancing their services, interventions and outreach, helping fulfil their mission of improving the world and people’s lives. Its fellowship programme trains students to create industry-standard data science products in collaboration with these agencies to deliver positive social impact.
 
 ## Project Goal
 

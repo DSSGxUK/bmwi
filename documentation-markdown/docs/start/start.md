@@ -9,7 +9,7 @@ mermaidAPI.initialize({
 });
 </script>
 
-*We have identified four potential types of users that would benefit from this documentation and tool. If you have a suggestion of another type of user we did not think of, please let us know.*
+<!-- *We have identified four potential types of users that would benefit from this documentation and tool. If you have a suggestion of another type of user we did not think of, please let us know.* -->
 
 [🤯 First-time Users](#first-time-users) |
 [😊 Experienced Users](#experienced-users) |
@@ -51,7 +51,7 @@ graph LR
 When you open the tool, the first page you see is the **Home** page.
 
 1. Your prediction journey starts on the **Data Prep** page. There, you upload the data, and do necessary preprocessing that would then feed into the model. [Click here](../data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx) to download an Excel file containing data till May 2021. This Excel file contains the format of the input that our tool was tested on.
-2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Model** page. The data which was uploaded on the data prep page is automatically loaded on the model page. The predictions may take a while to run. The prediction results are cached, which means it would run faster the second time you try to predict the same data. 
+2. Once you "confirm" the preprocessed data on the **Data Prep** page, you can go to the **Predictions** page. The data which was uploaded on the data prep page is automatically loaded on the predictions page. The predictions may take a while to run. The prediction results are cached, which means it would run faster the second time you try to predict the same data. 
 3. The **Visualizations** page includes line plots and map visualizations to quickly understand the prediction results, e.g. which kreis has the highest unemployment rate, whether the trend for that kreis is going up or down.
 4. The **Rankings** page contains kreis-level and grouped rankings of unemployment rates and their percentage changes. 
 5. The **Error Analysis** page would be automatically loaded with the prediction results. This page helps you look closer into which kreise were harder to predict, and how that compares with their basic infrastructures, such as number of hospitals, number of schools etc.
@@ -105,22 +105,19 @@ Check out the Quick Access pages we built just for you!
 <div class='mermaid'>
 graph LR
     C1(Quick Access) 
-    C1 --> C2[Prediction Results]
+    C1 --> C2[Prediction Results on Tool]
     C1 --> C3[Quick Access documentation]
-    C1 --> C4[Quick Access tool page]
-    click C2 "../../start/start/"
+    click C2 "https://bmwi-tool.herokuapp.com/#prediction-results"
     click C3 "../../start/quick/"
-    click C4 "../../start/quick/"
     style C2 fill:#CAEEFE,stroke:#2596be,color:#063970
     style C3 fill:#CAEEFE,stroke:#2596be,color:#063970
-    style C4 fill:#CAEEFE,stroke:#2596be,color:#063970
 </div>
 
 <br>
 
 <!-- - If you just want to get the prediction results for this quarter, [here]() is the link to download the excel file. -->
 - If you want to quickly get a grasp of the project, the tool, and the documentation, [this page](../../start/start/) is for you.
-- If you want to get a light interpreattion for the latest prediction results, the [home page](https://bmwi-tool.herokuapp.com/) of the tool provides rankings, and the [model page](https://bmwi-tool.herokuapp.com/) provides line plots and a map of Germany.
+- If you want to get a light interpretation for the latest prediction results, the [home page](https://bmwi-tool.herokuapp.com/) of the tool provides rankings, and the [predictions page](https://bmwi-tool.herokuapp.com/) provides line plots and a map of Germany.
 
 <br>
 

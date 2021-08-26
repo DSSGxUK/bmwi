@@ -6,4 +6,4 @@ This project is a collaboration between [German Federal Ministry for Economic Af
 
 ## Getting Started 
 
-There are multiple aspects to be explored with this tool. Head over to [this page](start/start.md) to get started with the tool. 
+There are multiple aspects to be explored with this tool. Head over to the [getting started page](start/start.md) of the documentation! 

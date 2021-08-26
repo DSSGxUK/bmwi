@@ -184,7 +184,7 @@ def app():
             
             if confirm_crop_data == "Yes":
                 st.markdown('Last used data is now updated to the cropped data. \
-                        You can move on to the **"Model page"** to proceed with data prediction.')
+                        You can move on to the **"Predictions page"** to proceed with data prediction.')
                 cropped_data.reset_index(inplace=True)
                 cropped_data['index'] = cropped_data['index'].apply(fix_ags5)
                 cropped_data.set_index('index', inplace=True)

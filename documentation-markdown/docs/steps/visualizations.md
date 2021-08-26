@@ -23,7 +23,7 @@ The graph shows the values of each kreis in a different line. The ground truth u
 
 ## Predictions Map
 
-### Choose varaible to plot map 
+### Choose variable to plot map 
 
 Another option is to plot the unemployment rates on a map of Germany. 
 
