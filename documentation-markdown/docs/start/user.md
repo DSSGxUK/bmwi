@@ -15,22 +15,23 @@ mermaidAPI.initialize({
 <div class="mermaid">
 graph TD
     subgraph clean data
-        A[Dataset Prep page: time-series excel workbook]
+        A[Dataset Preparation: time-series excel workbook]
     end
     subgraph VAR model walkforward
-        B[Predictions page: unemployment rate forecasting on Kreis-level]
+        B[Predictions: unemployment rate forecasting on Kreis-level]
+        C[Confidence Intervals: defaulted 95% confidence for predictions]
     end
     subgraph interpret predictions
-        D[Visualization page: line plot, map of Germany]
-        E[Ranking page: kreise rankings and grouped rankings]
+        D[Visualizations: line plot, map of Germany and Bundesland]
+        E[Rankings: kreise rankings and grouped rankings with line plots]
     end
     subgraph validate predictions
-        F[Error Analysis page: compare structural, crisis-time data]
+        F[Error Analysis: compare and get important structural data]
     end
     A --> B
+    B --> C
+    C --> D
     D --> E
-
-    B --> D
     E --> F
 
     click A "../../steps/data_prep/"
