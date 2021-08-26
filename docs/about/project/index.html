@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://example.com/about/project/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Project - BMWi Forecasting Tool</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Project";
+    var mkdocs_page_input_path = "about\\project.md";
+    var mkdocs_page_url = "/about/project/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BMWi Forecasting Tool</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/start/">Start Here</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/user/">User Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../start/quick/">Quick Access</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Step-by-Step Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/data_prep/">Data Prep</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/model/">Predictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/ci/">Confidence intervals</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/visualizations/">Visualizations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/rankings/">Rankings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../steps/error/">Error Analysis</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Advanced Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/tech_flow/">Technical Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/installation/">Installation and Setup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../advanced/cleanerclass/">Cleaner Class</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Our Journey</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/models/">Models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/clusters/">Clusters</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/covid19/">Covid19 restrictions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../journey/GDP/">GDP and Unemployment rate</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../tool/">Tool</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Project</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-partners">Project Partners</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#german-federal-ministry-of-economics-and-energy-bmwi">German Federal Ministry of Economics and Energy (BMWi)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-science-for-social-good-dssg">Data Science for Social Good (DSSG)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-goal">Project Goal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-data">Project Data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#regional-statistics-office">Regional Statistics Office</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#corona-data-platform">Corona Data Platform</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../team/">Team</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../licenses/">Licences</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BMWi Forecasting Tool</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>About &raquo;</li>
+        
+      
+    
+    <li>Project</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="about-the-project">About the Project</h1>
+<h2 id="project-partners">Project Partners</h2>
+<p>This project is a collaboration between <a href="https://www.bmwi.de/Navigation/EN/Home/home.html">German Federal Ministry of Economic Affairs and Energy (BMWi)</a> and <a href="https://warwick.ac.uk/research/data-science/warwick-data/dssgx/">Data Science for Social Good Foundation Fellowship UK</a>. </p>
+<h3 id="german-federal-ministry-of-economics-and-energy-bmwi"><a href="https://www.bmwi.de/Navigation/EN/Home/home.html">German Federal Ministry of Economics and Energy (BMWi)</a></h3>
+<p>The main responsibilities of BMWi include supporting SMEs and start-ups, promoting digitization within industrial companies, and designing the path for energy transition.  <strong><em>Ultimately, the goal pf BMWi is to ensure Germany’s economic competitiveness and a high level of employment.</em></strong></p>
+<h3 id="data-science-for-social-good-dssg"><a href="https://www.datascienceforsocialgood.org/">Data Science for Social Good (DSSG)</a></h3>
+<p>The DSSG Foundation helps NGOs and government bodies achieve more with their data by enhancing their services, interventions and outreach, helping fulfil their mission of improving the world and people’s lives. Its fellowship programme trains students to create industry-standard data science products in collaboration with these agencies to deliver positive social impact.</p>
+<h2 id="project-goal">Project Goal</h2>
+<p>The goal of the project is to robustify BMWi’s economic forecasts by developing a bottom-up model for predicting economic development in Germany based on regional data. The project drew on fine-grained data on the demographic, economic and sectoral structure of county-level data with the aim of improving economic forecasts during times of shocks. </p>
+<p>More specifically, our team built a open-source <a href="https://bmwi-tool.herokuapp.com/">tool</a> where BMWi as well as the public would be able to <strong><em>predict unemployment rate in Germany on a county-level for the next three months</em></strong>.</p>
+<h2 id="project-data">Project Data</h2>
+<p>All the data used in this project is available to the public.</p>
+<h3 id="regional-statistics-office"><a href="https://www.regionalstatistik.de/">Regional Statistics Office</a></h3>
+<p>The unemployment rate data we use for this project is mainly drawn from the <a href="https://www.regionalstatistik.de/genesis/online?operation=statistic&amp;levelindex=0&amp;levelid=1627476908111&amp;code=13211#abreadcrumb">labor market statistics</a> section provided by the Regional Statistics Office. </p>
+<h3 id="corona-data-platform"><a href="https://www.corona-datenplattform.de/">Corona Data Platform</a></h3>
+<p>The structural data we use for this project is mainly drawn from the Corona Data Platform. We use the numerical and categorical data from the platform</p>
+<p>The Corona Data Platform is part of a project under BMWi in September 2020. The platform contains a combination of epidemiological and socioeconomic variables for analytical evaluations. The socioeconomic variables on the platform are predominantly collected from the Regional Statistics Office.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../team/" class="btn btn-neutral float-right" title="Team">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../tool/" class="btn btn-neutral" title="Tool"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tool/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../team/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
