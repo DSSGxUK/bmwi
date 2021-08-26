@@ -471,8 +471,8 @@ def plot_line_group(df_full, col_to_group, num_pred=3):
     filter_df = df_full.copy()
     
     # drop non-date cols
-    if 'bundesland' in filter_df.columns:
-        filter_df.drop(columns=['bundesland'], inplace=True)
+    # if 'bundesland' in filter_df.columns:
+    #     filter_df.drop(columns=['bundesland'], inplace=True)
     if 'ags2' in filter_df.columns:
         filter_df.drop(columns=['ags2'], inplace=True)
     if 'ags5' in filter_df.columns:

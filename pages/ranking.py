@@ -175,15 +175,15 @@ def app():
         result_df.rename(columns={'kreis': '# kreis'}, inplace=True)
         st.dataframe(result_df)
         
-        fig = plot_line_group(df_group, col_to_group)
-        st.pyplot(fig)
-        
         # Download links 
         st.markdown(get_table_download_link(result_df, 
                                             text="Download the group rankings file.", 
                                             filename="group_ranking.csv", 
                                             excel=True),
                                             unsafe_allow_html=True)
+        
+        fig = plot_line_group(df_group, col_to_group)
+        st.pyplot(fig)
         
         group_ranking_default_text = '''
             *For example, the default dataframe shows the top `50` kreise, 
