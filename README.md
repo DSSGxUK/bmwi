@@ -25,19 +25,19 @@ This is a forecasting tool built using Streamlit to forecast the unemployment ra
 
 The following diagram shows the tool architecture which includes the data processing, predictions and deployment.
 
-![architecture](img\architecture.jfif)
+![architecture](./img/architecture.jfif)
 
 ## 🧩 Components
 
 The different components of the this application are:
 
-![user-workflow](.\img\flowchart.png)
+![user-workflow](./img/flowchart.png)
 
 ## 🖥️ Dashboard
 
 The dashboard of the tool is built using [Streamlit](https://streamlit.io/). 
 
-![dashboard](img\dashboard.JPG)
+![dashboard](./img/dashboard.JPG)
 
 ## ⚡ How to Run 
 
