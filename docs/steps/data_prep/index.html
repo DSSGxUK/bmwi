@@ -63,6 +63,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Data Preparation</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#video-documentation">Video Documentation</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#time-series-data-excel-workbook">Time-series data excel workbook</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#upload-excel-workbook">Upload Excel Workbook</a>
@@ -170,8 +172,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="data-prep">Data Prep</h1>
-<p>Upload the dataset and make any necessary changes to fit the prediction model. You can find a </p>
+                <h1 id="data-preparation">Data Preparation</h1>
 <!-- ## Reshape and merge datasets -->
 
 <!-- This section process data differently for excel or csv files, and for time-series or structural data type. It assumes that:
@@ -182,7 +183,14 @@
 
 - both assumes to have one column containing the kreis-level area code `ags5` ("amtlicher gemeindeschlüssel") -->
 
-<p>This section processes the excel file that is inputted. The excel file must contain time-series data adhering to the following rules: </p>
+<h3 id="video-documentation">Video Documentation</h3>
+<p>The following video will walk you through this section and how to use the various interactive widgets. </p>
+<div style="text-align:center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=gSpz9Lcbl7A&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<hr>
+<p><br> 
+This section processes the excel file that is inputted. The excel file must contain time-series data adhering to the following rules: </p>
 <ul>
 <li>data should be in <strong>wide</strong>-format (the columns are different timestamps, rows are kreise)</li>
 <li>one sheet cannot have more than one variable (e.g., unemployment rate)</li>
@@ -272,7 +280,7 @@ When you open up the page, you will likely be facing this error. No worries, tha
 <span style="color:gray">*A simple merge using the `ags5` column, we have a merged file of 401 rows, and the combination of all the selected columns. In this example, we merged two files, `raumordnung` and `point_of_interest`. Again, a preview of the merged file would be shownn, and once confirmed, it would be the default loaded dataset.*</span> -->
 
 <h2 id="final-dataset-cleaning">Final dataset cleaning</h2>
-<p>Data cleaning such as cropping to a certain dataframe, checking for NaN data etc.</p>
+<p>In this case, cropping to a certain dataframe: removing data from certain time periods that we may not want the mode to learn from.</p>
 <h3 id="loading-dataset">Loading dataset</h3>
 <p><img alt="csv" src="../prep_screenshots/load_clean.png" /></p>
 <p><span style="color:gray"><em>Here, you load the data you would like to clean. By default, it loads the data that you have confirmed processing and merging in the last section.</em></span></p>
