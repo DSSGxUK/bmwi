@@ -93,14 +93,14 @@ def plot_map(data, merge_col, data_col, cat_col=False):
     
     # annotation
     ## they can type in the bundesland or kreis they want to annotate
-    bundeslands = list(merged['bundesland'].unique())
-    bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
-            '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
-            '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
-            '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
-    kreise = list(merged['kreis'])
+    # bundeslands = list(merged['bundesland'].unique())
+    # bundeslands = ['1 Schleswig-Holstein', '2 Hamburg', '3 Niedersachsen', '4 Bremen',
+    #         '5 Nordrhein-Westfalen', '6 Hessen', '7 Rheinland-Pfalz', '8 Baden-Wurttemberg',
+    #         '9 Freistaat Bayern', '10 Saarland', '11 Berlin', '12 Brandenburg',
+    #         '13 Mecklenburg-Vorpommern', '14 Sachsen', '15 Sachsen-Anhalt', '16 Thuringen']
+    kreise = list(merged['kreis'].unique())
     regions_to_annotate = st.multiselect('Type in the Kreis or whole Bundesland to annotate:',
-                                         options=sorted(bundeslands+kreise),
+                                        options=sorted(kreise), #options=sorted(bundeslands+kreise),
                                          default=['Berlin', 'Hamburg', 'München, Kreis'])
     
     # plot
@@ -122,25 +122,25 @@ def plot_map(data, merge_col, data_col, cat_col=False):
     
     fontsize = 15
     for region in regions_to_annotate:
-        # bundesland
-        if region[0].isdigit():
-            merged_ags = merged[merged['ags2']==int(region[:2])]
-            for i in merged_ags.index:
-                ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
-                        f'{merged_ags["kreis"][i]}\n{round(merged_ags[data_col][i], 2)}', fontsize=fontsize)
+        # # bundesland
+        # if region[0].isdigit():
+        #     merged_ags = merged[merged['ags2']==int(region[:2])]
+        #     for i in merged_ags.index:
+        #         ax.text(merged_ags.longitude[i], merged_ags.latitude[i],
+        #                 f'{merged_ags["kreis"][i]}\n{round(merged_ags[data_col][i], 2)}', fontsize=fontsize)
         
-        # kreise
-        else:
-            merged_kreis = merged[merged['kreis']==region]
-            
-            # highlight kreis boundary
-            merged_kreis.boundary.plot(ax=ax, color='#FFFF00', linewidth=3, hatch="///")
-            
-            # annotate text
-            for i in merged_kreis.index:
-                ax.text(merged_kreis.longitude[i], merged_kreis.latitude[i],
-                        f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[data_col][i], 2)}', 
-                        fontsize=fontsize, color='k', weight='bold')
+        # # kreise
+        # else:
+        merged_kreis = merged[merged['kreis']==region]
+        
+        # highlight kreis boundary
+        merged_kreis.boundary.plot(ax=ax, color='#FFFF00', linewidth=3, hatch="///")
+        
+        # annotate text
+        for i in merged_kreis.index:
+            ax.text(merged_kreis.longitude[i], merged_kreis.latitude[i],
+                    f'{merged_kreis["kreis"][i]}\n{round(merged_kreis[data_col][i], 2)}', 
+                    fontsize=fontsize, color='k', weight='bold')
     
     
     # # check if the labels need to be added 
