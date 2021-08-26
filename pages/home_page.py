@@ -78,13 +78,20 @@ def app():
     pred_section = st.beta_expander("Predictions page", False)
     pred_section.markdown(pred)
     
+    ci = '''
+        This **Confidence Intervals** page provides confidence intervals 
+        for the predictions that have been calculated in the **Predictions** page.
+        '''
+    ci_section = st.beta_expander("Confidence Intervals page", False)
+    ci_section.markdown(ci)
+    
     viz = '''
         The **Visualization** page shows line plots and map visualizations of the prediction results
         to quickly understand the prediction results, 
         e.g. which kreis has the highest unemployment rate, 
         whether the trend for that kreis is going up or down.
         '''
-    viz_section = st.beta_expander("Visualization page", False)
+    viz_section = st.beta_expander("Visualizations page", False)
     viz_section.markdown(viz)
     
     rank = '''
@@ -93,7 +100,7 @@ def app():
         this page contains kreis-level rankings and 
         grouped rankings of unemployment rates and their percentage changes. 
         '''
-    rank_section = st.beta_expander("Ranking page", False)
+    rank_section = st.beta_expander("Rankings page", False)
     rank_section.markdown(rank)
     
     error = '''
