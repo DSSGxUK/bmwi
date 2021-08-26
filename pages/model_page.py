@@ -154,6 +154,7 @@ def app():
     st.write("Saved the errors...")
     
     st.markdown('Go to **Visualization** page and **Ranking** page for interpretation of the predictions.\
-                Check out **Error Analysis** page for prediction validation.')
+                Check out **Confidence Intervals** \
+                and **Error Analysis** page for prediction validation.')
 
     
