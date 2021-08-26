@@ -17,7 +17,13 @@ def app():
     - [Map of Bundesland on Kreis-level](#map-of-bundesland-on-kreis-level)
     """)
 
-    st.markdown("## Prediction Visualisation Page")
+    ''' Page Introduction '''
+    st.markdown('# Prediction Visualizations')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/visualizations/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=ubH9CgjncGU&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=5)
+        '''
+    st.markdown(useful_links)
 
     st.write("This page has been added to visualize the results of the predictions for the next three months.")
 

@@ -23,6 +23,14 @@ def app():
         - [Cropping Timeframe](#cropping-timeframe)
 
     """)
+    
+    ''' Page Introduction '''
+    st.markdown('# Data Preparation')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/data_prep/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=gSpz9Lcbl7A&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=2)
+        '''
+    st.markdown(useful_links)
 
     st.markdown("## Export and merge datasets")
     st.write("""

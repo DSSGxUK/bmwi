@@ -10,8 +10,6 @@ from util_classes.VAR_model import Data, VARModel
 from .utils import fix_ags5, get_table_download_link, plot_line_wide, plot_map_wide
 
 def app(): 
-
-    st.markdown("## Model Output Page")
     
     ''' Dashboard sidebar '''
     st.sidebar.markdown("""
@@ -20,6 +18,14 @@ def app():
     Page Outline: 
     - [Prediction Results](#prediction-results)
     """)
+    
+    ''' Page Introduction '''
+    st.markdown('# Model Predictions')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/model/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=HdhCaM6xglE&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=3)
+        '''
+    st.markdown(useful_links)
 
     st.write("This page will output the predictions for the next three months.")
 

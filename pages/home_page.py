@@ -25,6 +25,13 @@ def app():
     """)
     
     ''' Page Introduction '''
+    st.markdown('# BMWi Tool')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/start/start/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=US5DkvE1Ogs&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=1)
+        '''
+    st.markdown(useful_links)
+    
     st.markdown('## About')
     about = '''
         This project is a collaboration between 

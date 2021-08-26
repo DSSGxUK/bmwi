@@ -22,14 +22,14 @@ st.set_page_config(page_title="BMWi Forecasting Tool", page_icon='📊')
 app = MultiPage()
 
 # Title of the main page
-st.title("BMWi Tool")
-st.markdown('[Documentation](https://dssgxuk.github.io/bmwi/)')
-st.markdown('')
+# st.title("BMWi Tool")
+# st.markdown('[Documentation](https://dssgxuk.github.io/bmwi/)')
+# st.markdown('')
 
 # The main app
 app.add_page("Home", home_page.app)
 app.add_page("Data Preparation", data_prep.app)
-app.add_page("Predictions", model_page.app)
+app.add_page("Model Predictions", model_page.app)
 app.add_page("Confidence Intervals", confidence_intervals.app)
 app.add_page("Visualizations", prediction_viz.app)
 app.add_page("Rankings", ranking.app)

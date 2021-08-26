@@ -105,7 +105,14 @@ def app():
 
     """)
     
-    st.markdown("## Error Analysis Page")
+    ''' Page Introduction '''
+    st.markdown('# Error Analysis')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/error/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=NjmznnsAcu4&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=7)
+        '''
+    st.markdown(useful_links)
+    
     st.write('There error analysis is an attempt to see where the unemployment rate predictions “fail”. The errors are Mean absolute percentage errors (MAPE), and each one represent how different the prediction is from the ground truth. The errors can be used to see which kreise were difficult to predict for, potentially suggesting the something spacial happened there. The errors can also be easily compared with the structural data, to identify the type of kreise that are harder to predict for.')
 
     # Load error data 

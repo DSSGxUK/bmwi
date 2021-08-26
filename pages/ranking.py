@@ -27,8 +27,14 @@ def app():
 
         """)
 
-    ''' Dashboard home page '''
-    st.markdown("## Unemployment Rate Ranking")
+    ''' Page Introduction '''
+    st.markdown('# Unemployment Rate Rankings')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/rankings/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=m8F7wm1doD4&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=6)
+        '''
+    st.markdown(useful_links)
+    
     st.markdown('''
         This page sorts the unemployment rates based on Kreis-level or categorical groups.
         ''')

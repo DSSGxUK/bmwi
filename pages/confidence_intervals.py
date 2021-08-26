@@ -18,18 +18,6 @@ def func(x):
 
 def app(): 
 
-	''' Add page details '''
-	st.markdown("## Confidence Intervals")
-
-	# ''' Dashboard sidebar '''
-	# st.sidebar.markdown("""
-	# --- 
-
-	# Page Outline: 
-	# - [Confidence Intervals](#confidence-intervals)
-	# - [Visualisation](#visualisation-section)
-	# """)  
-
 	''' Dashboard sidebar '''
 	st.sidebar.markdown("""
 	--- 
@@ -39,6 +27,14 @@ def app():
 	- [Visualisation](#visualisation-section)
 
 	""")
+ 
+	''' Page Introduction '''
+	st.markdown('# Confidence Intervals')
+	useful_links = '''
+		[Documentation](https://dssgxuk.github.io/bmwi/steps/ci/) |
+		[Tutorial Video](https://www.youtube.com/watch?v=9fVbfjKOgvQ&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=4)
+		'''
+	st.markdown(useful_links)
 
 	st.write("""This section provides confidence intervals for the predictions
 				that have been calculated in the previous section.""")
