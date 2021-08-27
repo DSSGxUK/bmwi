@@ -93,13 +93,13 @@ def app():
         explode = np.zeros(len(result_df))
         explode[0] = 0.1 #only explode max
         # plot
-        fig, ax = plt.subplots(figsize=(10,10))
+        fig, ax = plt.subplots(figsize=(6,6))
         ax.pie(sizes, explode=explode, labels=labels, autopct='%1.0f%%', startangle=90)
         ax.axis('equal') 
         return fig
     
     def plot_bar(x_col, y_col):
-        fig, ax = plt.subplots(figsize=(25,10))
+        fig, ax = plt.subplots(figsize=(10,5))
         ax.bar(x_col, y_col)
         plt.xticks(rotation=90)
         if max(y_col)>=0.5:
@@ -188,9 +188,6 @@ def app():
                                             excel=True),
                                             unsafe_allow_html=True)
         
-        fig = plot_line_group(df_group, col_to_group)
-        st.pyplot(fig)
-        
         group_ranking_default_text = '''
             *For example, the default dataframe shows the top `50` kreise, 
             sorted by `% year diff`, grouped by `east_west` and `eligible area`.*
@@ -210,6 +207,9 @@ def app():
         
         group_ranking_section = st.beta_expander('Grouped Ranking Default Interpretation', False)
         group_ranking_section.markdown(group_ranking_default_text)
+        
+        fig = plot_line_group(df_group, col_to_group)
+        st.pyplot(fig)
         
         fig1 = plot_pie(df_group, col_to_sort, col_to_group, n=n1)
         result_df = result_df.sort_values('% counts', ascending=False)
