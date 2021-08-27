@@ -105,47 +105,19 @@ def app():
 
     """)
     
-    st.markdown("## Error Analysis Page")
+    ''' Page Introduction '''
+    st.markdown('# Error Analysis')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/error/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=NjmznnsAcu4&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=7)
+        '''
+    st.markdown(useful_links)
+    
     st.write('There error analysis is an attempt to see where the unemployment rate predictions “fail”. The errors are Mean absolute percentage errors (MAPE), and each one represent how different the prediction is from the ground truth. The errors can be used to see which kreise were difficult to predict for, potentially suggesting the something spacial happened there. The errors can also be easily compared with the structural data, to identify the type of kreise that are harder to predict for.')
 
     # Load error data 
     error_data = pd.read_csv('data/errors/errors_VAR.csv')
     error_data['ags5'] = error_data['ags5'].apply(fix_ags5)
-
-    # ''' Error Map Viz '''
-    # st.markdown("### Error visualization on a Map")
-
-    # # Display a date range
-    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-    
-    # # Show for average predictions
-    # if method == 'average': 
-    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    # else: 
-    #     # Filter by date 
-    #     filter_data = error_data[error_data['date'] == method]
-        
-    # st.pyplot(plot_error_map(filter_data, date_string=method))
-    
-    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
-
-    # if error_checkbox: 
-    #     st.subheader("Error visualization on a Map")
-    #     st.write("\nLoading Map..")
-        
-    #     # Display a date range
-    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-        
-    #     # Show for average predictions
-    #     if method == 'average': 
-    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    #     else: 
-    #         # Filter by date 
-    #         filter_data = error_data[error_data['date'] == method]
-            
-    #     st.pyplot(plot_error_map(filter_data, date_string=method))
-        
-    #     st.markdown("""---""")
 
     ''' Data Addition '''
     # Add the bundesland kreis and ags2 to the data
@@ -208,36 +180,6 @@ def app():
     
     fig = plot_map(error_data, merge_col='ags5', data_col='error')
     st.pyplot(fig)
-
-    # # Display a date range
-    # method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-    
-    # # Show for average predictions
-    # if method == 'average': 
-    #     filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    # else: 
-    #     # Filter by date 
-    #     filter_data = error_data[error_data['date'] == method]
-        
-    # st.pyplot(plot_error_map(filter_data, date_string=method))
-    
-    # error_checkbox = st.checkbox("Visualize error on a map?", value=False)
-
-    # if error_checkbox: 
-    #     st.subheader("Error visualization on a Map")
-    #     st.write("\nLoading Map..")
-        
-    #     # Display a date range
-    #     method = st.selectbox("Select a date or method.", options=['average']+list(error_data['date'].unique()))
-        
-    #     # Show for average predictions
-    #     if method == 'average': 
-    #         filter_data = error_data[['ags5', 'mape']].groupby('ags5', as_index=False).mean()
-    #     else: 
-    #         # Filter by date 
-    #         filter_data = error_data[error_data['date'] == method]
-            
-    #     st.pyplot(plot_error_map(filter_data, date_string=method))
         
     st.markdown("""---""")
     

@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd 
 
 # Custom modules 
-from .utils import fix_ags5, plot_line_wide, plot_map_wide
+from .utils import fix_ags5, plot_line_wide, plot_map_bundesland, plot_map_wide, get_table_download_link
 
 def app(): 
     
@@ -12,11 +12,18 @@ def app():
     --- 
 
     Page Outline: 
-    - [Time-Series Line Plot](#line-plot)
-    - [Map of Germany on Kreis-level](#map)
+    - [Time-Series Line Plot](#time-series-line-plot)
+    - [Map of Germany on Kreis-level](#map-of-germany-on-kreis-level)
+    - [Map of Bundesland on Kreis-level](#map-of-bundesland-on-kreis-level)
     """)
 
-    st.markdown("## Prediction Visualisation Page")
+    ''' Page Introduction '''
+    st.markdown('# Prediction Visualizations')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/visualizations/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=ubH9CgjncGU&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=5)
+        '''
+    st.markdown(useful_links)
 
     st.write("This page has been added to visualize the results of the predictions for the next three months.")
 
@@ -63,7 +70,23 @@ def app():
     kreis_name = st.multiselect("Select the Kreis to get predictions", 
                                 options=kreis_options, 
                                 default=[kreis_options[0]])
-    st.dataframe(display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5']))
+    # resulting df
+    viz_output = display_data[display_data['kreis'].isin(kreis_name)].drop(columns=['ags2', 'ags5'])
+    
+    # get viz output columns to be formated 
+    viz_output_cols = viz_output.columns[2:]
+    st.dataframe(viz_output.style.format({
+            viz_output_cols[0]: '{:.1f}', 
+            viz_output_cols[1]: '{:.1f}', 
+            viz_output_cols[2]: '{:.1f}'
+            }))
+
+    # Download links 
+    st.markdown(get_table_download_link(viz_output, 
+                                        text="Download the subset ranking data", 
+                                        filename="subset_ranking_data.csv", 
+                                        excel=True),
+                                        unsafe_allow_html=True)
 
     """
     This section doesn't work well because the date columns are messed up and we need to fix that.  
@@ -87,16 +110,21 @@ def app():
     fig1 = plot_line_wide(cropped_data.drop(columns=['ags5']), kreis_name, 3, df_index='kreis')
     st.pyplot(fig1)
 
-    # map
-    st.markdown("### Map of Germany on Kreis-level")
-
     # Add the average of the predictions as a column for the plots 
     # average_cols = pd.DataFrame(pred_output[pred_output.columns[1:]].mean(axis=1))
-    # average_cols.columns = ['predictions_average']
+    # average_cols.columns = ['predictions average']
     # full_data = pd.concat([full_data, average_cols], axis=1)
     # partial_data = full_data.iloc[:,-4:]
     # partial_data['ags5'] = full_data['ags5']
     
     # partial_data = 
+    
+    # map
+    st.markdown("### Map of Germany on Kreis-level")
     map_fig = plot_map_wide(full_data, 'ags5') 
     st.pyplot(map_fig)
+    
+    # map
+    st.markdown("### Map of Bundesland on Kreis-level")
+    map_fig2 = plot_map_bundesland(full_data, 'ags5') 
+    st.pyplot(map_fig2)

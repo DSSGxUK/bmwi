@@ -25,6 +25,13 @@ def app():
     """)
     
     ''' Page Introduction '''
+    st.markdown('# BMWi Tool')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/start/start/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=US5DkvE1Ogs&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=1)
+        '''
+    st.markdown(useful_links)
+    
     st.markdown('## About')
     about = '''
         This project is a collaboration between 
@@ -55,17 +62,25 @@ def app():
     ''' Workflow in detail '''
     sample_input = pd.read_excel('data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx')
     sample_link = get_table_download_link(sample_input, text="Click here", filename="data", excel=True)
-    data1 = '''
+    
+    # data1 = '''
+    #     Your prediction journey starts on the **Data Prep** page. 
+    #     There, you upload the data, and do necessary preprocessing that would then feed into the model.
+    #     '''
+    # data2 = '''
+    #     to download an Excel file containing data till May 2021. 
+    #     This Excel file contains the format of the input that our tool was tested on.
+    #     '''
+    data_section = st.beta_expander("Data Prep page", False)
+    # data_section.markdown(data1+sample_link+data2, unsafe_allow_html=True)
+    data_link = 'https://dssgxuk.github.io/bmwi/data/7444_318010_BMWI_Enkelmann_Eckdaten_Zeitreihe_Kreise.xlsx'
+    data = f'''
         Your prediction journey starts on the **Data Prep** page. 
         There, you upload the data, and do necessary preprocessing that would then feed into the model.
-        '''
-    data2 = '''
-        to download an Excel file containing data till May 2021. 
+        [Click here]({data_link}) to download an Excel file containing data till May 2021. 
         This Excel file contains the format of the input that our tool was tested on.
         '''
-    data_section = st.beta_expander("Data Prep page", False)
-    data_section.markdown(data1+sample_link+data2, unsafe_allow_html=True)
-    
+    data_section.markdown(data, unsafe_allow_html=True)
     
     pred = '''
         Once you "confirm" the preprocessed data on the **Data Prep** page, 
@@ -78,13 +93,20 @@ def app():
     pred_section = st.beta_expander("Predictions page", False)
     pred_section.markdown(pred)
     
+    ci = '''
+        This **Confidence Intervals** page provides confidence intervals 
+        for the predictions that have been calculated in the **Predictions** page.
+        '''
+    ci_section = st.beta_expander("Confidence Intervals page", False)
+    ci_section.markdown(ci)
+    
     viz = '''
         The **Visualization** page shows line plots and map visualizations of the prediction results
         to quickly understand the prediction results, 
         e.g. which kreis has the highest unemployment rate, 
         whether the trend for that kreis is going up or down.
         '''
-    viz_section = st.beta_expander("Visualization page", False)
+    viz_section = st.beta_expander("Visualizations page", False)
     viz_section.markdown(viz)
     
     rank = '''
@@ -93,7 +115,7 @@ def app():
         this page contains kreis-level rankings and 
         grouped rankings of unemployment rates and their percentage changes. 
         '''
-    rank_section = st.beta_expander("Ranking page", False)
+    rank_section = st.beta_expander("Rankings page", False)
     rank_section.markdown(rank)
     
     error = '''

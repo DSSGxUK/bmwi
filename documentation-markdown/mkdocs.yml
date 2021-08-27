@@ -1,0 +1,34 @@
+site_name: BMWi Forecasting Tool
+site_url: https://example.com/
+
+nav:
+    - Home: index.md
+    - Getting Started:
+        - Start Here: start/start.md
+        - User Workflow: start/user.md
+        - Quick Access: start/quick.md
+        #- Site Map: start/map.md
+    - Step-by-Step Guide:
+        # - Home page: steps/home.md
+        - Data Preparation: steps/data_prep.md
+        - Predictions: steps/model.md
+        - Confidence intervals: steps/ci.md
+        - Visualizations: steps/visualizations.md
+        - Rankings: steps/rankings.md
+        - Error Analysis: steps/error.md
+    - Advanced Features: 
+        - Technical Workflow: advanced/tech_flow.md
+        - Installation and Setup: advanced/installation.md
+        - Cleaner Class: advanced/cleanerclass.md
+    - Our Journey: 
+        - Models: journey/models.md
+        - Clusters: journey/clusters.md
+        - Covid19 restrictions: journey/covid19.md
+        - GDP and Unemployment rate: journey/GDP.md
+    - About:
+        - Tool: about/tool.md
+        - Project: about/project.md
+        - Team: about/team.md
+        - Licences: about/licenses.md
+theme: 
+    name: readthedocs

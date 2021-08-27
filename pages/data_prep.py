@@ -23,6 +23,14 @@ def app():
         - [Cropping Timeframe](#cropping-timeframe)
 
     """)
+    
+    ''' Page Introduction '''
+    st.markdown('# Data Preparation')
+    useful_links = '''
+        [Documentation](https://dssgxuk.github.io/bmwi/steps/data_prep/) |
+        [Tutorial Video](https://www.youtube.com/watch?v=gSpz9Lcbl7A&list=PLzWRWFPEUpHbwIHq0T6M72B1_5N04hD0Q&index=2)
+        '''
+    st.markdown(useful_links)
 
     st.markdown("## Export and merge datasets")
     st.write("""
@@ -184,7 +192,7 @@ def app():
             
             if confirm_crop_data == "Yes":
                 st.markdown('Last used data is now updated to the cropped data. \
-                        You can move on to the **"Model page"** to proceed with data prediction.')
+                        You can move on to the **"Predictions page"** to proceed with data prediction.')
                 cropped_data.reset_index(inplace=True)
                 cropped_data['index'] = cropped_data['index'].apply(fix_ags5)
                 cropped_data.set_index('index', inplace=True)
