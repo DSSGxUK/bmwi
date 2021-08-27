@@ -41,7 +41,7 @@ The options are:
 
 - Percentage of change in unemployment rate compared to same time last year
 
-<!-- - An average of the three predicted months  -->
+- An average of the three predicted months 
 
 ![](./model_screenshots/map5.png)
 

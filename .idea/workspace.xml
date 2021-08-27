@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab3ef658-4c52-4173-898f-dda6fe6303e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/documentation/docs/steps/error.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/error.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/docs/steps/error_screenshots/error_comparison.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/error_screenshots/error_comparison.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/docs/steps/rankings.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/rankings.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/docs/steps/visualizations.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/docs/steps/visualizations.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +38,20 @@
         <entry file="file://$PROJECT_DIR$/documentation/docs/steps/visualizations.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="313">
-                <caret line="54" selection-start-line="54" selection-end-line="54" />
+              <first_editor relative-caret-position="380">
+                <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/error.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="308">
+                <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
               </first_editor>
               <second_editor />
             </state>
@@ -48,11 +59,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/error.md">
+        <entry file="file://$PROJECT_DIR$/documentation/docs/steps/rankings.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="391">
-                <caret line="74" column="97" selection-start-line="74" selection-start-column="97" selection-end-line="74" selection-end-column="97" />
+              <first_editor relative-caret-position="-1625">
+                <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
               </first_editor>
               <second_editor />
             </state>
@@ -87,7 +98,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/documentation/docs/journey/hierarchical_ts.md" />
-        <option value="$PROJECT_DIR$/documentation/docs/steps/rankings.md" />
         <option value="$PROJECT_DIR$/documentation/docs/steps/model.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/models.md" />
         <option value="$PROJECT_DIR$/documentation/docs/journey/causal_inf.md" />
@@ -98,8 +108,9 @@
         <option value="$PROJECT_DIR$/documentation/docs/journey/covid19.md" />
         <option value="$PROJECT_DIR$/documentation/mkdocs.yml" />
         <option value="$PROJECT_DIR$/documentation/docs/steps/ci.md" />
-        <option value="$PROJECT_DIR$/documentation/docs/steps/visualizations.md" />
         <option value="$PROJECT_DIR$/documentation/docs/steps/error.md" />
+        <option value="$PROJECT_DIR$/documentation/docs/steps/visualizations.md" />
+        <option value="$PROJECT_DIR$/documentation/docs/steps/rankings.md" />
       </list>
     </option>
   </component>
@@ -190,7 +201,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.24220963" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.25354108" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.325" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -239,16 +250,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/visualizations.py" />
-    <entry file="file://$PROJECT_DIR$/documentation/docs/steps/rankings.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1710">
-            <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/docs/about/team.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -370,8 +371,8 @@
     <entry file="file://$PROJECT_DIR$/documentation/docs/steps/visualizations.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="313">
-            <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <first_editor relative-caret-position="380">
+            <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
           </first_editor>
           <second_editor />
         </state>
@@ -380,8 +381,18 @@
     <entry file="file://$PROJECT_DIR$/documentation/docs/steps/error.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="391">
-            <caret line="74" column="97" selection-start-line="74" selection-start-column="97" selection-end-line="74" selection-end-column="97" />
+          <first_editor relative-caret-position="308">
+            <caret line="70" column="13" lean-forward="true" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/docs/steps/rankings.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1625">
+            <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
           </first_editor>
           <second_editor />
         </state>

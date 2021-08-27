@@ -4,20 +4,34 @@ The ranking page allows you to get quick takeaways based on the latest predictio
 
 The main feature of this page is to quickly see which kreis (or which group of kreise) are expected to have the highest unemployment rate for the next quarter.
 
+At the top of the page, you have an expand option with some tips
+![](./home_screenshots/1.png)
 
 ## Kreise Ranking
 The first section is kreise ranking, containing three elements:
-
-[//]: <> ( ![first section: kreise ranking](../home_screenshots/kreise_ranking.png) )
-
-### Slide bar
+![](./home_screenshots/2.png)
 
 The slide bar allows you to see the top N kreise with the highest unemployment rates. It is set in a range from 10 to 100, in increments of 10. The default is set at 10.
+Then, you need to choose which unemployment rate to plot. 
 
-![slide bar](../home_screenshots/slidebar.png)
-[//]: <> ( ![slide bar](../home_screenshots/slidebar2.png) )
+The options are: 
 
-<span style="color:gray">*The screenshot sample is set at 30, meaning that it would show a dataframe with the top 30 highest unemployment rates.*</span>
+- A specific ground truth month
+
+- A specific predicted month
+
+- Difference in unemployment rate compared to last month
+
+- Difference in unemployment rate compared to this month last year 
+
+- Percentage of change in unemployment rate compared to same time last month
+
+- Percentage of change in unemployment rate compared to same time last year
+
+ - An average of the three predicted month
+
+
+It is automatically printied in an ascending order. If you tick the "descending order" box, it will order by descending order.  
 
 ### Sort-by Columns
 
