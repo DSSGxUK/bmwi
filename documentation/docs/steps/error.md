@@ -23,7 +23,7 @@ Here, you will see the `average` option selected by default. This will make a ma
 
 ![](https://i.imgur.com/XozVJQH.png) -->
 
-## Error Plots by Bundesland 
+## Error Plots by Bundesland or kreis 
 
 This section allows for a kreis-level or bundesland-level analysis. The left dropdown allows selection by Kreis or by Bundesland and the right dropdown allows selection of one or more regions. 
 
@@ -31,7 +31,14 @@ This section allows for a kreis-level or bundesland-level analysis. The left dro
 
  Selecting an individual entry would plot the errors for a specific kreis or bundesland. You can select multiple bundesland or kreis. The individual entries can be selected from the right dropdown option. 
 
-![](./error_screenshots/plot_options.png)
+## Map Overview 
+
+Another option is to plot the errors on a map of Germany. 
+You can add the kreis name and the error of that 
+kreis will be added to the map based on your 
+selection. 
+
+![](./error_screenshots/error_map.png)
 
 ## Kreis Level Overview 
 
@@ -51,16 +58,21 @@ To view all the Kreis, download the complete error table by clicking on the opti
 
 The next step is to analyze the errors with regards to the structural data and see hot the errors vary with a particular structural variable. Select a structural variable to compare against the errors. (*Eg: Errors are compared against `eligible_area` in this image*).
 
-The errors are on the x-axis, so the fatter the curve is the more prone that category is to errors. In the following example, the areas where `eligible_area` is 0 have smaller errors than areas with code 1. This means that it is easier to predict kreise that are not eligible for funding then kreise that are eligible. This might be because something unique happened in the eligible kreis that the model can’t explain. 
+If you chose a categorical variable, the errors are on the x-axis, so the fatter the curve is the more prone that category is to errors. In the following example, the areas which are eligible have smaller errors than areas that are not. This means that it is easier to predict kreise that are eligible for funding then kreise that are eligible. This might be because something unique happened in the eligible kreis that the model can’t explain. 
 
 ![](./error_screenshots/error_comparison.png)
 
-**Future:** Later, we can add a check to see if the variable is a categorical or numerical variable.  
+If you chose a numerical variable, each kreis will be plotted at a seperate dot, and if there is any relationship between the errors and the variable, you might be able to see it in the plot.
+![](./error_screenshots/error_comparison_a.png)
+
 
 ### Most important Structural Variables 
 
-Individual exploration might be interesting but can also be very time consuming. There is an option to get an overview of which features correlate to the errors and therefore explain the variance in the errors well. The features are selected using [Sequential Feature Selector](http://rasbt.github.io/mlxtend/user_guide/feature_selection/SequentialFeatureSelector/), a greedy algorithm that reduces feature dimensions. The features are listed in the order of importance, and there is a provision to choose how many features to show. 
+Individual exploration might be interesting but can also be very time consuming. There is an option to get an overview of which features correlate to the errors and therefore explain the variance in the errors well. 
+The features are selected using a linear regression. We fit a linear regression where the predicated value is the mean error of the kreis, and the regressors are all the structural features. 
+We chose the most important features based on P-value, and also print the P-values. 
 
-For example, if “eligible area” is selected as one of the important features, this means that the errors of the kreise eligible for funding is very different than the errors of thous who are not. This implies that there is something special about these groups, and it’s worth to plot them.  
+To run the regression, tick the "run linear regression model" box. Then, you can choose how many features you wish to print. Also, chose if you are looking for the 
+highest P-values (important features) or the lowest (not important features). 
 
-![](./error_screenshots/imp_features.png)
+![](./error_screenshots/error_reg.png)

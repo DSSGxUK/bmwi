@@ -49,7 +49,9 @@ The options are:
 
 ### Adding labels to the map
 
-You can add the kreis name and unemployment rate of that kreis to the map based on your selection. We offer three selections as detailed above, which can be used together.
+You can add the kreis name and unemployment 
+rate of that kreis will be added to the map 
+based on your selection. 
 
 #### add labels based on kreis  
 
