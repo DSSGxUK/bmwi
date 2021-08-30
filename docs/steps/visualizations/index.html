@@ -79,11 +79,9 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#adding-labels-to-the-map">Adding labels to the map</a>
         <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#add-labels-based-on-kreis">add labels based on kreis</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#add-labels-based-on-bundesland">add labels based on bundesland</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#add-labels-based-on-value">add labels based on value</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#add-all-labels">add all labels</a>
     </li>
         </ul>
     </li>
@@ -175,14 +173,11 @@
 
 <h2 id="predictions-line-plot">Predictions Line Plot</h2>
 <p>A time series of the predictions of each kreis can be plotted. For that, you need to chose a kreis from the drop down menu, or type its name. Then the unemployment rate predictions will be printed, and a time series graph will be plotted. </p>
-<p>The graph shows on the ground truth unemployment rates in blue, 
-and the predicted values in red.  </p>
-<p><img alt="" src="../model_screenshots/vis1.png" /></p>
-<p>It is also possible to choose multiple kreise. </p>
-<p>Then, the unemployment rate predictions for each kreis will be printed separately, 
+<p>It is also possible to choose multiple kreise. Then, the unemployment rate predictions for each kreis will be printed separately, 
 and a time series graph for all kreise will be plotted. </p>
 <p>The graph shows the values of each kreis in a different line. The ground truth unemployment rates in different colors on the left,  and the predicted values in red on the right. </p>
-<p><img alt="" src="../model_screenshots/vis2.png" /></p>
+<p>It is also possible to pick the start date for the graph, which is helpful if you are interested in a very short or long time period. </p>
+<p><img alt="" src="./model_screenshots/viz1.png" /></p>
 <h2 id="predictions-map">Predictions Map</h2>
 <h3 id="choose-variable-to-plot-map">Choose variable to plot map</h3>
 <p>Another option is to plot the unemployment rates on a map of Germany. </p>
@@ -208,27 +203,29 @@ and a time series graph for all kreise will be plotted. </p>
 <li>
 <p>Percentage of change in unemployment rate compared to same time last year</p>
 </li>
+<li>
+<p>An average of the three predicted months </p>
+</li>
 </ul>
-<!-- - An average of the three predicted months  -->
-
 <p><img alt="" src="../model_screenshots/map5.png" /></p>
 <p><span style="color:gray"><em>This is a kreis-level map of Germany based on unemployment rate on predicted for August 2021.</em></span></p>
 <h3 id="adding-labels-to-the-map">Adding labels to the map</h3>
-<p>You can add the kreis name and unemployment rate of that kreis to the map based on your selection. We offer three selections as detailed above, which can be used together.</p>
-<h4 id="add-labels-based-on-bundesland">add labels based on bundesland</h4>
+<p>You can add the kreis name and unemployment 
+rate of that kreis will be added to the map 
+based on your selection. </p>
+<h4 id="add-labels-based-on-kreis">add labels based on kreis</h4>
 <p><img alt="" src="../model_screenshots/select_bdl.png" /></p>
-<p>After choosing a column, it is also possible to add labels of a specific bundesland to the plot. For that, change the "show labels by region" to "Yes", and choose a bundesland from the drop down menu or type its name. The labels of the kreise of this bundesland will be added to the map. </p>
-<p><img alt="" src="../model_screenshots/map2.png" /></p>
-<p><span style="color:gray"><em>For example, the default adds kreis name and unemployment rates for the kreis Schleswig-Holstein.</em></span></p>
-<h4 id="add-labels-based-on-value">add labels based on value</h4>
-<p><img alt="" src="../model_screenshots/select_stats.png" /></p>
-<p>Alternatively, it is also possible to add kreise labels to the plot based on their values. 
-For that, change the "show labels by stats" to "Yes", and choose a which values to show. The labels of the kreise  whose values are between these values will be added to the map. </p>
-<p><img alt="" src="../model_screenshots/map3.png" /></p>
-<p><span style="color:gray"><em>For example, the default adds kreis name and unemployment rates for the kreis with its unemployment rate above the third quartile (75%).</em></span></p>
-<h4 id="add-all-labels">add all labels</h4>
-<p>The last option is to add the labels of all kreis. For that, change the "show all labels" to "Yes", and all kreis labels will be shown. </p>
-<p><img alt="" src="../model_screenshots/map4.png" /></p>
+<p>After choosing a column, it is also possible to add labels of a specific kreis to the plot. 
+For that,choose a kreis from the drop down menu or type its name. The label of the kreis will be added to the map, along with the value. </p>
+<p><img alt="" src="./model_screenshots/map_a.png" /></p>
+<h4 id="add-labels-based-on-bundesland">add labels based on bundesland</h4>
+<p>It is also possible to look at a map of a specific bundesland. 
+First, you need to choose which unemployment rate to plot. </p>
+<p>Then, chose a bundesland from the drop down menu or type its name. 
+Automatically, the kreise with the highest values will be marked and their values will be plotted. 
+It is possible to add labels of a specific kreis from this bundesland to the plot. 
+For that, choose a kreis from the drop down menu or type its name. The label of the kreis will be added to the map, along with the value. </p>
+<p><img alt="" src="./model_screenshots/map_b.png" /></p>
               
             </div>
           </div>
